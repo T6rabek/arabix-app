@@ -422,6 +422,32 @@ main{flex:1; padding-bottom:88px;}
 }
 .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
 
+/* ---------- Quran reader ---------- */
+.qayah{ transition: background .3s, border-color .3s; }
+.qayah.qayah-active{ background: var(--gold-soft); border-color: var(--gold); }
+.qplay-btn{
+  background: var(--accent-soft); color: var(--accent); border: none; border-radius: 50%;
+  width: 36px; height: 36px; flex-shrink: 0; font-size: .95rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.qplay-btn:active{ background: var(--accent); color: #fff; }
+.qayah-meaning{
+  margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--rule);
+}
+.qplayer-bar{
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: 78px; width: 100%; max-width: 560px; z-index: 15;
+  background: var(--accent); color: #fff; border-radius: 14px;
+  margin: 0 14px; padding: 10px 16px; display: flex; align-items: center; gap: 12px;
+  box-shadow: var(--shadow); width: calc(100% - 28px);
+}
+.qplayer-toggle{
+  background: rgba(255,255,255,.2); border: none; color: #fff; width: 34px; height: 34px;
+  border-radius: 50%; font-size: .9rem; cursor: pointer; flex-shrink: 0;
+  display:flex; align-items:center; justify-content:center;
+}
+.qplayer-label{ font-family: var(--font-ui); font-size: .82rem; font-weight: 700; }
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
@@ -1080,6 +1106,330 @@ let PROGRESS = loadProgress();
 
 let STATE = { view:'home', unitId:null, refSection:'roots' };
 
+/* ================= SPACED REPETITION REVIEW ================= */
+// Leitner-style boxes: 0=just missed/new, 5=mastered. Interval before a word is due again.
+const SRS_INTERVALS_MS = [10*60*1000, 1*86400000, 3*86400000, 7*86400000, 16*86400000, 35*86400000];
+let VOCAB_POOL = null;
+function buildVocabPool(){
+  if(VOCAB_POOL) return VOCAB_POOL;
+  const pool = [];
+  UNITS.forEach(u=>{
+    (u.vocab.core||[]).forEach((v,i)=>{
+      pool.push({key: u.id+'_vc_'+i, unitId:u.id, unitTitle:u.title, ar:v[0], uz:v[1]});
+    });
+  });
+  VOCAB_POOL = pool;
+  return pool;
+}
+function getSrsEntry(key){
+  if(!PROGRESS.srs) PROGRESS.srs = {};
+  if(!PROGRESS.srs[key]) PROGRESS.srs[key] = {box:0, dueAt:Date.now()};
+  return PROGRESS.srs[key];
+}
+function dueVocab(){
+  const now = Date.now();
+  return buildVocabPool()
+    .filter(p => getSrsEntry(p.key).dueAt <= now)
+    .sort((a,b) => getSrsEntry(a.key).dueAt - getSrsEntry(b.key).dueAt);
+}
+function srsStats(){
+  const pool = buildVocabPool();
+  const boxes = [0,0,0,0,0,0];
+  pool.forEach(p => { boxes[getSrsEntry(p.key).box]++; });
+  return { total: pool.length, mastered: boxes[5], boxes, due: dueVocab().length };
+}
+function markSrs(key, gotIt){
+  const e = getSrsEntry(key);
+  e.box = gotIt ? Math.min(e.box+1, 5) : 0;
+  e.dueAt = Date.now() + SRS_INTERVALS_MS[e.box];
+  e.lastResult = gotIt;
+  saveProgress(PROGRESS);
+}
+
+let REVIEW_SESSION = null;
+
+function renderReview(m){
+  if(REVIEW_SESSION && REVIEW_SESSION.queue.length){
+    return renderReviewCard(m);
+  }
+  const stats = srsStats();
+  const pct = stats.total ? Math.round((stats.mastered/stats.total)*100) : 0;
+  let html = `<div class="folio" style="padding-top:14px;">
+    <div class="hero" style="margin:-14px -18px 18px; border-radius:0;">
+      <span class="kicker">Takrorlash &middot; Spaced Repetition</span>
+      <h1 style="font-size:1.4rem;">So'zlarni mustahkamlash</h1>
+      <p>Har bir so'z o'zining vaqtida qaytib keladi — bilganingiz kamroq, bilmaganingiz tezroq qaytadi.</p>
+    </div>`;
+
+  if(stats.total === 0){
+    html += `<div class="empty-state">Hali so'zlar yuklanmagan.</div></div>`;
+    m.innerHTML = html;
+    return;
+  }
+
+  html += `<div class="progress-strip" style="position:relative; margin-bottom:16px;">
+      <div class="ring" style="--pct:${pct}"></div>
+      <div class="ring-label" style="left:34px;">${pct}%</div>
+      <div class="txt"><b>${stats.mastered} / ${stats.total} so'z mustahkamlangan</b>Boshqa ${stats.total-stats.mastered} tasi hali yo'lda</div>
+    </div>`;
+
+  if(stats.due > 0){
+    html += `<div class="milestone" style="text-align:center; border-color:var(--jade); background:linear-gradient(160deg, var(--jade-soft), var(--surface));">
+      <div class="star" style="color:var(--jade);">&#9889;</div>
+      <h3>Bugun ${stats.due} ta so'z tayyor</h3>
+      <p style="text-align:center;">Bir necha daqiqa — tap qiling, ma'nosini eslang, o'zingizni tekshiring.</p>
+      <button class="sheet-btn" style="margin-top:10px;" onclick="startReviewSession()">Boshlash &rarr;</button>
+    </div>`;
+  } else {
+    html += `<div class="milestone"><div class="star">&#10003;</div><h3>Hammasi tekshirilgan!</h3>
+      <p>Hozircha takrorlashga muhtoj so'z yo'q. Keyinroq qaytib keling — so'zlar o'z vaqtida qaytadi.</p></div>`;
+  }
+
+  html += `<div class="section-label" style="margin-top:24px;"><span class="dot">&#9636;</span>Qutilar bo'yicha taqsimot</div>
+    <div class="chip-row">
+      ${['Yangi','1-bosqich','2-bosqich','3-bosqich','4-bosqich','Mustahkam'].map((label,i)=>
+        `<span class="chip">${label}: <b style="margin-left:4px;">${stats.boxes[i]}</b></span>`).join('')}
+    </div>
+    <p class="small" style="margin-top:10px;">"Bildim" desangiz so'z keyingi qutiga o'tadi va uzoqroq vaqtdan keyin qaytadi. "Bilmadim" desangiz eng boshiga qaytadi va tez orada yana so'raladi.</p>
+  </div>`;
+  m.innerHTML = html;
+}
+
+function startReviewSession(){
+  const queue = dueVocab().slice(0, 20).sort(()=>Math.random()-0.5);
+  REVIEW_SESSION = { queue, index:0, correct:0, total: queue.length, flipped:false };
+  render();
+}
+
+function renderReviewCard(m){
+  const s = REVIEW_SESSION;
+  if(s.index >= s.queue.length){
+    const pct = s.total ? Math.round((s.correct/s.total)*100) : 0;
+    m.innerHTML = `<div class="folio" style="padding-top:14px;">
+      <div class="milestone">
+        <div class="star">&#9733;</div>
+        <h3>Sessiya tugadi!</h3>
+        <p style="text-align:center;">${s.total} so'zdan <b>${s.correct}</b> tasini bildingiz (${pct}%).</p>
+      </div>
+      <div class="unit-nav">
+        <button class="primary" onclick="REVIEW_SESSION=null; go('review')" style="flex:2;">Takrorlashga qaytish</button>
+      </div>
+    </div>`;
+    return;
+  }
+  const item = s.queue[s.index];
+  const entry = getSrsEntry(item.key);
+  m.innerHTML = `<div class="folio" style="padding-top:14px;">
+    <div class="ex-kicker" style="margin-bottom:10px;">${s.index+1} / ${s.total} &middot; ${item.unitTitle}</div>
+    <div class="surah-card" style="min-height:180px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; cursor:pointer;" onclick="flipReviewCard()">
+      <div class="ayah" style="font-size:2rem; margin:0;">${item.ar}</div>
+      ${s.flipped ? `<div class="prose" style="margin-top:14px; font-size:1.05rem; opacity:.9;">${item.uz}</div>` : `<div class="small" style="margin-top:14px;">bosing &mdash; ma'nosini ko'rish uchun</div>`}
+    </div>
+    ${s.flipped ? `
+      <div class="self-check" style="margin-top:16px;">
+        <button class="miss" onclick="answerReviewCard(false)">Bilmadim</button>
+        <button class="got" onclick="answerReviewCard(true)">Bildim</button>
+      </div>
+    ` : ''}
+    <div class="small" style="margin-top:16px; text-align:center;">Joriy qutisi: ${entry.box===5?'Mustahkam':entry.box+1+'-bosqich'}</div>
+  </div>`;
+}
+
+function flipReviewCard(){
+  if(!REVIEW_SESSION.flipped){ REVIEW_SESSION.flipped = true; render(); }
+}
+
+function answerReviewCard(gotIt){
+  const s = REVIEW_SESSION;
+  const item = s.queue[s.index];
+  markSrs(item.key, gotIt);
+  if(gotIt) s.correct++;
+  s.index++;
+  s.flipped = false;
+  render();
+}
+
+/* ================= FULL QURAN READER (live API) ================= */
+const QURAN_API = 'https://api.alquran.cloud/v1';
+let QURAN_LIST = null;
+let QURAN_CACHE = {};
+let QPLAYER = { audioEl:null, surahNum:null, idx:0, playing:false, singleMode:false };
+
+function ensureAudioEl(){
+  if(!QPLAYER.audioEl){
+    QPLAYER.audioEl = new Audio();
+    QPLAYER.audioEl.addEventListener('ended', quranNext);
+  }
+  return QPLAYER.audioEl;
+}
+
+async function fetchQuranList(){
+  if(QURAN_LIST) return QURAN_LIST;
+  try{
+    const cached = localStorage.getItem('qa_quran_list_v1');
+    if(cached){ QURAN_LIST = JSON.parse(cached); return QURAN_LIST; }
+  }catch(e){}
+  const res = await fetch(`${QURAN_API}/surah`);
+  const json = await res.json();
+  QURAN_LIST = json.data;
+  try{ localStorage.setItem('qa_quran_list_v1', JSON.stringify(QURAN_LIST)); }catch(e){}
+  return QURAN_LIST;
+}
+
+async function fetchSurah(num){
+  if(QURAN_CACHE[num]) return QURAN_CACHE[num];
+  const [arRes, uzRes] = await Promise.all([
+    fetch(`${QURAN_API}/surah/${num}/ar.alafasy`),
+    fetch(`${QURAN_API}/surah/${num}/uz.sodik`).catch(()=>null)
+  ]);
+  const arJson = await arRes.json();
+  const data = arJson.data;
+  try{
+    if(uzRes){
+      const uzJson = await uzRes.json();
+      data.ayahs.forEach((a,i)=>{ a.uz = uzJson.data.ayahs[i] ? uzJson.data.ayahs[i].text : ''; });
+    }
+  }catch(e){}
+  QURAN_CACHE[num] = data;
+  return data;
+}
+
+function renderQuranListItems(){
+  const wrap = document.getElementById('quranListItems');
+  if(!wrap || !QURAN_LIST) return;
+  const q = (STATE.quranSearch||'').trim().toLowerCase();
+  const filtered = QURAN_LIST.filter(s =>
+    !q || s.englishName.toLowerCase().includes(q) || s.englishNameTranslation.toLowerCase().includes(q) || String(s.number)===q || s.name.includes(q));
+  wrap.innerHTML = filtered.map(s => `
+    <button class="unit-row" onclick="go('quranSurah',{surahNum:${s.number}})">
+      <span class="num">${s.number}</span>
+      <span class="meta">
+        <span class="t">${s.englishName} <span style="opacity:.5;font-weight:400;">&middot; ${s.englishNameTranslation}</span></span>
+        <span class="s">${s.name} &middot; ${s.numberOfAyahs} oyat</span>
+      </span>
+      <span class="chev">&#8250;</span>
+    </button>`).join('') || `<div class="empty-state">Sura topilmadi.</div>`;
+}
+
+function renderQuran(m){
+  if(!QURAN_LIST){
+    m.innerHTML = `<div class="empty-state">Yuklanmoqda&hellip;</div>`;
+    fetchQuranList().then(()=>{ if(STATE.view==='quran') render(); })
+      .catch(()=>{ m.innerHTML = `<div class="empty-state">Internetga ulanib bo'lmadi.<br><button class="reveal-btn" style="margin-top:10px;" onclick="render()">Qayta urinish</button></div>`; });
+    return;
+  }
+  m.innerHTML = `<div class="folio" style="padding-top:14px;">
+    <div class="hero" style="margin:-14px -18px 14px; border-radius:0;">
+      <span class="kicker">To'liq Qur'on &middot; 114 sura</span>
+      <h1 style="font-size:1.4rem;">Qur'on o'qish</h1>
+      <p>Har bir oyatni Mishary Rashid al-Afosiy tilovatida tinglang.</p>
+    </div>
+    <input type="text" placeholder="Sura nomi yoki raqami..." value="${STATE.quranSearch||''}"
+      oninput="STATE.quranSearch=this.value; renderQuranListItems();"
+      style="width:calc(100% - 32px);margin:0 16px 12px;display:block;padding:11px 14px;border-radius:12px;border:1px solid var(--rule);background:var(--surface);font-family:var(--font-body);font-size:.92rem;" />
+    <div id="quranListItems" class="unit-list"></div>
+  </div>`;
+  renderQuranListItems();
+}
+
+function renderQuranSurah(m, num){
+  const cached = QURAN_CACHE[num];
+  if(!cached){
+    m.innerHTML = `<div class="empty-state">Yuklanmoqda&hellip;</div>`;
+    fetchSurah(num).then(()=>{ if(STATE.view==='quranSurah' && STATE.surahNum===num) render(); })
+      .catch(()=>{ m.innerHTML = `<div class="empty-state">Yuklab bo'lmadi. Internetni tekshiring.<br><button class="reveal-btn" style="margin-top:10px;" onclick="render()">Qayta urinish</button></div>`; });
+    return;
+  }
+  let html = `<div class="folio" style="padding-top:14px; padding-bottom:70px;">
+    <div class="unit-hero">
+      <span class="badge">${cached.number}-sura &middot; ${cached.numberOfAyahs} oyat &middot; ${cached.revelationType==='Meccan'?'Makkiy':'Madaniy'}</span>
+      <h1>${cached.englishName} <span style="opacity:.5;font-weight:400;font-size:.7em;">${cached.englishNameTranslation}</span></h1>
+      <span class="ar">${cached.name}</span>
+    </div>`;
+  html += cached.ayahs.map((a,i)=>`
+    <div class="surah-card qayah" id="qayah-${i}" style="margin-bottom:10px; padding:14px 16px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+        <button class="qplay-btn" onclick="playSingleAyah(${num},${i})">&#9658;</button>
+        <div class="ayah" style="flex:1; margin:0; font-size:1.3rem; cursor:pointer;" onclick="toggleAyahMeaning(${i})">${a.text} <span class="n">${arNum(a.numberInSurah)}</span></div>
+      </div>
+      <div class="qayah-meaning" id="qmeaning-${i}" style="display:none;">
+        <div class="small" style="text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; opacity:.6;">Ma'nosi &middot; M. Sodiq Muhammad Yusuf tarjimasi</div>
+        <p style="margin:0; font-size:.92rem; line-height:1.6;">${a.uz || "Tarjima mavjud emas."}</p>
+      </div>
+    </div>`).join('');
+  html += `</div>`;
+  m.innerHTML = html;
+  renderQuranPlayer();
+}
+
+function toggleAyahMeaning(idx){
+  const el = document.getElementById('qmeaning-'+idx);
+  if(el) el.style.display = (el.style.display==='none') ? 'block' : 'none';
+}
+
+function playSingleAyah(num, idx){
+  QPLAYER.surahNum = num; QPLAYER.idx = idx; QPLAYER.playing = true; QPLAYER.singleMode = true;
+  const a = ensureAudioEl();
+  a.src = QURAN_CACHE[num].ayahs[idx].audio;
+  a.play().catch(()=>{});
+  highlightAyah(idx);
+  renderQuranPlayer();
+}
+
+function playCurrentAyah(){
+  const ayahs = QURAN_CACHE[QPLAYER.surahNum].ayahs;
+  if(QPLAYER.idx >= ayahs.length){ QPLAYER.playing=false; renderQuranPlayer(); return; }
+  const a = ensureAudioEl();
+  a.src = ayahs[QPLAYER.idx].audio;
+  a.play().catch(()=>{});
+  highlightAyah(QPLAYER.idx);
+  renderQuranPlayer();
+}
+
+function toggleContinuous(){
+  const num = STATE.surahNum;
+  const isThisPlaying = QPLAYER.playing && QPLAYER.surahNum===num && !QPLAYER.singleMode;
+  if(isThisPlaying){
+    ensureAudioEl().pause(); QPLAYER.playing = false;
+  } else {
+    if(QPLAYER.surahNum !== num){ QPLAYER.idx = 0; }
+    QPLAYER.surahNum = num; QPLAYER.singleMode = false; QPLAYER.playing = true;
+    playCurrentAyah();
+  }
+  renderQuranPlayer();
+}
+
+function quranNext(){
+  if(QPLAYER.singleMode){ QPLAYER.playing = false; renderQuranPlayer(); return; }
+  QPLAYER.idx++;
+  const ayahs = QURAN_CACHE[QPLAYER.surahNum] ? QURAN_CACHE[QPLAYER.surahNum].ayahs : [];
+  if(QPLAYER.idx >= ayahs.length){ QPLAYER.playing = false; QPLAYER.idx = 0; renderQuranPlayer(); return; }
+  playCurrentAyah();
+}
+
+function highlightAyah(idx){
+  document.querySelectorAll('.qayah').forEach(el=>el.classList.remove('qayah-active'));
+  const el = document.getElementById('qayah-'+idx);
+  if(el){ el.classList.add('qayah-active'); el.scrollIntoView({behavior:'smooth', block:'center'}); }
+}
+
+function renderQuranPlayer(){
+  let bar = document.getElementById('qplayerbar');
+  if(STATE.view !== 'quranSurah'){ if(bar) bar.remove(); return; }
+  if(!bar){
+    bar = document.createElement('div');
+    bar.id = 'qplayerbar';
+    bar.className = 'qplayer-bar';
+    document.getElementById('app').insertBefore(bar, document.getElementById('tabbar'));
+  }
+  const playing = QPLAYER.playing && QPLAYER.surahNum===STATE.surahNum && !QPLAYER.singleMode;
+  const cached = QURAN_CACHE[STATE.surahNum];
+  bar.innerHTML = `
+    <button class="qplayer-toggle" onclick="toggleContinuous()">${playing?'&#10074;&#10074;':'&#9658;'}</button>
+    <span class="qplayer-label">${playing ? `Oyat ${QPLAYER.idx+1} / ${cached?cached.numberOfAyahs:'?'}` : "Butun surani tinglash"}</span>
+  `;
+}
+
 /* ================= PLATFORM ================= */
 function isNativeApp(){ return !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()); }
 
@@ -1116,6 +1466,7 @@ function go(view, opts){
   STATE.view = view;
   if(opts && opts.unitId !== undefined) STATE.unitId = opts.unitId;
   if(opts && opts.refSection !== undefined) STATE.refSection = opts.refSection;
+  if(opts && opts.surahNum !== undefined) STATE.surahNum = opts.surahNum;
   window.scrollTo(0,0);
   render();
 }
@@ -1140,8 +1491,13 @@ function renderTopbar(){
   if(STATE.view === 'unit'){ const u = UNITS[STATE.unitId-1]; title = `${u.id}-dars`; }
   if(STATE.view === 'progress'){ title = "Taraqqiyot"; }
   if(STATE.view === 'reference'){ title = "Qo'llanma"; }
+  if(STATE.view === 'review'){ title = "Takrorlash"; }
+  if(STATE.view === 'quran'){ title = "Qur'on"; }
+  if(STATE.view === 'quranSurah'){ const c = QURAN_CACHE[STATE.surahNum]; title = c ? c.englishName : "Qur'on"; }
+  const backToQuranList = STATE.view === 'quranSurah';
+  const backAction = (STATE.view === 'review' && REVIEW_SESSION) ? "REVIEW_SESSION=null; go('review')" : (backToQuranList ? "go('quran')" : "go('home')");
   bar.innerHTML = `
-    <button class="back-btn" onclick="go('home')" aria-label="Orqaga">&#8592;</button>
+    <button class="back-btn" onclick="${backAction}" aria-label="Orqaga">&#8592;</button>
     <h1>${title}</h1>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Mavzu">${icon}</button>
   `;
@@ -1151,12 +1507,15 @@ function renderTabbar(){
   const tb = document.getElementById('tabbar');
   const tabs = [
     {id:'home', ic:'\u{1F4D6}', label:'Suralar'},
+    {id:'quran', ic:'\u{1F319}', label:"Qur'on"},
+    {id:'review', ic:'⚡', label:'Takrorlash'},
     {id:'progress', ic:'✦', label:'Taraqqiyot'},
     {id:'reference', ic:'☷', label:"Qo'llanma"},
   ];
   tb.innerHTML = tabs.map(t=>{
-    const active = (STATE.view===t.id) || (t.id==='home' && STATE.view==='unit');
-    return `<button class="tab ${active?'active':''}" onclick="go('${t.id}')"><span class="ic">${t.ic}</span>${t.label}</button>`;
+    const active = (STATE.view===t.id) || (t.id==='home' && STATE.view==='unit') || (t.id==='quran' && STATE.view==='quranSurah');
+    const dueBadge = (t.id==='review' && srsStats().due>0) ? `<span style="position:absolute;top:2px;right:14px;width:8px;height:8px;border-radius:50%;background:var(--rubric);"></span>` : '';
+    return `<button class="tab ${active?'active':''}" style="position:relative;" onclick="${t.id==='review'?'REVIEW_SESSION=null;':''}go('${t.id}')">${dueBadge}<span class="ic">${t.ic}</span>${t.label}</button>`;
   }).join('');
 }
 
@@ -1167,6 +1526,9 @@ function renderMain(){
   if(STATE.view === 'unit') return renderUnit(m, STATE.unitId);
   if(STATE.view === 'progress') return renderProgress(m);
   if(STATE.view === 'reference') return renderReference(m);
+  if(STATE.view === 'review') return renderReview(m);
+  if(STATE.view === 'quran') { renderQuranPlayer(); return renderQuran(m); }
+  if(STATE.view === 'quranSurah') return renderQuranSurah(m, STATE.surahNum);
 }
 
 /* ================= HOME ================= */
