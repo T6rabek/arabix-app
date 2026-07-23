@@ -448,6 +448,29 @@ main{flex:1; padding-bottom:88px;}
 }
 .qplayer-label{ font-family: var(--font-ui); font-size: .82rem; font-weight: 700; }
 
+/* ---------- Tajweed colors ---------- */
+.tj-madd{ color: var(--gold); font-weight: 700; }
+.tj-qalqala{ color: var(--rubric); font-weight: 700; }
+
+/* ---------- Bookmark button ---------- */
+.qbookmark-btn{
+  background: none; border: none; font-size: 1.3rem; color: var(--rule); cursor: pointer;
+  flex-shrink: 0; line-height: 1; padding: 4px;
+}
+.qbookmark-btn.active{ color: var(--gold); }
+
+/* ---------- Hifz (memorization) ---------- */
+.hz-word{
+  display: inline-block; cursor: pointer; padding: 2px 3px; border-radius: 4px;
+  transition: background .15s;
+}
+.hz-word:active{ background: var(--accent-soft); }
+.hz-word.hz-hidden{
+  color: transparent; background: var(--surface-2); border-radius: 6px;
+  text-shadow: none; user-select: none;
+}
+.hz-word.hz-hidden::selection{ background: transparent; }
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
@@ -515,7 +538,7 @@ const UNITS = [
 
 // ============ UNIT 2 ============
 {
-  id:2, phase:1, title:"Al-Fotiha: Kim gapiryapti?", ar:"سورة الفاتحة",
+  id:2, phase:1, title:"Al-Fotiha: Kim gapiryapti?", ar:"سورة الفاتحة", surahApiNum:1,
   intro:"Al-Fotiha — \"Ummul Kitob\" (Kitobning onasi) deb ataladi. U bor-yo'g'i 7 oyat, lekin har bir namozning har rakatida o'qiladi — demak kuniga kamida 17 marta tilingizdan o'tadi. Siz uni allaqachon yoddan bilasiz, to'g'ri talaffuz bilan o'qiy olasiz. Ammo savol shu: har bir so'zning aniq nimani anglatishini, va nega bu 7 oyat aynan shu tartibda kelganini bilasizmi? Shu darsning maqsadi — sizga eshitishdan tanish bo'lgan tovushlarni, ma'nosi bilan tanish qilish.",
   ayahs:[
     "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ","الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ","الرَّحْمَٰنِ الرَّحِيمِ","مَالِكِ يَوْمِ الدِّينِ",
@@ -561,7 +584,7 @@ const UNITS = [
 
 // ============ UNIT 3 ============
 {
-  id:3, phase:1, title:"An-Nas: Kimdan panoh so'raymiz?", ar:"سورة الناس",
+  id:3, phase:1, title:"An-Nas: Kimdan panoh so'raymiz?", ar:"سورة الناس", surahApiNum:114,
   intro:"An-Nas — Qur'ondagi eng oxirgi sura. U Al-Falaq bilan birga \"Al-Mu'awwidhatayn\" (ikki panoh so'rovchi sura) deb ataladi. Bu darsda diqqatingizni bitta narsaga qarating: uch qator ketma-ket keladi — رَبِّ النَّاسِ، مَلِكِ النَّاسِ، إِلَٰهِ النَّاسِ — va har birida \"ning\" so'zi yozilmagan, lekin ma'noda bor. Bu — Qur'ondagi eng aniq, eng ko'p takrorlanadigan naqshlardan biri.",
   ayahs:["قُلْ أَعُوذُ بِرَبِّ النَّاسِ","مَلِكِ النَّاسِ","إِلَٰهِ النَّاسِ","مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ","الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ","مِنَ الْجِنَّةِ وَالنَّاسِ"],
   wbw:[
@@ -593,7 +616,7 @@ const UNITS = [
 
 // ============ UNIT 4 ============
 {
-  id:4, phase:1, title:"Al-Falaq: \"-dan\" ma'nosini beruvchi kichik so'zlar", ar:"سورة الفلق",
+  id:4, phase:1, title:"Al-Falaq: \"-dan\" ma'nosini beruvchi kichik so'zlar", ar:"سورة الفلق", surahApiNum:113,
   intro:"Al-Falaq — Al-Mu'awwidhatayn (\"ikki panoh so'rovchi sura\")ning birinchisi. Bu surada bitta kichik so'z — مِنْ (\"-dan\") — besh oyatning to'rttasida qaytadan-qaytadan keladi. Bu darsdan keyin مِنْ so'zini ko'rganingizda, \"nimadan qochyapmiz/nimadan kelyapti\" degan savolni avtomatik so'ray boshlaysiz.",
   ayahs:["قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ","مِنْ شَرِّ مَا خَلَقَ","وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ","وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ","وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ"],
   wbw:[
@@ -622,7 +645,7 @@ const UNITS = [
 
 // ============ UNIT 5 ============
 {
-  id:5, phase:1, title:"Al-Ixlos: \"Bu — shudur\" gaplari va inkor", ar:"سورة الإخلاص",
+  id:5, phase:1, title:"Al-Ixlos: \"Bu — shudur\" gaplari va inkor", ar:"سورة الإخلاص", surahApiNum:112,
   intro:"Al-Ixlos — bor-yo'g'i 4 oyat, lekin Payg'ambarimiz &#65018; uni \"Qur'onning uchdan biriga teng\" degan. Bu darsda ikkita muhim narsani ko'rasiz: birinchi ikki oyatda hech qanday fe'l (\"bo'lmoq\") yo'q — Arab tilida \"X — Y\" deyish uchun alohida so'z kerak emas. Keyingi ikki oyatda esa birinchi marta aniq inkor naqshini ko'rasiz.",
   ayahs:["قُلْ هُوَ اللَّهُ أَحَدٌ","اللَّهُ الصَّمَدُ","لَمْ يَلِدْ وَلَمْ يُولَدْ","وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ"],
   wbw:[
@@ -651,7 +674,7 @@ const UNITS = [
 
 // ============ UNIT 6 ============
 {
-  id:6, phase:1, title:"Al-Kavsar: Buyruq shakli", ar:"سورة الكوثر",
+  id:6, phase:1, title:"Al-Kavsar: Buyruq shakli", ar:"سورة الكوثر", surahApiNum:108,
   intro:"Al-Kavsar — Qur'ondagi eng qisqa sura, bor-yo'g'i 3 oyat. Bu darsda birinchi marta aniq \"qil!\" ma'nosidagi buyruq fe'llarini ko'rasiz — 3-darsdagi قُلْ (\"ayt\") oilasidan, lekin endi boshqa harakatlar bilan.",
   ayahs:["إِنَّا أَعْطَيْنَاكَ الْكَوْثَرَ","فَصَلِّ لِرَبِّكَ وَانْحَرْ","إِنَّ شَانِئَكَ هُوَ الْأَبْتَرُ"],
   wbw:[
@@ -678,7 +701,7 @@ const UNITS = [
 
 // ============ UNIT 7 ============
 {
-  id:7, phase:1, title:"Al-Asr: Vaqt va \"faqat\" ma'nosi", ar:"سورة العصر",
+  id:7, phase:1, title:"Al-Asr: Vaqt va \"faqat\" ma'nosi", ar:"سورة العصر", surahApiNum:103,
   intro:"Al-Asr — Imom Shofi'iy \"agar odamlar faqat shu surani chuqur o'ylab ko'rsalar, bu ularga kifoya qilardi\" degan sura. Bor-yo'g'i 3 oyat ichida butun insoniyatning holati va undan qutulish yo'li tasvirlangan. Bu darsda yangi kichik so'z — إِلَّا (\"faqat\") — va fe'lning \"ular\" shaklini (-وا) ko'rasiz.",
   ayahs:["وَالْعَصْرِ","إِنَّ الْإِنسَانَ لَفِي خُسْرٍ","إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ"],
   wbw:[
@@ -704,7 +727,7 @@ const UNITS = [
 
 // ============ UNIT 8 ============
 {
-  id:8, phase:1, title:"Al-Fil: O'tgan zamon voqealari", ar:"سورة الفيل",
+  id:8, phase:1, title:"Al-Fil: O'tgan zamon voqealari", ar:"سورة الفيل", surahApiNum:105,
   intro:"Al-Fil — tarixiy voqeani hikoya qiladigan sura: Fil egalari (Abraha qo'shini) Ka'bani vayron qilish uchun kelganida, Alloh ularni qanday halok qilgani. Bu darsda birinchi marta \"u qildi\" shaklidagi sof o'tgan zamon fe'llarini ko'rasiz — hech qanday qo'shimchasiz, faqat fe'lning o'zi.",
   ayahs:["أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ","أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ","وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ","تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ","فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ"],
   wbw:[
@@ -731,7 +754,7 @@ const UNITS = [
 
 // ============ UNIT 9 ============
 {
-  id:9, phase:1, title:"Quraysh: Aniqlik va sayohat so'zlari", ar:"سورة قريش",
+  id:9, phase:1, title:"Quraysh: Aniqlik va sayohat so'zlari", ar:"سورة قريش", surahApiNum:106,
   intro:"Quraysh — Al-Fildan keyin keladi va u bilan bog'liq: Ka'ba himoya qilingani uchun Quraysh xavfsiz savdo safarlariga chiqa olardi. Bu darsda birinchi marta \"bu\" (هَٰذَا) so'zini ko'rasiz, va oldingi darslardagi ildizlar bilan yangi bog'lanishlarni topasiz.",
   ayahs:["لِإِيلَافِ قُرَيْشٍ","إِيلَافِهِمْ رِحْلَةَ الشِّتَاءِ وَالصَّيْفِ","فَلْيَعْبُدُوا رَبَّ هَٰذَا الْبَيْتِ","الَّذِي أَطْعَمَهُم مِّن جُوعٍ وَآمَنَهُم مِّنْ خَوْفٍ"],
   wbw:[
@@ -757,7 +780,7 @@ const UNITS = [
 
 // ============ UNIT 10 ============
 {
-  id:10, phase:1, title:"Al-Mo'un: Savol va inkor buyruqlar", ar:"سورة الماعون",
+  id:10, phase:1, title:"Al-Mo'un: Savol va inkor buyruqlar", ar:"سورة الماعون", surahApiNum:107,
   intro:"1-bosqichning oxirgi surasi. Al-Mo'un ibodat bilan ijtimoiy mas'uliyatni bog'laydi — namoz o'quvchi bo'lish, agar yetimga va miskinga beparvo bo'lsangiz, yetarli emasligini ko'rsatadi. Bu darsda لَا bilan لَمْ orasidagi farqni, va ذَٰلِكَ (\"o'sha\")ni — 9-darsdagi هَٰذَا (\"bu\")ning jufti — ko'rasiz.",
   ayahs:["أَرَأَيْتَ الَّذِي يُكَذِّبُ بِالدِّينِ","فَذَٰلِكَ الَّذِي يَدُعُّ الْيَتِيمَ","وَلَا يَحُضُّ عَلَىٰ طَعَامِ الْمِسْكِينِ","فَوَيْلٌ لِّلْمُصَلِّينَ","الَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ","الَّذِينَ هُمْ يُرَاءُونَ","وَيَمْنَعُونَ الْمَاعُونَ"],
   wbw:[
@@ -1258,9 +1281,34 @@ let QPLAYER = { audioEl:null, surahNum:null, idx:0, playing:false, singleMode:fa
 function ensureAudioEl(){
   if(!QPLAYER.audioEl){
     QPLAYER.audioEl = new Audio();
+    QPLAYER.audioEl.preload = 'auto';
     QPLAYER.audioEl.addEventListener('ended', quranNext);
+    setupMediaSession();
   }
   return QPLAYER.audioEl;
+}
+
+function setupMediaSession(){
+  if(!('mediaSession' in navigator)) return;
+  navigator.mediaSession.setActionHandler('play', ()=>{ ensureAudioEl().play().catch(()=>{}); QPLAYER.playing=true; renderQuranPlayer(); });
+  navigator.mediaSession.setActionHandler('pause', ()=>{ ensureAudioEl().pause(); QPLAYER.playing=false; renderQuranPlayer(); });
+  navigator.mediaSession.setActionHandler('nexttrack', ()=> quranNext());
+  navigator.mediaSession.setActionHandler('previoustrack', ()=>{
+    if(QPLAYER.idx > 0){ QPLAYER.idx--; playCurrentAyah(); }
+  });
+}
+function updateMediaMetadata(){
+  if(!('mediaSession' in navigator)) return;
+  const cached = QURAN_CACHE[QPLAYER.surahNum];
+  if(!cached) return;
+  try{
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: `${cached.englishName} — ${QPLAYER.idx+1}-oyat`,
+      artist: 'Mishary Rashid Alafasy',
+      album: "Arabix — Qur'on",
+    });
+    navigator.mediaSession.playbackState = 'playing';
+  }catch(e){}
 }
 
 async function fetchQuranList(){
@@ -1276,6 +1324,23 @@ async function fetchQuranList(){
   return QURAN_LIST;
 }
 
+const BISMILLAH_PREFIX = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ '.normalize('NFC');
+function stripBismillah(data){
+  // The API bakes the Bismillah into ayah[0].text for every surah except
+  // Al-Fatiha (where it IS ayah 1) and At-Tawbah (which has none).
+  // Arabic combining diacritics can arrive in different (but visually identical)
+  // orders across entries, so both sides are NFC-normalized before comparing.
+  if(data.number === 1 || data.number === 9) return data;
+  const first = data.ayahs[0];
+  if(!first) return data;
+  const normalized = first.text.normalize('NFC');
+  if(normalized.startsWith(BISMILLAH_PREFIX)){
+    data.bismillah = BISMILLAH_PREFIX.trim();
+    first.text = normalized.slice(BISMILLAH_PREFIX.length);
+  }
+  return data;
+}
+
 async function fetchSurah(num){
   if(QURAN_CACHE[num]) return QURAN_CACHE[num];
   const [arRes, uzRes] = await Promise.all([
@@ -1288,8 +1353,14 @@ async function fetchSurah(num){
     if(uzRes){
       const uzJson = await uzRes.json();
       data.ayahs.forEach((a,i)=>{ a.uz = uzJson.data.ayahs[i] ? uzJson.data.ayahs[i].text : ''; });
+      // Uzbek translation also bakes Bismillah into ayah 1's meaning text
+      if(data.number !== 1 && data.number !== 9 && data.ayahs[0] && data.ayahs[0].uz){
+        const uzBismillahMatch = data.ayahs[0].uz.match(/^[^.]*?[Бб]исмиллах[^)]*\)\s*/);
+        if(uzBismillahMatch) data.ayahs[0].uz = data.ayahs[0].uz.slice(uzBismillahMatch[0].length);
+      }
     }
   }catch(e){}
+  stripBismillah(data);
   QURAN_CACHE[num] = data;
   return data;
 }
@@ -1340,17 +1411,38 @@ function renderQuranSurah(m, num){
       .catch(()=>{ m.innerHTML = `<div class="empty-state">Yuklab bo'lmadi. Internetni tekshiring.<br><button class="reveal-btn" style="margin-top:10px;" onclick="render()">Qayta urinish</button></div>`; });
     return;
   }
-  let html = `<div class="folio" style="padding-top:14px; padding-bottom:70px;">
+  trackLastRead(num);
+  const unitLink = unitForSurah(num);
+  const tj = STATE.tajweedOn !== false; // default on
+  let html = `<div class="folio" style="padding-top:14px; padding-bottom:120px;">
     <div class="unit-hero">
       <span class="badge">${cached.number}-sura &middot; ${cached.numberOfAyahs} oyat &middot; ${cached.revelationType==='Meccan'?'Makkiy':'Madaniy'}</span>
       <h1>${cached.englishName} <span style="opacity:.5;font-weight:400;font-size:.7em;">${cached.englishNameTranslation}</span></h1>
       <span class="ar">${cached.name}</span>
+    </div>
+    <div class="chip-row" style="margin-bottom:14px;">
+      <span class="chip" style="cursor:pointer;${tj?'background:var(--accent);color:#fff;':''}" onclick="STATE.tajweedOn=${!tj}; render();">&#127912; Tajvid ranglari ${tj?'yoniq':"o'chiq"}</span>
+      <span class="chip" style="cursor:pointer;" onclick="openAudioSettingsSheet()">&#9881;&#65039; Ijro sozlamalari</span>
+      <span class="chip" style="cursor:pointer;" onclick="openHifzRangePicker(${num}, '${cached.englishName.replace(/'/g,"\\'")}', ${cached.numberOfAyahs})">&#129504; Yodlash</span>
+      ${unitLink ? `<span class="chip" style="cursor:pointer;" onclick="go('unit',{unitId:${unitLink.id}})">&#128214; ${unitLink.id}-darsda o'rganish</span>` : ''}
     </div>`;
+
+  if(cached.bismillah){
+    html += `<div class="ayah" style="text-align:center; color:var(--gold); font-size:1.4rem; margin-bottom:14px;">${tj?tajweedHighlight(cached.bismillah):cached.bismillah}</div>`;
+  }
+  if(tj){
+    html += `<div class="small" style="margin-bottom:12px; display:flex; gap:12px; flex-wrap:wrap;">
+      <span><span style="color:var(--gold); font-weight:700;">&#9679;</span> cho'zish (madd)</span>
+      <span><span style="color:var(--rubric); font-weight:700;">&#9679;</span> qalqala</span>
+    </div>`;
+  }
+
   html += cached.ayahs.map((a,i)=>`
     <div class="surah-card qayah" id="qayah-${i}" style="margin-bottom:10px; padding:14px 16px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
         <button class="qplay-btn" onclick="playSingleAyah(${num},${i})">&#9658;</button>
-        <div class="ayah" style="flex:1; margin:0; font-size:1.3rem; cursor:pointer;" onclick="toggleAyahMeaning(${i})">${a.text} <span class="n">${arNum(a.numberInSurah)}</span></div>
+        <div class="ayah" style="flex:1; margin:0; font-size:1.3rem; cursor:pointer;" onclick="toggleAyahMeaning(${i})">${tj?tajweedHighlight(a.text):a.text} <span class="n">${arNum(a.numberInSurah)}</span></div>
+        <button class="qbookmark-btn ${isBookmarked(num,i)?'active':''}" onclick="toggleBookmark(${num},${i})">${isBookmarked(num,i)?'&#9733;':'&#9734;'}</button>
       </div>
       <div class="qayah-meaning" id="qmeaning-${i}" style="display:none;">
         <div class="small" style="text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; opacity:.6;">Ma'nosi &middot; M. Sodiq Muhammad Yusuf tarjimasi</div>
@@ -1359,6 +1451,101 @@ function renderQuranSurah(m, num){
     </div>`).join('');
   html += `</div>`;
   m.innerHTML = html;
+  renderQuranPlayer();
+}
+
+/* ---- Tajweed color-coding (simplified: madd + qalqala, matching Unit 1) ---- */
+function isDiacritic(c){
+  if(!c) return false;
+  const code = c.charCodeAt(0);
+  return (code >= 0x064B && code <= 0x0652) || code === 0x0670;
+}
+function tajweedHighlight(text){
+  const qalqalaLetters = 'قطبجد';
+  const chars = Array.from(text);
+  let out = '';
+  for(let i=0;i<chars.length;i++){
+    const c = chars[i], next = chars[i+1];
+    if(qalqalaLetters.includes(c) && next === 'ْ'){
+      out += `<span class="tj-qalqala">${c}${next}</span>`; i++; continue;
+    }
+    if(c === 'ا' || c === 'ٰ' || c === 'ٓ' || c === 'آ' || c === 'ى'){
+      out += `<span class="tj-madd">${c}</span>`; continue;
+    }
+    if((c === 'و' || c === 'ي') && !isDiacritic(next)){
+      out += `<span class="tj-madd">${c}</span>`; continue;
+    }
+    out += c;
+  }
+  return out;
+}
+
+/* ---- Cross-linking curriculum units <-> full reader ---- */
+function unitForSurah(apiNum){
+  return UNITS.find(u => u.surahApiNum === apiNum) || null;
+}
+
+/* ---- Bookmarks + continue reading ---- */
+function isBookmarked(num, idx){ return !!(PROGRESS.bookmarks && PROGRESS.bookmarks[num+'_'+idx]); }
+function toggleBookmark(num, idx){
+  if(!PROGRESS.bookmarks) PROGRESS.bookmarks = {};
+  const key = num+'_'+idx;
+  if(PROGRESS.bookmarks[key]) delete PROGRESS.bookmarks[key];
+  else PROGRESS.bookmarks[key] = {surahNum:num, ayahIdx:idx, ts:Date.now()};
+  saveProgress(PROGRESS);
+  render();
+}
+function trackLastRead(num){
+  PROGRESS.lastRead = {surahNum:num, ts:Date.now()};
+  saveProgress(PROGRESS);
+}
+
+/* ---- Audio settings: ayah range + repeat count ---- */
+function openAudioSettingsSheet(){
+  const cached = QURAN_CACHE[STATE.surahNum];
+  if(!cached) return;
+  let ov = document.getElementById('sheetOverlay');
+  if(!ov){ ov = document.createElement('div'); ov.id='sheetOverlay'; ov.className='sheet-overlay'; document.body.appendChild(ov); ov.onclick=(e)=>{ if(e.target===ov) closeInstallSheet(); }; }
+  const n = cached.numberOfAyahs;
+  const curStart = (QPLAYER.rangeStart!=null ? QPLAYER.rangeStart+1 : 1);
+  const curEnd = (QPLAYER.rangeEnd!=null ? QPLAYER.rangeEnd+1 : n);
+  const curRepeat = QPLAYER.repeatCount || 1;
+  ov.innerHTML = `<div class="sheet">
+    <div class="grabber"></div>
+    <h2>Ijro sozlamalari</h2>
+    <div class="sheet-sub">${cached.englishName} &middot; ${n} oyat</div>
+    <div class="sheet-option">
+      <div class="so-title">&#9881;&#65039; Qaysi oyatdan qaysi oyatgacha</div>
+      <div style="display:flex; gap:10px; align-items:center; margin-bottom:10px;">
+        <input type="number" id="qFrom" min="1" max="${n}" value="${curStart}" style="flex:1;padding:9px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);text-align:center;">
+        <span class="small">dan</span>
+        <input type="number" id="qTo" min="1" max="${n}" value="${curEnd}" style="flex:1;padding:9px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);text-align:center;">
+        <span class="small">gacha</span>
+      </div>
+      <div class="so-title">&#128257; Necha marta takrorlansin</div>
+      <input type="number" id="qRepeat" min="1" max="20" value="${curRepeat}" style="width:100%;padding:9px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);text-align:center;margin-bottom:12px;">
+      <button class="sheet-btn" onclick="startRangedPlayback()">Ijro etishni boshlash</button>
+    </div>
+    <button class="sheet-close" onclick="closeInstallSheet()">Yopish</button>
+  </div>`;
+  requestAnimationFrame(()=> ov.classList.add('open'));
+}
+function startRangedPlayback(){
+  const n = QURAN_CACHE[STATE.surahNum].numberOfAyahs;
+  let from = Math.max(1, Math.min(n, parseInt(document.getElementById('qFrom').value)||1));
+  let to = Math.max(1, Math.min(n, parseInt(document.getElementById('qTo').value)||n));
+  if(from > to){ const t=from; from=to; to=t; }
+  const repeat = Math.max(1, Math.min(20, parseInt(document.getElementById('qRepeat').value)||1));
+  QPLAYER.surahNum = STATE.surahNum;
+  QPLAYER.rangeStart = from - 1;
+  QPLAYER.rangeEnd = to - 1;
+  QPLAYER.repeatCount = repeat;
+  QPLAYER.repeatDone = 0;
+  QPLAYER.idx = QPLAYER.rangeStart;
+  QPLAYER.singleMode = false;
+  QPLAYER.playing = true;
+  closeInstallSheet();
+  playCurrentAyah();
   renderQuranPlayer();
 }
 
@@ -1373,6 +1560,7 @@ function playSingleAyah(num, idx){
   a.src = QURAN_CACHE[num].ayahs[idx].audio;
   a.play().catch(()=>{});
   highlightAyah(idx);
+  updateMediaMetadata();
   renderQuranPlayer();
 }
 
@@ -1383,6 +1571,7 @@ function playCurrentAyah(){
   a.src = ayahs[QPLAYER.idx].audio;
   a.play().catch(()=>{});
   highlightAyah(QPLAYER.idx);
+  updateMediaMetadata();
   renderQuranPlayer();
 }
 
@@ -1414,20 +1603,269 @@ function highlightAyah(idx){
 }
 
 function renderQuranPlayer(){
+  const showOn = ['quranSurah','hifz','hifzSession'];
   let bar = document.getElementById('qplayerbar');
-  if(STATE.view !== 'quranSurah'){ if(bar) bar.remove(); return; }
+  const hasActiveAudio = QPLAYER.playing || (QPLAYER.audioEl && !QPLAYER.audioEl.paused);
+  if(!showOn.includes(STATE.view) || (STATE.view!=='quranSurah' && !hasActiveAudio)){
+    if(bar) bar.remove();
+    document.getElementById('main').style.paddingBottom = '';
+    return;
+  }
+  const tabbarEl = document.getElementById('tabbar');
+  const tabbarH = tabbarEl ? tabbarEl.offsetHeight : 64;
   if(!bar){
     bar = document.createElement('div');
     bar.id = 'qplayerbar';
     bar.className = 'qplayer-bar';
-    document.getElementById('app').insertBefore(bar, document.getElementById('tabbar'));
+    document.getElementById('app').insertBefore(bar, tabbarEl);
   }
+  bar.style.bottom = tabbarH + 'px';
   const playing = QPLAYER.playing && QPLAYER.surahNum===STATE.surahNum && !QPLAYER.singleMode;
-  const cached = QURAN_CACHE[STATE.surahNum];
+  const cached = QURAN_CACHE[QPLAYER.surahNum || STATE.surahNum];
   bar.innerHTML = `
     <button class="qplayer-toggle" onclick="toggleContinuous()">${playing?'&#10074;&#10074;':'&#9658;'}</button>
     <span class="qplayer-label">${playing ? `Oyat ${QPLAYER.idx+1} / ${cached?cached.numberOfAyahs:'?'}` : "Butun surani tinglash"}</span>
   `;
+  // ensure page content never sits behind the fixed bar + tabbar stack
+  requestAnimationFrame(()=>{
+    const barH = bar.offsetHeight || 56;
+    document.getElementById('main').style.paddingBottom = (tabbarH + barH + 24) + 'px';
+  });
+}
+
+/* ================= HIFZ (MEMORIZATION) ================= */
+function hifzKey(num, idx){ return num+'_'+idx; }
+function getHifzEntry(num, idx){
+  if(!PROGRESS.hifz) PROGRESS.hifz = {};
+  const k = hifzKey(num, idx);
+  if(!PROGRESS.hifz[k]) PROGRESS.hifz[k] = {reps:0, writeReps:0, status:'new', lastPracticed:null};
+  return PROGRESS.hifz[k];
+}
+function hifzStats(){
+  const entries = Object.entries(PROGRESS.hifz||{});
+  const bySurah = {};
+  entries.forEach(([k,e])=>{
+    const num = k.split('_')[0];
+    if(!bySurah[num]) bySurah[num] = {total:0, memorized:0};
+    bySurah[num].total++;
+    if(e.status==='memorized') bySurah[num].memorized++;
+  });
+  return {
+    total: entries.length,
+    memorized: entries.filter(([,e])=>e.status==='memorized').length,
+    learning: entries.filter(([,e])=>e.status==='learning').length,
+    bySurah
+  };
+}
+function stripArabicDiacritics(s){
+  return (s||'').replace(/[\u064B-\u0652\u0670\u0640\u0671]/g,'ا').replace(/[\u0622\u0623\u0625]/g,'ا').replace(/\s+/g,' ').trim();
+}
+function similarityPct(a,b){
+  a = stripArabicDiacritics(a); b = stripArabicDiacritics(b);
+  if(!a.length) return 0;
+  const bChars = b.split('');
+  let matches = 0;
+  for(const ch of a.split('')){ const idx = bChars.indexOf(ch); if(idx>-1){ matches++; bChars.splice(idx,1); } }
+  return Math.round((matches/a.length)*100);
+}
+
+function renderHifz(m){
+  const stats = hifzStats();
+  let html = `<div class="folio" style="padding-top:14px;">
+    <div class="hero" style="margin:-14px -18px 14px; border-radius:0;">
+      <span class="kicker">Yodlash &middot; Hifz</span>
+      <h1 style="font-size:1.4rem;">Yodlash markazi</h1>
+      <p>Ko'rish, yashirish, yozish va sinov &mdash; to'rt usul birga, har bir oyat uchun.</p>
+    </div>
+    <div class="progress-strip" style="position:relative; margin-bottom:16px;">
+      <div class="ring" style="--pct:${stats.total?Math.round(stats.memorized/stats.total*100):0}"></div>
+      <div class="ring-label" style="left:34px;">${stats.total?Math.round(stats.memorized/stats.total*100):0}%</div>
+      <div class="txt"><b>${stats.memorized} oyat yodlangan</b>${stats.learning} tasi jarayonda</div>
+    </div>`;
+
+  if(PROGRESS.lastHifz){
+    const lh = PROGRESS.lastHifz;
+    html += `<div class="milestone" style="text-align:center; border-color:var(--jade); background:linear-gradient(160deg, var(--jade-soft), var(--surface)); cursor:pointer;" onclick="startHifzSession(${lh.surahNum},${lh.from},${lh.to})">
+      <div class="star" style="color:var(--jade);">&#9654;</div>
+      <h3>Davom ettirish</h3>
+      <p style="text-align:center;">${lh.surahName} &middot; ${lh.from+1}&ndash;${lh.to+1}-oyatlar</p>
+    </div>`;
+  }
+
+  html += `<div class="section-label" style="margin-top:20px;"><span class="dot">&#128214;</span>Sura tanlang</div>
+    <input type="text" placeholder="Sura nomi yoki raqami..." value="${STATE.hifzSearch||''}"
+      oninput="STATE.hifzSearch=this.value; renderHifzListItems();"
+      style="width:calc(100% - 32px);margin:0 16px 12px;display:block;padding:11px 14px;border-radius:12px;border:1px solid var(--rule);background:var(--surface);font-family:var(--font-body);font-size:.92rem;" />
+    <div id="hifzListItems" class="unit-list"></div>
+  </div>`;
+  m.innerHTML = html;
+
+  if(!QURAN_LIST){
+    document.getElementById('hifzListItems').innerHTML = `<div class="empty-state">Yuklanmoqda&hellip;</div>`;
+    fetchQuranList().then(()=>{ if(STATE.view==='hifz') renderHifzListItems(); });
+  } else {
+    renderHifzListItems();
+  }
+}
+
+function renderHifzListItems(){
+  const wrap = document.getElementById('hifzListItems');
+  if(!wrap || !QURAN_LIST) return;
+  const q = (STATE.hifzSearch||'').trim().toLowerCase();
+  const filtered = QURAN_LIST.filter(s =>
+    !q || s.englishName.toLowerCase().includes(q) || String(s.number)===q || s.name.includes(q)).slice(0, 30);
+  wrap.innerHTML = filtered.map(s => `
+    <button class="unit-row" onclick="openHifzRangePicker(${s.number}, '${s.englishName.replace(/'/g,"\\'")}', ${s.numberOfAyahs})">
+      <span class="num">${s.number}</span>
+      <span class="meta"><span class="t">${s.englishName}</span><span class="s">${s.name} &middot; ${s.numberOfAyahs} oyat</span></span>
+      <span class="chev">&#8250;</span>
+    </button>`).join('') || `<div class="empty-state">Sura topilmadi.</div>`;
+}
+
+function openHifzRangePicker(num, name, total){
+  let ov = document.getElementById('sheetOverlay');
+  if(!ov){ ov = document.createElement('div'); ov.id='sheetOverlay'; ov.className='sheet-overlay'; document.body.appendChild(ov); ov.onclick=(e)=>{ if(e.target===ov) closeInstallSheet(); }; }
+  ov.innerHTML = `<div class="sheet">
+    <div class="grabber"></div>
+    <h2>${name}ni yodlash</h2>
+    <div class="sheet-sub">Qaysi oyatlardan boshlaymiz?</div>
+    <div class="sheet-option">
+      <div style="display:flex; gap:10px; align-items:center; margin-bottom:12px;">
+        <input type="number" id="hzFrom" min="1" max="${total}" value="1" style="flex:1;padding:9px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);text-align:center;">
+        <span class="small">dan</span>
+        <input type="number" id="hzTo" min="1" max="${total}" value="${Math.min(5,total)}" style="flex:1;padding:9px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);text-align:center;">
+        <span class="small">gacha</span>
+      </div>
+      <p class="small">Kichik bo'lakdan boshlash tavsiya etiladi &mdash; 3&ndash;5 oyat bir seansda.</p>
+      <button class="sheet-btn" onclick="startHifzSessionFromPicker(${num}, '${name.replace(/'/g,"\\'")}')">Boshlash</button>
+    </div>
+    <button class="sheet-close" onclick="closeInstallSheet()">Yopish</button>
+  </div>`;
+  requestAnimationFrame(()=> ov.classList.add('open'));
+}
+function startHifzSessionFromPicker(num, name){
+  const from = Math.max(1, parseInt(document.getElementById('hzFrom').value)||1) - 1;
+  const to = Math.max(from, parseInt(document.getElementById('hzTo').value)-1||from);
+  closeInstallSheet();
+  startHifzSession(num, from, to, name);
+}
+
+function startHifzSession(num, from, to, name){
+  STATE.hifzSurah = num; STATE.hifzFrom = from; STATE.hifzTo = to; STATE.hifzIdx = from; STATE.hifzMode = 'view'; STATE.hifzHidden = [];
+  PROGRESS.lastHifz = {surahNum:num, from, to, surahName: name || (QURAN_LIST||[]).find(s=>s.number===num)?.englishName || ''};
+  saveProgress(PROGRESS);
+  go('hifzSession');
+}
+
+function renderHifzSession(m){
+  const num = STATE.hifzSurah;
+  const cached = QURAN_CACHE[num];
+  if(!cached){
+    m.innerHTML = `<div class="empty-state">Yuklanmoqda&hellip;</div>`;
+    fetchSurah(num).then(()=>{ if(STATE.view==='hifzSession') render(); });
+    return;
+  }
+  const idx = STATE.hifzIdx;
+  const ayah = cached.ayahs[idx];
+  const entry = getHifzEntry(num, idx);
+  const total = STATE.hifzTo - STATE.hifzFrom + 1;
+  const posInRange = idx - STATE.hifzFrom + 1;
+  const mode = STATE.hifzMode || 'view';
+
+  let html = `<div class="folio" style="padding-top:14px; padding-bottom:20px;">
+    <div class="ex-kicker">${cached.englishName} &middot; oyat ${posInRange}/${total} (${ayah.numberInSurah}-oyat)</div>
+    <div class="chip-row" style="margin:10px 0;">
+      ${['view','hide','write','test'].map(mm=>{
+        const labels = {view:'&#128065; Ko\'rish', hide:'&#128065;&#8205;&#128215; Yashirish', write:'&#9999;&#65039; Yozish', test:'&#127919; Sinov'};
+        return `<span class="chip" style="cursor:pointer;${mode===mm?'background:var(--accent);color:#fff;':''}" onclick="STATE.hifzMode='${mm}'; STATE.hifzHidden=[]; render();">${labels[mm]}</span>`;
+      }).join('')}
+    </div>
+
+    <div class="surah-card" style="min-height:140px; display:flex; flex-direction:column; justify-content:center; padding:20px 16px;">`;
+
+  if(mode === 'view'){
+    html += `<div class="ayah" style="margin:0; text-align:center;">${ayah.text}</div>
+      <button class="qplay-btn" style="margin:14px auto 0;" onclick="playSingleAyah(${num},${idx})">&#9658;</button>`;
+  }
+  if(mode === 'hide'){
+    const words = ayah.text.split(' ');
+    html += `<div class="ayah" style="margin:0; text-align:center; line-height:2.4;">
+      ${words.map((w,i)=>`<span class="hz-word ${((STATE.hifzHidden||[]).includes(i))?'hz-hidden':''}" onclick="toggleWordHide(${i})">${w}</span>`).join(' ')}
+    </div>
+    <div style="display:flex; gap:8px; justify-content:center; margin-top:14px;">
+      <button class="action-btn" onclick="hideAllWords(${words.length})">Hammasini yashirish</button>
+      <button class="action-btn" onclick="STATE.hifzHidden=[]; render();">Hammasini ko'rsatish</button>
+    </div>`;
+  }
+  if(mode === 'write'){
+    html += `<div class="small" style="text-align:center; margin-bottom:10px;">Oyatni ko'rib, xotirangizdan yozing. Har yozganingizda hisoblanadi.</div>
+      <div class="ayah" style="margin:0 0 12px; text-align:center; opacity:.5; font-size:1.1rem;">${ayah.text}</div>
+      <textarea id="hzWriteInput" dir="rtl" placeholder="Shu yerga yozing..." style="width:100%;min-height:70px;padding:12px;border-radius:10px;border:1px solid var(--rule);background:var(--paper);font-family:var(--font-ar);font-size:1.2rem;"></textarea>
+      <div id="hzWriteFeedback" class="small" style="margin-top:8px; text-align:center;"></div>
+      <button class="reveal-btn" style="margin:10px auto 0; display:block;" onclick="checkHifzWrite(${num},${idx})">Tekshirish (${entry.writeReps} marta yozildi)</button>`;
+  }
+  if(mode === 'test'){
+    html += `<div class="small" style="text-align:center; margin-bottom:10px;">Yodingizdan ayting, keyin tekshiring.</div>
+      <div id="hzTestArea" style="text-align:center;">
+        <button class="reveal-btn" onclick="document.getElementById('hzTestArea').innerHTML=\`<div class='ayah' style='margin:0;'>${ayah.text.replace(/'/g,"\\'")}</div>\`;">Oyatni ko'rsatish</button>
+      </div>`;
+  }
+
+  html += `</div>`;
+
+  html += `<div class="self-check" style="margin-top:14px;">
+    <button class="miss" onclick="markHifzStatus(${num},${idx},'learning')" style="${entry.status==='learning'?'background:var(--gold-soft);border-color:var(--gold);':''}">Jarayonda</button>
+    <button class="got" onclick="markHifzStatus(${num},${idx},'memorized')" style="${entry.status==='memorized'?'background:var(--jade-soft);border-color:var(--jade);':''}">Yodladim &#10003;</button>
+  </div>
+
+  <div class="unit-nav">
+    <button ${posInRange<=1?'disabled':''} onclick="hifzNav(-1)">&#8592; Oldingi</button>
+    <button class="primary" ${posInRange>=total?'disabled':''} onclick="hifzNav(1)">Keyingi &#8594;</button>
+  </div>
+  <p class="small" style="text-align:center; margin-top:14px;">Bu oyatni ${entry.reps} marta ko'rib chiqdingiz.</p>
+  </div>`;
+
+  m.innerHTML = html;
+  entry.reps++; entry.lastPracticed = Date.now(); saveProgress(PROGRESS);
+}
+
+function toggleWordHide(i){
+  if(!STATE.hifzHidden) STATE.hifzHidden = [];
+  const pos = STATE.hifzHidden.indexOf(i);
+  if(pos>-1) STATE.hifzHidden.splice(pos,1); else STATE.hifzHidden.push(i);
+  render();
+}
+function hideAllWords(count){
+  STATE.hifzHidden = Array.from({length:count}, (_,i)=>i);
+  render();
+}
+function checkHifzWrite(num, idx){
+  const cached = QURAN_CACHE[num];
+  const written = document.getElementById('hzWriteInput').value;
+  const pct = similarityPct(cached.ayahs[idx].text, written);
+  const entry = getHifzEntry(num, idx);
+  entry.writeReps++;
+  saveProgress(PROGRESS);
+  const fb = document.getElementById('hzWriteFeedback');
+  let msg, color;
+  if(pct >= 85){ msg = `&#10003; Ajoyib! ${pct}% mos keldi.`; color='var(--jade)'; }
+  else if(pct >= 50){ msg = `Yaqin — ${pct}% mos keldi. Yana urinib ko'ring.`; color='var(--gold)'; }
+  else { msg = `${pct}% mos keldi. Oyatga qayta qarab, yana yozing.`; color='var(--rubric)'; }
+  fb.innerHTML = `<span style="color:${color}; font-weight:700;">${msg}</span>`;
+  document.getElementById('hzWriteInput').value = '';
+  setTimeout(()=>{ const btn=document.querySelector('.reveal-btn'); if(btn) btn.textContent = `Tekshirish (${entry.writeReps} marta yozildi)`; }, 10);
+}
+function markHifzStatus(num, idx, status){
+  const entry = getHifzEntry(num, idx);
+  entry.status = status;
+  saveProgress(PROGRESS);
+  render();
+}
+function hifzNav(dir){
+  const next = STATE.hifzIdx + dir;
+  if(next < STATE.hifzFrom || next > STATE.hifzTo) return;
+  STATE.hifzIdx = next; STATE.hifzMode='view'; STATE.hifzHidden=[];
+  render();
 }
 
 /* ================= PLATFORM ================= */
@@ -1489,13 +1927,16 @@ function renderTopbar(){
   }
   let title = '';
   if(STATE.view === 'unit'){ const u = UNITS[STATE.unitId-1]; title = `${u.id}-dars`; }
-  if(STATE.view === 'progress'){ title = "Taraqqiyot"; }
+  if(STATE.view === 'progress'){ title = "Mundarija"; }
   if(STATE.view === 'reference'){ title = "Qo'llanma"; }
   if(STATE.view === 'review'){ title = "Takrorlash"; }
   if(STATE.view === 'quran'){ title = "Qur'on"; }
   if(STATE.view === 'quranSurah'){ const c = QURAN_CACHE[STATE.surahNum]; title = c ? c.englishName : "Qur'on"; }
+  if(STATE.view === 'hifz'){ title = "Yodlash"; }
+  if(STATE.view === 'hifzSession'){ title = "Yodlash"; }
   const backToQuranList = STATE.view === 'quranSurah';
-  const backAction = (STATE.view === 'review' && REVIEW_SESSION) ? "REVIEW_SESSION=null; go('review')" : (backToQuranList ? "go('quran')" : "go('home')");
+  const backToHifzHome = STATE.view === 'hifzSession';
+  const backAction = (STATE.view === 'review' && REVIEW_SESSION) ? "REVIEW_SESSION=null; go('review')" : (backToQuranList ? "go('quran')" : backToHifzHome ? "go('hifz')" : "go('home')");
   bar.innerHTML = `
     <button class="back-btn" onclick="${backAction}" aria-label="Orqaga">&#8592;</button>
     <h1>${title}</h1>
@@ -1508,12 +1949,13 @@ function renderTabbar(){
   const tabs = [
     {id:'home', ic:'\u{1F4D6}', label:'Suralar'},
     {id:'quran', ic:'\u{1F319}', label:"Qur'on"},
+    {id:'hifz', ic:'\u{1F9E0}', label:'Yodlash'},
     {id:'review', ic:'⚡', label:'Takrorlash'},
-    {id:'progress', ic:'✦', label:'Taraqqiyot'},
+    {id:'progress', ic:'✦', label:'Progress'},
     {id:'reference', ic:'☷', label:"Qo'llanma"},
   ];
   tb.innerHTML = tabs.map(t=>{
-    const active = (STATE.view===t.id) || (t.id==='home' && STATE.view==='unit') || (t.id==='quran' && STATE.view==='quranSurah');
+    const active = (STATE.view===t.id) || (t.id==='home' && STATE.view==='unit') || (t.id==='quran' && STATE.view==='quranSurah') || (t.id==='hifz' && STATE.view==='hifzSession');
     const dueBadge = (t.id==='review' && srsStats().due>0) ? `<span style="position:absolute;top:2px;right:14px;width:8px;height:8px;border-radius:50%;background:var(--rubric);"></span>` : '';
     return `<button class="tab ${active?'active':''}" style="position:relative;" onclick="${t.id==='review'?'REVIEW_SESSION=null;':''}go('${t.id}')">${dueBadge}<span class="ic">${t.ic}</span>${t.label}</button>`;
   }).join('');
@@ -1529,6 +1971,8 @@ function renderMain(){
   if(STATE.view === 'review') return renderReview(m);
   if(STATE.view === 'quran') { renderQuranPlayer(); return renderQuran(m); }
   if(STATE.view === 'quranSurah') return renderQuranSurah(m, STATE.surahNum);
+  if(STATE.view === 'hifz') { renderQuranPlayer(); return renderHifz(m); }
+  if(STATE.view === 'hifzSession') { renderQuranPlayer(); return renderHifzSession(m); }
 }
 
 /* ================= HOME ================= */
@@ -1616,6 +2060,12 @@ function renderUnit(m, id){
     html += `<div class="section-label"><span class="dot">B</span>Avval — butun surani ko'ring</div>
       <div class="surah-card">${u.ayahs.map((a,i)=>`<div class="ayah">${a} <span class="n">${arNum(i+1)}</span></div>`).join('')}</div>`;
     if(u.wbwIntro) html += `<p class="prose" style="font-size:.88rem;opacity:.75;">${u.wbwIntro}</p>`;
+    if(u.surahApiNum){
+      html += `<div class="chip-row">
+        <span class="chip" style="cursor:pointer;" onclick="go('quranSurah',{surahNum:${u.surahApiNum}})">&#127760; To'liq Qur'onda o'qish/tinglash</span>
+        <span class="chip" style="cursor:pointer;" onclick="fetchQuranList().then(()=>{const s=QURAN_LIST.find(x=>x.number===${u.surahApiNum}); openHifzRangePicker(${u.surahApiNum}, s?s.englishName:'', ${u.ayahs.length});})">&#129504; Bu surani yodlash</span>
+      </div>`;
+    }
   }
   if(u.examples && u.examples.length){
     html += `<div class="section-label"><span class="dot">B</span>Yig'ilgan misollar</div>
