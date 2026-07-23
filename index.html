@@ -1530,6 +1530,14 @@ function openAudioSettingsSheet(){
   </div>`;
   requestAnimationFrame(()=> ov.classList.add('open'));
 }
+function stopRangedPlayback(){
+  ensureAudioEl().pause();
+  QPLAYER.playing = false;
+  QPLAYER.rangeStart = null; QPLAYER.rangeEnd = null;
+  QPLAYER.repeatCount = 1; QPLAYER.repeatDone = 0;
+  renderQuranPlayer();
+}
+
 function startRangedPlayback(){
   const n = QURAN_CACHE[STATE.surahNum].numberOfAyahs;
   let from = Math.max(1, Math.min(n, parseInt(document.getElementById('qFrom').value)||1));
@@ -1581,7 +1589,13 @@ function toggleContinuous(){
   if(isThisPlaying){
     ensureAudioEl().pause(); QPLAYER.playing = false;
   } else {
-    if(QPLAYER.surahNum !== num){ QPLAYER.idx = 0; }
+    // Only reset to a plain full-surah session when this isn't a resume of an
+    // already-configured (possibly ranged) session for the same surah.
+    if(QPLAYER.surahNum !== num){
+      QPLAYER.idx = 0;
+      QPLAYER.rangeStart = null; QPLAYER.rangeEnd = null;
+      QPLAYER.repeatCount = 1; QPLAYER.repeatDone = 0;
+    }
     QPLAYER.surahNum = num; QPLAYER.singleMode = false; QPLAYER.playing = true;
     playCurrentAyah();
   }
@@ -1590,9 +1604,23 @@ function toggleContinuous(){
 
 function quranNext(){
   if(QPLAYER.singleMode){ QPLAYER.playing = false; renderQuranPlayer(); return; }
-  QPLAYER.idx++;
   const ayahs = QURAN_CACHE[QPLAYER.surahNum] ? QURAN_CACHE[QPLAYER.surahNum].ayahs : [];
-  if(QPLAYER.idx >= ayahs.length){ QPLAYER.playing = false; QPLAYER.idx = 0; renderQuranPlayer(); return; }
+  const rangeStart = (QPLAYER.rangeStart != null) ? QPLAYER.rangeStart : 0;
+  const rangeEnd = (QPLAYER.rangeEnd != null) ? QPLAYER.rangeEnd : ayahs.length - 1;
+  QPLAYER.idx++;
+  if(QPLAYER.idx > rangeEnd){
+    QPLAYER.repeatDone = (QPLAYER.repeatDone||0) + 1;
+    const totalRepeats = QPLAYER.repeatCount || 1;
+    if(QPLAYER.repeatDone < totalRepeats){
+      QPLAYER.idx = rangeStart; // loop back for another repeat pass
+    } else {
+      QPLAYER.playing = false; QPLAYER.idx = 0;
+      QPLAYER.rangeStart = null; QPLAYER.rangeEnd = null;
+      QPLAYER.repeatCount = 1; QPLAYER.repeatDone = 0;
+      renderQuranPlayer();
+      return;
+    }
+  }
   playCurrentAyah();
 }
 
@@ -1622,9 +1650,19 @@ function renderQuranPlayer(){
   bar.style.bottom = tabbarH + 'px';
   const playing = QPLAYER.playing && QPLAYER.surahNum===STATE.surahNum && !QPLAYER.singleMode;
   const cached = QURAN_CACHE[QPLAYER.surahNum || STATE.surahNum];
+  const isRanged = QPLAYER.rangeStart != null;
+  let label = "Butun surani tinglash";
+  if(playing){
+    label = `Oyat ${QPLAYER.idx+1} / ${cached?cached.numberOfAyahs:'?'}`;
+    if(isRanged){
+      const totalRepeats = QPLAYER.repeatCount || 1;
+      label = `Oyat ${QPLAYER.idx+1} (${QPLAYER.rangeStart+1}–${QPLAYER.rangeEnd+1}) &middot; ${(QPLAYER.repeatDone||0)+1}/${totalRepeats} marta`;
+    }
+  }
   bar.innerHTML = `
     <button class="qplayer-toggle" onclick="toggleContinuous()">${playing?'&#10074;&#10074;':'&#9658;'}</button>
-    <span class="qplayer-label">${playing ? `Oyat ${QPLAYER.idx+1} / ${cached?cached.numberOfAyahs:'?'}` : "Butun surani tinglash"}</span>
+    <span class="qplayer-label">${label}</span>
+    ${isRanged ? `<button class="qplayer-toggle" style="margin-left:auto;font-size:.7rem;width:auto;padding:0 10px;border-radius:14px;" onclick="stopRangedPlayback()">To'xtatish</button>` : ''}
   `;
   // ensure page content never sits behind the fixed bar + tabbar stack
   requestAnimationFrame(()=>{
