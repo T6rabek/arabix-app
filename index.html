@@ -117,28 +117,42 @@ button{font-family:var(--font-ui);}
 .theme-toggle{
   background:var(--surface-2); border:1px solid var(--rule); border-radius:20px;
   width:36px;height:36px; display:flex;align-items:center;justify-content:center;
-  cursor:pointer; color:var(--ink); font-size:1rem;
+  cursor:pointer; color:var(--ink); font-size:1rem; flex-shrink:0;
 }
 
-main{flex:1; padding-bottom:88px;}
+main{flex:1; padding-bottom:24px;}
 
-/* ---------- Bottom nav ---------- */
-.tabbar{
-  position:fixed; bottom:0; left:50%; transform:translateX(-50%);
-  width:100%; max-width:560px;
-  display:flex; justify-content:space-around;
-  background:var(--surface); border-top:1px solid var(--rule);
-  padding:8px 8px calc(env(safe-area-inset-bottom,0px) + 8px);
-  z-index:20;
+/* ---------- Hamburger menu button ---------- */
+.hamburger-btn{
+  background:none; border:none; cursor:pointer; padding:8px 6px;
+  display:flex; flex-direction:column; justify-content:center; gap:4px;
+  width:36px; height:36px; flex-shrink:0; position:relative;
 }
-.tab{
-  background:none;border:none; display:flex; flex-direction:column; align-items:center;
-  gap:3px; color:var(--ink); opacity:.55; font-family:var(--font-ui);
-  font-size:.66rem; letter-spacing:.02em; padding:4px 10px; cursor:pointer;
-  border-radius:10px;
+.hamburger-btn span{
+  display:block; width:100%; height:2px; background:var(--ink); border-radius:2px;
 }
-.tab .ic{font-size:1.25rem;}
-.tab.active{opacity:1; color:var(--accent);}
+.menu-due-dot{
+  position:absolute; top:4px; right:4px; width:8px; height:8px; border-radius:50%;
+  background:var(--rubric); border:2px solid var(--paper);
+}
+
+/* ---------- Nav menu (in bottom sheet) ---------- */
+.nav-menu-list{display:flex; flex-direction:column; gap:8px; margin-bottom:6px;}
+.nav-menu-item{
+  display:flex; align-items:center; gap:12px; width:100%;
+  background:var(--paper); border:1px solid var(--rule); border-radius:14px;
+  padding:12px 14px; cursor:pointer; text-align:left;
+}
+.nav-menu-item.active{border-color:var(--accent); background:var(--accent-soft);}
+.nav-menu-ic{font-size:1.4rem; flex-shrink:0;}
+.nav-menu-text{flex:1; display:flex; flex-direction:column; min-width:0;}
+.nav-menu-label{font-family:var(--font-display); font-size:1rem; color:var(--ink);}
+.nav-menu-sub{font-family:var(--font-ui); font-size:.74rem; color:var(--ink); opacity:.55;}
+.nav-menu-badge{
+  background:var(--rubric); color:#fff; font-family:var(--font-ui); font-weight:700;
+  font-size:.72rem; min-width:20px; height:20px; border-radius:10px; padding:0 6px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
 
 /* ---------- Home: hero + unit list ---------- */
 .hero{
@@ -436,17 +450,20 @@ main{flex:1; padding-bottom:88px;}
 }
 .qplayer-bar{
   position: fixed; left: 50%; transform: translateX(-50%);
-  bottom: 78px; width: 100%; max-width: 560px; z-index: 15;
+  width: calc(100% - 28px); max-width: 560px; z-index: 25;
   background: var(--accent); color: #fff; border-radius: 14px;
-  margin: 0 14px; padding: 10px 16px; display: flex; align-items: center; gap: 12px;
-  box-shadow: var(--shadow); width: calc(100% - 28px);
+  padding: 10px 12px; display: flex; align-items: center; gap: 8px;
+  box-shadow: var(--shadow);
 }
 .qplayer-toggle{
   background: rgba(255,255,255,.2); border: none; color: #fff; width: 34px; height: 34px;
   border-radius: 50%; font-size: .9rem; cursor: pointer; flex-shrink: 0;
   display:flex; align-items:center; justify-content:center;
 }
-.qplayer-label{ font-family: var(--font-ui); font-size: .82rem; font-weight: 700; }
+.qplayer-label{
+  font-family: var(--font-ui); font-size: .8rem; font-weight: 700; flex: 1; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
 
 /* ---------- Tajweed colors ---------- */
 .tj-madd{ color: var(--gold); font-weight: 700; }
@@ -482,7 +499,6 @@ main{flex:1; padding-bottom:88px;}
 <div id="app">
   <div class="topbar" id="topbar"></div>
   <main id="main"></main>
-  <nav class="tabbar" id="tabbar"></nav>
 </div>
 
 <script>
@@ -1631,44 +1647,50 @@ function highlightAyah(idx){
 }
 
 function renderQuranPlayer(){
-  const showOn = ['quranSurah','hifz','hifzSession'];
   let bar = document.getElementById('qplayerbar');
-  const hasActiveAudio = QPLAYER.playing || (QPLAYER.audioEl && !QPLAYER.audioEl.paused);
-  if(!showOn.includes(STATE.view) || (STATE.view!=='quranSurah' && !hasActiveAudio)){
+  // Global mini-player: visible on ANY page as long as a playback session exists
+  // (loaded and playing, or paused mid-session) — not tied to being on the Qur'on page.
+  const hasSession = !!QPLAYER.surahNum && !QPLAYER.singleMode && QPLAYER.audioEl && QPLAYER.audioEl.src;
+  if(!hasSession){
     if(bar) bar.remove();
     document.getElementById('main').style.paddingBottom = '';
     return;
   }
-  const tabbarEl = document.getElementById('tabbar');
-  const tabbarH = tabbarEl ? tabbarEl.offsetHeight : 64;
   if(!bar){
     bar = document.createElement('div');
     bar.id = 'qplayerbar';
     bar.className = 'qplayer-bar';
-    document.getElementById('app').insertBefore(bar, tabbarEl);
+    document.getElementById('app').appendChild(bar);
   }
-  bar.style.bottom = tabbarH + 'px';
-  const playing = QPLAYER.playing && QPLAYER.surahNum===STATE.surahNum && !QPLAYER.singleMode;
-  const cached = QURAN_CACHE[QPLAYER.surahNum || STATE.surahNum];
+  bar.style.bottom = 'calc(env(safe-area-inset-bottom, 0px) + 14px)';
+  const playing = QPLAYER.playing;
+  const cached = QURAN_CACHE[QPLAYER.surahNum];
   const isRanged = QPLAYER.rangeStart != null;
-  let label = "Butun surani tinglash";
-  if(playing){
-    label = `Oyat ${QPLAYER.idx+1} / ${cached?cached.numberOfAyahs:'?'}`;
-    if(isRanged){
-      const totalRepeats = QPLAYER.repeatCount || 1;
-      label = `Oyat ${QPLAYER.idx+1} (${QPLAYER.rangeStart+1}–${QPLAYER.rangeEnd+1}) &middot; ${(QPLAYER.repeatDone||0)+1}/${totalRepeats} marta`;
-    }
+  let label = cached ? cached.englishName : "Qur'on";
+  label += playing ? ` &middot; Oyat ${QPLAYER.idx+1} / ${cached?cached.numberOfAyahs:'?'}` : ' &middot; to\'xtatilgan';
+  if(playing && isRanged){
+    const totalRepeats = QPLAYER.repeatCount || 1;
+    label = `${cached?cached.englishName:''} &middot; ${QPLAYER.idx+1} (${QPLAYER.rangeStart+1}–${QPLAYER.rangeEnd+1}) &middot; ${(QPLAYER.repeatDone||0)+1}/${totalRepeats}`;
   }
   bar.innerHTML = `
     <button class="qplayer-toggle" onclick="toggleContinuous()">${playing?'&#10074;&#10074;':'&#9658;'}</button>
-    <span class="qplayer-label">${label}</span>
-    ${isRanged ? `<button class="qplayer-toggle" style="margin-left:auto;font-size:.7rem;width:auto;padding:0 10px;border-radius:14px;" onclick="stopRangedPlayback()">To'xtatish</button>` : ''}
+    <span class="qplayer-label" style="cursor:pointer;" onclick="go('quranSurah',{surahNum:${QPLAYER.surahNum}})">${label}</span>
+    ${isRanged ? `<button class="qplayer-toggle" style="font-size:.7rem;width:auto;padding:0 10px;border-radius:14px;" onclick="stopRangedPlayback()">To'xtatish</button>` : ''}
+    <button class="qplayer-toggle" onclick="dismissPlayer()" aria-label="Yopish">&#10005;</button>
   `;
-  // ensure page content never sits behind the fixed bar + tabbar stack
+  // ensure page content never sits behind the fixed bar
   requestAnimationFrame(()=>{
     const barH = bar.offsetHeight || 56;
-    document.getElementById('main').style.paddingBottom = (tabbarH + barH + 24) + 'px';
+    document.getElementById('main').style.paddingBottom = (barH + 32) + 'px';
   });
+}
+
+function dismissPlayer(){
+  if(QPLAYER.audioEl){ QPLAYER.audioEl.pause(); }
+  QPLAYER.playing = false; QPLAYER.surahNum = null;
+  QPLAYER.rangeStart = null; QPLAYER.rangeEnd = null;
+  QPLAYER.repeatCount = 1; QPLAYER.repeatDone = 0;
+  renderQuranPlayer();
 }
 
 /* ================= HIFZ (MEMORIZATION) ================= */
@@ -1951,21 +1973,32 @@ function go(view, opts){
 function render(){
   renderTopbar();
   renderMain();
-  renderTabbar();
+  renderQuranPlayer();
 }
+
+const NAV_ITEMS = [
+  {id:'home', ic:'\u{1F4D6}', label:'Suralar', sub:"1-kitob, 20 dars"},
+  {id:'quran', ic:'\u{1F319}', label:"To'liq Qur'on", sub:"114 sura, tinglash"},
+  {id:'hifz', ic:'\u{1F9E0}', label:'Yodlash', sub:'Hifz mashqlari'},
+  {id:'review', ic:'⚡', label:'Takrorlash', sub:"So'z takrorlash navbati"},
+  {id:'progress', ic:'✦', label:'Taraqqiyot', sub:'Progress va statistika'},
+  {id:'reference', ic:'☷', label:"Qo'llanma", sub:"Ildizlar, so'zlik, tezkor"},
+];
 
 function renderTopbar(){
   const bar = document.getElementById('topbar');
   const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const cur = document.documentElement.getAttribute('data-theme') || (sysDark?'dark':'light');
   const icon = cur === 'dark' ? '☀' : '☽';
+  const dueBadge = srsStats().due>0 ? `<span class="menu-due-dot"></span>` : '';
+  const menuBtn = `<button class="hamburger-btn" onclick="openNavMenu()" aria-label="Menyu">${dueBadge}<span></span><span></span><span></span></button>`;
   if(STATE.view === 'home'){
-    bar.innerHTML = `<div style="flex:1"></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Mavzu">${icon}</button>`;
+    bar.innerHTML = `${menuBtn}<div style="flex:1"></div><button class="theme-toggle" onclick="toggleTheme()" aria-label="Mavzu">${icon}</button>`;
     return;
   }
   let title = '';
   if(STATE.view === 'unit'){ const u = UNITS[STATE.unitId-1]; title = `${u.id}-dars`; }
-  if(STATE.view === 'progress'){ title = "Mundarija"; }
+  if(STATE.view === 'progress'){ title = "Taraqqiyot"; }
   if(STATE.view === 'reference'){ title = "Qo'llanma"; }
   if(STATE.view === 'review'){ title = "Takrorlash"; }
   if(STATE.view === 'quran'){ title = "Qur'on"; }
@@ -1979,24 +2012,32 @@ function renderTopbar(){
     <button class="back-btn" onclick="${backAction}" aria-label="Orqaga">&#8592;</button>
     <h1>${title}</h1>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Mavzu">${icon}</button>
+    ${menuBtn}
   `;
 }
 
-function renderTabbar(){
-  const tb = document.getElementById('tabbar');
-  const tabs = [
-    {id:'home', ic:'\u{1F4D6}', label:'Suralar'},
-    {id:'quran', ic:'\u{1F319}', label:"Qur'on"},
-    {id:'hifz', ic:'\u{1F9E0}', label:'Yodlash'},
-    {id:'review', ic:'⚡', label:'Takrorlash'},
-    {id:'progress', ic:'✦', label:'Progress'},
-    {id:'reference', ic:'☷', label:"Qo'llanma"},
-  ];
-  tb.innerHTML = tabs.map(t=>{
-    const active = (STATE.view===t.id) || (t.id==='home' && STATE.view==='unit') || (t.id==='quran' && STATE.view==='quranSurah') || (t.id==='hifz' && STATE.view==='hifzSession');
-    const dueBadge = (t.id==='review' && srsStats().due>0) ? `<span style="position:absolute;top:2px;right:14px;width:8px;height:8px;border-radius:50%;background:var(--rubric);"></span>` : '';
-    return `<button class="tab ${active?'active':''}" style="position:relative;" onclick="${t.id==='review'?'REVIEW_SESSION=null;':''}go('${t.id}')">${dueBadge}<span class="ic">${t.ic}</span>${t.label}</button>`;
-  }).join('');
+function openNavMenu(){
+  let ov = document.getElementById('sheetOverlay');
+  if(!ov){ ov = document.createElement('div'); ov.id='sheetOverlay'; ov.className='sheet-overlay'; document.body.appendChild(ov); ov.onclick=(e)=>{ if(e.target===ov) closeInstallSheet(); }; }
+  const dueCount = srsStats().due;
+  ov.innerHTML = `<div class="sheet">
+    <div class="grabber"></div>
+    <h2>Menyu</h2>
+    <div class="nav-menu-list">
+      ${NAV_ITEMS.map(t=>{
+        const isActive = (STATE.view===t.id) || (t.id==='home' && STATE.view==='unit') || (t.id==='quran' && STATE.view==='quranSurah') || (t.id==='hifz' && STATE.view==='hifzSession');
+        const badge = (t.id==='review' && dueCount>0) ? `<span class="nav-menu-badge">${dueCount}</span>` : '';
+        return `<button class="nav-menu-item ${isActive?'active':''}" onclick="${t.id==='review'?'REVIEW_SESSION=null;':''}closeInstallSheet(); go('${t.id}');">
+          <span class="nav-menu-ic">${t.ic}</span>
+          <span class="nav-menu-text"><span class="nav-menu-label">${t.label}</span><span class="nav-menu-sub">${t.sub}</span></span>
+          ${badge}
+          <span class="chev">&#8250;</span>
+        </button>`;
+      }).join('')}
+    </div>
+    <button class="sheet-close" onclick="closeInstallSheet()">Yopish</button>
+  </div>`;
+  requestAnimationFrame(()=> ov.classList.add('open'));
 }
 
 /* ================= RENDER: MAIN ROUTER ================= */
@@ -2007,10 +2048,10 @@ function renderMain(){
   if(STATE.view === 'progress') return renderProgress(m);
   if(STATE.view === 'reference') return renderReference(m);
   if(STATE.view === 'review') return renderReview(m);
-  if(STATE.view === 'quran') { renderQuranPlayer(); return renderQuran(m); }
+  if(STATE.view === 'quran') return renderQuran(m);
   if(STATE.view === 'quranSurah') return renderQuranSurah(m, STATE.surahNum);
-  if(STATE.view === 'hifz') { renderQuranPlayer(); return renderHifz(m); }
-  if(STATE.view === 'hifzSession') { renderQuranPlayer(); return renderHifzSession(m); }
+  if(STATE.view === 'hifz') return renderHifz(m);
+  if(STATE.view === 'hifzSession') return renderHifzSession(m);
 }
 
 /* ================= HOME ================= */
