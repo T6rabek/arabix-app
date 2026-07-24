@@ -11,7 +11,7 @@
 /* ============================================================
    Qur'oniy Arabcha — mobile-first interactive app
    Design language: Timurid/Samarkand manuscript illumination —
-   lapis ink, gilt gold, rubricated red, parchment ground.
+   oxblood-maroon leather, gilt gold, warm rubric red, parchment ground.
    ============================================================ */
 
 :root{
@@ -19,16 +19,16 @@
   --paper:#f6f1e3;
   --surface:#fffdf6;
   --surface-2:#efe8d4;
-  --accent:#24507a;
-  --accent-soft:#e4edf4;
-  --accent-strong:#173a5c;
+  --accent:#5c1c0a;
+  --accent-soft:#f1ded4;
+  --accent-strong:#3a1206;
   --gold:#9c7128;
   --gold-soft:#f3e8d2;
-  --rubric:#8a3230;
-  --rubric-soft:#f6e6e3;
+  --rubric:#a13a1c;
+  --rubric-soft:#f6e5df;
   --jade:#2f6b50;
   --jade-soft:#e6f0ea;
-  --rule:#d9cfb8;
+  --rule:#ddccc0;
   --shadow: 0 6px 20px -8px rgba(27,36,48,0.25);
   --radius: 14px;
   --font-display:'Bookman Display', 'Georgia', serif;
@@ -44,32 +44,32 @@
     --paper:#11151b;
     --surface:#1a212b;
     --surface-2:#212a36;
-    --accent:#82b3da;
-    --accent-soft:#1f3348;
-    --accent-strong:#a9cbe8;
+    --accent:#d99270;
+    --accent-soft:#3a2419;
+    --accent-strong:#f0c4a8;
     --gold:#d9ac5c;
     --gold-soft:#2f2410;
-    --rubric:#e08a80;
-    --rubric-soft:#3a1f1d;
+    --rubric:#e8674f;
+    --rubric-soft:#3a1f1a;
     --jade:#74c4a0;
     --jade-soft:#15281f;
-    --rule:#313a48;
+    --rule:#3a3229;
     --shadow: 0 6px 24px -8px rgba(0,0,0,0.6);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"]{
   --ink:#ece6d6; --paper:#11151b; --surface:#1a212b; --surface-2:#212a36;
-  --accent:#82b3da; --accent-soft:#1f3348; --accent-strong:#a9cbe8;
-  --gold:#d9ac5c; --gold-soft:#2f2410; --rubric:#e08a80; --rubric-soft:#3a1f1d;
-  --jade:#74c4a0; --jade-soft:#15281f; --rule:#313a48;
+  --accent:#d99270; --accent-soft:#3a2419; --accent-strong:#f0c4a8;
+  --gold:#d9ac5c; --gold-soft:#2f2410; --rubric:#e8674f; --rubric-soft:#3a1f1a;
+  --jade:#74c4a0; --jade-soft:#15281f; --rule:#3a3229;
   --shadow: 0 6px 24px -8px rgba(0,0,0,0.6); color-scheme: dark;
 }
 :root[data-theme="light"]{
   --ink:#1b2430; --paper:#f6f1e3; --surface:#fffdf6; --surface-2:#efe8d4;
-  --accent:#24507a; --accent-soft:#e4edf4; --accent-strong:#173a5c;
-  --gold:#9c7128; --gold-soft:#f3e8d2; --rubric:#8a3230; --rubric-soft:#f6e6e3;
-  --jade:#2f6b50; --jade-soft:#e6f0ea; --rule:#d9cfb8;
+  --accent:#5c1c0a; --accent-soft:#f1ded4; --accent-strong:#3a1206;
+  --gold:#9c7128; --gold-soft:#f3e8d2; --rubric:#a13a1c; --rubric-soft:#f6e5df;
+  --jade:#2f6b50; --jade-soft:#e6f0ea; --rule:#ddccc0;
   --shadow: 0 6px 20px -8px rgba(27,36,48,0.25); color-scheme: light;
 }
 
@@ -599,13 +599,13 @@ main{flex:1; padding-bottom:24px;}
 .sidebar-theme-toggle:hover{background:var(--surface-2);}
 
 @media (min-width: 900px){
-  #app{ display:flex; max-width:1240px; margin:0 auto; }
+  #app{ display:block; max-width:none; margin:0; }
   .sidebar{
     display:flex; flex-direction:column; width:250px; flex-shrink:0;
     padding:22px 14px; background:var(--surface); border-right:1px solid var(--rule);
-    position:sticky; top:0; align-self:flex-start; height:100vh; overflow-y:auto;
+    position:fixed; left:0; top:0; height:100vh; overflow-y:auto; z-index:30;
   }
-  .app-content{ max-width:none; margin:0; flex:1; min-width:0; }
+  .app-content{ max-width:none; margin:0 0 0 250px; }
   .hamburger-btn{ display:none; }
   .folio{ max-width:760px; margin:0 auto; padding:36px 32px; }
   .hero{ border-radius:var(--radius); margin:20px auto 14px; max-width:760px; }
@@ -3762,7 +3762,7 @@ function setupIconLinks(){
     fav.href = icon192;
     const manifest = {
       name: "Arabix — Qur'oniy Arabcha", short_name: "Arabix",
-      start_url: ".", display: "standalone", background_color: "#f6f1e3", theme_color: "#24507a",
+      start_url: ".", display: "standalone", background_color: "#f6f1e3", theme_color: "#5c1c0a",
       icons: [{src: icon192, sizes:"192x192", type:"image/png"}]
     };
     let man = document.querySelector('link[rel="manifest"]');
@@ -3771,7 +3771,7 @@ function setupIconLinks(){
     let meta = document.querySelector('meta[name="apple-mobile-web-app-capable"]');
     if(!meta){ meta = document.createElement('meta'); meta.name='apple-mobile-web-app-capable'; meta.content='yes'; document.head.appendChild(meta); }
     let tc = document.querySelector('meta[name="theme-color"]');
-    if(!tc){ tc = document.createElement('meta'); tc.name='theme-color'; tc.content='#24507a'; document.head.appendChild(tc); }
+    if(!tc){ tc = document.createElement('meta'); tc.name='theme-color'; tc.content='#5c1c0a'; document.head.appendChild(tc); }
   };
   if(document.fonts && document.fonts.ready){ document.fonts.ready.then(draw).catch(draw); }
   else draw();
@@ -4063,7 +4063,7 @@ function buildCertificateCanvas(title, subtitle, arabicLine, recipientName){
   const ctx = canvas.getContext('2d');
 
   const grad = ctx.createLinearGradient(0,0,W,H);
-  grad.addColorStop(0,'#141c38'); grad.addColorStop(0.55,'#24507a'); grad.addColorStop(1,'#183a4a');
+  grad.addColorStop(0,'#1c0a05'); grad.addColorStop(0.55,'#5c1c0a'); grad.addColorStop(1,'#2e1006');
   ctx.fillStyle = grad; ctx.fillRect(0,0,W,H);
 
   ctx.strokeStyle = '#d9ac5c'; ctx.lineWidth = 6;
