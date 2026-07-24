@@ -622,6 +622,52 @@ main{flex:1; padding-bottom:24px;}
   .welcome-cert-overlay{ padding:40px; }
 }
 
+/* ---------- Book mode: continuous flowing script ---------- */
+.mushaf-flow{
+  font-family:var(--font-ar); direction:rtl; text-align:justify; text-align-last:right;
+  font-size:1.55rem; line-height:2.7; padding:24px 20px; background:var(--surface);
+  border:1px solid var(--rule); border-radius:var(--radius); box-shadow:var(--shadow);
+}
+.mushaf-ayah-num{
+  display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px;
+  border:1.5px solid var(--gold); border-radius:50%; color:var(--gold); font-size:.8rem;
+  font-family:var(--font-ui); margin:0 3px; vertical-align:middle;
+}
+
+/* ---------- Mushaf: 15-line page layout ---------- */
+.mushaf-page{
+  background:var(--surface); border:2px solid var(--gold); border-radius:var(--radius);
+  padding:26px 16px 18px; box-shadow:var(--shadow); position:relative; overflow-x:auto;
+}
+.mushaf-page::before{
+  content:''; position:absolute; inset:7px; border:1px solid var(--gold); opacity:.35;
+  border-radius:10px; pointer-events:none;
+}
+.mushaf-line{
+  font-family:var(--font-ar); direction:rtl; font-size:1.28rem; line-height:2.5;
+  white-space:nowrap; text-align:center;
+}
+.mushaf-surah-header{
+  text-align:center; background:var(--gold-soft); border:1px solid var(--gold); border-radius:8px;
+  padding:9px; margin:10px 0;
+}
+.mushaf-surah-header-ar{ font-family:var(--font-ar); font-size:1.35rem; color:var(--accent-strong); }
+.mushaf-bismillah{
+  text-align:center; font-family:var(--font-ar); direction:rtl; color:var(--gold); font-size:1.2rem; margin:4px 0 10px;
+}
+.mushaf-ayahend{
+  display:inline-flex; align-items:center; justify-content:center; width:23px; height:23px;
+  border:1.3px solid var(--gold); border-radius:50%; color:var(--gold); font-size:.72rem;
+  font-family:var(--font-ui); margin:0 2px; vertical-align:middle;
+}
+.mushaf-footer{
+  display:flex; justify-content:space-between; margin-top:16px; padding-top:10px; border-top:1px dashed var(--rule);
+  font-family:var(--font-ui); font-size:.72rem; opacity:.6;
+}
+@media (min-width:600px){
+  .mushaf-line{ font-size:1.55rem; }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
@@ -2403,6 +2449,131 @@ let QURAN_LIST = null;
 let QURAN_CACHE = {};
 let QPLAYER = { audioEl:null, surahNum:null, idx:0, playing:false, singleMode:false };
 
+/* ================= MUSHAF (15-line page layout) ================= */
+const MUSHAF_API = 'https://api.quran.com/api/v4';
+const MUSHAF_TOTAL_PAGES = 604;
+let MUSHAF_CACHE = {};
+
+function mushafCacheKey(num){ return 'qa_mushaf_v1_'+num; }
+function loadMushafPageFromDisk(num){
+  try{ const raw = localStorage.getItem(mushafCacheKey(num)); return raw ? JSON.parse(raw) : null; }
+  catch(e){ return null; }
+}
+function saveMushafPageToDisk(num, data){
+  try{ localStorage.setItem(mushafCacheKey(num), JSON.stringify(data)); }catch(e){ /* quota — fine, skip persisting */ }
+}
+
+async function fetchMushafPage(num){
+  if(MUSHAF_CACHE[num]) return MUSHAF_CACHE[num];
+  const disk = loadMushafPageFromDisk(num);
+  if(disk){ MUSHAF_CACHE[num] = disk; return disk; }
+  const res = await fetch(`${MUSHAF_API}/verses/by_page/${num}?words=true&word_fields=text_uthmani,line_number,page_number&per_page=50`);
+  const json = await res.json();
+  const lines = {};
+  const surahsSeen = [];
+  json.verses.forEach(v=>{
+    const [surahNum, ayahNum] = v.verse_key.split(':').map(Number);
+    if(!surahsSeen.includes(surahNum)) surahsSeen.push(surahNum);
+    v.words.forEach(w=>{
+      const ln = w.line_number;
+      if(!lines[ln]) lines[ln] = [];
+      lines[ln].push({text:w.text_uthmani, isEnd: w.char_type_name==='end', surahNum, ayahNum});
+    });
+  });
+  const data = { pageNum:num, lines, surahsOnPage:surahsSeen, juzNumber: json.verses[0] ? json.verses[0].juz_number : null };
+  MUSHAF_CACHE[num] = data;
+  saveMushafPageToDisk(num, data);
+  return data;
+}
+
+// Turns the raw per-line word data into an ordered list of rows to render,
+// inserting a surah-name header (and Bismillah, except for surah 1 and 9)
+// wherever a new surah begins — matching how real Mushaf pages are typeset.
+function buildMushafRows(pageData){
+  const lineNums = Object.keys(pageData.lines).map(Number).sort((a,b)=>a-b);
+  const rows = [];
+  let prevSurah = null;
+  lineNums.forEach((ln, idx)=>{
+    const words = pageData.lines[ln];
+    const lineSurah = words[0].surahNum;
+    const isNewSurah = (idx===0 && ln>1) || (prevSurah!==null && lineSurah!==prevSurah);
+    if(isNewSurah){
+      rows.push({type:'header', surahNum:lineSurah});
+      if(lineSurah!==1 && lineSurah!==9) rows.push({type:'bismillah'});
+    }
+    rows.push({type:'text', lineNum:ln, words});
+    prevSurah = lineSurah;
+  });
+  return rows;
+}
+
+function renderMushafRow(row){
+  if(row.type==='header'){
+    const s = (QURAN_LIST||[]).find(x=>x.number===row.surahNum);
+    return `<div class="mushaf-surah-header"><span class="mushaf-surah-header-ar">${s?s.name:''}</span></div>`;
+  }
+  if(row.type==='bismillah'){
+    return `<div class="mushaf-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>`;
+  }
+  return `<div class="mushaf-line">${row.words.map(w=> w.isEnd ? `<span class="mushaf-ayahend">${w.text}</span>` : w.text).join(' ')}</div>`;
+}
+
+function trackLastMushafPage(num){
+  PROGRESS.lastMushafPage = num;
+  saveProgress(PROGRESS);
+  recordActivity();
+}
+
+function openMushafJumpSheet(){
+  let ov = document.getElementById('sheetOverlay');
+  if(!ov){ ov = document.createElement('div'); ov.id='sheetOverlay'; ov.className='sheet-overlay'; document.body.appendChild(ov); ov.onclick=(e)=>{ if(e.target===ov) closeInstallSheet(); }; }
+  const cur = STATE.mushafPageNum || 1;
+  ov.innerHTML = `<div class="sheet">
+    <div class="grabber"></div>
+    <h2>Sahifaga o'tish</h2>
+    <div class="sheet-sub">1 dan ${MUSHAF_TOTAL_PAGES} gacha</div>
+    <div class="sheet-option">
+      <input type="number" id="mushafJumpInput" min="1" max="${MUSHAF_TOTAL_PAGES}" value="${cur}" style="width:100%;padding:11px;border-radius:10px;border:1px solid var(--rule);background:var(--paper);text-align:center;font-size:1.1rem;margin-bottom:12px;box-sizing:border-box;">
+      <button class="sheet-btn" onclick="const n=Math.max(1,Math.min(${MUSHAF_TOTAL_PAGES},+document.getElementById('mushafJumpInput').value||1)); closeInstallSheet(); go('mushaf',{mushafPageNum:n});">O'tish</button>
+    </div>
+    <button class="sheet-close" onclick="closeInstallSheet()">Bekor qilish</button>
+  </div>`;
+  requestAnimationFrame(()=> ov.classList.add('open'));
+}
+
+function renderMushaf(m){
+  const pageNum = STATE.mushafPageNum || PROGRESS.lastMushafPage || 1;
+  STATE.mushafPageNum = pageNum;
+  const cached = MUSHAF_CACHE[pageNum] || loadMushafPageFromDisk(pageNum);
+  if(cached) MUSHAF_CACHE[pageNum] = cached;
+  if(!cached){
+    m.innerHTML = `<div class="empty-state">Yuklanmoqda&hellip;</div>`;
+    fetchMushafPage(pageNum).then(()=>{ if(STATE.view==='mushaf' && STATE.mushafPageNum===pageNum) render(); })
+      .catch(()=>{ m.innerHTML = `<div class="empty-state">Yuklab bo'lmadi. Internetni tekshiring.<br><button class="reveal-btn" style="margin-top:10px;" onclick="render()">Qayta urinish</button></div>`; });
+    return;
+  }
+  trackLastMushafPage(pageNum);
+  const rows = buildMushafRows(cached);
+  const surahNames = cached.surahsOnPage.map(n=>{ const s=(QURAN_LIST||[]).find(x=>x.number===n); return s?s.englishName:''; }).filter(Boolean).join(' / ');
+  let html = `<div class="folio" style="padding-top:14px;">
+    <div class="chip-row" style="justify-content:center; margin-bottom:14px;">
+      <span class="chip" style="cursor:pointer;" onclick="openMushafJumpSheet()">&#128278; ${pageNum}-sahifa</span>
+      ${cached.juzNumber ? `<span class="chip">${cached.juzNumber}-juz</span>` : ''}
+      ${cached.surahsOnPage[0] ? `<span class="chip" style="cursor:pointer;" onclick="go('quranSurah',{surahNum:${cached.surahsOnPage[0]}})">&#127760; Oddiy o'quvchida ochish</span>` : ''}
+    </div>
+    <div class="mushaf-page">
+      ${rows.map(renderMushafRow).join('')}
+      <div class="mushaf-footer"><span>${surahNames}</span><span>${pageNum}</span></div>
+    </div>
+    <div class="unit-nav">
+      <button ${pageNum<=1?'disabled':''} onclick="go('mushaf',{mushafPageNum:${pageNum-1}})">&#8592; Oldingi</button>
+      <button class="primary" ${pageNum>=MUSHAF_TOTAL_PAGES?'disabled':''} onclick="go('mushaf',{mushafPageNum:${pageNum+1}})">Keyingi &#8594;</button>
+    </div>
+  </div>`;
+  m.innerHTML = html;
+  if(!QURAN_LIST) fetchQuranList().then(()=>{ if(STATE.view==='mushaf') render(); });
+}
+
 function ensureAudioEl(){
   if(!QPLAYER.audioEl){
     QPLAYER.audioEl = new Audio();
@@ -2606,6 +2777,7 @@ function renderQuranSurah(m, num){
   trackLastRead(num);
   const unitLink = unitForSurah(num);
   const tj = STATE.tajweedOn !== false; // default on
+  const bookMode = STATE.bookMode === true;
   let html = `<div class="folio" style="padding-top:14px; padding-bottom:120px;">
     <div class="unit-hero">
       <span class="badge">${cached.number}-sura &middot; ${cached.numberOfAyahs} oyat &middot; ${cached.revelationType==='Meccan'?'Makkiy':'Madaniy'}</span>
@@ -2613,6 +2785,7 @@ function renderQuranSurah(m, num){
       <span class="ar">${cached.name}</span>
     </div>
     <div class="chip-row" style="margin-bottom:14px;">
+      <span class="chip" style="cursor:pointer;${bookMode?'background:var(--accent);color:#fff;':''}" onclick="STATE.bookMode=${!bookMode}; render();">&#128214; Kitob rejimi ${bookMode?'yoniq':"o'chiq"}</span>
       <span class="chip" style="cursor:pointer;${tj?'background:var(--accent);color:#fff;':''}" onclick="STATE.tajweedOn=${!tj}; render();">&#127912; Tajvid ranglari ${tj?'yoniq':"o'chiq"}</span>
       <span class="chip" style="cursor:pointer;" onclick="openAudioSettingsSheet()">&#9881;&#65039; Ijro sozlamalari</span>
       <span class="chip" style="cursor:pointer;" onclick="openHifzRangePicker(${num}, '${cached.englishName.replace(/'/g,"\\'")}', ${cached.numberOfAyahs})">&#129504; Yodlash</span>
@@ -2622,25 +2795,31 @@ function renderQuranSurah(m, num){
   if(cached.bismillah){
     html += `<div class="ayah" style="text-align:center; color:var(--gold); font-size:1.4rem; margin-bottom:14px;">${tj?tajweedHighlight(cached.bismillah):cached.bismillah}</div>`;
   }
-  if(tj){
-    html += `<div class="small" style="margin-bottom:12px; display:flex; gap:12px; flex-wrap:wrap;">
-      <span><span style="color:var(--gold); font-weight:700;">&#9679;</span> cho'zish (madd)</span>
-      <span><span style="color:var(--rubric); font-weight:700;">&#9679;</span> qalqala</span>
-    </div>`;
-  }
 
-  html += cached.ayahs.map((a,i)=>`
-    <div class="surah-card qayah" id="qayah-${i}" style="margin-bottom:10px; padding:14px 16px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-        <button class="qplay-btn" onclick="playSingleAyah(${num},${i})">&#9658;</button>
-        <div class="ayah" style="flex:1; margin:0; font-size:1.3rem; cursor:pointer;" onclick="toggleAyahMeaning(${i})">${tj?tajweedHighlight(a.text):a.text} <span class="n">${arNum(a.numberInSurah)}</span></div>
-        <button class="qbookmark-btn ${isBookmarked(num,i)?'active':''}" onclick="toggleBookmark(${num},${i})">${isBookmarked(num,i)?'&#9733;':'&#9734;'}</button>
-      </div>
-      <div class="qayah-meaning" id="qmeaning-${i}" style="display:none;">
-        <div class="small" style="text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; opacity:.6;">Ma'nosi &middot; M. Sodiq Muhammad Yusuf tarjimasi</div>
-        <p style="margin:0; font-size:.92rem; line-height:1.6;">${a.uz || "Tarjima mavjud emas."}</p>
-      </div>
-    </div>`).join('');
+  if(bookMode){
+    html += `<div class="mushaf-flow" dir="rtl">
+      ${cached.ayahs.map(a=>`${tj?tajweedHighlight(a.text):a.text}<span class="mushaf-ayah-num">${arNum(a.numberInSurah)}</span>`).join(' ')}
+    </div>`;
+  } else {
+    if(tj){
+      html += `<div class="small" style="margin-bottom:12px; display:flex; gap:12px; flex-wrap:wrap;">
+        <span><span style="color:var(--gold); font-weight:700;">&#9679;</span> cho'zish (madd)</span>
+        <span><span style="color:var(--rubric); font-weight:700;">&#9679;</span> qalqala</span>
+      </div>`;
+    }
+    html += cached.ayahs.map((a,i)=>`
+      <div class="surah-card qayah" id="qayah-${i}" style="margin-bottom:10px; padding:14px 16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+          <button class="qplay-btn" onclick="playSingleAyah(${num},${i})">&#9658;</button>
+          <div class="ayah" style="flex:1; margin:0; font-size:1.3rem; cursor:pointer;" onclick="toggleAyahMeaning(${i})">${tj?tajweedHighlight(a.text):a.text} <span class="n">${arNum(a.numberInSurah)}</span></div>
+          <button class="qbookmark-btn ${isBookmarked(num,i)?'active':''}" onclick="toggleBookmark(${num},${i})">${isBookmarked(num,i)?'&#9733;':'&#9734;'}</button>
+        </div>
+        <div class="qayah-meaning" id="qmeaning-${i}" style="display:none;">
+          <div class="small" style="text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; opacity:.6;">Ma'nosi &middot; M. Sodiq Muhammad Yusuf tarjimasi</div>
+          <p style="margin:0; font-size:.92rem; line-height:1.6;">${a.uz || "Tarjima mavjud emas."}</p>
+        </div>
+      </div>`).join('');
+  }
   html += `</div>`;
   m.innerHTML = html;
   renderQuranPlayer();
@@ -3239,6 +3418,7 @@ function go(view, opts){
   if(opts && opts.unitId !== undefined) STATE.unitId = opts.unitId;
   if(opts && opts.refSection !== undefined) STATE.refSection = opts.refSection;
   if(opts && opts.surahNum !== undefined) STATE.surahNum = opts.surahNum;
+  if(opts && opts.mushafPageNum !== undefined) STATE.mushafPageNum = opts.mushafPageNum;
   if(opts && opts.alifboLevelId !== undefined){
     const enteringFresh = prevView !== 'alifboLevel' || opts.alifboLevelId !== STATE.alifboLevelId;
     STATE.alifboLevelId = opts.alifboLevelId;
@@ -3290,6 +3470,7 @@ const NAV_ITEMS = [
   {id:'alifbo', ic:'\u{1F524}', label:"Harflarni o'qish", sub:"0dan boshlovchilar uchun"},
   {id:'home', ic:'\u{1F4D6}', label:'Suralar', sub:"1 va 2-kitob, 41 dars"},
   {id:'quran', ic:'\u{1F319}', label:"To'liq Qur'on", sub:"114 sura, tinglash"},
+  {id:'mushaf', ic:'\u{1F4D3}', label:'Mushaf', sub:"604 sahifa, 15 qatorli"},
   {id:'hifz', ic:'\u{1F9E0}', label:'Yodlash', sub:'Hifz mashqlari'},
   {id:'review', ic:'⚡', label:'Takrorlash', sub:"So'z takrorlash navbati"},
   {id:'progress', ic:'✦', label:'Taraqqiyot', sub:'Progress va statistika'},
@@ -3314,6 +3495,7 @@ function renderTopbar(){
   if(STATE.view === 'review'){ title = "Takrorlash"; }
   if(STATE.view === 'quran'){ title = "Qur'on"; }
   if(STATE.view === 'quranSurah'){ const c = QURAN_CACHE[STATE.surahNum]; title = c ? c.englishName : "Qur'on"; }
+  if(STATE.view === 'mushaf'){ title = "Mushaf"; }
   if(STATE.view === 'hifz'){ title = "Yodlash"; }
   if(STATE.view === 'hifzSession'){ title = "Yodlash"; }
   if(STATE.view === 'alifbo'){ title = "Harflarni o'qish"; }
@@ -3364,6 +3546,7 @@ function renderMain(){
   if(STATE.view === 'review') return renderReview(m);
   if(STATE.view === 'quran') return renderQuran(m);
   if(STATE.view === 'quranSurah') return renderQuranSurah(m, STATE.surahNum);
+  if(STATE.view === 'mushaf') return renderMushaf(m);
   if(STATE.view === 'hifz') return renderHifz(m);
   if(STATE.view === 'hifzSession') return renderHifzSession(m);
   if(STATE.view === 'alifbo') return renderAlifboHome(m);
