@@ -1117,6 +1117,193 @@ const SOZLIK = [
   {u:10, ar:"لَا / ذَٰلِكَ / الْيَتِيم / الْمِسْكِين", uz:"emas / o'sha / yetim / miskin", tag:"core"},
   {u:10, ar:"يُكَذِّبُ / سَاهُونَ / يُرَاءُونَ / الْمَاعُونَ", uz:"yolg'onga chiqaradi / g'ofillar / riyo qiladilar / kichik yordam", tag:"rec"},
   {u:20, ar:"الَّذِي / الَّذِينَ / مَا / كَيْفَ", uz:"...gan kishi(lar) / narsa / qanday", tag:"core"},
+  {u:21, ar:"الْمُلْكُ", uz:"mulk, hukmronlik", tag:"core"},
+  {u:21, ar:"خَلَقَ", uz:"yaratdi", tag:"core"},
+  {u:21, ar:"قَدِيرٌ", uz:"qodir", tag:"core"},
+  {u:21, ar:"السَّمَاءِ", uz:"osmon", tag:"core"},
+  {u:21, ar:"الْأَرْضَ", uz:"yer", tag:"core"},
+  {u:21, ar:"إِلَّا", uz:"faqat", tag:"core"},
+  {u:21, ar:"يَعْلَمُ", uz:"biladi", tag:"core"},
+  {u:21, ar:"تَبَارَكَ", uz:"barakasi buyuk", tag:"rec"},
+  {u:21, ar:"الْحَيَاةَ / الْمَوْتَ", uz:"hayot / o'lim", tag:"rec"},
+  {u:21, ar:"ذَلُولًا", uz:"bo'ysunuvchi", tag:"rec"},
+  {u:21, ar:"الْبَصَرَ", uz:"ko'z, nazar", tag:"rec"},
+  {u:21, ar:"يَخْسِفَ", uz:"yutdiradi (yerga)", tag:"rec"},
+  {u:21, ar:"صَافَّاتٍ", uz:"saf tortgan (qanot)", tag:"rec"},
+  {u:22, ar:"جَاءَ", uz:"keldi", tag:"core"},
+  {u:22, ar:"قَالَ", uz:"dedi", tag:"core"},
+  {u:22, ar:"يَعْلَمُونَ", uz:"bilishadi", tag:"core"},
+  {u:22, ar:"أَرَادَ", uz:"xohladi", tag:"core"},
+  {u:22, ar:"كُن", uz:"bo'l", tag:"core"},
+  {u:22, ar:"يَكُونُ", uz:"bo'ladi", tag:"core"},
+  {u:22, ar:"رَبِّي", uz:"Robbim", tag:"core"},
+  {u:22, ar:"الْمُرْسَلِينَ", uz:"elchilar", tag:"rec"},
+  {u:22, ar:"سَدًّا", uz:"to'siq", tag:"rec"},
+  {u:22, ar:"يَسْعَىٰ", uz:"yuguradi", tag:"rec"},
+  {u:22, ar:"مُّهْتَدُونَ", uz:"to'g'ri yo'lda bo'lganlar", tag:"rec"},
+  {u:22, ar:"تَجْرِي", uz:"yuradi/oqadi", tag:"rec"},
+  {u:22, ar:"الْعِظَامَ", uz:"suyaklar", tag:"rec"},
+  {u:22, ar:"مَلَكُوتُ", uz:"mulk, hukmronlik", tag:"rec"},
+  {u:23, ar:"اللَّهُ", uz:"Alloh", tag:"core"},
+  {u:23, ar:"الْحَيُّ", uz:"abadiy Tirik", tag:"core"},
+  {u:23, ar:"الْقَيُّومُ", uz:"barchani Qo'llovchi", tag:"core"},
+  {u:23, ar:"يَعْلَمُ", uz:"biladi", tag:"core"},
+  {u:23, ar:"السَّمَاوَاتِ", uz:"osmonlar", tag:"core"},
+  {u:23, ar:"الْأَرْضَ", uz:"yer", tag:"core"},
+  {u:23, ar:"يَشْفَعُ", uz:"shafoat qiladi", tag:"rec"},
+  {u:23, ar:"بِإِذْنِهِ", uz:"Uning izni bilan", tag:"rec"},
+  {u:23, ar:"كُرْسِيُّهُ", uz:"Uning Kursisi", tag:"rec"},
+  {u:23, ar:"يَئُودُهُ", uz:"Uni charchatadi", tag:"rec"},
+  {u:23, ar:"الْعَلِيُّ", uz:"Yuksak", tag:"rec"},
+  {u:23, ar:"الْعَظِيمُ", uz:"Buyuk", tag:"rec"},
+  {u:24, ar:"قَالَ", uz:"dedi", tag:"core"},
+  {u:24, ar:"إِذْ", uz:"bir vaqt(da)", tag:"core"},
+  {u:24, ar:"أَخُوهُ", uz:"uning ukasi/akasi", tag:"core"},
+  {u:24, ar:"رَأَيْتُ", uz:"ko'rdim", tag:"core"},
+  {u:24, ar:"إِخْوَة", uz:"birodarlar", tag:"core"},
+  {u:24, ar:"أَبِي", uz:"otam", tag:"core"},
+  {u:24, ar:"الْقَصَصِ", uz:"qissalar", tag:"rec"},
+  {u:24, ar:"كَيْدًا", uz:"hiyla", tag:"rec"},
+  {u:24, ar:"الْجُبِّ", uz:"quduq", tag:"rec"},
+  {u:24, ar:"قَمِيصِهِ", uz:"uning ko'ylagi", tag:"rec"},
+  {u:24, ar:"صَبْرٌ جَمِيلٌ", uz:"go'zal sabr", tag:"rec"},
+  {u:24, ar:"يَشْعُرُونَ", uz:"his qiladilar/bilishadi", tag:"rec"},
+  {u:25, ar:"الرَّحْمَٰنُ", uz:"Rahmon", tag:"core"},
+  {u:25, ar:"عَلَّمَ", uz:"o'rgatdi", tag:"core"},
+  {u:25, ar:"خَلَقَ", uz:"yaratdi", tag:"core"},
+  {u:25, ar:"رَبِّكُمَا", uz:"ikkovingizning Robbingiz", tag:"core"},
+  {u:25, ar:"فَانٍ", uz:"yo'qoluvchi", tag:"core"},
+  {u:25, ar:"يَبْقَىٰ", uz:"qoladi", tag:"core"},
+  {u:25, ar:"الْبَيَانَ", uz:"bayon, nutq", tag:"rec"},
+  {u:25, ar:"الْبَحْرَيْنِ", uz:"ikki dengiz", tag:"rec"},
+  {u:25, ar:"بَرْزَخٌ", uz:"to'siq", tag:"rec"},
+  {u:25, ar:"ذُو الْجَلَالِ", uz:"Ulug'lik Egasi", tag:"rec"},
+  {u:25, ar:"الْجِنِّ وَالْإِنسِ", uz:"jin va ins", tag:"rec"},
+  {u:25, ar:"تُكَذِّبَانِ", uz:"(ikkovingiz) yolg'on deysizlar", tag:"rec"},
+  {u:26, ar:"الشَّمْسِ", uz:"quyosh", tag:"core"},
+  {u:26, ar:"الْقَمَرِ", uz:"oy", tag:"core"},
+  {u:26, ar:"النَّهَارِ", uz:"kunduz", tag:"core"},
+  {u:26, ar:"اللَّيْلِ", uz:"tun", tag:"core"},
+  {u:26, ar:"نَفْسٍ", uz:"nafs, jon", tag:"core"},
+  {u:26, ar:"أَفْلَحَ", uz:"yutdi, najot topdi", tag:"core"},
+  {u:26, ar:"فُجُورَهَا", uz:"yomonligi", tag:"rec"},
+  {u:26, ar:"تَقْوَاهَا", uz:"taqvosi", tag:"rec"},
+  {u:26, ar:"زَكَّاهَا", uz:"poklagan", tag:"rec"},
+  {u:26, ar:"دَسَّاهَا", uz:"bulg'agan", tag:"rec"},
+  {u:26, ar:"كَذَّبَتْ", uz:"yolg'onga chiqardi", tag:"rec"},
+  {u:26, ar:"نَاقَةَ اللَّهِ", uz:"Allohning tuyasi", tag:"rec"},
+  {u:27, ar:"أَلْف", uz:"ming", tag:"core"},
+  {u:27, ar:"عَشْر", uz:"o'n", tag:"core"},
+  {u:27, ar:"مِائَة", uz:"yuz", tag:"core"},
+  {u:27, ar:"سَبْع", uz:"yetti", tag:"core"},
+  {u:27, ar:"أَرْبَعِين", uz:"qirq", tag:"core"},
+  {u:27, ar:"شَهْر", uz:"oy (vaqt)", tag:"core"},
+  {u:27, ar:"ثَلَاثِين", uz:"o'ttiz", tag:"rec"},
+  {u:27, ar:"تِسْعًا", uz:"to'qqiz", tag:"rec"},
+  {u:27, ar:"لَيَالٍ", uz:"kechalar", tag:"rec"},
+  {u:27, ar:"سِنِينَ", uz:"yillar", tag:"rec"},
+  {u:27, ar:"سَنَابِلَ", uz:"boshoqlar", tag:"rec"},
+  {u:28, ar:"أَقْرَبُ", uz:"yaqinroq", tag:"core"},
+  {u:28, ar:"أَكْبَرُ", uz:"kattaroq, eng buyuk", tag:"core"},
+  {u:28, ar:"خَيْرٌ", uz:"yaxshiroq, eng yaxshi", tag:"core"},
+  {u:28, ar:"شَرٌّ", uz:"yomonroq", tag:"core"},
+  {u:28, ar:"يَعْلَمُ", uz:"biladi", tag:"core"},
+  {u:28, ar:"أَقْوَمُ", uz:"eng to'g'ri", tag:"rec"},
+  {u:28, ar:"حَبْلِ الْوَرِيدِ", uz:"bo'yin tomiri", tag:"rec"},
+  {u:28, ar:"تَكْرَهُوا", uz:"yoqtirmaysizlar", tag:"rec"},
+  {u:28, ar:"ذِكْرُ اللَّهِ", uz:"Allohni zikr qilish", tag:"rec"},
+  {u:29, ar:"السَّمَاءُ", uz:"osmon", tag:"core"},
+  {u:29, ar:"نَفْسٌ", uz:"jon", tag:"core"},
+  {u:29, ar:"يَعْلَمُونَ", uz:"bilishadi", tag:"core"},
+  {u:29, ar:"خَلَقَكَ", uz:"seni yaratdi", tag:"core"},
+  {u:29, ar:"يَوْمَ", uz:"kun", tag:"core"},
+  {u:29, ar:"انفَطَرَتْ", uz:"yorildi", tag:"rec"},
+  {u:29, ar:"الْكَوَاكِبُ", uz:"yulduzlar", tag:"rec"},
+  {u:29, ar:"حَافِظِينَ", uz:"kuzatuvchilar", tag:"rec"},
+  {u:29, ar:"كَاتِبِينَ", uz:"yozuvchilar", tag:"rec"},
+  {u:29, ar:"الْأَبْرَارَ", uz:"yaxshilar", tag:"rec"},
+  {u:29, ar:"الْفُجَّارَ", uz:"fosiqlar", tag:"rec"},
+  {u:31, ar:"آمَنَ", uz:"imon keltirdi", tag:"core"},
+  {u:31, ar:"ذَوِي الْقُرْبَىٰ", uz:"qarindoshlar", tag:"core"},
+  {u:31, ar:"الْيَتَامَىٰ", uz:"yetimlar", tag:"core"},
+  {u:31, ar:"الصَّلَاةَ", uz:"namoz", tag:"core"},
+  {u:31, ar:"الزَّكَاةَ", uz:"zakot", tag:"core"},
+  {u:31, ar:"صَبَرَ / الصَّابِرِينَ", uz:"sabr qildi / sabr qiluvchilar", tag:"core"},
+  {u:31, ar:"الْمَسَاكِينَ", uz:"miskinlar", tag:"rec"},
+  {u:31, ar:"ابْنَ السَّبِيلِ", uz:"yo'lda qolgan", tag:"rec"},
+  {u:31, ar:"عَهْدِهِمْ", uz:"va'dalari", tag:"rec"},
+  {u:31, ar:"الْبَأْسَاءِ وَالضَّرَّاءِ", uz:"qashshoqlik va kasallik", tag:"rec"},
+  {u:31, ar:"نُفَرِّقُ", uz:"ajratamiz", tag:"rec"},
+  {u:32, ar:"يُؤْمِنُونَ", uz:"imon keltiradilar", tag:"core"},
+  {u:32, ar:"الْغَيْبِ", uz:"g'ayb, ko'rinmas", tag:"core"},
+  {u:32, ar:"يُنفِقُونَ", uz:"infoq qiladilar", tag:"core"},
+  {u:32, ar:"كَفَرُوا", uz:"kofir bo'ldilar", tag:"core"},
+  {u:32, ar:"قُلُوبِهِمْ", uz:"ularning qalblari", tag:"core"},
+  {u:32, ar:"الْمُتَّقِينَ", uz:"taqvodorlar", tag:"rec"},
+  {u:32, ar:"الْمُفْلِحُونَ", uz:"najot topguvchilar", tag:"rec"},
+  {u:32, ar:"خَتَمَ", uz:"muhrladi", tag:"rec"},
+  {u:32, ar:"غِشَاوَةٌ", uz:"parda", tag:"rec"},
+  {u:32, ar:"يُخَادِعُونَ", uz:"aldashga urinadilar", tag:"rec"},
+  {u:33, ar:"الْوَالِدَيْنِ", uz:"ota-ona", tag:"core"},
+  {u:33, ar:"الْمَوْتُ", uz:"o'lim", tag:"core"},
+  {u:33, ar:"بِالْمَعْرُوفِ", uz:"yaxshilik bilan", tag:"core"},
+  {u:33, ar:"رِزْقُهُنَّ", uz:"ularning rizqi", tag:"core"},
+  {u:33, ar:"وَلَدِهَا", uz:"uning bolasi", tag:"core"},
+  {u:33, ar:"الْوَصِيَّةُ", uz:"vasiyat", tag:"rec"},
+  {u:33, ar:"الْأَقْرَبِينَ", uz:"yaqinlar", tag:"rec"},
+  {u:33, ar:"يُرْضِعْنَ", uz:"emizadilar", tag:"rec"},
+  {u:33, ar:"كِسْوَتُهُنَّ", uz:"ularning kiyimi", tag:"rec"},
+  {u:33, ar:"وُسْعَهَا", uz:"uning quvvati", tag:"rec"},
+  {u:34, ar:"الصِّيَامُ", uz:"ro'za", tag:"core"},
+  {u:34, ar:"قَرِيبٌ", uz:"yaqin", tag:"core"},
+  {u:34, ar:"أُجِيبُ", uz:"javob beraman", tag:"core"},
+  {u:34, ar:"رَبَّنَا", uz:"Robbimiz", tag:"core"},
+  {u:34, ar:"اغْفِرْ لَنَا", uz:"bizni mag'firat qil", tag:"core"},
+  {u:34, ar:"تَتَّقُونَ", uz:"taqvodor bo'lasizlar", tag:"rec"},
+  {u:34, ar:"الدَّاعِ", uz:"chaqiruvchi", tag:"rec"},
+  {u:34, ar:"إِصْرًا", uz:"og'ir yuk", tag:"rec"},
+  {u:34, ar:"طَاقَةَ", uz:"quvvat, kuch", tag:"rec"},
+  {u:34, ar:"مَوْلَانَا", uz:"bizning Egamiz/Homiymiz", tag:"rec"},
+  {u:35, ar:"الْكَهْفِ", uz:"g'or", tag:"core"},
+  {u:35, ar:"الْفِتْيَةُ", uz:"yigitlar", tag:"core"},
+  {u:35, ar:"رَبَّنَا", uz:"Robbimiz", tag:"core"},
+  {u:35, ar:"الْمَالُ", uz:"mol", tag:"core"},
+  {u:35, ar:"عَلَّمَ / عُلِّمْتَ", uz:"o'rgatdi / senga o'rgatilgan", tag:"core"},
+  {u:35, ar:"زِينَةُ", uz:"ziynat", tag:"rec"},
+  {u:35, ar:"الْبَاقِيَاتُ الصَّالِحَاتُ", uz:"boqiy yaxshi amallar", tag:"rec"},
+  {u:35, ar:"رُشْدًا", uz:"to'g'ri yo'l, kamolot", tag:"rec"},
+  {u:35, ar:"الْبَحْرُ", uz:"dengiz", tag:"rec"},
+  {u:35, ar:"مِدَادًا", uz:"siyoh", tag:"rec"},
+  {u:36, ar:"نُورُ", uz:"nur", tag:"core"},
+  {u:36, ar:"مَثَلُ", uz:"misol, o'xshatish", tag:"core"},
+  {u:36, ar:"أَعْطَىٰ", uz:"berdi", tag:"core"},
+  {u:36, ar:"اتَّقَىٰ", uz:"taqvo qildi", tag:"core"},
+  {u:36, ar:"بَخِلَ", uz:"baxillik qildi", tag:"core"},
+  {u:36, ar:"مِشْكَاةٍ", uz:"tokcha", tag:"rec"},
+  {u:36, ar:"زُجَاجَةٍ", uz:"shisha", tag:"rec"},
+  {u:36, ar:"زَيْتُونَةٍ", uz:"zaytun daraxti", tag:"rec"},
+  {u:36, ar:"الْيُسْرَىٰ", uz:"yengillik", tag:"rec"},
+  {u:36, ar:"الْعُسْرَىٰ", uz:"qiyinchilik", tag:"rec"},
+  {u:37, ar:"آمَنُوا", uz:"imon keltirdilar", tag:"core"},
+  {u:37, ar:"خَيْرًا", uz:"yaxshiroq", tag:"core"},
+  {u:37, ar:"أَخِيهِ", uz:"uning akasi", tag:"core"},
+  {u:37, ar:"خَلَقْنَاكُم", uz:"sizlarni yaratdik", tag:"core"},
+  {u:37, ar:"أَتْقَاكُمْ", uz:"eng taqvodoringiz", tag:"core"},
+  {u:37, ar:"يَسْخَرْ", uz:"masxara qiladi", tag:"rec"},
+  {u:37, ar:"الْأَلْقَابِ", uz:"laqablar", tag:"rec"},
+  {u:37, ar:"الظَّنِّ", uz:"gumon", tag:"rec"},
+  {u:37, ar:"تَجَسَّسُوا", uz:"josuslik qilasizlar", tag:"rec"},
+  {u:37, ar:"شُعُوبًا وَقَبَائِلَ", uz:"xalqlar va qabilalar", tag:"rec"},
+  {u:38, ar:"الْغَيْبِ", uz:"g'ayb", tag:"core"},
+  {u:38, ar:"الْمَلِكُ", uz:"Malik, Podshoh", tag:"core"},
+  {u:38, ar:"الْخَالِقُ", uz:"Xoliq, Yaratuvchi", tag:"core"},
+  {u:38, ar:"الْأَسْمَاءُ الْحُسْنَىٰ", uz:"eng go'zal ismlar", tag:"core"},
+  {u:38, ar:"يُسَبِّحُ", uz:"tasbeh aytadi", tag:"core"},
+  {u:38, ar:"الشَّهَادَةِ", uz:"shohidlik", tag:"rec"},
+  {u:38, ar:"الْقُدُّوسُ", uz:"Quddus, Pok", tag:"rec"},
+  {u:38, ar:"الْجَبَّارُ", uz:"Jabbor", tag:"rec"},
+  {u:38, ar:"الْبَارِئُ", uz:"Bori", tag:"rec"},
+  {u:38, ar:"الْمُصَوِّرُ", uz:"Musavvir", tag:"rec"},
 ];
 
 const QUICK_REF = [
@@ -1142,6 +1329,678 @@ const REVIEW_SCHEDULE = [
   {u:17, what:"5 ta ildiz oilasi to'liq yig'iladi", from:"2,3,4,6,7,8,9,10"},
   {u:19, what:"إِذَا (ikki misol)", from:"4"},{u:20, what:"الَّذِي / الَّذِينَ (to'rt misol)", from:"3, 7, 9, 10"},
 ];
+
+/* ================================================================
+   BOOK 2 — Units 21+. Longer surahs now live in the full Qur'on
+   reader (already built), so these units don't re-print the whole
+   surah — they go deep on selected teaching passages, sprint the
+   high-frequency vocabulary, and cross-link to the full reader/Hifz
+   tools for complete reading. Content here is written for a learner
+   who has finished Book 1's 20 units.
+   ================================================================ */
+PHASES[3] = {label:"3-bosqich", name:"So'z boyligini kengaytirish", sub:"Uzunroq suralar orqali eng ko'p ishlatiladigan so'zlarni jadal o'rganish — endi to'liq Qur'on o'quvchisidan foydalanib."};
+PHASES[4] = {label:"4-bosqich", name:"To'liq tushunish: Qahramon bosqichi", sub:"Til haqida o'qish emas — endi to'g'ridan-to'g'ri o'qish. Yordamchi tayanchlar asta-sekin olib tashlanadi, uzun va real Qur'on matnlari mustaqil kuzatiladi."};
+
+const BOOK2_UNITS = [
+// ============ UNIT 21 ============
+{
+  id:21, phase:3, title:"Al-Mulk: Tez-tez uchraydigan so'zlar I", ar:"سورة الملك", surahApiNum:67,
+  intro:"1-kitobda 9 ta qisqa surani so'zma-so'z o'rgandingiz — hammasi 3–7 oyatlik edi. Endi katta qadam: Al-Mulk 30 oyatdan iborat. Butun surani so'zma-so'z tahlil qilish o'rniga, bu darsda eng muhim 8 ta oyatga chuqur to'xtalamiz, qolgan oyatlarni esa <b>to'liq Qur'on</b> bo'limida, Mishary Rashid al-Afosiy tilovatida, endi tanish naqshlaringiz bilan o'zingiz o'qiysiz. Al-Mulk — \"al-Munjiya\" (qutqaruvchi) va \"al-Waqiya\" (himoyachi) deb ham ataladi, chunki bu sura har kecha o'qiganlar uchun qabr azobidan himoya va shafoat vositasi ekani haqida rivoyatlar bor.",
+  ayahs:[],
+  wbw:[
+    {ref:"1-oyat", ar:"تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ", meaning:"Naqadar barakali/buyukdir mulk Uning qo'lida bo'lgan Zot, U har narsaga qodirdir.",
+     notes:"&bull; <span class='w'>تَبَارَكَ</span> — \"barakasi buyuk, ulug'\" degan fe'l, faqat Allohga nisbatan ishlatiladi (\"tabaraka\" so'zi Qur'onda faqat Alloh haqida keladi)<br>&bull; <span class='w'>الَّذِي</span> <span class='review'>&#8635; 3, 7, 9, 10-darslar</span> — \"...gan Zot\"<br>&bull; <span class='w'>بِيَدِهِ</span> = \"Uning qo'lida\" — بِ (bilan/da) + يَد (qo'l) + -هِ (Uning) <span class='review'>&#8635; olmoshlar, 14-dars</span><br>&bull; <span class='w'>الْمُلْكُ</span> = mulk, hukmronlik — shu so'zdan sura nomi kelgan<br>&bull; <span class='w'>قَدِيرٌ</span> = qodir, hamma narsaga qudrati yetuvchi"},
+    {ref:"2-oyat", ar:"الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا وَهُوَ الْعَزِيزُ الْغَفُورُ", meaning:"U o'limni va hayotni yaratdi — qaysingiz amalda go'zalroq ekanini sinash uchun. U — Aziz, Mag'firatli.",
+     notes:"&bull; <span class='w'>خَلَقَ</span> <span class='review'>&#8635; 4-dars</span> = yaratdi<br>&bull; <span class='w'>الْمَوْتَ وَالْحَيَاةَ</span> = o'lim va hayot — diqqat qiling, \"hayot va o'lim\" emas, \"o'lim va hayot\" tartibida — chunki avval yo'qlik, keyin yaratilish, hayotning o'zi ne'mat ekanini ta'kidlaydi<br>&bull; <span class='w'>لِيَبْلُوَكُمْ</span> = \"sizni sinash uchun\" — لِ (uchun) + fe'l + -كُمْ (sizlarni)<br>&bull; <span class='w'>أَحْسَنُ عَمَلًا</span> = amalda eng go'zal — diqqat: \"eng ko'p\" emas, \"eng go'zal\" amal, miqdor emas sifat haqida"},
+    {ref:"3-oyat", ar:"الَّذِي خَلَقَ سَبْعَ سَمَاوَاتٍ طِبَاقًا مَّا تَرَىٰ فِي خَلْقِ الرَّحْمَٰنِ مِن تَفَاوُتٍ فَارْجِعِ الْبَصَرَ هَلْ تَرَىٰ مِن فُطُورٍ", meaning:"U yetti osmonni qat-qat qilib yaratdi. Rahmonning yaratganida hech qanday nomutanosiblik ko'rmaysan. Ko'zingni yana qaytar — birorta yoriq-nuqson ko'rasanmi?",
+     notes:"&bull; <span class='w'>سَبْعَ سَمَاوَاتٍ طِبَاقًا</span> = yetti osmon, qat-qat<br>&bull; <span class='w'>مَّا تَرَىٰ ... مِن تَفَاوُتٍ</span> = hech qanday nomutanosiblik ko'rmaysan<br>&bull; <span class='w'>فَارْجِعِ الْبَصَرَ</span> = \"ko'zingni qaytar\" — buyruq fe'li <span class='review'>&#8635; 6-dars</span>, kuzatishni takrorlashga chorlaydi<br>&bull; <span class='w'>هَلْ</span> = -mi? (savol yuklamasi, yangi) &middot; <span class='w'>فُطُورٍ</span> = yoriq, nuqson"},
+    {ref:"13–14-oyatlar", ar:"وَأَسِرُّوا قَوْلَكُمْ أَوِ اجْهَرُوا بِهِ ۖ إِنَّهُ عَلِيمٌ بِذَاتِ الصُّدُورِ ﴿١٣﴾ أَلَا يَعْلَمُ مَنْ خَلَقَ وَهُوَ اللَّطِيفُ الْخَبِيرُ", meaning:"So'zingizni yashiring yoki oshkor qiling — U ko'kraklar sirlarini biluvchidir. Yaratgan Zot bilmasmi?! U — Latif, Xabardor.",
+     notes:"&bull; <span class='w'>أَسِرُّوا</span> / <span class='w'>اجْهَرُوا</span> = yashiring / oshkor qiling — ikkalasi ham buyruq, qarama-qarshi ma'noda<br>&bull; <span class='w'>بِذَاتِ الصُّدُورِ</span> = \"ko'kraklarning zoti/ichidagisi\" — ya'ni eng maxfiy niyat va fikrlar<br>&bull; <span class='w'>أَلَا يَعْلَمُ مَنْ خَلَقَ</span> = \"Yaratgan bilmasmi?!\" — ritorik savol, 8-darsdagi <span class='w'>أَلَمْ</span> naqshiga o'xshash, lekin bu safar <span class='w'>أَلَا</span> + fe'l"},
+    {ref:"15-oyat", ar:"هُوَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ ذَلُولًا فَامْشُوا فِي مَنَاكِبِهَا وَكُلُوا مِن رِّزْقِهِ ۖ وَإِلَيْهِ النُّشُورُ", meaning:"U yerni sizlar uchun bo'ysunuvchi qildi — uning yonbag'irlarida yuring va Uning rizqidan yeng. Qaytish esa Ungadir.",
+     notes:"&bull; <span class='w'>جَعَلَ</span> <span class='review'>&#8635; 8-dars</span> = qildi<br>&bull; <span class='w'>ذَلُولًا</span> = bo'ysunuvchi, ram qilingan<br>&bull; <span class='w'>فَامْشُوا</span> / <span class='w'>كُلُوا</span> = yuring / yeng — buyruq fe'llari, bu safar \"sizlar\" (ko'plik) uchun<br>&bull; <span class='w'>النُّشُورُ</span> = qayta tirilib chiqish"},
+    {ref:"16–17-oyatlar — mashhur ogohlantirish", ar:"أَأَمِنتُم مَّن فِي السَّمَاءِ أَن يَخْسِفَ بِكُمُ الْأَرْضَ فَإِذَا هِيَ تَمُورُ ﴿١٦﴾ أَمْ أَمِنتُم مَّن فِي السَّمَاءِ أَن يُرْسِلَ عَلَيْكُمْ حَاصِبًا ۖ فَسَتَعْلَمُونَ كَيْفَ نَذِيرِ", meaning:"Osmondagi Zotdan, sizni yer bilan yutdirishidan xotirjammisiz — bas, u to'satdan tebranib ketsa? Yoki osmondagi Zotdan, ustingizga toshli bo'ron yuborishidan xotirjammisiz? Ogohlantirishim qanday ekanini tez orada bilib olasizlar.",
+     notes:"&bull; <span class='w'>أَأَمِنتُم</span> = \"xotirjammisizlar?\" — أَ (savol) + أَمِنتُم (xavfsiz his qildingiz, أمن ildizidan <span class='review'>&#8635; 9-dars, آمَنَهُم</span>)<br>&bull; <span class='w'>يَخْسِفَ بِكُمُ الْأَرْضَ</span> = yerni siz bilan yutdirish<br>&bull; <span class='w'>حَاصِبًا</span> = toshli bo'ron (Al-Fil surasidagi jazoni eslatadi) <span class='review'>&#8635; 8-dars</span><br>&bull; Bu ikki oyat bir xil qolipda takrorlanadi — <span class='w'>أَأَمِنتُم مَّن فِي السَّمَاءِ</span> ikki marta, faqat oxiri farqli xavf bilan tugaydi. Bu — Qur'onning ta'kidlash uslubi, 2-darsda Rahmon/Rahim takrorida ko'rgan naqshning kattaroq shakli."},
+    {ref:"19-oyat", ar:"أَوَلَمْ يَرَوْا إِلَى الطَّيْرِ فَوْقَهُمْ صَافَّاتٍ وَيَقْبِضْنَ ۚ مَا يُمْسِكُهُنَّ إِلَّا الرَّحْمَٰنُ ۚ إِنَّهُ بِكُلِّ شَيْءٍ بَصِيرٌ", meaning:"Ustlarida saf tortib qanot qoqayotgan qushlarga qaramadilarmi? Ularni faqat Rahmon ushlab turadi. Albatta U har narsani ko'ruvchidir.",
+     notes:"&bull; <span class='w'>أَوَلَمْ يَرَوْا</span> = \"qaramadilarmi?\" — yana أَ+لَمْ ritorik savol qolipi <span class='review'>&#8635; 8-dars</span><br>&bull; <span class='w'>صَافَّاتٍ</span> = saf tortganlar (qanotlarini yozgan holda)<br>&bull; <span class='w'>مَا يُمْسِكُهُنَّ إِلَّا</span> = \"ularni ...dan boshqa hech kim ushlamaydi\" — <span class='w'>إِلَّا</span> <span class='review'>&#8635; 7-dars</span> yana istisno naqshida, bu safar \"faqat Rahmon\" ma'nosida"},
+    {ref:"30-oyat — yakuniy", ar:"قُلْ أَرَأَيْتُمْ إِنْ أَصْبَحَ مَاؤُكُمْ غَوْرًا فَمَن يَأْتِيكُم بِمَاءٍ مَّعِينٍ", meaning:"Ayt: Aytinglar-chi, agar suvingiz yerga singib ketsa, sizlarga kim oqar suv keltira oladi?",
+     notes:"&bull; <span class='w'>قُلْ</span> <span class='review'>&#8635; 3–6-darslar</span> &middot; <span class='w'>أَرَأَيْتُمْ</span> <span class='review'>&#8635; 10-dars</span> = \"ko'rdinglarmi/aytinglar-chi\"<br>&bull; <span class='w'>إِنْ</span> = agar — <span class='w'>إِذَا</span> dan farqli, kutilmagan/gipotetik shartni bildiradi <span class='review'>&#8635; 19-dars</span><br>&bull; Sura suv haqidagi savol bilan tugaydi — eng oddiy ne'mat, hayotning o'zi kabi, bir zumda yo'qolishi mumkinligini eslatib."}
+  ],
+  synth:"Diqqat qiling: bu surada 1–20-darslarda o'rgangan deyarli har bir naqsh qaytadan uchradi — الَّذِي، إِلَّا، أَلَمْ/أَلَا، buyruq fe'llari, -هُ/-هُمْ oilasi, hatto ildizlar (ء-م-ن ikki marta, ع-ب-د bilvosita). Bu tasodif emas: 30 oyatlik \"katta\" sura ham, aslida, siz allaqachon bilgan kichik g'ishtlardan qurilgan. Farq — endi bu g'ishtlar yangi, kattaroq bir binoda ishlaydi.",
+  tafakkur:"Rivoyat qilinishicha, bu sura qabrda savol-javob paytida o'quvchisi uchun \"munozara qiluvchi\" (mujadala) bo'lib, uni azobdan himoya qiladi — shuning uchun ko'plab kishilar buni har kecha yotishdan oldin o'qishni odat qilishgan. Sahobalardan biri bir qabr ustiga chodir qurgan, keyin bilmasdan ekanini bilib qolgach, Payg'ambarga ﷺ aytib bergan; u zot: \"Al-Mulk — qabr azobidan qutqaruvchidir\" deb aytgan, deb rivoyat qilinadi.<br><br>16–17-oyatlardagi ikki marta takrorlangan \"osmondagi Zotdan xotirjammisiz?\" savoli — Allohning kuchini inkor etish emas, balki har kuni tabiiy deb bilingan xavfsizlikning, aslida, bir zumda o'zgarishi mumkinligini eslatish uchun. Bugun oyoq ostidagi yer, boshingiz ustidagi osmon — sizga hech qanday xavf solmayapti, deb o'ylaysiz. Lekin bu xavfsizlik sizning huquqingiz emas, Rahmonning har lahzalik in'omi. Shu tuyg'u bilan yashagan qalb g'ururga emas, doimiy shukrga o'tadi.<br><br>Sura oxiridagi suv haqidagi savol (30-oyat) ham xuddi shunday: eng arzon, eng ko'p e'tiborsiz qoladigan ne'mat — bir stakan suv — birdan yo'qolsa, butun boylikning o'zi ojiz qolishini ko'rsatadi. Har safar suv ichganingizda shu oyatni eslang.",
+  talaffuz:"صَافَّاتٍ va حَاصِبًا kabi so'zlardagi ص harfi — 1-darsda o'rgangan \"qalin س\" qoidasi. Uni ح bilan aralashtirmang: ص tishlar orasidan, og'iz keng ochilib chiqadi.",
+  exercises:[
+    {type:'reveal', kicker:'TEKSHIRUV', prompt:"16–17-oyatlarda qaysi ibora ikki marta aynan takrorlanadi, va bu qanday maqsadga xizmat qiladi?", answer:"أَأَمِنتُم مَّن فِي السَّمَاءِ — \"osmondagi Zotdan xotirjammisiz?\" Takror — ta'kid uslubi, 2-darsdagi Rahmon/Rahim takroriga o'xshaydi."},
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"تَبَارَكَ so'zi kimga nisbatan ishlatiladi?", options:["Har qanday buyuk kishiga","Faqat Allohga","Faqat farishtalarga"], correct:1, explain:"Qur'onda تَبَارَكَ so'zi faqat Alloh haqida keladi."},
+    {type:'match', kicker:'MASHQ 2 · O\'RTA · Ildizlarni bog\'lang', pairs:[{l:"أَأَمِنتُم",r:"آمَنَهُم (9-dars) bilan bir ildiz"},{l:"خَلَقَ",r:"4-darsdagi xuddi shu so'z"},{l:"إِلَّا",r:"7-darsdagi istisno naqshi"}]},
+    {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"19-oyatda qushlar haqidagi misol nima uchun keltirilgan deb o'ylaysiz? 1-2-oyatlardagi asosiy g'oya bilan bog'lang.", answer:"1-2-oyatlar Allohning mutlaq qudratini aytadi; qushlarning havoda osilib turishi — ko'zga ko'rinadigan, har kuni kuzatiladigan kichik bir mo''jiza orqali shu qudratni his qildirish."},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"Qolgan oyatlarni (4–12, 18, 20–29) to'liq Qur'on bo'limida oching va kamida uchta tanish so'z yoki naqshni o'zingiz toping.", answer:"O'zingizni sinang — رَبّ، لَا، الَّذِينَ، مَا kabi so'zlar deyarli har oyatda uchraydi."}
+  ],
+  vocab:{
+    core:[["الْمُلْكُ","mulk, hukmronlik"],["خَلَقَ","yaratdi"],["قَدِيرٌ","qodir"],["السَّمَاءِ","osmon"],["الْأَرْضَ","yer"],["إِلَّا","faqat"],["يَعْلَمُ","biladi"]],
+    recognition:[["تَبَارَكَ","barakasi buyuk"],["الْحَيَاةَ / الْمَوْتَ","hayot / o'lim"],["ذَلُولًا","bo'ysunuvchi"],["الْبَصَرَ","ko'z, nazar"],["يَخْسِفَ","yutdiradi (yerga)"],["صَافَّاتٍ","saf tortgan (qanot)"]]
+  },
+  closing:"Al-Mulkning qolgan qismini endi \"To'liq Qur'on\" bo'limida, o'zingiz, tanish naqshlaringizni izlab o'qing — bu darsdagi 8 oyat sizga xarita bo'lib xizmat qiladi."
+},
+
+// ============ UNIT 22 ============
+{
+  id:22, phase:3, title:"Yosin surasi: Tez-tez uchraydigan so'zlar II", ar:"سورة يس", surahApiNum:36,
+  intro:"Yosin — 83 oyat, va Payg'ambar ﷺ dan rivoyat qilinishicha \"Qur'onning yuragi\" deb atalgan. Bu darsda 10 ta chuqur teginish nuqtasi orqali suraning uch asosiy qismini bosib o'tamiz: kirish ogohlantirishi (1–11), \"Shahar egalari\" qissasi (13–27) va qayta tirilish haqidagi mashhur dalillar (38–83). Qolganini — 83 oyatning barchasini — \"To'liq Qur'on\"da, endi tanish bo'lgan naqshlaringiz bilan o'qiysiz.",
+  ayahs:[],
+  wbw:[
+    {ref:"1–4-oyatlar — qasam", ar:"يس ﴿١﴾ وَالْقُرْآنِ الْحَكِيمِ ﴿٢﴾ إِنَّكَ لَمِنَ الْمُرْسَلِينَ ﴿٣﴾ عَلَىٰ صِرَاطٍ مُّسْتَقِيمٍ", meaning:"Yo, Sin. Hikmatli Qur'on bilan qasamki, albatta sen (ey Muhammad) elchilardansan, to'g'ri yo'l ustidasan.",
+     notes:"&bull; <span class='w'>يس</span> — \"ajratilgan harflar\"dan biri (Al-Baqara 1-oyatidagi الم kabi), ma'nosi faqat Allohga ma'lum<br>&bull; <span class='w'>وَالْقُرْآنِ</span> — وَ bu yerda \"va\" emas, qasam yuklamasi (\"...bilan qasam\"), 26-darsda batafsil ko'rasiz<br>&bull; <span class='w'>إِنَّكَ لَمِنَ الْمُرْسَلِينَ</span> = \"albatta sen elchilardansan\" — إِنَّ <span class='review'>&#8635; ta'kid yuklamasi</span> + كَ (sen) + لَ (albatta, kuchaytiruvchi) + مِنَ (dan) + الْمُرْسَلِينَ (yuborilganlar, elchilar — رسول so'zining ko'pligi)"},
+    {ref:"9-oyat — parda", ar:"وَجَعَلْنَا مِن بَيْنِ أَيْدِيهِمْ سَدًّا وَمِنْ خَلْفِهِمْ سَدًّا فَأَغْشَيْنَاهُمْ فَهُمْ لَا يُبْصِرُونَ", meaning:"Ularning oldilariga to'siq va orqalariga to'siq qildik, so'ng ko'zlarini to'sdik — ular ko'rmaydilar.",
+     notes:"&bull; <span class='w'>جَعَلْنَا</span> <span class='review'>&#8635; 8-dars, جَعَلَ</span> = qildik (بِ \"biz\" shakli)<br>&bull; <span class='w'>مِن بَيْنِ أَيْدِيهِمْ</span> = \"qo'llari orasidan\" — ya'ni oldilaridan (idiomatik ibora)<br>&bull; <span class='w'>سَدًّا</span> = to'siq, devor (ikki marta takrorlanadi — old va orqa, ya'ni har tomondan)<br>&bull; <span class='w'>لَا يُبْصِرُونَ</span> = ko'rmaydilar — bu jismoniy ko'rish emas, haqiqatni ko'ra olmaslik haqida, chunki qalb yopilgan"},
+    {ref:"13, 20–21-oyatlar — Shahar egalari qissasi", ar:"وَاضْرِبْ لَهُم مَّثَلًا أَصْحَابَ الْقَرْيَةِ إِذْ جَاءَهَا الْمُرْسَلُونَ ﴿١٣﴾ ... وَجَاءَ مِنْ أَقْصَى الْمَدِينَةِ رَجُلٌ يَسْعَىٰ قَالَ يَا قَوْمِ اتَّبِعُوا الْمُرْسَلِينَ ﴿٢٠﴾ اتَّبِعُوا مَن لَّا يَسْأَلُكُمْ أَجْرًا وَهُم مُّهْتَدُونَ", meaning:"Ularga bir masal keltir: elchilar kelgan shahar egalarini... Shahar chekkasidan bir kishi yugurib keldi: \"Ey qavmim, elchilarga ergashinglar! Sizdan haq so'ramaydigan, o'zlari to'g'ri yo'lda bo'lgan kishilarga ergashinglar\" — dedi.",
+     notes:"&bull; <span class='w'>اضْرِبْ</span> <span class='review'>&#8635; buyruq fe'li, 6-dars</span> = \"kelтir\" (masal/misol) &middot; <span class='w'>مَثَلًا</span> = masal, misol<br>&bull; <span class='w'>جَاءَ</span> <span class='review'>&#8635; o'tgan zamon, 16-dars</span> = keldi — bu oyatda ikki marta uchraydi (elchilar keldi, keyin kishi keldi)<br>&bull; <span class='w'>رَجُلٌ يَسْعَىٰ</span> = \"yuguruvchi kishi\" — bu kishi Qur'onda ismi aytilmagan, lekin tafsirlarda taniqli, imonli va jasur inson sifatida tasvirlanadi — o'zi shahar chekkasida yashab, elchilarni himoya qilish uchun yugurib keladi<br>&bull; <span class='w'>يَا قَوْمِ</span> = \"ey qavmim\" — nido, chorish shakli<br>&bull; <span class='w'>لَّا يَسْأَلُكُمْ أَجْرًا</span> = \"sizdan haq so'ramaydi\" — elchilarning halolligi belgisi: ular pul-mukofot uchun emas, faqat haqiqat uchun kelishgan"},
+    {ref:"26–27-oyatlar — o'lim va oxirgi so'z", ar:"قِيلَ ادْخُلِ الْجَنَّةَ ۖ قَالَ يَا لَيْتَ قَوْمِي يَعْلَمُونَ ﴿٢٦﴾ بِمَا غَفَرَ لِي رَبِّي وَجَعَلَنِي مِنَ الْمُكْرَمِينَ", meaning:"(Unga) \"Jannatga kir\" deyildi. U: \"Qani qavmim bilsa edi — Robbim meni mag'firat qilgani va ikrom qilinganlardan qilganini!\" — dedi.",
+     notes:"&bull; <span class='w'>قِيلَ</span> = \"deyildi\" — kim aytgani aytilmagan fe'l shakli, 29-darsda \"qilindi\" gaplari deb chuqurroq o'rganasiz<br>&bull; <span class='w'>يَا لَيْتَ</span> = \"qani edi, kошki\" — armon/orzu ifodasi, yangi<br>&bull; Diqqat qiling: bu kishi o'z qavmi tomonidan o'ldirilgan (oldingi oyatlarda), lekin o'lim onida g'azab emas, faqat qavmiga achinish va ularning ham shu ne'matdan bahramand bo'lishini istaydi — Qur'ondagi eng ta'sirli kechirimlilik namunalaridan biri"},
+    {ref:"38-oyat — quyosh", ar:"وَالشَّمْسُ تَجْرِي لِمُسْتَقَرٍّ لَّهَا ۚ ذَٰلِكَ تَقْدِيرُ الْعَزِيزِ الْعَلِيمِ", meaning:"Quyosh o'zining qarorgohi tomon yuradi. Bu — Aziz, Alim (Zot)ning belgilashidir.",
+     notes:"&bull; <span class='w'>تَجْرِي</span> = yuradi, oqadi — hozirgi zamon fe'li <span class='review'>&#8635; 15-dars</span><br>&bull; <span class='w'>لِمُسْتَقَرٍّ لَّهَا</span> = \"o'zining qarorgohi tomon\" — quyoshning belgilangan yo'nalishi/manzili bor<br>&bull; <span class='w'>ذَٰلِكَ</span> <span class='review'>&#8635; 10-dars</span> = bu — narigi tomonda, uzoqroqdagi narsaga ishora"},
+    {ref:"40-oyat — orbitalar", ar:"لَا الشَّمْسُ يَنبَغِي لَهَا أَن تُدْرِكَ الْقَمَرَ وَلَا اللَّيْلُ سَابِقُ النَّهَارِ ۚ وَكُلٌّ فِي فَلَكٍ يَسْبَحُونَ", meaning:"Quyoshga oyni quvib yetish loyiq emas, tun ham kunduzdan ilgarilamaydi — barchasi bir aylanada suzadi.",
+     notes:"&bull; <span class='w'>لَا ... وَلَا</span> = \"na ... na ham\" — ikki tomonlama inkor, yangi naqsh<br>&bull; <span class='w'>يَنبَغِي</span> = loyiq, mos keladi<br>&bull; <span class='w'>فِي فَلَكٍ يَسْبَحُونَ</span> = \"bir falak(orbita)da suzadilar\" — 1400 yil oldin aytilgan bu oyat, har bir jism o'z yo'lida, tartib bilan harakatlanishini tasvirlaydi"},
+    {ref:"65-oyat — guvohlik", ar:"الْيَوْمَ نَخْتِمُ عَلَىٰ أَفْوَاهِهِمْ وَتُكَلِّمُنَا أَيْدِيهِمْ وَتَشْهَدُ أَرْجُلُهُم بِمَا كَانُوا يَكْسِبُونَ", meaning:"Bugun og'izlarini muhrlaymiz, qo'llari Bizga so'zlaydi, oyoqlari qilgan ishlariga guvohlik beradi.",
+     notes:"&bull; <span class='w'>نَخْتِمُ</span> = muhrlaymiz &middot; <span class='w'>أَفْوَاهِهِمْ</span> = og'izlari (فَم + هِمْ)<br>&bull; <span class='w'>تُكَلِّمُنَا أَيْدِيهِمْ</span> = \"qo'llari Bizga so'zlaydi\" — so'z tartibiga e'tibor bering: fe'l avval, ega keyin keldi (Arabchada odatiy tartib) <span class='review'>&#8635; 20-dars</span><br>&bull; Bu oyat qiyomat kunida tilning yolg'on gapirishi mumkinligini, lekin a'zolarning haqiqatni yashira olmasligini ko'rsatadi — kunlik hayotda tilimizga qanchalik e'tibor berishimiz kerakligi haqida chuqur ogohlantirish"},
+    {ref:"78–79-oyatlar — suyaklar bahsi", ar:"وَضَرَبَ لَنَا مَثَلًا وَنَسِيَ خَلْقَهُ ۖ قَالَ مَن يُحْيِي الْعِظَامَ وَهِيَ رَمِيمٌ ﴿٧٨﴾ قُلْ يُحْيِيهَا الَّذِي أَنشَأَهَا أَوَّلَ مَرَّةٍ ۖ وَهُوَ بِكُلِّ خَلْقٍ عَلِيمٌ", meaning:"U Bizga masal keltirdi va o'z yaratilishini unutdi: \"Chirigan suyaklarni kim tiriltiradi?\" — dedi. Ayt: \"Ularni birinchi marta yaratgan Zot tiriltiradi — U har bir yaratishni Biluvchidir.\"",
+     notes:"&bull; Rivoyatda — bir mushrik chirigan suyakni qo'lida ushqilab, Payg'ambar ﷺ oldiga kelib, \"buni Alloh tiriltiraradimi?\" deb masxara qilgan. Javob shu ikki oyatda.<br>&bull; <span class='w'>مَن يُحْيِي الْعِظَامَ</span> = \"suyaklarni kim tiriltiradi?\" — savol shaklida e'tiroz<br>&bull; <span class='w'>قُلْ</span> <span class='review'>&#8635; 3–6-darslar</span> = Ayt — javob buyrug'i<br>&bull; Javobning mantig'i juda oddiy va kuchli: birinchi marta yo'qdan yaratgan Zot uchun, allaqachon bir marta bo'lgan narsani qayta yaratish qiyinroq emas — aksincha, osonroq"},
+    {ref:"82-oyat — Kun fayakun", ar:"إِنَّمَا أَمْرُهُ إِذَا أَرَادَ شَيْئًا أَن يَقُولَ لَهُ كُن فَيَكُونُ", meaning:"Uning ishi shuki, bir narsani xohlasa, unga faqat \"Bo'l!\" deydi — u bo'ladi.",
+     notes:"&bull; <span class='w'>إِنَّمَا</span> = \"faqat, shunchaki\" — cheklovchi yuklama, yangi<br>&bull; <span class='w'>إِذَا أَرَادَ</span> <span class='review'>&#8635; إِذَا، 19-dars</span> = xohlagan vaqtda<br>&bull; <span class='w'>كُن فَيَكُونُ</span> = \"Bo'l! — va bo'ladi\" — Qur'ondagi eng qisqa va eng kuchli ikki so'zlardan biri. كُن — buyruq (\"bo'l\"), يَكُونُ — natija (\"bo'ladi\"), orasida vaqt yo'q"},
+    {ref:"83-oyat — yakun", ar:"فَسُبْحَانَ الَّذِي بِيَدِهِ مَلَكُوتُ كُلِّ شَيْءٍ وَإِلَيْهِ تُرْجَعُونَ", meaning:"Bas, har narsaning mulki qo'lida bo'lgan Zot pokdir — Unga qaytariladilar.",
+     notes:"&bull; <span class='w'>سُبْحَانَ</span> = pok, nuqsonlardan xoli — tasbeh so'zining ildizi<br>&bull; <span class='w'>بِيَدِهِ</span> <span class='review'>&#8635; 21-dars, 1-oyat, Al-Mulk</span> — xuddi shu ibora bilan boshlangan surada takrorlanadi, ikkala sura ham \"mulk Uning qo'lida\" bilan boshlanadi/tugaydi<br>&bull; <span class='w'>تُرْجَعُونَ</span> = qaytariladilar — sura \"Bo'l\" bilan boshlangan hayotning, oxir-oqibat qaytish bilan tugashini eslatib yakunlaydi"}
+  ],
+  synth:"Yosinning uchta qismi — ogohlantirish, qissasi, dalil — aslida bitta savolga javob beradi: qayta tirilish mumkinmi? 78–79-oyatlardagi suyak masali va 82-oyatdagi \"Kun fayakun\" birgalikda javob beradi: Yaratgan Zot uchun birinchi marta yaratish ham, qayta yaratish ham bir xil — bitta so'z, bitta buyruq masalasi.",
+  tafakkur:"Payg'ambar ﷺ dan rivoyat qilinadi: \"Har narsaning yuragi bor, Qur'onning yuragi — Yosindir.\" Ba'zi olimlar buni sura o'qilganda savob ko'payishi haqida tushunsalar, ko'plari buni suraning mazmuni bilan bog'laydi: xuddi yurak butun tanani tirik saqlagani kabi, Yosin ham imonning markaziy nuqtasi — qayta tirilish haqiqatini — yuraklarga jonlantiradi.<br><br>Shahar chekkasidan yugurib kelgan kishining qissasi (20–27-oyatlar) ham chuqur bir saboq: u hech kimni tanimagan, hech qanday mukofot va'da qilinmagan, hatto o'z qavmi tomonidan o'ldirilgan — lekin so'nggi nafasida ham qavmiga g'azab emas, faqat ularning ham najot topishini orzu qilgan. Bu — sizning ham, Qur'on o'rganishda faqat o'zingiz uchun emas, atrofingizdagilar uchun ham foyda tilashingiz kerakligi haqida yashirin da'vat.",
+  talaffuz:"يَسْعَىٰ va تَجْرِي kabi fe'llarda oxirgi ى harfi (alif maqsura) — \"a\" tovushi bilan o'qiladi, lekin yozilishi ی shaklida. Buni ي (uzun \"i\") bilan aralashtirmang.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"78–79-oyatlarda qanday e'tirozga javob berilyapti?", options:["Namoz vaqti haqida","Chirigan suyaklarni qayta tiriltirish mumkinligi haqida","Qur'onning tili haqida"], correct:1, explain:"Mushrik chirigan suyakni ko'rsatib, qayta tirilishni masxara qilgan — javob shunga berilgan."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"كُن فَيَكُونُ iborasi nima uchun \"eng qisqa va kuchli\" deb ta'riflandi?", answer:"Ikki so'zda — buyruq (كُن) va natija (يَكُونُ) — orasida hech qanday vaqt yoki qiyinchilik yo'qligini ko'rsatadi."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Ildizlarni bog\'lang', pairs:[{l:"جَاءَ",r:"16-darsdagi o'tgan zamon fe'li"},{l:"قُلْ",r:"3–6-darslardagi buyruq"},{l:"إِذَا",r:"19-darsdagi shart bog'lovchisi"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"Yosinning boshlanishi (1-oyat) va oxiri (83-oyat) orasida qanday mavzuiy bog'liqlik bor? \"بِيَدِهِ\" so'zini eslang.", answer:"1-oyatda Payg'ambarning haqligi qasam bilan tasdiqlanadi; 83-oyatda \"har narsa Uning qo'lida\" deb yakunlanadi — Al-Mulk (21-dars) surasi bilan bir xil ibora, ikkala sura ham Allohning mutlaq hukmronligini ta'kidlaydi."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"Qolgan oyatlarni (5–12, 14–19, 22–37, 41–64, 66–77, 80–81) to'liq Qur'on bo'limida oching va \"Shahar egalari\" qissasining oldingi qismini (14–19) o'qib, nima uchun elchilar rad etilganini toping.", answer:"O'zingizni sinang — 15–16-oyatlarda qavm elchilarni \"biz kabi odam\" deb rad etadi, elchilar esa Allohdan guvoh bo'lishini so'raydi."}
+  ],
+  vocab:{
+    core:[["جَاءَ","keldi"],["قَالَ","dedi"],["يَعْلَمُونَ","bilishadi"],["أَرَادَ","xohladi"],["كُن","bo'l"],["يَكُونُ","bo'ladi"],["رَبِّي","Robbim"]],
+    recognition:[["الْمُرْسَلِينَ","elchilar"],["سَدًّا","to'siq"],["يَسْعَىٰ","yuguradi"],["مُّهْتَدُونَ","to'g'ri yo'lda bo'lganlar"],["تَجْرِي","yuradi/oqadi"],["الْعِظَامَ","suyaklar"],["مَلَكُوتُ","mulk, hukmronlik"]]
+  },
+  closing:"Yosinning qolgan 73 oyatini \"To'liq Qur'on\"da o'qing — endi qissa qismida (5–19-oyatlar) va dalil qismida (41–77-oyatlar) o'zingiz tanish naqshlarni izlab toping."
+},
+
+// ============ UNIT 23 ============
+{
+  id:23, phase:3, title:"Oyat al-Kursiy: Alloh sifatlari haqidagi so'zlar", ar:"آية الكرسي", surahApiNum:2,
+  intro:"Al-Baqara surasining 255-oyati — Qur'ondagi eng buyuk oyat, deb Payg'ambar ﷺ tomonidan aytilgan. Bu bitta uzun oyat, o'nlab kishi tomonidan yoddan bilinadi, lekin ma'nosi ko'pincha to'liq anglanmaydi. Bu darsda uni to'liq, so'zma-so'z ochamiz — chunki bu oyat, aslida, Allohning zoti va sifatlari haqida Qur'ondagi eng zich, eng to'plangan bayonot.",
+  ayahs:[],
+  wbw:[
+    {ref:"1-qism", ar:"اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ", meaning:"Alloh — Undan boshqa iloh yo'q, U Hay (tirik), Qayyum (barchani qo'llab-quvvatlovchi)dir.",
+     notes:"&bull; <span class='w'>لَا إِلَٰهَ إِلَّا هُوَ</span> <span class='review'>&#8635; 5-dars, Al-Ixlos naqshi</span> = \"Undan boshqa iloh yo'q\" — tavhidning eng qisqa ifodasi<br>&bull; <span class='w'>الْحَيُّ</span> = Hay, abadiy tirik — hech qachon o'lmaydigan, boshlanishi va oxiri yo'q hayot<br>&bull; <span class='w'>الْقَيُّومُ</span> = Qayyum — o'zi hech kimga muhtoj bo'lmagan, lekin butun borliq Unga muhtoj bo'lgan Zot. Bu ikki ism birga kelishi tasodifiy emas: Hay — Uning zoti mukammal ekanini, Qayyum — butun olamni ushlab turishini bildiradi"},
+    {ref:"2-qism", ar:"لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ", meaning:"Uni na mudroq, na uyqu tutmaydi. Osmonlarda va yerda bor narsalarning barchasi Unikidir.",
+     notes:"&bull; <span class='w'>لَا تَأْخُذُهُ</span> = \"Uni tutmaydi\" — لَا + fe'l + هُ (Uni)<br>&bull; <span class='w'>سِنَةٌ</span> / <span class='w'>نَوْمٌ</span> = mudroq / uyqu — ikkalasi birga zikr etilishi, hatto eng kichik zaiflik alomati ham Allohga xos emasligini ta'kidlash uchun<br>&bull; <span class='w'>لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ</span> = \"osmonlar va yerdagi hamma narsa Unikidir\" — لَ (egalik) + مَا (nima bo'lsa ham)"},
+    {ref:"3-qism", ar:"مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ", meaning:"Uning huzurida, Uning izmisiz kim shafoat qila oladi? U ularning oldida va ortida bo'lgan narsalarni biladi. Ular Uning ilmidan, U xohlagan narsadan boshqasini qamrab ololmaydilar.",
+     notes:"&bull; <span class='w'>مَن ذَا الَّذِي</span> = \"kim bo'lardi, o'sha kim\" — kuchli ritorik savol qolipi, \"hech kim\" degan javobni allaqachon o'z ichiga oladi<br>&bull; <span class='w'>يَشْفَعُ</span> = shafoat qiladi &middot; <span class='w'>بِإِذْنِهِ</span> = \"Uning izni bilan\" — hatto shafoat ham Allohning ruxsatisiz bo'lmaydi<br>&bull; <span class='w'>لَا يُحِيطُونَ</span> = \"qamrab ololmaydilar\" — insonning ilmi, Allohning ilmi oldida cheklangan ekanini bildiradi"},
+    {ref:"4-qism — yakun", ar:"وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ", meaning:"Uning Kursisi osmonlar va yerni qamrab oldi. Ularni saqlash Uni charchatmaydi. U — Aliy (Yuksak), Azim (Buyuk)dir.",
+     notes:"&bull; <span class='w'>كُرْسِيُّهُ</span> — shu so'zdan oyatning nomi kelgan (\"Kursiy\") — Allohning ilmi va hukmronligining ulug'ligini bildiruvchi ta'rif, aniq shakli faqat Allohga ma'lum<br>&bull; <span class='w'>لَا يَئُودُهُ</span> = \"Uni charchatmaydi/og'irlik qilmaydi\" — butun koinotni saqlash Alloh uchun hech qanday zo'riqish emas<br>&bull; <span class='w'>الْعَلِيُّ الْعَظِيمُ</span> = Yuksak, Buyuk — oyat Allohning ikki ulug' sifati bilan yakunlanadi"}
+  ],
+  synth:"Diqqat qiling — bu bitta oyatda Allohning 5 tadan ortiq sifati (Hay, Qayyum, Aliy, Azim va yashirin — Alim, Qodir) zich joylashgan, va deyarli har bir jumla oldingi darslarda ko'rgan naqshlar bilan qurilgan: لَا...إِلَّا (istisno, 7-dars), مَا (nisbiy olmosh), -هُ/-هِمْ oilasi (14-dars). Bitta oyat, lekin butun kursning naqshlari shu yerda jamlangan.",
+  tafakkur:"Payg'ambar ﷺ Ubay ibn Ka'bdan so'raganlar: \"Alloh kitobida qaysi oyat eng buyuk?\" Ubay javob berganda (aynan shu oyat), Payg'ambar ﷺ ko'kragiga qo'l urib: \"Bu ilm senga muborak bo'lsin, ey Abu Munzir\" degan, deb rivoyat qilinadi. Boshqa rivoyatda, kim bu oyatni har namozdan keyin o'qisa, jannatga kirishiga o'lim bilan uning orasida faqat jonini olish qolishi aytiladi.<br><br>Bu oyatning markazidagi g'oya — Alloh hech qachon uxlamaydi, hech qachon charchamaydi, sizni hech qachon \"unutmaydi\". Kechasi yolg'iz his qilgan, kimga ham aytolmagan tashvishingiz bo'lsa, shuni biling: Qayyum bo'lgan Zot o'sha lahzada ham sizni ko'rib, biladi va ushlab turibdi.",
+  talaffuz:"يَئُودُهُ so'zidagi ء (hamza) — tomoqning eng chuqur nuqtasidan chiqadigan to'xtash tovushi. Buni oddiy alif bilan aralashtirmang, chunki hamza mustaqil harakatga ega bo'lgan haqiqiy undosh hisoblanadi.",
+  exercises:[
+    {type:'reveal', kicker:'TEKSHIRUV', prompt:"Oyatda nechta Allohning ismi/sifati zikr etiladi? Ularni sanang.", answer:"Kamida beshta: الْحَيُّ، الْقَيُّومُ، الْعَلِيُّ، الْعَظِيمُ — va bilvosita عِلْمِهِ (ilmi) orqali Alim."},
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"سِنَةٌ va نَوْمٌ so'zlari nima ma'noni bildiradi va nima uchun ikkalasi birga keladi?", options:["Ikkalasi \"uyqu\" — takror, ta'kid uchun","Mudroq va chuqur uyqu — hatto eng kichik zaiflik ham yo'qligini ko'rsatish uchun","Ikkalasi ham vaqt birligi"], correct:1, explain:"سِنَةٌ — mudroq (uyqudan oldingi holat), نَوْمٌ — to'liq uyqu. Ikkalasi zikr etilishi — hatto eng kichik zaiflik alomati ham Allohga yaqinlashmasligini ta'kidlaydi."},
+    {type:'match', kicker:'MASHQ 2 · O\'RTA · Ma\'nolarni bog\'lang', pairs:[{l:"الْحَيُّ",r:"abadiy tirik"},{l:"الْقَيُّومُ",r:"barchani qo'llab-quvvatlovchi"},{l:"كُرْسِيُّهُ",r:"Uning Kursisi/hukmronligi"},{l:"يَشْفَعُ",r:"shafoat qiladi"}]},
+    {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"Oyatni yopiq kitobdan (Arabcha matnga qaramasdan) to'rt qismga bo'lib, o'zbekchaga o'giring.", answer:"O'zingizni sinang — 4 qismning tarjimasi yuqorida berilgan."},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ jumlasidagi إِلَّا so'zi qanday naqshni eslatadi (qaysi darsda ko'rgansiz)?", answer:"7-darsdagi istisno naqshi — \"...dan boshqa\" ma'nosini beradi, bu yerda \"Uning izmisiz\" (hech kim shafoat qilolmaydi)."}
+  ],
+  vocab:{
+    core:[["اللَّهُ","Alloh"],["الْحَيُّ","abadiy Tirik"],["الْقَيُّومُ","barchani Qo'llovchi"],["يَعْلَمُ","biladi"],["السَّمَاوَاتِ","osmonlar"],["الْأَرْضَ","yer"]],
+    recognition:[["يَشْفَعُ","shafoat qiladi"],["بِإِذْنِهِ","Uning izni bilan"],["كُرْسِيُّهُ","Uning Kursisi"],["يَئُودُهُ","Uni charchatadi"],["الْعَلِيُّ","Yuksak"],["الْعَظِيمُ","Buyuk"]]
+  },
+  closing:"Bu oyatni endi Al-Baqara surasining 255-oyati sifatida \"To'liq Qur'on\"dagi o'rnida ham ko'ring — atrofidagi oyatlar bilan birga o'qish, uning nega aynan shu joyda kelganini his qildiradi."
+},
+
+// ============ UNIT 24 ============
+{
+  id:24, phase:3, title:"Yusuf surasi (boshlanishi): Voqea qanday hikoya qilinadi", ar:"سورة يوسف", surahApiNum:12,
+  intro:"Yusuf surasi — Qur'ondagi yagona sura, boshidan oxirigacha bitta uzluksiz voqeani hikoya qiladi, shu sababli \"Ahsanul-Qasas\" (eng go'zal qissa) deb ataladi. Bu darsda kursimiz endi yangi bir mahoratga o'tadi: alohida oyatlar emas, balki bog'langan voqea zanjirini kuzatish. E'tibor bering — hikoyachi fe'llari (قَالَ، إِذْ، فَلَمَّا) qanday takrorlanib, voqeani oldinga suradi.",
+  ayahs:[],
+  wbw:[
+    {ref:"3-oyat — kirish", ar:"نَحْنُ نَقُصُّ عَلَيْكَ أَحْسَنَ الْقَصَصِ بِمَا أَوْحَيْنَا إِلَيْكَ هَٰذَا الْقُرْآنَ", meaning:"Biz senga bu Qur'onni vahiy qilish bilan, qissalarning eng go'zalini hikoya qilamiz.",
+     notes:"&bull; <span class='w'>نَحْنُ نَقُصُّ</span> = \"Biz hikoya qilamiz\" — hozirgi zamon <span class='review'>&#8635; 15-dars</span>, نَحْنُ (biz) olmoshi qo'shimcha ta'kid uchun alohida ham kelgan<br>&bull; <span class='w'>أَحْسَنَ الْقَصَصِ</span> = \"qissalarning eng go'zali\" — أَحْسَنَ (eng go'zal) <span class='review'>&#8635; 28-darsda qiyoslash chuqurroq</span><br>&bull; <span class='w'>أَوْحَيْنَا</span> = vahiy qildik — أَ-و-ح-ى ildizi, \"vahiy\" so'zining o'zi shu yerdan"},
+    {ref:"4-oyat — tush", ar:"إِذْ قَالَ يُوسُفُ لِأَبِيهِ يَا أَبَتِ إِنِّي رَأَيْتُ أَحَدَ عَشَرَ كَوْكَبًا وَالشَّمْسَ وَالْقَمَرَ رَأَيْتُهُمْ لِي سَاجِدِينَ", meaning:"Bir vaqt Yusuf otasiga: \"Otajon, men o'n bir yulduzni, quyosh va oyni ko'rdim — ular menga sajda qilayotganini ko'rdim\" — dedi.",
+     notes:"&bull; <span class='w'>إِذْ</span> = \"bir vaqt(da)\" — hikoyani boshlash/sahna almashtirish uchun ishlatiladigan so'z, Yusuf surasida juda ko'p uchraydi, har safar yangi sahnaga o'tishni bildiradi<br>&bull; <span class='w'>قَالَ</span> <span class='review'>&#8635; 16-dars</span> — \"dedi\", butun surada eng ko'p takrorlanadigan fe'l (dialog bilan hikoya qilinadi)<br>&bull; <span class='w'>يَا أَبَتِ</span> = \"otajon\" (\"otam\"ning erkalatib chaqirilishi) &middot; <span class='w'>رَأَيْتُ</span> = ko'rdim (تُ = men)<br>&bull; <span class='w'>سَاجِدِينَ</span> = sajda qiluvchilar — bu tush Yusufning kelajakdagi martabasiga ishora"},
+    {ref:"5-oyat — otaning ogohlantirishi", ar:"قَالَ يَا بُنَيَّ لَا تَقْصُصْ رُؤْيَاكَ عَلَىٰ إِخْوَتِكَ فَيَكِيدُوا لَكَ كَيْدًا ۖ إِنَّ الشَّيْطَانَ لِلْإِنسَانِ عَدُوٌّ مُّبِينٌ", meaning:"(Otasi) dedi: \"O'g'ilcham, tushingni akalaringga aytma — senga hiyla ishlatishlari mumkin. Albatta shayton inson uchun ochiq dushmandir.\"",
+     notes:"&bull; <span class='w'>لَا تَقْصُصْ</span> = \"aytma, hikoya qilma\" — man qiluvchi buyruq <span class='review'>&#8635; 10-dars naqshi</span><br>&bull; <span class='w'>إِخْوَتِكَ</span> = \"akalaring\" — إِخْوَة (birodarlar) + كَ (sening)<br>&bull; <span class='w'>فَيَكِيدُوا لَكَ كَيْدًا</span> = \"senga hiyla ishlatishlari mumkin\" — فَ natija bog'lovchisi, كَيْدًا (hiyla) so'zi fe'l bilan birga ikki marta kelib ta'kidlanadi (kеyinchalik surada bu so'z akalarning rejasi uchun qayta-qayta ishlatiladi)"},
+    {ref:"8–9-oyatlar — hasad", ar:"إِذْ قَالُوا لَيُوسُفُ وَأَخُوهُ أَحَبُّ إِلَىٰ أَبِينَا مِنَّا وَنَحْنُ عُصْبَةٌ ﴿٨﴾ اقْتُلُوا يُوسُفَ أَوِ اطْرَحُوهُ أَرْضًا يَخْلُ لَكُمْ وَجْهُ أَبِيكُمْ", meaning:"Ular: \"Albatta Yusuf va uning ukasi otamizga bizdan ko'ra suyukliroq, holbuki biz kuchli guruhmiz\" — dedilar. \"Yusufni o'ldiringlar yoki bir yerga tashlanglar — otangizning yuzi (e'tibori) sizga qoladi.\"",
+     notes:"&bull; <span class='w'>قَالُوا</span> = dedilar (ular) — قَالَ fe'lining ko'plik shakli <span class='review'>&#8635; 12-dars, birlik/ko'plik farqi</span><br>&bull; <span class='w'>أَحَبُّ</span> = \"suyukliroq\" — qiyoslash shakli, oldida أَ- qo'shilgan <span class='review'>&#8635; 28-darsda chuqurroq</span><br>&bull; <span class='w'>اقْتُلُوا</span> / <span class='w'>اطْرَحُوهُ</span> = \"o'ldiringlar\" / \"tashlanglar\" — ikkala buyruq ham ko'plikka, dahshatli rejaning boshlanishi shu ikki so'zda"},
+    {ref:"15-oyat — quduq va vahiy", ar:"فَلَمَّا ذَهَبُوا بِهِ وَأَجْمَعُوا أَن يَجْعَلُوهُ فِي غَيَابَتِ الْجُبِّ ۚ وَأَوْحَيْنَا إِلَيْهِ لَتُنَبِّئَنَّهُم بِأَمْرِهِمْ هَٰذَا وَهُمْ لَا يَشْعُرُونَ", meaning:"Uni olib ketib, quduq tubiga tashlashga qaror qilishganda — Biz unga vahiy qildik: \"Sen ularga bu ishlarini xabar berasan, ular esa (seni tanimay, o'sha payt) bilmaydilar.\"",
+     notes:"&bull; <span class='w'>فَلَمَّا</span> = \"...gan payt, ...gach\" — voqеaning keyingi bosqichiga o'tish bog'lovchisi, Yusuf surasida takror-takror uchraydi va hikoyani sahna-sahna oldinga suradi<br>&bull; <span class='w'>غَيَابَتِ الْجُبِّ</span> = quduqning tubi/qorong'usi<br>&bull; Diqqat qiling: bu — eng dahshatli lahzada, Alloh Yusufga to'g'ridan-to'g'ri xushxabar (vahiy) yubordi — kelajakda u shu birodarlarga o'zi kim ekanini aytishini bildirdi. Zulmat ichida ham najot va'dasi bor edi"},
+    {ref:"18-oyat — yolg'on qon", ar:"وَجَاءُوا عَلَىٰ قَمِيصِهِ بِدَمٍ كَذِبٍ ۚ قَالَ بَلْ سَوَّلَتْ لَكُمْ أَنفُسُكُمْ أَمْرًا ۖ فَصَبْرٌ جَمِيلٌ ۖ وَاللَّهُ الْمُسْتَعَانُ عَلَىٰ مَا تَصِفُونَ", meaning:"Uning ko'ylagiga yolg'on qon surtib keldilar. (Otasi) dedi: \"Yo'q! Nafslaringiz sizlarga bir ishni chiroyli ko'rsatibdi. Endi go'zal sabr qilaman. Aytayotgan narsalaringizga qarshi Allohdan yordam so'raladi.\"",
+     notes:"&bull; <span class='w'>بِدَمٍ كَذِبٍ</span> = \"yolg'on qon bilan\" — akalar bo'ri yeb qo'ydi, deb yolg'on gapirib, ko'ylakka qo'y qonini surtib kelishgan<br>&bull; <span class='w'>سَوَّلَتْ لَكُمْ أَنفُسُكُمْ</span> = \"nafslaringiz sizlarga chiroyli ko'rsatdi\" — ota ularning yolg'onini darhol sezadi, lekin janjal qilmaydi<br>&bull; <span class='w'>صَبْرٌ جَمِيلٌ</span> = \"go'zal sabr\" — shikoyatsiz, faqat Allohga tayanib sabr qilish — bu ibora musulmonlar orasida hanuz eng qiyin lahzalarda ishlatiladi"}
+  ],
+  synth:"Bu 6 parchada hikoyachi vositalarini kuzatdingiz: إِذْ (yangi sahna), قَالَ/قَالُوا (kim gapiryapti), فَلَمَّا (voqea rivoji). Bu uchtasi — Yusuf surasining, va umuman Qur'ondagi qissalarning, \"skeleti\". Endi qolgan 111 oyatni o'qiganingizda, shu uch so'zni ko'rganingizda darhol \"yangi sahna boshlanyapti\" deb sezasiz.",
+  tafakkur:"Yusuf surasi — quduqqa tashlanish, qullikka sotilish, tuhmat bilan qamalish kabi bir necha bora \"eng pastki nuqta\"dan o'tadi, lekin har safar Alloh yordami keyingi eshikni ochadi. \"فَصَبْرٌ جَمِيلٌ\" — \"go'zal sabr\" iborasi shuning uchun kuchli: bu passiv chidash emas, Allohga faol ishonch bilan qilinadi. Payg'ambar ﷺ ham bu suradan tasalli topgan — Makkada eng og'ir yillarida, amakisi Abu Tolib va rafiqasi Xadichaning vafotidan keyin, ayni shu sura nozil bo'lgan, deyiladi.",
+  talaffuz:"قَالَ so'zidagi ق (qof) — chuqur tomoqdan chiqadigan qalin \"k\" tovushi, oddiy ك (kof) bilan aralashtirmang. Bu farqni his qilmasangiz, قَالَ (dedi) bilan كَانَ (edi) kabi so'zlarni farqlash qiyinlashadi.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"إِذْ so'zi qissada qanday vazifa bajaradi?", options:["Savol beradi","Yangi sahnaga o'tishni bildiradi","Inkor qiladi"], correct:1, explain:"إِذْ — \"bir vaqt(da)\" ma'nosida, hikoyada yangi sahnaga o'tishni bildiradi."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"5-oyatda ota Yusufga nima uchun tushni akalariga aytmaslikni maslahat beradi?", answer:"Akalarining hasad qilib, hiyla ishlatishidan (فَيَكِيدُوا لَكَ كَيْدًا) qo'rqqani uchun."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Naqshlarni bog\'lang', pairs:[{l:"قَالَ / قَالُوا",r:"birlik / ko'plik, 12-dars"},{l:"لَا تَقْصُصْ",r:"man qiluvchi buyruq, 10-dars"},{l:"أَحَبُّ",r:"qiyoslash shakli, 28-dars"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"18-oyatda ota akalarning yolg'onini bilgani holda nima uchun ularni ayblab, janjal qilmaydi?", answer:"صَبْرٌ جَمِيلٌ (go'zal sabr) yo'lini tanlaydi — shikoyat qilmasdan, Allohdan yordam so'rab, sabr qiladi."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"Surani \"To'liq Qur'on\"da davom ettirib o'qing (19–34-oyatlar) va Yusufning Misrga qanday olib kelinganini toping.", answer:"O'zingizni sinang — karvon uni quduqdan chiqarib, qul sifatida Misrga olib boradi va sotadi."}
+  ],
+  vocab:{
+    core:[["قَالَ","dedi"],["إِذْ","bir vaqt(da)"],["أَخُوهُ","uning ukasi/akasi"],["رَأَيْتُ","ko'rdim"],["إِخْوَة","birodarlar"],["أَبِي","otam"]],
+    recognition:[["الْقَصَصِ","qissalar"],["كَيْدًا","hiyla"],["الْجُبِّ","quduq"],["قَمِيصِهِ","uning ko'ylagi"],["صَبْرٌ جَمِيلٌ","go'zal sabr"],["يَشْعُرُونَ","his qiladilar/bilishadi"]]
+  },
+  closing:"Yusuf surasi 111 oyat — bugungi 6 parcha faqat boshlanishi. \"To'liq Qur'on\"da davom eting: Zulayho bilan voqea, zindon, Misr aziz bo'lishi, va oxirida oilaning qayta qovushishi — hammasi kutmoqda."
+},
+
+// ============ UNIT 25 ============
+{
+  id:25, phase:3, title:"Ar-Rahmon surasi: Takrorlanuvchi naqshlar", ar:"سورة الرحمن", surahApiNum:55,
+  intro:"Ar-Rahmon — 78 oyat, va bitta jumla 31 marta aynan takrorlanadi: فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ — \"Bas, Robbingizning qaysi ne'matlarini yolg'on deysizlar?\" Bu darsda shu takrorning o'zi — nima uchun, kimga, va qanday kuch bilan aytilgani — asosiy mavzu. Shuningdek, bu suradagi كُمَا (\"ikkovingiz\") kabi so'zlar yangi bir naqshni ochadi: ikki tomonga — odamlar va jinlarga — birga murojaat qilish.",
+  ayahs:[],
+  wbw:[
+    {ref:"1–4-oyatlar — ta'lim ne'mati", ar:"الرَّحْمَٰنُ ﴿١﴾ عَلَّمَ الْقُرْآنَ ﴿٢﴾ خَلَقَ الْإِنسَانَ ﴿٣﴾ عَلَّمَهُ الْبَيَانَ", meaning:"Rahmon. Qur'onni o'rgatdi. Insonni yaratdi. Unga bayonni (aniq so'zlashni) o'rgatdi.",
+     notes:"&bull; Diqqat qiling — sura فِعْل (fe'l) bilan boshlanmaydi, ismning o'zi bilan boshlanadi: \"Rahmon\" — go'yo butun sura shu ismning izohi<br>&bull; <span class='w'>عَلَّمَ</span> = o'rgatdi — ikki marta keladi (2 va 4-oyatlarda), avval Qur'on, keyin nutq/bayon o'rgatilgani aytiladi — Qur'on nutqdan OLDIN zikr etiladi, bu tasodif emas<br>&bull; <span class='w'>الْبَيَانَ</span> = bayon, aniq ifoda qila olish — insonni boshqa jonzotlardan ajratib turadigan asosiy qobiliyat"},
+    {ref:"19–22-oyatlar — ikki dengiz", ar:"مَرَجَ الْبَحْرَيْنِ يَلْتَقِيَانِ ﴿١٩﴾ بَيْنَهُمَا بَرْزَخٌ لَّا يَبْغِيَانِ ﴿٢٠﴾ فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ ﴿٢١﴾ يَخْرُجُ مِنْهُمَا اللُّؤْلُؤُ وَالْمَرْجَانُ", meaning:"Ikki dengizni qo'yib yubordi, uchrashadilar — ular orasida to'siq bor, bir-biriga o'tib ketmaydilar. Bas, Robbingizning qaysi ne'matlarini yolg'on deysizlar? Ulardan dur va marjon chiqadi.",
+     notes:"&bull; <span class='w'>الْبَحْرَيْنِ</span> = ikki dengiz — chuchuk va sho'r suv birlashgan joyda ham aralashmay qolishi, ilmiy mo''jiza sifatida ham tilga olinadi<br>&bull; <span class='w'>بَيْنَهُمَا</span> = \"ikkovi orasida\" — هُمَا qo'shimchasi \"ular ikkovi\" degan ma'noni beradi, oddiy \"ular\" (هُمْ)dan farqli, aynan ikkitalik uchun ishlatiladi<br>&bull; <span class='w'>رَبِّكُمَا</span> = \"ikkovingizning Robbingiz\" — كُمَا \"siz ikkovingiz\" — bu murojaat odamlar va jinlarga birga qaratilgan, chunki Ar-Rahmon ikkala turdagi maxluqotga ham murojaat qiladi"},
+    {ref:"26–27-oyatlar — mash'hur jumla", ar:"كُلُّ مَنْ عَلَيْهَا فَانٍ ﴿٢٦﴾ وَيَبْقَىٰ وَجْهُ رَبِّكَ ذُو الْجَلَالِ وَالْإِكْرَامِ", meaning:"Yer yuzidagi hamma narsa yo'q bo'lib ketuvchidir. Faqat Jalol va Ikrom Egasi bo'lgan Robbingning Zoti (Yuzi) qoladi.",
+     notes:"&bull; <span class='w'>كُلُّ مَنْ عَلَيْهَا فَانٍ</span> = \"unda (yerda) bo'lgan hamma narsa yo'qoluvchidir\" — eng qisqa, eng kuchli o'tkinchilik haqidagi jumlalardan biri<br>&bull; <span class='w'>يَبْقَىٰ</span> = qoladi — فَانٍ (yo'qoluvchi) so'ziga qarama-qarshi qo'yiladi<br>&bull; <span class='w'>ذُو الْجَلَالِ وَالْإِكْرَامِ</span> = \"Ulug'lik va Ikrom Egasi\" — sura oxirida (78-oyat) ham aynan shu ibora bilan yakunlanadi, ramka hosil qiladi"},
+    {ref:"33-oyat — chegara", ar:"يَا مَعْشَرَ الْجِنِّ وَالْإِنسِ إِنِ اسْتَطَعْتُمْ أَن تَنفُذُوا مِنْ أَقْطَارِ السَّمَاوَاتِ وَالْأَرْضِ فَانفُذُوا ۚ لَا تَنفُذُونَ إِلَّا بِسُلْطَانٍ", meaning:"Ey jin va ins jamoasi! Osmonlar va yerning chekkalaridan chiqib keta olsangiz, chiqib ketinglar — faqat kuch-imkoniyat bilangina chiqa olasizlar.",
+     notes:"&bull; <span class='w'>يَا مَعْشَرَ الْجِنِّ وَالْإِنسِ</span> = \"ey jin va ins jamoasi\" — sura kimga qaratilganini ochiq aytadi<br>&bull; <span class='w'>إِنِ اسْتَطَعْتُمْ</span> = \"agar qodir bo'lsangiz\" — إِنِ <span class='review'>&#8635; 19-dars, shart bog'lovchisi</span><br>&bull; Bu oyat — inson va jinning, qanchalik ilm-fan taraqqiy etsa ham, Allohning ruxsatisiz koinot chegarasidan chiqa olmasligini bildiradi"}
+  ],
+  synth:"فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ jumlasi surada 31 marta takrorlanadi — har safar oldingi 2-5 oyatda zikr etilgan bir ne'matdan keyin. Bu — Qur'onning eng aniq \"nafas olish\" naqshi: dalil, keyin savol, dalil, keyin savol. كُمَا/تُكَذِّبَانِ dagi \"ikkovlik\" qo'shimchasi (-َانِ) endi sizga tanish bo'lishi kerak — bu suraning o'ziga xos imzosi.",
+  tafakkur:"Rivoyat qilinishicha, Payg'ambar ﷺ sahobalariga bu surani o'qib berganlarida, ular jim qolishgan. Keyin U zot: \"Men buni jinlarga o'qib berganimda, ulardan sizlardan ko'ra go'zalroq javob keldi — har oyatdan keyin ular \"لَا بِشَيْءٍ مِّن نِّعَمِكَ رَبَّنَا نُكَذِّبُ فَلَكَ الْحَمْدُ\" (Robbimiz, hech bir ne'matingni yolg'on demaymiz, hamd Sengadir) deb javob berishgan\" — deganlar. Shu his bilan, bu surani o'qiganingizda, har safar فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ eshitilganda, ichingizdan \"lā bi shay'in min ni'amika Rabbanā nukadhdhib\" deb javob berishni odat qiling — bu Qur'on bilan haqiqiy \"suhbat\"ning namunasi.",
+  talaffuz:"تُكَذِّبَانِ so'zidagi ikkilangan ذّ (shadda bilan) — tilning uchi tishlarga tegib, tovush biroz cho'ziladi. Buni bitta ذ dan farqlab, kuchliroq talaffuz qiling.",
+  exercises:[
+    {type:'reveal', kicker:'TEKSHIRUV', prompt:"فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ jumlasi kimlarga qaratilgan va nechа marta takrorlanadi?", answer:"Odamlar va jinlarga (كُمَا — ikkovlik shakli) birga qaratilgan, 31 marta takrorlanadi."},
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"عَلَّمَ so'zi surada nechta ne'matga nisbatan ishlatiladi (1–4-oyatlarda)?", options:["Faqat bittaga — Qur'onga","Ikkitaga — Qur'on va bayon (nutq)ga","Uchtaga"], correct:1, explain:"عَلَّمَ الْقُرْآنَ (2-oyat) va عَلَّمَهُ الْبَيَانَ (4-oyat) — ikki marta, ikki xil ne'matga."},
+    {type:'match', kicker:'MASHQ 2 · O\'RTA · Ma\'nolarni bog\'lang', pairs:[{l:"فَانٍ",r:"yo'qoluvchi"},{l:"يَبْقَىٰ",r:"qoladi"},{l:"بَرْزَخٌ",r:"to'siq"},{l:"اللُّؤْلُؤُ",r:"dur (marvarid)"}]},
+    {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"26–27-oyatlar (كُلُّ مَنْ عَلَيْهَا فَانٍ...) sizga qanday hissiyot uyg'otadi? Bu oyat 21-darsdagi Al-Mulkning 1-2-oyatlari bilan qanday bog'lanadi?", answer:"Ikkalasi ham dunyoning o'tkinchiligini va Allohning abadiyligini ta'kidlaydi — Al-Mulk \"O'lim va hayotni yaratdi\" desa, Ar-Rahmon \"hammasi yo'qoluvchi, faqat Uning Zoti qoladi\" deydi."},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"Suraning qolgan qismini (5–18, 23–32, 34–78-oyatlar) \"To'liq Qur'on\"da o'qib, فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ jumlasi qaysi ne'matlardan keyin takrorlanishini besh joyda belgilang.", answer:"O'zingizni sinang — quyosh-oy hisobi, o'simliklar, ikki dengiz, jannat ne'matlari kabi turli mavzulardan keyin takrorlanadi."}
+  ],
+  vocab:{
+    core:[["الرَّحْمَٰنُ","Rahmon"],["عَلَّمَ","o'rgatdi"],["خَلَقَ","yaratdi"],["رَبِّكُمَا","ikkovingizning Robbingiz"],["فَانٍ","yo'qoluvchi"],["يَبْقَىٰ","qoladi"]],
+    recognition:[["الْبَيَانَ","bayon, nutq"],["الْبَحْرَيْنِ","ikki dengiz"],["بَرْزَخٌ","to'siq"],["ذُو الْجَلَالِ","Ulug'lik Egasi"],["الْجِنِّ وَالْإِنسِ","jin va ins"],["تُكَذِّبَانِ","(ikkovingiz) yolg'on deysizlar"]]
+  },
+  closing:"Ar-Rahmonni \"To'liq Qur'on\"da to'liq tinglang — har safar فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ eshitganingizda, ichingizdan javob bering. Bu suraning ta'siri o'qishda emas, tinglab-javob berishda his qilinadi."
+},
+
+// ============ UNIT 26 ============
+{
+  id:26, phase:3, title:"Ash-Shams surasi: Qasam ichish uslubi — kuchaytirish", ar:"سورة الشمس", surahApiNum:91,
+  intro:"Qur'onda ko'p sura قَسَم (qasam, ont) bilan boshlanadi — Alloh Öz yaratganlaridan biri bilan qasam ichadi, bu esa keyingi gapni juda kuchli ta'kidlash uchun ishlatiladigan uslub. Ash-Shams surasi shu uslubning eng zich namunasi: 15 oyatdan 7 tasi ketma-ket qasam bilan boshlanadi, faqat shundan keyin asosiy xabar keladi. Bu darsda shu qasamlar zanjirini va ular olib keladigan hayotiy haqiqatni ko'ramiz.",
+  ayahs:[],
+  wbw:[
+    {ref:"1–6-oyatlar — olti qasam", ar:"وَالشَّمْسِ وَضُحَاهَا ﴿١﴾ وَالْقَمَرِ إِذَا تَلَاهَا ﴿٢﴾ وَالنَّهَارِ إِذَا جَلَّاهَا ﴿٣﴾ وَاللَّيْلِ إِذَا يَغْشَاهَا ﴿٤﴾ وَالسَّمَاءِ وَمَا بَنَاهَا ﴿٥﴾ وَالْأَرْضِ وَمَا طَحَاهَا", meaning:"Quyosh va uning yorug'ligi bilan qasam! Uni ergashib boruvchi oy bilan qasam! Uni namoyon qiluvchi kunduz bilan qasam! Uni o'rovchi tun bilan qasam! Osmon va uni bino qilgan Zot bilan qasam! Yer va uni yoyib qo'ygan Zot bilan qasam!",
+     notes:"&bull; <span class='w'>وَ</span> — bu yerda oddiy \"va\" emas, qasam yuklamasi (\"...bilan qasam ichamanki\") — 6 marta ketma-ket takrorlanadi, kuchli ritm hosil qiladi<br>&bull; <span class='w'>إِذَا</span> <span class='review'>&#8635; 19-dars</span> = \"...gan vaqtda\" — oy quyoshga ergashgan, kunduz uni ochib bergan, tun uni o'rab olgan paytlar<br>&bull; Har bir qasam — kunlik hayotda ko'radigan tabiat hodisasi: quyosh, oy, kun, tun, osmon, yer. Alloh eng ulug' narsalar bilan emas, eng TANISH narsalar bilan qasam ichadi — go'yo \"har kuni ko'rib turgan narsalaringiz ham dalil\" deyapti"},
+    {ref:"7–8-oyatlar — markaziy xabar", ar:"وَنَفْسٍ وَمَا سَوَّاهَا ﴿٧﴾ فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا", meaning:"Nafs va uni mukammal qilgan Zot bilan qasam! U unga o'z yomonligi va taqvosini ilhomlantirdi.",
+     notes:"&bull; <span class='w'>نَفْسٍ</span> = nafs, jon, o'zlik — 7 ta qasamdan keyin, ASOSIY mavzu shu — inson qalbi<br>&bull; <span class='w'>سَوَّاهَا</span> = uni mukammal/tekis qildi <span class='review'>&#8635; Al-Infitor surasida, 29-dars, xuddi shu so'z takrorlanadi</span><br>&bull; <span class='w'>فَأَلْهَمَهَا فُجُورَهَا وَتَقْوَاهَا</span> = \"unga yomonligi va taqvosini ilhomlantirdi\" — bu Qur'ondagi inson tabiati haqidagi eng chuqur oyatlardan biri: har bir insonga ikkala yo'lni — yomonlik va yaxshilik — tanish qobiliyat berilgan, tanlov o'ziga qoldirilgan"},
+    {ref:"9–10-oyatlar — natija", ar:"قَدْ أَفْلَحَ مَن زَكَّاهَا ﴿٩﴾ وَقَدْ خَابَ مَن دَسَّاهَا", meaning:"Uni (nafsini) poklagan kishi haqiqatan yutdi. Uni bulg'agan kishi esa haqiqatan mahrum bo'ldi.",
+     notes:"&bull; <span class='w'>قَدْ أَفْلَحَ</span> = \"haqiqatan yutdi/najot topdi\" — قَدْ ta'kidlovchi yuklama, keyin o'tgan zamon fe'li<br>&bull; <span class='w'>زَكَّاهَا</span> / <span class='w'>دَسَّاهَا</span> = poklagan / bulg'agan (ko'mgan, yashirgan) — bir-biriga tam qarama-qarshi ikki fe'l, bir xil vazndan (فَعَّلَ)<br>&bull; Butun surada 7 ta qasam shu ikki qisqa jumlaga olib keladi — bu Qur'onning uslubi: uzoq kirish, keyin bir necha so'zda tiqilgan, ammo hayot-mamot ahamiyatidagi xulosa"},
+    {ref:"11–15-oyatlar — Samud qissasi", ar:"كَذَّبَتْ ثَمُودُ بِطَغْوَاهَا ﴿١١﴾ إِذِ انبَعَثَ أَشْقَاهَا ﴿١٢﴾ فَقَالَ لَهُمْ رَسُولُ اللَّهِ نَاقَةَ اللَّهِ وَسُقْيَاهَا ﴿١٣﴾ فَكَذَّبُوهُ فَعَقَرُوهَا فَدَمْدَمَ عَلَيْهِمْ رَبُّهُم بِذَنبِهِمْ فَسَوَّاهَا ﴿١٤﴾ وَلَا يَخَافُ عُقْبَاهَا", meaning:"Samud o'z zulmi bilan yolg'onga chiqardi — eng badbaxti (tuyani) o'ldirishga qo'zg'olganda. Allohning elchisi ularga: \"Allohning tuyasiga va uning suv navbatiga (tegmang)\" — dedi. Ular uni yolg'onchiga chiqarib, tuyani so'yishdi — Robbi gunohlari sababli ularni yakson qildi, hammasini teng qildi. U bundan (jazoning) oqibatidan qo'rqmaydi.",
+     notes:"&bull; <span class='w'>كَذَّبَتْ</span> = yolg'onga chiqardi — Samud qavmi, mo''jiza sifatida berilgan tuyaga tegmaslik buyurilgan, lekin ular itoat qilmagan<br>&bull; <span class='w'>نَاقَةَ اللَّهِ</span> = \"Allohning tuyasi\" — mashhur qissa, tosh ichidan mo''jiza bilan chiqarilgan tuya haqida<br>&bull; <span class='w'>فَعَقَرُوهَا</span> = uni so'yishdi/oyoqlarini kesishdi — halokatga olib kelgan gunoh amal<br>&bull; Diqqat qiling: sura nafs haqidagi umumiy qoida (7-10-oyatlar) bilan boshlanib, darhol haqiqiy tarixiy misol (Samud) bilan tasdiqlanadi — mavhum qoida emas, haqiqatan sodir bo'lgan oqibat"}
+  ],
+  synth:"Ash-Shamsning tuzilishi o'zi bir dars: 6 ta tabiat qasami (1-6) → nafs haqidagi qasam va xulosa (7-10) → tarixiy isbot (11-15). Bu naqsh — umumiy qoida, keyin haqiqiy misol — Qur'on bo'ylab qayta-qayta uchraydi. إِذَا so'zining takrori (1-4-oyatlar) va فَعَّلَ vaznidagi fe'llar juftligi (زَكَّاهَا/دَسَّاهَا، كَذَّبَتْ/فَعَقَرُوهَا) endi sizga tanish naqshlar.",
+  tafakkur:"9-10-oyatlar — \"Uni poklagan kishi yutdi, bulg'agan kishi mahrum bo'ldi\" — Qur'ondagi eng qisqa, ammo eng amaliy oyatlardan biri: har kuni, har soatda, sizning qalbingiz ikki yo'nalishdan biriga qadam qo'yadi. Bu oyat sizga aytadiki: najot uzoqdagi kimsadan emas, bugungi kichik tanlovlaringizdan — g'iybatni tashlash, sabr qilish, kечиrish, sadaqa berish kabi kichik amallardan yig'iladi. Samud qissasi esa ogohlantiradi: bir qavmning butun halokati, bitta buyruqqa itoat qilmaslikdan (tuyaga tegmaslik) boshlangan — kichik gunoh, kichik emas.",
+  talaffuz:"طَحَاهَا va طَغْوَاهَا so'zlaridagi ط (qalin t) — تَ (yupqa t) bilan aralashtirmang. Til tomoqqa yaqinroq, qalinroq tovush bilan chiqadi — bu farq Ash-Shams surasida bir necha marta muhim, chunki qofiya -هَا bilan tugaydigan so'zlar ko'p, ammo boshlang'ich harflar farqli."  ,
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"Surada nechta tabiat hodisasi bilan qasam ichiladi (1-6-oyatlar)?", options:["4 ta","6 ta","8 ta"], correct:1, explain:"Quyosh, oy, kunduz, tun, osmon, yer — jami 6 ta."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"زَكَّاهَا va دَسَّاهَا so'zlari orasidagi farqni tushuntiring.", answer:"زَكَّاهَا — nafsni poklash, tozalash; دَسَّاهَا — nafsni bulg'ash, yashirin gunohlar bilan ko'mish. Ikkalasi bir-biriga qarama-qarshi natijaga olib boradi."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Bog\'lang', pairs:[{l:"إِذَا",r:"...gan vaqtda, 19-dars"},{l:"قَدْ أَفْلَحَ",r:"haqiqatan yutdi"},{l:"نَاقَةَ اللَّهِ",r:"Allohning tuyasi"},{l:"كَذَّبَتْ",r:"yolg'onga chiqardi"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"Nima uchun sura umumiy qoida (7-10-oyat) bilan to'xtamay, Samud qissasi bilan davom etadi deb o'ylaysiz?", answer:"Mavhum qoidani haqiqiy tarixiy misol bilan tasdiqlash — \"bu shunchaki nasihat emas, haqiqatda sodir bo'lgan\" degan kuchli dalil berish uchun."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"1-6-oyatlardagi 6 ta qasamni yopiq kitobdan tartib bilan sanang.", answer:"Quyosh, oy, kunduz, tun, osmon, yer — shu tartibda."}
+  ],
+  vocab:{
+    core:[["الشَّمْسِ","quyosh"],["الْقَمَرِ","oy"],["النَّهَارِ","kunduz"],["اللَّيْلِ","tun"],["نَفْسٍ","nafs, jon"],["أَفْلَحَ","yutdi, najot topdi"]],
+    recognition:[["فُجُورَهَا","yomonligi"],["تَقْوَاهَا","taqvosi"],["زَكَّاهَا","poklagan"],["دَسَّاهَا","bulg'agan"],["كَذَّبَتْ","yolg'onga chiqardi"],["نَاقَةَ اللَّهِ","Allohning tuyasi"]]
+  },
+  closing:"Ash-Shamsni \"To'liq Qur'on\"da tinglang — qisqaligiga qaramay, tez-tez tilovat qilinadigan suralardan, shuning uchun tez orada yodingizga muhrlanadi."
+},
+
+// ============ UNIT 27 ============
+{
+  id:27, phase:3, title:"Sonlar, vaqt va miqdor so'zlari", ar:"الأعداد والزمن",
+  intro:"Bu darsda bitta suraga emas, Qur'on bo'ylab tarqalgan 5 ta ayohga qaraymiz — har biri son yoki vaqt so'zini o'z ichiga oladi. Sonlar Arabchada murakkab tuzilishga ega (jinsga qarab o'zgaradi), lekin bu yerda qoidalarni yodlash shart emas — faqat ayohlarni ko'rib, so'zlarni tanib olish maqsad.",
+  ayahs:[],
+  wbw:[
+    {ref:"Al-Qadr, 3-oyat", ar:"لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ", meaning:"Qadr kechasi ming oydan yaxshiroqdir.",
+     notes:"&bull; <span class='w'>أَلْفِ</span> = ming &middot; <span class='w'>شَهْرٍ</span> = oy (vaqt birligi)<br>&bull; Bir kecha, ming oydan (83 yildan ko'proq umr) yaxshiroq — bu son solishtiruvi orqali, Qadr kechasining ulug'ligini his qilish mumkin"},
+    {ref:"Al-Fajr, 2-oyat", ar:"وَلَيَالٍ عَشْرٍ", meaning:"Va o'n kecha bilan (qasam)!",
+     notes:"&bull; <span class='w'>عَشْرٍ</span> = o'n — Zul-hijjaning birinchi o'n kunini anglatadi, deb tafsir qilinadi (Hajning eng fazilatli kunlari)"},
+    {ref:"Al-A'rof, 142-oyat — Muso alayhissalom", ar:"وَوَاعَدْنَا مُوسَىٰ ثَلَاثِينَ لَيْلَةً وَأَتْمَمْنَاهَا بِعَشْرٍ فَتَمَّ مِيقَاتُ رَبِّهِ أَرْبَعِينَ لَيْلَةً", meaning:"Muso bilan o'ttiz kechaga va'da qildik, keyin uni o'n kecha bilan to'ldirdik — Robbisining belgilangan vaqti to'liq qirq kecha bo'ldi.",
+     notes:"&bull; <span class='w'>ثَلَاثِينَ</span> = o'ttiz &middot; <span class='w'>عَشْرٍ</span> = o'n &middot; <span class='w'>أَرْبَعِينَ</span> = qirq — uch xil son bir oyatda, va matematik jihatdan bog'liq (30+10=40)! Bu — Qur'onning sonlarni qanday tabiiy, hisob-kitob bilan bog'liq holda ishlatishiga ajoyib misol"},
+    {ref:"Al-Kahf, 25-oyat — G'or ahli", ar:"وَلَبِثُوا فِي كَهْفِهِمْ ثَلَاثَ مِائَةٍ سِنِينَ وَازْدَادُوا تِسْعًا", meaning:"Va g'orlarida uch yuz yil turdilar, tўққизни qo'shib.",
+     notes:"&bull; <span class='w'>ثَلَاثَ مِائَةٍ</span> = uch yuz (ثَلَاث + مِائَة \"yuz\") &middot; <span class='w'>تِسْعًا</span> = to'qqiz — jami 309 yil, oyning va quyoshning kalendar hisobidagi farqiga ishora, deb tafsirlarda aytiladi <span class='review'>&#8635; 35-darsda Al-Kahf chuqurroq</span>"},
+    {ref:"Al-Baqara, 261-oyat — sadaqa ko'payishi", ar:"مَثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ فِي كُلِّ سُنبُلَةٍ مِّائَةُ حَبَّةٍ", meaning:"Mollarini Alloh yo'lida sarflaydiganlarning masali — yetti boshoq undirgan bir donaga o'xshaydi, har boshoqda yuz dona bor.",
+     notes:"&bull; <span class='w'>سَبْعَ سَنَابِلَ</span> = yetti boshoq &middot; <span class='w'>مِّائَةُ حَبَّةٍ</span> = yuz dona — 7 x 100 = 700 baravar! Bu — Allohning sadaqa uchun va'da qilgan mukofoti, sonlar orqali tasavvur qilinadigan eng kuchli motivatsiya oyatlaridan biri"}
+  ],
+  synth:"Bu 5 ta ayohda ko'rgan sonlar — أَلْف (ming)، عَشْر (o'n)، ثَلَاثِين (o'ttiz)، أَرْبَعِين (qirq)، مِائَة (yuz)، سَبْع (yetti)، تِسْع (to'qqiz) — Qur'onda eng ko'p uchraydigan raqamlardan. Diqqat qiling: Alloh sonlarni mavhum matematika uchun emas, doim biror ma'no yoki hikmatni ta'kidlash uchun ishlatadi — Qadr kechasining ulug'ligi, sadaqaning ko'payishi, taqdirning aniqligi.",
+  tafakkur:"261-oyatdagi \"yetti boshoq, har birida yuz dona\" masali — sizga sarflagan har bir tiyiningiz yo'qolib ketmasligini, aksincha Allohning huzurida ko'payib qaytishini his qildiradi. Bu — moddiy dunyoning mantiqiga zid: bergan narsangiz kamaymaydi, ko'payadi. Shu bir oyatni yodda tutish, sadaqa berishga eng katta undov bo'lishi mumkin.",
+  talaffuz:"ثَلَاثِينَ so'zidagi ث (yupqa \"th\", tilingiz tishlar orasida) — سِين (s) bilan aralashtirmang. Bu ikki tovush yozma matnda oson farqlanadi, lekin talaffuzda ko'p yangi o'quvchilar xato qiladi.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"Al-A'rof 142-oyatida 30+10 nechaga teng bo'ladi?", options:["40 — أَرْبَعِينَ","50","record yo'q"], correct:0, explain:"ثَلَاثِينَ (30) + عَشْرٍ (10) = أَرْبَعِينَ (40) — oyatning o'zida hisob-kitob berilgan."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"Al-Baqara 261-oyatida sadaqa nechа baravar ko'payishi tasvirlanadi?", answer:"700 baravar (7 boshoq x 100 dona = 700), va oyat davomida Alloh buni ham xohlaganiga ko'paytirishini aytadi."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Sonlarni bog\'lang', pairs:[{l:"أَلْف",r:"ming"},{l:"مِائَة",r:"yuz"},{l:"ثَلَاثِين",r:"o'ttiz"},{l:"تِسْع",r:"to'qqiz"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"Al-Kahf 25-oyatida jami nechа yil aytiladi, va bu son qanday hisoblangan?", answer:"309 yil (300+9) — oy taqvimi bilan quyosh taqvimi orasidagi farqqa ishora, deb tafsirlarda izohlanadi."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"Al-Qadr surasini to'liq \"To'liq Qur'on\"da o'qing (5 oyat) va \"ming oy\"ning nechа yilga teng ekanini hisoblang.", answer:"1000 oy ÷ 12 ≈ 83 yil 4 oy — bitta kecha shunча umrdan yaxshiroq, deb aytiladi."}
+  ],
+  vocab:{
+    core:[["أَلْف","ming"],["عَشْر","o'n"],["مِائَة","yuz"],["سَبْع","yetti"],["أَرْبَعِين","qirq"],["شَهْر","oy (vaqt)"]],
+    recognition:[["ثَلَاثِين","o'ttiz"],["تِسْعًا","to'qqiz"],["لَيَالٍ","kechalar"],["سِنِينَ","yillar"],["سَنَابِلَ","boshoqlar"]]
+  },
+  closing:"Endi Qur'on o'qiganingizda sonlarga alohida e'tibor bering — ular deyarli hech qachon shunchaki statistika emas, doim bir hikmat yoki mo''jizaga ishora qiladi."
+},
+
+// ============ UNIT 28 ============
+{
+  id:28, phase:3, title:"Qiyoslash — \"eng yaxshi, undan yaxshi\"", ar:"أفعل التفضيل",
+  intro:"21 va 24-darslarda أَحْسَنُ va أَحَبُّ so'zlariga qisqacha to'xtalgan edik — bu darsda shu naqsh (oddiy so'zga أَ- qo'shilib \"eng...\" yoki \"...roq\" ma'nosini berish) markaziy mavzu bo'ladi. Bu Qur'onda eng ko'p uchraydigan naqshlardan biri, chunki Alloh ko'pincha \"bu — sen o'ylagan yomon narsa emas, aslida sen uchun yaxshiroq\" kabi haqiqatlarni shu shakl bilan ta'kidlaydi.",
+  ayahs:[],
+  wbw:[
+    {ref:"Al-Baqara, 216-oyat", ar:"وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ ۖ وَعَسَىٰ أَن تُحِبُّوا شَيْئًا وَهُوَ شَرٌّ لَّكُمْ ۗ وَاللَّهُ يَعْلَمُ وَأَنتُمْ لَا تَعْلَمُونَ", meaning:"Yoqtirmagan narsangiz siz uchun yaxshiroq bo'lishi mumkin, yoqtirgan narsangiz esa siz uchun yomonroq bo'lishi mumkin. Alloh biladi, sizlar bilmaysizlar.",
+     notes:"&bull; <span class='w'>خَيْرٌ لَّكُمْ</span> = \"siz uchun yaxshiroq\" — خَيْر so'zining o'zi qiyoslash ma'nosini ichida oladi (\"yaxshi\" emas, \"yaxshiroq/eng yaxshi\"), maxsus أَفْعَل vazniga muhtoj emas<br>&bull; <span class='w'>شَرٌّ لَّكُمْ</span> = \"siz uchun yomonroq\" — خَيْر ning aksi<br>&bull; Bu oyat — kundalik hayotda yuz beradigan har qanday og'ir voqea (imtihonda yiqilish, ish yo'qotish, kutilmagan qiyinchilik) uchun eng katta tasalli oyatlaridan biri"},
+    {ref:"Qof, 16-oyat — mashhur oyat", ar:"وَلَقَدْ خَلَقْنَا الْإِنسَانَ وَنَعْلَمُ مَا تُوَسْوِسُ بِهِ نَفْسُهُ ۖ وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ", meaning:"Insonni yaratdik va nafsi unga nima vasvasa qilishini bilamiz. Biz unga bo'yin tomiridan ham yaqinroqmiz.",
+     notes:"&bull; <span class='w'>أَقْرَبُ</span> = yaqinroq — قَرِيب (yaqin) so'zidan أَفْعَل vazni bilan yasalgan qiyoslash shakli<br>&bull; <span class='w'>حَبْلِ الْوَرِيدِ</span> = bo'yin tomiri (yugular vena) — insonning eng yaqin, eng ichki jismoniy qismi<br>&bull; Bu — Qur'ondagi eng ta'sirli oyatlardan biri: Alloh sizga o'z tomiringizdan ham yaqin. Yolg'iz his qilgan har lahzangizda shuni his qilish — imonning eng chuqur tasallisi"},
+    {ref:"Al-Ankabut, 45-oyat", ar:"وَلَذِكْرُ اللَّهِ أَكْبَرُ", meaning:"Va Allohni zikr qilish eng buyukdir.",
+     notes:"&bull; <span class='w'>أَكْبَرُ</span> = eng buyuk, kattaroq — كَبِير (katta) so'zidan, بِير→أَكْبَر, xuddi أَحْسَن (23-24-darslarda ko'rgan) bilan bir xil naqsh<br>&bull; Bu qisqa jumla namoz haqidagi uzunroq oyatning ichida keladi — namozning o'zi ham buyuk, lekin ичидаги zikr undan ham buyukroq, degan ma'noni beradi"},
+    {ref:"Al-Isro, 9-oyat", ar:"إِنَّ هَٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ", meaning:"Albatta bu Qur'on eng to'g'ri (mustahkam) yo'lga hidoyat qiladi.",
+     notes:"&bull; <span class='w'>أَقْوَمُ</span> = eng to'g'ri, eng mustahkam — قَائِم/قَوِيّ ildizidan, أَفْعَل vazni<br>&bull; <span class='w'>يَهْدِي</span> <span class='review'>&#8635; 2-dars, اهْدِنَا bilan bir ildiz</span> = hidoyat qiladi — Al-Fotihada so'ragan hidoyatning o'zi, bu yerda Qur'onning vazifasi sifatida qaytadan tasdiqlanadi"}
+  ],
+  synth:"أَحْسَنُ (21-dars)، أَحَبُّ (24-dars)، أَقْرَبُ، أَكْبَرُ، أَقْوَمُ — hammasi bir xil qolipda: oddiy so'z + أَ- prefiksi = \"eng...\" yoki \"...roq\". خَيْرٌ va شَرٌّ esa maxsus, alohida so'zlar (\"yaxshi\"ning o'zi emas, \"yaxshiroq\" ma'nosini ichida saqlaydi). Endi bu ikki toifani (أَفْعَل qolipi va maxsus so'zlar) ajratib tanish osonlashadi.",
+  tafakkur:"Qof surasidagi \"Biz unga bo'yin tomiridan ham yaqinroqmiz\" oyati — imon ahli uchun eng quvvatli oyatlardan biri hisoblanadi. O'ylab ko'ring: hech qanday inson, hatto eng yaqin oila a'zoyingiz ham, sizning ichingizdagi har bir fikr, har bir tuyg'uni bilmaydi. Lekin Alloh biladi — va shunga qaramay, sizni sevadi, imkoniyat beradi, tavba eshigini yopmaydi. Bu yaqinlik qo'rqinch emas, tasalli manbai bo'lishi kerak.",
+  talaffuz:"أَقْرَبُ so'zidagi ق tovushini 24-darsdagi قَالَ bilan bir xil tarzda — chuqur tomoqdan, qalin — talaffuz qiling.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"أَقْرَبُ so'zining ma'nosi nima?", options:["Uzoqroq","Yaqinroq","Kattaroq"], correct:1, explain:"أَقْرَبُ — قَرِيب (yaqin) so'zidan qiyoslash shakli, \"yaqinroq\" degani."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"خَيْرٌ لَّكُمْ va شَرٌّ لَّكُمْ iboralari Al-Baqara 216-oyatda qanday hayotiy haqiqatni bildiradi?", answer:"Insonning yoqtirgan-yoqtirmagan narsalari haqidagi baholashi ko'pincha noto'g'ri bo'lishi mumkin — Alloh haqiqiy foyda-zararni biladi, inson bilmaydi."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Bog\'lang', pairs:[{l:"أَكْبَرُ",r:"eng buyuk"},{l:"أَقْوَمُ",r:"eng to'g'ri"},{l:"أَقْرَبُ",r:"eng yaqin"},{l:"خَيْرٌ",r:"yaxshiroq"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"حَبْلِ الْوَرِيدِ (bo'yin tomiri) obrazi nima uchun tanlangan deb o'ylaysiz — nega masalan \"qo'l\" yoki \"ko'z\" emas?", answer:"Bo'yin tomiri hayot manbai — yurak bilan bosh orasidagi eng muhim aloqa, shuning uchun \"eng yaqin\" tushunchasini eng kuchli tasvirlaydi."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"21-24-darslarda ko'rgan أَحْسَنُ va أَحَبُّ so'zlarini eslang — ular qaysi oyatlarda kelgan edi?", answer:"أَحْسَنُ عَمَلًا — Al-Mulk 2-oyat (21-dars); أَحَبُّ إِلَىٰ أَبِينَا — Yusuf 8-oyat (24-dars)."}
+  ],
+  vocab:{
+    core:[["أَقْرَبُ","yaqinroq"],["أَكْبَرُ","kattaroq, eng buyuk"],["خَيْرٌ","yaxshiroq, eng yaxshi"],["شَرٌّ","yomonroq"],["يَعْلَمُ","biladi"]],
+    recognition:[["أَقْوَمُ","eng to'g'ri"],["حَبْلِ الْوَرِيدِ","bo'yin tomiri"],["تَكْرَهُوا","yoqtirmaysizlar"],["ذِكْرُ اللَّهِ","Allohni zikr qilish"]]
+  },
+  closing:"Endi أَ- bilan boshlangan so'zlarni ko'rganingizda — \"bu qandaydir qiyoslash bo'lishi mumkin\" deb avtomatik sezasiz. Bu tuyg'u, Qur'on o'qishda katta tezlik beradi."
+},
+
+// ============ UNIT 29 ============
+{
+  id:29, phase:3, title:"Al-Infitor surasi: \"Qilindi\" gaplari", ar:"سورة الإنفطار", surahApiNum:82,
+  intro:"Ba'zan Qur'onda ish kim tomonidan qilingani aytilmaydi — faqat ish o'zi, natijasi zikr etiladi: \"osmon yorildi\", \"qabrlar titkilandi\". Bu \"kim qilgani aytilmagan\" fe'l shakli — o'zbekchada \"qilindi, yorildi, ochildi\" kabi \"-ildi\"ga o'xshaydi. Al-Infitor surasi shu naqshning eng zich namunasi: qiyomat kunining tasviri, aynan shu \"qilindi\" fe'llari bilan chiziladi.",
+  ayahs:[],
+  wbw:[
+    {ref:"1–5-oyatlar — qiyomat manzarasi", ar:"إِذَا السَّمَاءُ انفَطَرَتْ ﴿١﴾ وَإِذَا الْكَوَاكِبُ انتَثَرَتْ ﴿٢﴾ وَإِذَا الْبِحَارُ فُجِّرَتْ ﴿٣﴾ وَإِذَا الْقُبُورُ بُعْثِرَتْ ﴿٤﴾ عَلِمَتْ نَفْسٌ مَّا قَدَّمَتْ وَأَخَّرَتْ", meaning:"Osmon yorilganda, yulduzlar sochilganda, dengizlar yorib chiqarilganda, qabrlar titkilanganda — har bir jon nima qilib, nimani qoldirganini biladi.",
+     notes:"&bull; <span class='w'>انفَطَرَتْ</span> = yorildi &middot; <span class='w'>انتَثَرَتْ</span> = sochildi &middot; <span class='w'>فُجِّرَتْ</span> = yorib chiqarildi &middot; <span class='w'>بُعْثِرَتْ</span> = titkilandi/ag'darildi — to'rtta fe'l ham \"kim qildi\" aytilmagan, faqat natija zikr etiladi. Diqqat qiling: hammasi -تْ bilan tugaydi (\"u\" — ayol/jonsiz narsa uchun) va oxirida \"tْ\" tovushi ritm hosil qiladi<br>&bull; <span class='w'>عَلِمَتْ نَفْسٌ مَّا قَدَّمَتْ وَأَخَّرَتْ</span> = \"har jon nima qilib, nimani qoldirganini biladi\" — 4 ta kosmik voqeadan keyin, birdan e'tibor SIZGA, sizning amallaringizga qaratiladi"},
+    {ref:"6–8-oyatlar — insonga murojaat", ar:"يَا أَيُّهَا الْإِنسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ ﴿٦﴾ الَّذِي خَلَقَكَ فَسَوَّاكَ فَعَدَلَكَ ﴿٧﴾ فِي أَيِّ صُورَةٍ مَّا شَاءَ رَكَّبَكَ", meaning:"Ey inson! Seni Karim bo'lgan Robbing haqida nima aldadi? — U seni yaratdi, mukammal qildi, muvozanatga soldi. Xohlagan shaklda seni tarkib toptirdi.",
+     notes:"&bull; <span class='w'>مَا غَرَّكَ</span> = \"seni nima aldadi?\" — juda kuchli, shaxsiy savol, go'yo har bir o'quvchiga bevosita qaratilgan<br>&bull; <span class='w'>خَلَقَكَ فَسَوَّاكَ فَعَدَلَكَ</span> = \"yaratdi, mukammal qildi, muvozanatga soldi\" — uch fe'l ketma-ket, har biri فَ bilan bog'langan, yaratilish bosqichlarini ko'rsatadi <span class='review'>&#8635; سَوَّاهَا Ash-Shams 7-oyatda ham bor, 26-dars</span>"},
+    {ref:"10–12-oyatlar — kuzatuvchilar", ar:"وَإِنَّ عَلَيْكُمْ لَحَافِظِينَ ﴿١٠﴾ كِرَامًا كَاتِبِينَ ﴿١١﴾ يَعْلَمُونَ مَا تَفْعَلُونَ", meaning:"Albatta sizning ustingizda hofizlar (kuzatuvchilar) bor — ular ulug'lar, yozuvchilardir. Sizning nima qilayotganingizni bilishadi.",
+     notes:"&bull; <span class='w'>حَافِظِينَ</span> = kuzatuvchilar (farishtalar) &middot; <span class='w'>كَاتِبِينَ</span> = yozuvchilar — har bir insonning yonida amal yozadigan farishtalar borligi shu yerda tasdiqlanadi<br>&bull; <span class='w'>يَعْلَمُونَ مَا تَفْعَلُونَ</span> = \"nima qilayotganingizni bilishadi\" — hozirgi zamon, doimiy jarayon: har lahza kuzatilib turibsiz"},
+    {ref:"13–14-oyatlar — ikki toifa", ar:"إِنَّ الْأَبْرَارَ لَفِي نَعِيمٍ ﴿١٣﴾ وَإِنَّ الْفُجَّارَ لَفِي جَحِيمٍ", meaning:"Albatta yaxshilar ne'mat ichida, albatta yomonlar do'zax ichidadir.",
+     notes:"&bull; <span class='w'>الْأَبْرَارَ</span> / <span class='w'>الْفُجَّارَ</span> = yaxshilar / fosiqlar — ikki qarama-qarshi toifa, ikkalasi ham إِنَّ bilan kuchaytirilgan, bir xil jumla tuzilishida (parallelizm)<br>&bull; <span class='w'>نَعِيمٍ</span> / <span class='w'>جَحِيمٍ</span> — qofiyadosh, ikki oxirat manzili"},
+    {ref:"19-oyat — yakuniy oyat", ar:"يَوْمَ لَا تَمْلِكُ نَفْسٌ لِّنَفْسٍ شَيْئًا ۖ وَالْأَمْرُ يَوْمَئِذٍ لِّلَّهِ", meaning:"O'sha kun hech bir jon boshqa jon uchun hech narsaga ega bo'lmaydi. O'sha kun hukm faqat Allohgadir.",
+     notes:"&bull; <span class='w'>لَا تَمْلِكُ</span> = ega bo'lmaydi, ixtiyor qilolmaydi &middot; <span class='w'>لِّنَفْسٍ</span> = boshqa jon uchun<br>&bull; Sura shu oyat bilan yopiladi: qiyomat kunida hech kim (ota, ona, do'st) sizga yordam berolmaydi — faqat sizning o'zingiz olib kelgan amalингиз gapiradi"}
+  ],
+  synth:"1-4-oyatlardagi انفَطَرَتْ، انتَثَرَتْ، فُجِّرَتْ، بُعْثِرَتْ — hammasi \"kim qildi\" aytilmagan, natija-fokusli fe'llar. Bu naqshni endi tanib olasiz: fe'l -تْ bilan tugaydi, lekin ega (kim qildi) jumlada yo'q yoki noaniq. Bu uslub qiyomat tasvirida ayniqsa kuchli — voqealar shu qadar buyukki, \"kim qildi\" savoli ortiqcha, faqat Alloh qila oladi degan ma'no o'zidan chiqadi.",
+  tafakkur:"6-oyatdagi savol — \"Ey inson! Seni Karim bo'lgan Robbing haqida nima aldadi?\" — juda shaxsiy, deyarli og'riqli savol. Bu oyatni o'qiganingizda, o'zingizga shu savolni bering: kunlik gunohlarim, e'tiborsizligim — meni Allohning shafqati va sabrida qanday \"aldadi\"? 10-12-oyatlardagi kotib farishtalar haqidagi eslatma esa amaliy: har bir kichik yaxshilik ham, kichik yomonlik ham yozib borilmoqda — bu bilim, insonni kunlik hayotda ehtiyotkorroq qiladi, lekin qo'rquv emas, mas'uliyat bilan.",
+  talaffuz:"انفَطَرَتْ so'zidagi ف tovushi yumshoq, lablar bilan chiqadi — Ingliz \"f\" tovushiga yaqin. Buni ف bilan ق ni farqlash mashqi sifatida ishlating.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"1-4-oyatlardagi to'rtta fe'lning umumiy xususiyati nima?", options:["Hammasi buyruq shaklida","Kim qilgani aytilmagan, faqat natija zikr etiladi","Hammasi kelasi zamonda"], correct:1, explain:"انفَطَرَتْ، انتَثَرَتْ، فُجِّرَتْ، بُعْثِرَتْ — kim qilgani aytilmagan, faqat voqea/natija tasvirlanadi."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"10-12-oyatlarda qanday farishtalar tasvirlanadi va ular nima qiladi?", answer:"Hofiz (kuzatuvchi) va kotib (yozuvchi) farishtalar — insonning har bir amalini kuzatib, yozib boradilar."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Bog\'lang', pairs:[{l:"الْأَبْرَارَ",r:"yaxshilar"},{l:"الْفُجَّارَ",r:"fosiqlar"},{l:"نَعِيمٍ",r:"ne'mat (jannat)"},{l:"جَحِيمٍ",r:"do'zax"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"19-oyatdagi \"hech bir jon boshqa jon uchun hech narsaga ega bo'lmaydi\" g'oyasi bugungi hayotingizga qanday ta'sir qilishi kerak?", answer:"Boshqalarga (ota-ona, mol-dunyo, mansab) tayanish o'rniga, o'z amallaringizni yaxshilashga e'tibor qaratish kerakligini eslatadi — o'sha kunda faqat amal gapiradi."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"Suraning qolgan oyatlarini (9, 15–18-oyatlar) \"To'liq Qur'on\"da o'qing va الدِّينِ (hisob-kitob kuni) so'zi nechа marta takrorlanishini toping.", answer:"O'zingizni sinang — يَوْمَ الدِّينِ ibora ikki marta takrorlanadi, suraning markaziy mavzusini ta'kidlab."}
+  ],
+  vocab:{
+    core:[["السَّمَاءُ","osmon"],["نَفْسٌ","jon"],["يَعْلَمُونَ","bilishadi"],["خَلَقَكَ","seni yaratdi"],["يَوْمَ","kun"]],
+    recognition:[["انفَطَرَتْ","yorildi"],["الْكَوَاكِبُ","yulduzlar"],["حَافِظِينَ","kuzatuvchilar"],["كَاتِبِينَ","yozuvchilar"],["الْأَبْرَارَ","yaxshilar"],["الْفُجَّارَ","fosiqlar"]]
+  },
+  closing:"Al-Infitorni \"To'liq Qur'on\"da to'liq o'qing — 19 oyat, tez tugaydi, lekin ta'siri uzoq qoladi."
+},
+
+// ============ UNIT 30 ============
+{
+  id:30, phase:3, title:"Takrorlash sprinti — eng ko'p ishlatiladigan so'zlar", ar:"مراجعة",
+  intro:"3-bosqich shu bilan yakunlanadi. 21–29-darslarda 6 ta sura va o'nlab tarqoq oyat orqali o'nlab yangi so'z va naqsh ko'rdingiz. Bu dars — yangi material emas, faqat tizimlashtirish: eng ko'p takrorlangan so'zlar va naqshlar bir joyga yig'ilgan. Jadvalni diqqat bilan ko'rib chiqing — har bir so'z qaysi darsda, qaysi oyatda uchraganini eslang.",
+  ayahs:[],
+  wbw:[],
+  table:{
+    title:"3-bosqich — so'z va naqsh xaritasi",
+    cols:["So'z / Naqsh","Ma'nosi","Qaysi darsda uchradi"],
+    rows:[
+      ["بِيَدِهِ","Uning qo'lida","21-dars (Al-Mulk) va 22-dars (Yosin) — ikkalasida ham"],
+      ["خَلَقَ / يَخْلُقُ","yaratdi / yaratadi","21, 22, 29-darslar"],
+      ["إِلَّا","faqat, ...dan boshqa","21, 23-darslar (istisno naqshi, 7-darsdan)"],
+      ["قَالَ / قَالُوا","dedi / dedilar","22, 24-darslar (hikoya fe'li)"],
+      ["إِذَا","...gan vaqtda","19-dars, 22, 26, 29-darslarda qayta-qayta"],
+      ["أَحْسَنُ / أَحَبُّ / أَقْرَبُ / أَكْبَرُ","qiyoslash so'zlari (\"...roq\")","21, 24, 28-darslar"],
+      ["لَا إِلَٰهَ إِلَّا هُوَ","Undan boshqa iloh yo'q","5-dars (Al-Ixlos) va 23-dars (Kursiy)da qaytadan"],
+      ["-هُمَا / تُكَذِّبَانِ","ikkovlik shakli (\"ikkovingiz\")","25-dars (Ar-Rahmon)ga xos yangi naqsh"],
+      ["كُن فَيَكُونُ","\"Bo'l! — bo'ladi\"","22-dars (Yosin, 82-oyat)"],
+      ["انفَطَرَتْ turidagi fe'llar","kim qilgani aytilmagan fe'llar","29-dars (Al-Infitor)"],
+      ["صَبْرٌ جَمِيلٌ","go'zal sabr","24-dars (Yusuf)"],
+      ["زَكَّاهَا / دَسَّاهَا","poklagan / bulg'agan","26-dars (Ash-Shams)"]
+    ]
+  },
+  synth:"7 ta darsda (21-29) 6 ta yangi sura (Al-Mulk, Yosin, Ayat al-Kursiy, Yusuf boshi, Ar-Rahmon, Al-Infitor) va bitta qo'shimcha sura (Ash-Shams) to'liq yoki qisman ishlandi, jami 40 dan ortiq yangi wbw parcha orqali. Yuqoridagi jadval — bu safar boshqa jadvallardan farqli, YANGI so'zlarni emas, TAKRORLANGAN naqshlarni ko'rsatadi. Bu — Qur'on qanchalik katta bo'lmasin, o'zining chekli, chuqur bog'liq so'z tarmog'idan foydalanishini yana bir bor tasdiqlaydi.",
+  tafakkur:"3-bosqichda ishlagan har bir sura — Al-Mulk (qabr himoyasi), Yosin (Qur'onning yuragi), Ayat al-Kursiy (eng buyuk oyat), Yusuf (sabr va najot), Ar-Rahmon (ne'matlarni sanash), Ash-Shams (nafsni poklash), Al-Infitor (hisob-kitob kuni) — hammasi turli burchaklardan bitta haqiqatga ishora qiladi: bu dunyo vaqtinchalik, Alloh doimiy nazoratda, va har bir tanlovingiz ahamiyatli. Bu darsni tugatganingizda, shunchaki 9 ta yangi so'z emas, 9 ta yangi tafakkur eshigini ham ochgan bo'lasiz.",
+  exercises:[
+    {type:'reveal', kicker:'TEKSHIRUV', prompt:"بِيَدِهِ so'zi qaysi ikki surada, qanday mazmunda takrorlanadi?", answer:"Al-Mulk 1-oyat (\"mulk Uning qo'lida\") va Yosin 83-oyat (\"har narsaning mulki Uning qo'lida\") — ikkalasi ham Allohning mutlaq hukmronligini bildiradi."},
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"3-bosqichda nechta yangi sura bilan ishladingiz (to'liq yoki qisman)?", options:["4 ta","7 ta","10 ta"], correct:1, explain:"Al-Mulk, Yosin, Al-Baqara (Kursiy), Yusuf, Ar-Rahmon, Ash-Shams, Al-Infitor — jami 7 ta."},
+    {type:'match', kicker:'MASHQ 2 · O\'RTA · Surani mavzusi bilan bog\'lang', pairs:[{l:"Al-Mulk",r:"qabr himoyasi (al-Munjiya)"},{l:"Yosin",r:"Qur'onning yuragi"},{l:"Ash-Shams",r:"nafsni poklash"},{l:"Al-Infitor",r:"hisob-kitob kuni"}]},
+    {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"21-29-darslar orasidan sizga eng ko'p ta'sir qilgan bitta oyatni tanlang va nima uchun ekanini bir necha jumlada yozing.", answer:"Bu — shaxsiy javob, to'g'ri-noto'g'ri yo'q. Muhimi — o'sha oyatni yana bir necha marta o'qib, yodda saqlashga harakat qiling."},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"Jadvaldagi 12 ta naqshdan kamida 8 tasini yopiq holda (jadvalga qaramasdan) qaysi darsda uchraganini ayting.", answer:"O'zingizni sinang — agar 8 tadan kamini eslay olsangiz, tegishli darslarga qaytib, wbw bo'limlarini yana bir bor ko'rib chiqing."}
+  ],
+  vocab:{core:[], recognition:[]},
+  closing:"3-bosqich shu bilan yakunlandi. Endi 4-bosqich — \"Qahramon bosqichi\" boshlanadi: bu yerda yordamchi tayanchlar asta-sekin olib tashlanadi, va siz uzun, real Qur'on matnlarini — Al-Baqara, Al-Kahf kabi — mustaqil kuzatishni o'rganasiz."
+},
+
+// ============ UNIT 31 ============
+{
+  id:31, phase:4, title:"Uzun gaplarni \"ipdan yo'qotmasdan\" kuzatish", ar:"مهارة المتابعة",
+  intro:"Shu paytgacha ko'rgan oyatlarning aksariyati qisqa edi — 4, 6, 10 so'zli. Endi Al-Baqara surasiga chuqurroq kirishdan oldin, yangi bir mahoratni o'rganishimiz kerak: 30, 40, hatto 50 so'zli BITTA uzun gapni, \"ip\"ini yo'qotmasdan oxirigacha kuzatish. Bu grammatika emas — bu strategiya. Bu darsdan keyin, Al-Baqaraning eng uzun oyatlari sizni qo'rqitmaydi.",
+  ayahs:[],
+  blocks:[
+    {h:"Strategiya: uch signalni kuzating", p:[
+      "Uzun oyatni o'qiganingizda, uni bo'lakларга bo'luvchi uchta signalga e'tibor bering: <b>وَ (va)</b> — ro'yxatdagi keyingi elementga o'tish; <b>الَّذِينَ / مَنْ (kim, kimlar)</b> — \"qanday odam\" ta'rifi boshlanayotganini bildiradi; va <b>tinish belgilari</b> (Qur'on matnida ۚ، ۖ kabi vaqf belgilari) — nafas olish va kichik pauza joylari.",
+      "Uzun gapni o'qiganda, avval BOSH g'oyani toping (odatda gap boshida yoki oxirida keladi), keyin وَ bilan bog'langan har bir bo'lakni alohida \"karta\" sifatida tasavvur qiling. Ro'yxat qancha uzun bo'lmasin, har bir karta o'zi alohida tushunarli."
+    ]}
+  ],
+  wbw:[
+    {ref:"Al-Baqara, 177-oyat — birrning ta'rifi (qisqartirilgan)", ar:"لَّيْسَ الْبِرَّ أَن تُوَلُّوا وُجُوهَكُمْ قِبَلَ الْمَشْرِقِ وَالْمَغْرِبِ وَلَٰكِنَّ الْبِرَّ مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ وَالْمَلَائِكَةِ وَالْكِتَابِ وَالنَّبِيِّينَ وَآتَى الْمَالَ عَلَىٰ حُبِّهِ ذَوِي الْقُرْبَىٰ وَالْيَتَامَىٰ وَالْمَسَاكِينَ وَابْنَ السَّبِيلِ وَالسَّائِلِينَ وَفِي الرِّقَابِ وَأَقَامَ الصَّلَاةَ وَآتَى الزَّكَاةَ وَالْمُوفُونَ بِعَهْدِهِمْ إِذَا عَاهَدُوا ۖ وَالصَّابِرِينَ فِي الْبَأْسَاءِ وَالضَّرَّاءِ وَحِينَ الْبَأْسِ ۗ أُولَٰئِكَ الَّذِينَ صَدَقُوا ۖ وَأُولَٰئِكَ هُمُ الْمُتَّقُونَ", meaning:"Yaxshilik — yuzlaringizni sharq yoki g'arbga burishingiz emas. Balki yaxshilik — Allohga, oxirat kuniga, farishtalarga, kitobga, payg'ambarlarga imon keltirgan; molini, unga bo'lgan muhabbatiga qaramay, qarindoshlarga, yetimlarga, miskinlarga, yo'lda qolganlarga, so'ravchilarga va qullarni ozod qilishga bergan; namozni to'kis ado etgan, zakot bergan; va'da qilganda va'dasiga vafo qiluvchi; qashshoqlikda, kasallikda va jangda sabr qiluvchi kishilarning ishidir. Ana o'shalar — rost so'zlaganlardir, va ana o'shalar — taqvodorlardir.",
+     notes:"&bull; <b>Bosh g'oya</b> (boshida): لَّيْسَ الْبِرَّ ... وَلَٰكِنَّ الْبِرَّ = \"yaxshilik ... emas, balki yaxshilik ...\" — qarama-qarshilik orqali ta'rif beriladi<br>&bull; <b>Birinchi ro'yxat</b> (imon nimalarga): آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ وَالْمَلَائِكَةِ وَالْكِتَابِ وَالنَّبِيِّينَ — 5 ta narsaga imon, har biri وَ bilan bog'langan<br>&bull; <b>Ikkinchi ro'yxat</b> (kimlarga sadaqa): ذَوِي الْقُرْبَىٰ وَالْيَتَامَىٰ وَالْمَسَاكِينَ وَابْنَ السَّبِيلِ وَالسَّائِلِينَ وَفِي الرِّقَابِ — 6 toifa odam, yana وَ zanjiri<br>&bull; <b>Uchinchi ro'yxat</b> (amallar): أَقَامَ الصَّلَاةَ وَآتَى الزَّكَاةَ وَالْمُوفُونَ بِعَهْدِهِمْ وَالصَّابِرِينَ — namoz, zakot, va'daga vafo, sabr<br>&bull; <b>Xulosa</b> (oxirida): أُولَٰئِكَ الَّذِينَ صَدَقُوا — \"ana o'shalar rost so'zlaganlar\" — butun uzun gap shu qisqa xulosaga tugaydi<br>&bull; E'tibor bering: 50 so'zdan ortiq gap, lekin faqat TO'RT karta: bosh g'oya → 3 ta ro'yxat → xulosa. Shu tarzda bo'lib o'qisangiz, uzunlik qo'rqinchli emas"},
+    {ref:"Al-Baqara, 285-oyat (boshi) — imon ro'yxati", ar:"آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِّن رُّسُلِهِ", meaning:"Payg'ambar o'ziga Robbisidan tushirilganga imon keltirdi, mo'minlar ham (imon keltirdilar). Har biri Allohga, Uning farishtalariga, kitoblariga va elchilariga imon keltirdi — \"Uning elchilaridan birortasini ajratmaymiz\" (deb aytishadi).",
+     notes:"&bull; <b>Bosh gap</b>: آمَنَ الرَّسُولُ ... وَالْمُؤْمِنُونَ = \"Payg'ambar imon keltirdi ... mo'minlar ham\" — ikki subyekt (Payg'ambar va mo'minlar) bitta fe'lni baham ko'radi<br>&bull; <b>Ro'yxat</b>: بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ = Alloh, farishtalar, kitoblar, elchilar — 4 ta imon ruknining ro'yxati, har biri وَ bilan<br>&bull; <b>Qo'shimcha izoh</b>: لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِّن رُّسُلِهِ = \"elchilardan birortasini ajratmaymiz\" — ro'yxatdagi oxirgi elementga (رُسُلِهِ) qo'shimcha tushuntirish beradi. Bu — uzun gaplarda ko'p uchraydigan naqsh: ro'yxat, keyin oxirgi elementga qaytib, uni chuqurlashtirish"}
+  ],
+  synth:"Ikkala misolda ham bir xil qolip ko'rdingiz: bosh g'oya → وَ bilan bog'langan ro'yxat(lar) → xulosa yoki qo'shimcha izoh. Endi Al-Baqara (va boshqa uzun oyatlar)ni o'qiganingizda, avval bosh gapni toping, keyin har bir وَ ni \"keyingi karta\" deb belgilang. Bu — grammatika qoidasi emas, o'qish strategiyasi, va endi u sizniki.",
+  tafakkur:"177-oyatdagi \"birr\" (yaxshilik) ta'rifi diqqatga sazovor: bu faqat imon (e'tiqod) bilan tugamaydi — imondan keyin darhol amal (sadaqa berish, namoz, va'daga vafo, sabr) ro'yxati keladi. Bu oyat, imon va amalning Islomda hech qachon ajralmasligini, uzun bir gap shaklida jismonan namoyish etadi: gap qanchalik uzun bo'lsa, imon bilan amal orasidagi bog'liqlik shunchalik chuqur ta'kidlanadi.",
+  exercises:[
+    {type:'reveal', kicker:'TEKSHIRUV', prompt:"177-oyatni to'rtta \"karta\"ga bo'ling: bosh g'oya, va uchta ro'yxat mavzusini ayting.", answer:"1) Yaxshilik nima emas/nima; 2) kimlarga/nimalarga imon; 3) kimlarga sadaqa beriladi; 4) qanday amallar (namoz, zakot, va'da, sabr) — va xulosa."},
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"Uzun oyatni o'qiganda birinchi navbatda nimaga e'tibor berish kerak?", options:["Har bir harfning tajvidiga","وَ, مَنْ/الَّذِينَ kabi bo'luvchi signallarga va bosh g'oyaga","Oyatning necha so'zdan iboratligiga"], correct:1, explain:"Bosh g'oyani topib, keyin har bir وَ ni yangi bo'lak sifatida kuzatish — uzun gapni tushunishning kaliti."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"285-oyatda \"لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِّن رُّسُلِهِ\" jumlasi nima uchun ro'yxat oxirida qo'shilgan deb o'ylaysiz?", answer:"Ro'yxatdagi oxirgi elementga (رُسُلِهِ — elchilar) qo'shimcha ta'kid berish uchun — mo'minlar barcha payg'ambarlarga birdek ishonishini alohida ta'kidlash."},
+    {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"177-oyatdagi uchta ro'yxatni (imon, sadaqa oluvchilar, amallar) yopiq kitobdan sanang.", answer:"1) Alloh, oxirat kuni, farishtalar, kitob, payg'ambarlar; 2) qarindoshlar, yetimlar, miskinlar, yo'lovchilar, so'ravchilar, qullar; 3) namoz, zakot, va'daga vafo, sabr."},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"Al-Baqara surasidan (\"To'liq Qur'on\"da) o'zingiz yana bir uzun oyat toping va uni \"kartalar\"ga bo'lib ko'ring — masalan 282-oyat (qarz haqidagi eng uzun oyat).", answer:"O'zingizni sinang — 282-oyat qarz yozib qo'yish tartibi haqida, bir necha bosqichli buyruqlardan iborat, xuddi shu \"karta\" usuli bilan bo'lish mumkin."}
+  ],
+  vocab:{
+    core:[["آمَنَ","imon keltirdi"],["ذَوِي الْقُرْبَىٰ","qarindoshlar"],["الْيَتَامَىٰ","yetimlar"],["الصَّلَاةَ","namoz"],["الزَّكَاةَ","zakot"],["صَبَرَ / الصَّابِرِينَ","sabr qildi / sabr qiluvchilar"]],
+    recognition:[["الْمَسَاكِينَ","miskinlar"],["ابْنَ السَّبِيلِ","yo'lda qolgan"],["عَهْدِهِمْ","va'dalari"],["الْبَأْسَاءِ وَالضَّرَّاءِ","qashshoqlik va kasallik"],["نُفَرِّقُ","ajratamiz"]]
+  },
+  closing:"Endi siz Al-Baqaraga — Qur'onning eng uzun surasiga — chuqur kirishga tayyorsiz. Keyingi uch darsda shu surani mavzu bo'yicha o'rganamiz."
+},
+
+// ============ UNIT 32 ============
+{
+  id:32, phase:4, title:"Al-Baqara I: Imon va g'ayb haqidagi oyatlar", ar:"سورة البقرة", surahApiNum:2,
+  intro:"Al-Baqara — Qur'onning eng uzun surasi, 286 oyat. Uni uch darsda, mavzu bo'yicha o'rganamiz. Bu birinchi dars — suraning ochilishi (1-20-oyatlar atrofi), unda Alloh insoniyatni uch toifaga bo'lib tasvirlaydi: muttaqiylar (taqvodorlar), kofirlar va munofiqlar. 31-darsda o'rgangan \"ipni yo'qotmasdan kuzatish\" mahoratingiz endi ishga tushadi — bu oyatlar orasida uzun, ko'p qatlamli jumlalar bor.",
+  ayahs:[],
+  wbw:[
+    {ref:"1–2-oyatlar — kitobning tabiati", ar:"الم ﴿١﴾ ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ", meaning:"Alif, Lom, Mim. Bu — o'zida shubha yo'q Kitob, taqvodorlar uchun hidoyatdir.",
+     notes:"&bull; <span class='w'>الم</span> — \"ajratilgan harflar\"dan (Yosinning يس kabi, 22-dars) — ma'nosi Allohga ma'lum<br>&bull; <span class='w'>ذَٰلِكَ الْكِتَابُ</span> = \"bu (o'sha) Kitob\" — ذَٰلِكَ <span class='review'>&#8635; 10-dars</span> odatda uzoqdagi narsaga ishora qiladi, lekin bu yerda Qur'onning ulug'ligini ta'kidlash uchun ishlatilgan, deb tafsir qilinadi<br>&bull; <span class='w'>لَا رَيْبَ فِيهِ</span> = \"unda shubha yo'q\" <span class='review'>&#8635; لَا...naqshi, 7-dars</span><br>&bull; <span class='w'>هُدًى لِّلْمُتَّقِينَ</span> = \"taqvodorlar uchun hidoyat\" — Kitob HAMMAGA emas, qalbi ochiq bo'lganlarga hidoyat bo'lishi ta'kidlanadi"},
+    {ref:"3–5-oyatlar — muttaqiylar kimlar", ar:"الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنفِقُونَ ﴿٣﴾ وَالَّذِينَ يُؤْمِنُونَ بِمَا أُنزِلَ إِلَيْكَ وَمَا أُنزِلَ مِن قَبْلِكَ وَبِالْآخِرَةِ هُمْ يُوقِنُونَ ﴿٤﴾ أُولَٰئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ ۖ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ", meaning:"(Ular) g'aybga imon keltiradilar, namozni to'kis ado etadilar, va bergan rizqimizdan infoq qiladilar. Senga tushirilganga va sendan oldin tushirilganga imon keltiradilar, oxiratga esa aniq ishonadilar. Ana o'shalar — Robbilaridan hidoyat ustidalar, va ana o'shalar — najot topguvchilardir.",
+     notes:"&bull; <span class='w'>يُؤْمِنُونَ بِالْغَيْبِ</span> = \"g'aybga imon keltiradilar\" — G'AYB, ya'ni ko'zga ko'rinmaydigan narsalar (Alloh, farishtalar, jannat-do'zax) — bu Qur'on iymonining markazi<br>&bull; <span class='w'>يُنفِقُونَ</span> <span class='review'>&#8635; 27-dars, infoq mavzusi</span> = infoq qiladilar, sarflaydilar<br>&bull; <span class='w'>مَا أُنزِلَ إِلَيْكَ ... مِن قَبْلِكَ</span> = \"senga tushirilgan ... sendan oldin tushirilgan\" — Qur'onga VA oldingi kitoblarga (Tavrot, Injil) imon — bu Islomning muhim printsipi<br>&bull; <span class='w'>الْمُفْلِحُونَ</span> <span class='review'>&#8635; أَفْلَحَ، Ash-Shams 9-oyat, 26-dars</span> = najot topguvchilar — bir xil ildizdan"},
+    {ref:"6–7-oyatlar — kofirlarning holati", ar:"إِنَّ الَّذِينَ كَفَرُوا سَوَاءٌ عَلَيْهِمْ أَأَنذَرْتَهُمْ أَمْ لَمْ تُنذِرْهُمْ لَا يُؤْمِنُونَ ﴿٦﴾ خَتَمَ اللَّهُ عَلَىٰ قُلُوبِهِمْ وَعَلَىٰ سَمْعِهِمْ ۖ وَعَلَىٰ أَبْصَارِهِمْ غِشَاوَةٌ", meaning:"Albatta kofir bo'lganlarga — ularni ogohlantirsang ham, ogohlantirmasang ham — baribir, ular imon keltirmaydilar. Alloh ularning qalblarini va qulog'ini muhrladi, ko'zlarida esa parda bor.",
+     notes:"&bull; <span class='w'>سَوَاءٌ عَلَيْهِمْ</span> = \"ular uchun barobar\" — ogohlantirish yoki yo'qligi farq qilmaydi, chunki qalb allaqachon yopiq<br>&bull; <span class='w'>خَتَمَ</span> = muhrladi <span class='review'>&#8635; Yosin 65-oyat, 22-dars, نَخْتِمُ</span> — bir xil ildiz, u yerda \"og'izlar muhrlanadi\", bu yerda \"qalb\"<br>&bull; <span class='w'>قُلُوبِهِمْ / سَمْعِهِمْ / أَبْصَارِهِمْ</span> = qalblari / qulog'i / ko'zlari — uch a'zo ketma-ket zikr etiladi, hammasi yopiq"},
+    {ref:"8–9-oyatlar — munofiqlar", ar:"وَمِنَ النَّاسِ مَن يَقُولُ آمَنَّا بِاللَّهِ وَبِالْيَوْمِ الْآخِرِ وَمَا هُم بِمُؤْمِنِينَ ﴿٨﴾ يُخَادِعُونَ اللَّهَ وَالَّذِينَ آمَنُوا وَمَا يَخْدَعُونَ إِلَّا أَنفُسَهُمْ وَمَا يَشْعُرُونَ", meaning:"Odamlardan ba'zilari: \"Allohga va oxirat kuniga imon keltirdik\" deydilar, holbuki ular mo'min emaslar. Ular Allohni va imon keltirganlarni aldamoqchi bo'ladilar, aslida faqat o'zlarini aldaydilar — buni his qilmaydilar ham.",
+     notes:"&bull; <span class='w'>مَن يَقُولُ</span> = \"deydigan kishi\" — TIL bilan aytilgan gap, lekin qalbda yo'q — munofiqlikning ta'rifi<br>&bull; <span class='w'>يُخَادِعُونَ</span> = aldashga urinadilar &middot; <span class='w'>مَا يَخْدَعُونَ إِلَّا أَنفُسَهُمْ</span> = \"faqat o'zlarini aldaydilar\" <span class='review'>&#8635; إِلَّا istisno naqshi, 7, 21, 23-darslar</span> — Allohni aldash mumkin emas, natijada faqat o'ziga zarar qiladi"}
+  ],
+  synth:"Al-Baqaraning ochilishi — uch toifa insonni tasvirlaydi: muttaqiylar (3-5, qisqa, ijobiy sifatlar ro'yxati — 31-darsda ko'rgan \"karta\" usuli bilan), kofirlar (6-7, ikki oyat, qat'iy holat), munofiqlar (8-9dan boshlab, ancha uzun tavsif — chunki munofiqlik eng murakkab, eng ko'p ogohlantirish talab qiladigan holat). Uzunlikning o'zi ma'noga ishora: qanchalik xavfli mavzu, shunchalik batafsil tasvirlanadi.",
+  tafakkur:"6-7-oyatlardagi \"qalb muhrlangan\" tasviri qo'rqinchli tuyulishi mumkin, lekin buni to'g'ri tushunish muhim: bu Allohning zulmi emas, balki insonning o'z tanlovlarining natijasi — doimiy ravishda haqiqatdan yuz o'girish, oxir-oqibat qalbni haqiqatni qabul qila olmaydigan holga keltiradi. Bu — har birimiz uchun ogohlantirish: kichik e'tiborsizliklarimiz, agar davom etsa, katta yopiqlikka aylanishi mumkin. Shu bois har kichik hidoyat ishorasini qadrlash kerak.",
+  talaffuz:"يُخَادِعُونَ so'zidagi خ (tomoqdan chiqadigan qattiq \"x\") — ح (yumshoqroq \"h\") bilan aralashtirmang. Bu ikki tovush yozma jihatdan farqli, lekin talaffuzda o'xshab ketishi mumkin.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"Al-Baqaraning ochilishida nechta toifa inson tasvirlanadi?", options:["Ikkita","Uchta — muttaqiylar, kofirlar, munofiqlar","To'rtta"], correct:1, explain:"Uchta toifa: muttaqiylar (3-5), kofirlar (6-7), munofiqlar (8-dan boshlab)."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"غَيْب so'zi nima ma'noni bildiradi va nima uchun muhim?", answer:"Ko'zga ko'rinmaydigan narsalar (Alloh, farishtalar, jannat-do'zax). Muttaqiylarning birinchi sifati — shu ko'rinmas narsalarga imon keltirish."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Bog\'lang', pairs:[{l:"يُؤْمِنُونَ بِالْغَيْبِ",r:"g'aybga imon keltiradilar"},{l:"خَتَمَ اللَّهُ",r:"Alloh muhrladi"},{l:"يُخَادِعُونَ",r:"aldashga urinadilar"},{l:"الْمُفْلِحُونَ",r:"najot topguvchilar"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"8-9-oyatlarda munofiqlar nima uchun \"faqat o'zlarini aldaydilar\" deyiladi?", answer:"Allohni aldash mumkin emas; imonsizlikni yashirish faqat o'zlarining oxiratini xavf ostiga qo'yadi, boshqa hech kimga zarar keltirmaydi."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"Munofiqlar haqidagi tavsif 8-oyatdan boshlab qancha davom etadi (\"To'liq Qur'on\"da tekshiring)? Nima uchun bu qism eng uzun deb o'ylaysiz?", answer:"Taxminan 8-20-oyatlargacha davom etadi — eng uzun tavsif, chunki munofiqlik tashqi ko'rinishda imon kabi ko'rinib, ichki holati boshqacha bo'lgani uchun eng ko'p tushuntirish talab qiladi."}
+  ],
+  vocab:{
+    core:[["يُؤْمِنُونَ","imon keltiradilar"],["الْغَيْبِ","g'ayb, ko'rinmas"],["يُنفِقُونَ","infoq qiladilar"],["كَفَرُوا","kofir bo'ldilar"],["قُلُوبِهِمْ","ularning qalblari"]],
+    recognition:[["الْمُتَّقِينَ","taqvodorlar"],["الْمُفْلِحُونَ","najot topguvchilar"],["خَتَمَ","muhrladi"],["غِشَاوَةٌ","parda"],["يُخَادِعُونَ","aldashga urinadilar"]]
+  },
+  closing:"Keyingi darsda Al-Baqaraning oilaviy va huquqiy oyatlariga o'tamiz — imon nazariyadan amaliy hayotga qanday ko'chishini ko'rasiz."
+},
+
+// ============ UNIT 33 ============
+{
+  id:33, phase:4, title:"Al-Baqara II: Oilaviy va huquqiy masalalar", ar:"سورة البقرة", surahApiNum:2,
+  intro:"Al-Baqara nafaqat imon haqida — bu sura kundalik hayotning ko'p qismini: oila, meros, nikoh, mehr-shafqatni ham tartibga soladi. Bu darsda ikki mavzuga to'xtalamiz: ota-onaga vasiyat (180-oyat) va emizish muddati (233-oyat) — ikkalasi ham Qur'onning \"quruq qonun\" emas, mehr-oqibat bilan yozilgan qoidalar ekanini ko'rsatadi.",
+  ayahs:[],
+  wbw:[
+    {ref:"180-oyat — ota-onaga vasiyat", ar:"كُتِبَ عَلَيْكُمْ إِذَا حَضَرَ أَحَدَكُمُ الْمَوْتُ إِن تَرَكَ خَيْرًا الْوَصِيَّةُ لِلْوَالِدَيْنِ وَالْأَقْرَبِينَ بِالْمَعْرُوفِ ۖ حَقًّا عَلَى الْمُتَّقِينَ", meaning:"Sizlardan biriga o'lim yetganda, agar mol qoldirsa, ota-onaga va yaqinlarga yaxshilik bilan vasiyat qilish — taqvodorlar zimmasidagi haqdir — sizlarga yozildi (farz qilindi).",
+     notes:"&bull; <span class='w'>كُتِبَ عَلَيْكُمْ</span> = \"sizlarga yozildi\" — \"kim yozgani\" aytilmagan fe'l shakli <span class='review'>&#8635; 29-dars, Al-Infitor naqshi</span>, farz/majburiyat ma'nosida ishlatiladi<br>&bull; <span class='w'>إِذَا حَضَرَ ... الْمَوْتُ</span> = \"o'lim yetganda\" <span class='review'>&#8635; إِذَا، 19-dars</span><br>&bull; <span class='w'>الْوَصِيَّةُ لِلْوَالِدَيْنِ وَالْأَقْرَبِينَ</span> = \"ota-onaga va yaqinlarga vasiyat\" — الْوَالِدَيْنِ so'zidagi -َيْنِ qo'shimchasi \"ikkovlik\" shakli (ota VA ona, ikkovi birga) <span class='review'>&#8635; 25-darsdagi -هُمَا bilan bir oilaviy naqsh</span><br>&bull; <span class='w'>بِالْمَعْرُوفِ</span> = \"yaxshilik bilan, odob bilan\" — bu so'z Qur'onda ko'p ishlatiladi, \"adolatli va mehr-oqibatli tarzda\" degan ma'noni beradi"},
+    {ref:"233-oyat (boshi) — emizish", ar:"وَالْوَالِدَاتُ يُرْضِعْنَ أَوْلَادَهُنَّ حَوْلَيْنِ كَامِلَيْنِ ۖ لِمَنْ أَرَادَ أَن يُتِمَّ الرَّضَاعَةَ ۚ وَعَلَى الْمَوْلُودِ لَهُ رِزْقُهُنَّ وَكِسْوَتُهُنَّ بِالْمَعْرُوفِ ۚ لَا تُكَلَّفُ نَفْسٌ إِلَّا وُسْعَهَا ۚ لَا تُضَارَّ وَالِدَةٌ بِوَلَدِهَا", meaning:"Onalar farzandlarini to'liq ikki yil emizadilar — emizishni to'liq qilishni istagan kishi uchun. Bolaning otasi zimmasida ularning (onalarning) taomi va kiyimi bor — yaxshilik bilan. Hech bir jonga o'z quvvatidan ortiq yuk yuklanmaydi. Ona bolasi tufayli zarar ko'rmasin.",
+     notes:"&bull; <span class='w'>حَوْلَيْنِ كَامِلَيْنِ</span> = \"to'liq ikki yil\" — yana -َيْنِ ikkovlik shakli, aniq muddat belgilangan<br>&bull; <span class='w'>عَلَى الْمَوْلُودِ لَهُ رِزْقُهُنَّ وَكِسْوَتُهُنَّ</span> = \"otaning zimmasida ularning taomi va kiyimi\" — moliyaviy mas'uliyat aniq belgilanadi<br>&bull; <span class='w'>لَا تُكَلَّفُ نَفْسٌ إِلَّا وُسْعَهَا</span> = \"hech bir jonga quvvatidan ortiq yuk yuklanmaydi\" — bu qisqa jumla Qur'onning umumiy printsipi, 286-oyatda (34-darsda ko'rasiz) yana takrorlanadi<br>&bull; <span class='w'>لَا تُضَارَّ وَالِدَةٌ بِوَلَدِهَا</span> = \"ona bolasi sababli zarar ko'rmasin\" — qonun o'rtasida ham onaning hissiy va jismoniy holatiga g'amxo'rlik ko'rsatiladi"}
+  ],
+  synth:"Ikkala oyatda ham bir xil ruh bor: aniq huquqiy qoida (kim, qanча, qachon) + insoniy mehr-shafqat eslatmasi (بِالْمَعْرُوفِ — yaxshilik bilan). Diqqat qiling — لَا تُكَلَّفُ نَفْسٌ إِلَّا وُسْعَهَا kabi umumiy printsiplar aniq qonunlar ichiga ham kiritilgan — bu Qur'onning uslubi: qat'iy qoida va rahm-shafqat birga keladi.",
+  tafakkur:"233-oyatdagi \"ona bolasi sababli zarar ko'rmasin\" jumlasi — 1400 yil oldin, ayollar huquqi haqida bugungi kunda ham munozara qilinayotgan bir davrda, onaning hissiy holatini himoya qiluvchi aniq qonun sifatida kelgan. Bu — Islom qonunchiligining insonparvarlik tomonini ko'rsatuvchi ajoyib misol: huquq faqat moddiy emas, ruhiy g'amxo'rlikni ham o'z ichiga oladi.",
+  talaffuz:"وُسْعَهَا so'zidagi ع (ayn) — tomoqning o'rtasidan chiqadigan, o'ziga xos Arabcha tovush, hech qanday o'zbekcha harfga to'g'ri kelmaydi. Ko'zguga qarab, tomog'ingizni engil siqib mashq qiling.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"233-oyatda emizishning to'liq muddati qancha belgilangan?", options:["Bir yil","Ikki yil (hॉwlayni kamilayn)","Uch yil"], correct:1, explain:"حَوْلَيْنِ كَامِلَيْنِ — \"to'liq ikki yil\"."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"لَا تُكَلَّفُ نَفْسٌ إِلَّا وُسْعَهَا jumlasini o'z so'zlaringiz bilan tushuntiring.", answer:"Hech kimga o'z kuchi-imkoniyatidan ortiq yuk/mas'uliyat yuklanmaydi — Islom qonunlari insonning real imkoniyatini hisobga oladi."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Bog\'lang', pairs:[{l:"الْوَالِدَيْنِ",r:"ota-ona (ikkovlik)"},{l:"حَوْلَيْنِ كَامِلَيْنِ",r:"to'liq ikki yil"},{l:"بِالْمَعْرُوفِ",r:"yaxshilik bilan"},{l:"كُتِبَ عَلَيْكُمْ",r:"sizlarga farz qilindi"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"180 va 233-oyatlarda -َيْنِ (ikkovlik) qo'shimchasi qaysi so'zlarda uchraydi, va bu 25-darsdagi qaysi naqsh bilan bog'liq?", answer:"الْوَالِدَيْنِ (ota-ona) va حَوْلَيْنِ (ikki yil) — 25-darsdagi Ar-Rahmon suraси كُمَا/رَبِّكُمَا kabi \"ikkovlik\" shaklining oilaviy hayotga tegishli namunasi."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"233-oyatning davomini (\"To'liq Qur'on\"da) o'qib, agar ota-ona ajrashib, farzandni boshqa birov emizishga rozi bo'lsa, qanday shart qo'yilganini toping.", answer:"O'zingizni sinang — agar ikkala tomon rozilik va maslahat bilan sut onani almashtirishni xohlasa, gunoh yo'q, deyiladi, lekin haq to'liq to'lanishi kerak."}
+  ],
+  vocab:{
+    core:[["الْوَالِدَيْنِ","ota-ona"],["الْمَوْتُ","o'lim"],["بِالْمَعْرُوفِ","yaxshilik bilan"],["رِزْقُهُنَّ","ularning rizqi"],["وَلَدِهَا","uning bolasi"]],
+    recognition:[["الْوَصِيَّةُ","vasiyat"],["الْأَقْرَبِينَ","yaqinlar"],["يُرْضِعْنَ","emizadilar"],["كِسْوَتُهُنَّ","ularning kiyimi"],["وُسْعَهَا","uning quvvati"]]
+  },
+  closing:"Keyingi darsda Al-Baqaraning ibodat va jamiyat oyatlariga — ro'za va Allohning yaqinligi haqidagi mashhur oyatlarga — o'tamiz."
+},
+
+// ============ UNIT 34 ============
+{
+  id:34, phase:4, title:"Al-Baqara III: Ibodat va jamiyat qoidalari", ar:"سورة البقرة", surahApiNum:2,
+  intro:"Al-Baqara bo'yicha uchinchi va yakuniy darsimiz — ibodat mavzusiga bag'ishlanadi: ro'za farz qilingan mashhur oyat, Allohning duoga yaqinligi haqidagi eng sevimli oyatlardan biri, va nihoyat butun surani, hatto butun kursning ushbu qismini yakunlovchi — 286-oyat, Qur'ondagi eng chuqur duolardan biri.",
+  ayahs:[],
+  wbw:[
+    {ref:"183-oyat — ro'za farz qilinishi", ar:"يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ", meaning:"Ey imon keltirganlar! Sizlardan oldingilarga farz qilingani kabi, sizlarga ham ro'za farz qilindi — shoyad taqvodor bo'lsangiz.",
+     notes:"&bull; <span class='w'>يَا أَيُّهَا الَّذِينَ آمَنُوا</span> = \"ey imon keltirganlar\" — Qur'onda 80 dan ortiq marta takrorlanadigan nido, mo'minlarga to'g'ridan-to'g'ri murojaat<br>&bull; <span class='w'>كُتِبَ عَلَيْكُمُ</span> <span class='review'>&#8635; 33-dars, 180-oyat, bir xil naqsh</span> = \"sizlarga farz qilindi\"<br>&bull; <span class='w'>كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ</span> = \"sizdan oldingilarga farz qilingani kabi\" — ro'za yangi ibodat emas, oldingi ummatlarda ham bo'lgan<br>&bull; <span class='w'>لَعَلَّكُمْ تَتَّقُونَ</span> = \"shoyad taqvodor bo'lsangiz\" — ro'zaning MAQSADI shu yerda aytiladi: ochlik o'zi maqsad emas, taqvo — natija"},
+    {ref:"186-oyat — Allohning yaqinligi", ar:"وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ ۖ فَلْيَسْتَجِيبُوا لِي وَلْيُؤْمِنُوا بِي لَعَلَّهُمْ يَرْشُدُونَ", meaning:"Bandalarim sendan Men haqimda so'rasa, albatta Men yaqinman — chaqiruvchi Meni chaqirganda, chaqirig'iga javob beraman. Bas, ular ham Menga javob berishsin va Menga imon keltirishsin — shoyad to'g'ri yo'lni topsalar.",
+     notes:"&bull; <span class='w'>إِذَا سَأَلَكَ عِبَادِي عَنِّي</span> = \"bandalarim sendan Men haqimda so'rasa\" — diqqat qiling, javob VOSITASIZ keladi: \"ayt, Alloh aytadiki...\" emas, to'g'ridan-to'g'ri \"Men yaqinman\" — Qur'onda Allohning bevosita, birinchi shaxsda so'zlashi kamdan-kam uchraydi, bu oyatning o'ziga xosligi<br>&bull; <span class='w'>قَرِيبٌ</span> <span class='review'>&#8635; أَقْرَبُ، Qof 16-oyat, 28-dars</span> — bir xil ildiz, Allohning yaqinligi mavzusi yana takrorlanadi<br>&bull; <span class='w'>أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ</span> = \"chaqirganda javob beraman\" — bir jumlada uch marta د-ع ildizi (chaqirmoq/duo) takrorlanadi, ohangdorlik hosil qiladi"},
+    {ref:"286-oyat — yakuniy duo", ar:"لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ ... رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِن قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ۚ أَنتَ مَوْلَانَا فَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ", meaning:"Alloh hech bir jonga uning quvvatidan ortiq yuk yuklamaydi... Robbimiz, unutsak yoki xato qilsak, bizni ushlab qolma! Robbimiz, bizdan oldingilarga yuklaganing kabi og'ir yuk yuklamagin! Robbimiz, quvvatimiz yetmaydigan narsani yuklamagin! Bizni afv et, mag'firat qil, rahm qil! Sen bizning Mavlomizsan — bizga kofir qavmga qarshi yordam ber!",
+     notes:"&bull; <span class='w'>لَا يُكَلِّفُ ... إِلَّا وُسْعَهَا</span> <span class='review'>&#8635; 233-oyat, 33-dars, bir xil printsip</span> — sura shu tamoyilni qaytarib, keyin duo bilan davom etadi<br>&bull; <span class='w'>رَبَّنَا</span> = \"Robbimiz\" — 5 marta takrorlanadi, har safar yangi iltijo bilan — bu takror duoning kuchini oshiradi<br>&bull; <span class='w'>لَا تُؤَاخِذْنَا / لَا تَحْمِلْ / لَا تُحَمِّلْنَا</span> = \"bizni ushlab qolma / yuklamagin / yuklamagin\" — uch marta man qiluvchi buyruq, keyin وَاعْفُ / وَاغْفِرْ / وَارْحَمْنَا (afv et, mag'firat qil, rahm qil) — uch ijobiy so'rov bilan almashadi<br>&bull; Rivoyat qilinishicha, Payg'ambar ﷺ har bir iltijodan keyin \"omin\" deb aytganlar — bu duo Me'roj kechasida, bevosita Alloh tomonidan mo'minlarga in'om qilingan, deyiladi"}
+  ],
+  synth:"Al-Baqaraning yakuniy uchligi — ibodat (ro'za), munosabat (duo va yaqinlik), va nihoyat taslim bo'lish (286-oyat duosi) — imon safarining tabiiy yakunini ko'rsatadi. لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا jumlasi ikki marta (233 va 286-oyatlarda) takrorlanishi tasodif emas — bu Qur'onning eng tasalli beruvchi va'dalaridan biri, shuning uchun ikki marta ta'kidlanadi.",
+  tafakkur:"286-oyat — Al-Baqaraning, va butun Qur'onning eng ta'sirli duolaridan biri bilan yakunlanadi. Har bir رَبَّنَا (Robbimiz) dan keyingi iltimos — unutish, xato, og'ir yuk, chidab bo'lmas sinov — bu barchamiz boshdan kechiradigan insoniy zaifliklar. Bu oyatni har kuni (ayniqsa kechqurun) o'qish sunnat qilingan, chunki u bizga eslatadi: Alloh bizdan mukammallikni emas, halol harakatni so'raydi, va xato qilganimizda ham Uning eshigi ochiq.",
+  talaffuz:"تُؤَاخِذْنَا so'zidagi ء (hamza) yana chuqur tomoq to'xtalishi. Bu so'zni sekin, bo'g'inlarga bo'lib mashq qiling: تُ-ؤَا-خِذْ-نَا.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"183-oyatda ro'zaning maqsadi nima deb aytiladi?", options:["Ochlikni his qilish","Taqvodor bo'lish (لَعَلَّكُمْ تَتَّقُونَ)","Vaqtni tejash"], correct:1, explain:"لَعَلَّكُمْ تَتَّقُونَ — \"shoyad taqvodor bo'lsangiz\" — ro'zaning ruhiy maqsadi."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"186-oyatning o'ziga xosligi nimada — nima uchun bu oyat boshqacha his qildiradi?", answer:"Alloh bevosita, birinchi shaxsda (\"Men yaqinman\") gapiradi — \"ayt\" degan vositachi buyruq yo'q, bu Qur'onda kamdan-kam uchraydi."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Bog\'lang', pairs:[{l:"قَرِيبٌ",r:"yaqin"},{l:"أُجِيبُ",r:"javob beraman"},{l:"رَبَّنَا",r:"Robbimiz"},{l:"وُسْعَهَا",r:"uning quvvati"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"286-oyatda لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا jumlasi qayerda avval uchragan edi (qaysi dars)?", answer:"33-darsda, 233-oyatda (emizish oyati) — bir xil printsip, ikki xil kontekstda takrorlanadi."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"286-oyatdagi 5 ta رَبَّنَا iltijosini yopiq kitobdan tartib bilan sanang.", answer:"1) unutsak/xato qilsak ushlab qolma; 2) og'ir yuk yuklamagin; 3) chidab bo'lmas narsa yuklamagin; 4) afv-mag'firat-rahm; 5) kofir qavmga qarshi yordam ber."}
+  ],
+  vocab:{
+    core:[["الصِّيَامُ","ro'za"],["قَرِيبٌ","yaqin"],["أُجِيبُ","javob beraman"],["رَبَّنَا","Robbimiz"],["اغْفِرْ لَنَا","bizni mag'firat qil"]],
+    recognition:[["تَتَّقُونَ","taqvodor bo'lasizlar"],["الدَّاعِ","chaqiruvchi"],["إِصْرًا","og'ir yuk"],["طَاقَةَ","quvvat, kuch"],["مَوْلَانَا","bizning Egamiz/Homiymiz"]]
+  },
+  closing:"Al-Baqara bo'yicha uch darsimiz shu bilan yakunlandi. Suraning qolgan 260 dan ortiq oyatini endi \"To'liq Qur'on\"da, o'zingiz, 31-darsda o'rgangan \"kuzatish\" mahorati bilan o'qing."
+},
+
+// ============ UNIT 35 ============
+{
+  id:35, phase:4, title:"Al-Kahf surasi: Uzun hikoyani o'qish", ar:"سورة الكهف", surahApiNum:18,
+  intro:"Al-Kahf — 110 oyat, va TO'RTTA alohida qissani o'z ichiga oladi: G'or egalari, ikki bog' egasi, Muso va Xizr, va Zulqarnayn. Har juma kuni o'qish sunnat qilingan, va Dajjol fitnasidan himoya beradi, deb rivoyat qilinadi. Bu darsda maqsad — bitta qissani emas, TO'RTTA qissa orasida qanday o'tilishini, hikoyachi qanday \"sahna almashtirish\"ini kuzatish. Bu — 24-darsdagi Yusuf va 31-darsdagi \"ip kuzatish\" mahoratining eng katta sinovi.",
+  ayahs:[],
+  wbw:[
+    {ref:"9–12-oyatlar — birinchi qissa boshlanishi", ar:"أَمْ حَسِبْتَ أَنَّ أَصْحَابَ الْكَهْفِ وَالرَّقِيمِ كَانُوا مِنْ آيَاتِنَا عَجَبًا ﴿٩﴾ إِذْ أَوَى الْفِتْيَةُ إِلَى الْكَهْفِ فَقَالُوا رَبَّنَا آتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا", meaning:"Yo, sen G'or va Raqim egalarini Bizning ajoyib oyatlarimizdan deb o'yladingmi? Yigitlar g'orga boshpana izlab kirishganda: \"Robbimiz, bizga Öz huzuringdan rahmat ber va ishimizda to'g'ri yo'l hozirla\" — deganlarida...",
+     notes:"&bull; <span class='w'>أَمْ حَسِبْتَ</span> = \"yo sen o'yladingmi?\" — hikoyachi savol bilan boshlaydi, o'quvchini qiziqtirish uslubi (Yusuf surasida ko'rmagan yangi texnika)<br>&bull; <span class='w'>إِذْ</span> <span class='review'>&#8635; 24-dars, Yusuf naqshi</span> = \"vaqtida\" — qissaning haqiqiy boshlanishi shu so'zdan<br>&bull; <span class='w'>الْفِتْيَةُ</span> = yigitlar — bir necha yosh yigit, imonlarini himoya qilish uchun g'orga qochishgan<br>&bull; <span class='w'>رَبَّنَا آتِنَا ... رَحْمَةً</span> <span class='review'>&#8635; 34-dars, رَبَّنَا naqshi</span> = \"Robbimiz, bizga rahmat ber\" — qiyin vaziyatda ilk ish — duo"},
+    {ref:"13–14-oyatlar — yigitlar tavsifi", ar:"نَّحْنُ نَقُصُّ عَلَيْكَ نَبَأَهُم بِالْحَقِّ ۚ إِنَّهُمْ فِتْيَةٌ آمَنُوا بِرَبِّهِمْ وَزِدْنَاهُمْ هُدًى ﴿١٣﴾ وَرَبَطْنَا عَلَىٰ قُلُوبِهِمْ إِذْ قَامُوا فَقَالُوا رَبُّنَا رَبُّ السَّمَاوَاتِ وَالْأَرْضِ", meaning:"Biz senga ularning xabarini haqiqat bilan hikoya qilamiz. Albatta ular Robbilariga imon keltirgan yigitlar edi, Biz ularning hidoyatini ziyoda qildik. Va qalblarini mustahkamladik — ular (zolim hukmdor oldida) turib: \"Bizning Robbimiz osmonlar va yerning Robbisidir\" — deyishganida.",
+     notes:"&bull; <span class='w'>نَقُصُّ عَلَيْكَ</span> <span class='review'>&#8635; Yusuf 3-oyat, 24-dars, bir xil ibora</span> = \"senga hikoya qilamiz\"<br>&bull; <span class='w'>زِدْنَاهُمْ هُدًى</span> = \"hidoyatlarini ziyoda qildik\" — imon statik emas, o'sib boradigan narsa ekanini bildiradi<br>&bull; <span class='w'>رَبَطْنَا عَلَىٰ قُلُوبِهِمْ</span> = \"qalblarini bog'ladik/mustahkamladik\" — bosim ostida turgan yoshlarga Alloh qalban kuch bergani tasvirlanadi"},
+    {ref:"46-oyat — ikkinchi qissadan xulosa", ar:"الْمَالُ وَالْبَنُونَ زِينَةُ الْحَيَاةِ الدُّنْيَا ۖ وَالْبَاقِيَاتُ الصَّالِحَاتُ خَيْرٌ عِندَ رَبِّكَ ثَوَابًا وَخَيْرٌ أَمَلًا", meaning:"Mol va farzandlar dunyo hayotining ziynatidir. Boqiy qoladigan yaxshi amallar esa Robbing huzurida savob jihatidan ham, umid jihatidan ham yaxshiroqdir.",
+     notes:"&bull; Bu oyat — ikki bog' egasi qissasidan (32-44-oyatlar, bitta boy odam boyligiga mag'rurlanib, oxir-oqibat bog'ini yo'qotgan qissa) keyin keladigan xulosa<br>&bull; <span class='w'>زِينَةُ الْحَيَاةِ الدُّنْيَا</span> = \"dunyo hayotining ziynati\" — mol-farzand YOMON emas, lekin VAQTINCHALIK<br>&bull; <span class='w'>الْبَاقِيَاتُ الصَّالِحَاتُ</span> = \"boqiy qoluvchi yaxshi amallar\" — بَاقِي (qoluvchi) so'zi زِينَة (ziynat)ga qarama-qarshi qo'yiladi <span class='review'>&#8635; 25-dars, يَبْقَىٰ/فَانٍ, Ar-Rahmon naqshi</span>"},
+    {ref:"66-oyat — uchinchi qissa: Muso ilm izlaydi", ar:"قَالَ لَهُ مُوسَىٰ هَلْ أَتَّبِعُكَ عَلَىٰ أَن تُعَلِّمَنِ مِمَّا عُلِّمْتَ رُشْدًا", meaning:"Muso unga (Xizrga): \"Senga o'rgatilgan to'g'ri yo'l ilmidan menga ham o'rgatishing uchun sizga ergashsam bo'ladimi?\" — dedi.",
+     notes:"&bull; <span class='w'>هَلْ أَتَّبِعُكَ</span> = \"senga ergashsammi?\" — Muso alayhissalom, Allohning payg'ambari bo'lgani holda, kamtarlik bilan Xizrdan ilm so'raydi<br>&bull; <span class='w'>مِمَّا عُلِّمْتَ</span> = \"senga o'rgatilgan narsadan\" <span class='review'>&#8635; 29-dars, \"kim qilgani aytilmagan\" fe'l naqshi</span> — Xizrga kim o'rgatgani aytilmaydi, faqat u ilm sohibi ekani ta'kidlanadi<br>&bull; Bu qissaning saboqi: eng ulug' payg'ambar ham, o'zidan boshqacha ilmga ega odamdan o'rganishdan or qilmagan"},
+    {ref:"109-oyat — yakuniy oyat", ar:"قُل لَّوْ كَانَ الْبَحْرُ مِدَادًا لِّكَلِمَاتِ رَبِّي لَنَفِدَ الْبَحْرُ قَبْلَ أَن تَنفَدَ كَلِمَاتُ رَبِّي وَلَوْ جِئْنَا بِمِثْلِهِ مَدَدًا", meaning:"Ayt: \"Agar dengiz Robbimning so'zlari uchun siyoh bo'lsa, Robbimning so'zlari tugamasdan turib dengiz tugab qolar edi — hatto yana shuncha dengiz keltirsak ham\".",
+     notes:"&bull; <span class='w'>لَوْ كَانَ الْبَحْرُ مِدَادًا</span> = \"agar dengiz siyoh bo'lsa\" — تصور qilib bo'lmaydigan ulkan miqyosdagi tasvir<br>&bull; <span class='w'>لَنَفِدَ الْبَحْرُ</span> = \"dengiz tugab qolardi\" — Allohning ilmi va so'zlarining chegarasizligini bildiruvchi eng kuchli obrazlardan biri<br>&bull; Sura to'rt qissadan so'ng, Allohning ilmi oldida BUTUN OKEAN ham kichik ekanini aytib yakunlaydi — bu, o'quvchiga, o'qigan 110 oyat ham ulkan ilmning faqat bir tomchisi ekanini eslatadi"}
+  ],
+  synth:"Al-Kahfda to'rtta qissa orasidagi o'tish — أَمْ حَسِبْتَ (yo o'yladingmi?), وَاضْرِبْ لَهُم مَّثَلًا (ularga misol keltir, 46-oyat oldidan), وَاذْكُرْ (eslat, Muso qissasi oldidan, 60-oyat) kabi so'zlar bilan belgilanadi — har biri \"yangi qissa boshlanyapti\" signali. Bu — 24-darsdagi إِذْ/فَلَمَّا dan farqli, KATTA miqyosdagi sahna almashtirish signallari.",
+  tafakkur:"G'or yigitlarining qissasi — imonni himoya qilish uchun hamma narsadan (uy, oila, shahar) voz kechishga tayyor bo'lish haqida. Ikki bog' egasi qissasi — boylikning vaqtinchaligi haqida. Muso-Xizr qissasi — hatto payg'ambar ham ilm oldida kamtar bo'lishi kerakligi haqida. Zulqarnayn qissasi (110-oyatgacha, o'zingiz o'qiysiz) — adolatli hukmdorlik haqida. To'rttasi birga — dunyoning to'rt sinovini: din, mol, ilm, hokimiyat — qamrab oladi. Shuning uchun bu sura har juma o'qiladi: haftalik hayotingizning har burchagini shu to'rt sinov bilan solishtirib ko'rish uchun.",
+  talaffuz:"مِدَادًا so'zidagi د (dol) — tilning uchi yuqori tishlar orqasiga tegib chiqadigan aniq \"d\" tovushi, ذ (yumshoq \"dh\") bilan aralashtirmang.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"Al-Kahf surasida nechta asosiy qissa bor?", options:["Ikkita","To'rtta — g'or egalari, ikki bog', Muso-Xizr, Zulqarnayn","Oltita"], correct:1, explain:"To'rtta qissa: G'or egalari, ikki bog' egasi, Muso va Xizr, Zulqarnayn."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"46-oyatda \"boqiy qoluvchi yaxshi amallar\" nima uchun mol-farzanddan yaxshiroq deyiladi?", answer:"Mol-farzand vaqtinchalik (زِينَةُ الْحَيَاةِ الدُّنْيَا), yaxshi amallar esa boqiy (الْبَاقِيَاتُ الصَّالِحَاتُ) — oxiratda haqiqiy foyda beradi."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Qissani saboq bilan bog\'lang', pairs:[{l:"G'or egalari",r:"imonni himoya qilish"},{l:"Ikki bog' egasi",r:"boylikning vaqtinchaligi"},{l:"Muso va Xizr",r:"ilm oldida kamtarlik"},{l:"109-oyat",r:"Allohning ilmi cheksizligi"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"66-oyatda Muso alayhissalom Xizrga qanday murojaat qiladi, va bu nima uchun ahamiyatli?", answer:"\"Senga ergashsammi, menga o'rgatishing uchun?\" — kamtarlik bilan so'raydi; ahamiyati: eng buyuk payg'ambar ham ilm izlashda kamtar bo'lgan."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"Zulqarnayn qissasini (83-98-oyatlar) \"To'liq Qur'on\"da o'qing va u qanday uch sayohat qilganini toping.", answer:"O'zingizni sinang — g'arbga, sharqqa, va ikki tog' orasidagi qavmga (Ya'juj-Ma'juj to'sig'ini qurgan joyga) sayohat qiladi."}
+  ],
+  vocab:{
+    core:[["الْكَهْفِ","g'or"],["الْفِتْيَةُ","yigitlar"],["رَبَّنَا","Robbimiz"],["الْمَالُ","mol"],["عَلَّمَ / عُلِّمْتَ","o'rgatdi / senga o'rgatilgan"]],
+    recognition:[["زِينَةُ","ziynat"],["الْبَاقِيَاتُ الصَّالِحَاتُ","boqiy yaxshi amallar"],["رُشْدًا","to'g'ri yo'l, kamolot"],["الْبَحْرُ","dengiz"],["مِدَادًا","siyoh"]]
+  },
+  closing:"Al-Kahfni to'liq — 110 oyat — \"To'liq Qur'on\"da, imkon qadar juma kuni, tinglang. Endi to'rtta qissaning har birini alohida taniysiz."
+},
+
+// ============ UNIT 36 ============
+{
+  id:36, phase:4, title:"Arabcha nutq go'zalligi: urg'u va uslub", ar:"البلاغة",
+  intro:"Shu paytgacha ma'noga e'tibor berdik — endi, kursning oxiriga yaqinlashganda, Qur'onning GO'ZALLIGIGA to'xtalamiz. Bu darsda atama yo'q (\"tashbih\", \"istiora\" kabi so'zlarni bilishingiz shart emas) — faqat ikkita uslubiy vositani, ularning eng kuchli namunalarida his qilamiz: qatlама-qatlama o'xshatish (metafora) va qarama-qarshi juftlik (parallelizm).",
+  ayahs:[],
+  wbw:[
+    {ref:"An-Nur, 35-oyat — Nur oyati", ar:"اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ ۚ مَثَلُ نُورِهِ كَمِشْكَاةٍ فِيهَا مِصْبَاحٌ ۖ الْمِصْبَاحُ فِي زُجَاجَةٍ ۖ الزُّجَاجَةُ كَأَنَّهَا كَوْكَبٌ دُرِّيٌّ يُوقَدُ مِن شَجَرَةٍ مُّبَارَكَةٍ زَيْتُونَةٍ لَّا شَرْقِيَّةٍ وَلَا غَرْبِيَّةٍ يَكَادُ زَيْتُهَا يُضِيءُ وَلَوْ لَمْ تَمْسَسْهُ نَارٌ ۚ نُّورٌ عَلَىٰ نُورٍ", meaning:"Alloh osmonlar va yerning nuridir. Uning nurining misoli — ichida chiroq bo'lgan bir tokchaga o'xshaydi. Chiroq shisha ichida, shisha esa xuddi durdek yaltiragan yulduzga o'xshaydi — sharqqa ham, g'arbga ham mansub bo'lmagan muborak zaytun daraxtidan yoqiladi. Uning moyi, olov tegmasa ham, deyarli yorug' beradi. Nur ustiga nur!",
+     notes:"&bull; Diqqat qiling — bu bitta o'xshatish emas, QATLAMA-QATLAMA o'xshatishlar zanjiri: nur → tokcha → chiroq → shisha → yulduzga o'xshagan shisha → muborak zaytun moyi → \"nur ustiga nur\". Har bosqich oldingisini yanada aniqlashtiradi<br>&bull; <span class='w'>مَثَلُ نُورِهِ</span> = \"Uning nurining misoli\" — مَثَلُ so'zi bilan o'xshatish boshlanadi <span class='review'>&#8635; 2-darsda Al-Baqara 261-oyatda ham مَثَلُ ko'rgansiz</span><br>&bull; <span class='w'>لَّا شَرْقِيَّةٍ وَلَا غَرْبِيَّةٍ</span> = \"na sharqiy, na g'arbiy\" — eng sifatli, ochiq joyda o'sgan, hech kimning soyasida qolmagan daraxt, sifatning yuqori darajasi<br>&bull; <span class='w'>نُّورٌ عَلَىٰ نُورٍ</span> = \"nur ustiga nur\" — butun uzun tasvir shu to'rt so'zga siqiladi, eng qisqa va eng kuchli yakun"},
+    {ref:"Al-Layl, 5–10-oyatlar — qarama-qarshi juftlik", ar:"فَأَمَّا مَنْ أَعْطَىٰ وَاتَّقَىٰ ﴿٥﴾ وَصَدَّقَ بِالْحُسْنَىٰ ﴿٦﴾ فَسَنُيَسِّرُهُ لِلْيُسْرَىٰ ﴿٧﴾ وَأَمَّا مَن بَخِلَ وَاسْتَغْنَىٰ ﴿٨﴾ وَكَذَّبَ بِالْحُسْنَىٰ ﴿٩﴾ فَسَنُيَسِّرُهُ لِلْعُسْرَىٰ", meaning:"Kim (Alloh yo'lida) bersa, taqvo qilsa, va eng go'zal (va'da)ni tasdiqlasa — Biz uni yengillik uchun oson qilamiz. Kim baxillik qilsa, o'zini muhtoj emas deb hisoblasa, va eng go'zal (va'da)ni yolg'onga chiqarsa — Biz uni qiyinchilik uchun oson qilamiz.",
+     notes:"&bull; <span class='w'>فَأَمَّا ... وَأَمَّا</span> = \"kimki ... , kimki esa ...\" — ikki toifani ORQA-MA-ORQA, bir xil grammatik qolipda tasvirlash uslubi — parallelizm<br>&bull; Har ikki tomonda ham UCH xususiyat: berish/taqvo/tasdiqlash — baxillik/behojatlik/yolg'onga chiqarish. Sonlar ham, tuzilish ham bir xil, faqat mazmun teskari<br>&bull; <span class='w'>لِلْيُسْرَىٰ</span> / <span class='w'>لِلْعُسْرَىٰ</span> = yengillik / qiyinchilik uchun — qofiyadosh so'zlar, oyat oxiri bir xil ohangda tugaydi (-رَىٰ), bu qofiya QUR'ONNING butun uslubida muhim rol o'ynaydi"}
+  ],
+  synth:"Endi orqaga qarab, kursda ko'rgan uslubiy vositalarni sanang: qatlama-qatlama o'xshatish (bugungi Nur oyati), qarama-qarshi juftlik (bugungi Al-Layl, va 29-darsdagi الْأَبْرَارَ/الْفُجَّارَ), ritorik savol (21, 22-darslardagi أَلَمْ/أَأَمِنتُم), va takror orqali ta'kid (25-darsdagi Ar-Rahmon, 26-darsdagi Ash-Shams qasamlari). Bu to'rttasi — Qur'on go'zalligining asosiy \"asboblari\", va endi ularni har qanday yangi oyatda payqash mumkin.",
+  tafakkur:"Nur oyati (An-Nur 35) — tasavvuf va tafsir olimlari tomonidan asrlar davomida sharhlangan, chunki uning har qatlami yangi ma'no ochadi: mo'minning qalbidagi imon xuddi shu tokchadagi chiroqqa o'xshaydi — tashqi olovsiz ham (mustaqil, ichki ishonch bilan) yorug' bera oladigan, sof manbadan (na sharqiy, na g'arbiy — hech qanday tashqi mafkuraga bog'liq bo'lmagan) oziqlanadigan nur. Al-Layl esa juda amaliy: sizning har kungi ikkita kichik tanlovingiz — berish yoki ushlab qolish, taqvo yoki gerдонlik — sizni ikki xil yo'lga \"osonlashtiradi\". Yo'l osonlashadi, ammo yo'nalishni siz tanlaysiz.",
+  talaffuz:"مِشْكَاةٍ so'zidagi ك (kof) — yupqa, old tomondan chiqadigan tovush, ق (qof, chuqur) bilan aralashtirmang. Bu ikki tovushni ajratish — Nur oyatining go'zalligini to'g'ri talaffuz qilish uchun muhim.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"Nur oyatida nechta qatlamli o'xshatish bor (nur → tokcha → chiroq → ...)?", options:["Uchta","Beshtadan ortiq","Ikkita"], correct:1, explain:"Nur, tokcha, chiroq, shisha, yulduz, zaytun daraxti, moy — 6-7 qatlam, har biri oldingisini aniqlashtiradi."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"Al-Layl 5-10-oyatlarda ikki toifa odam qanday UCH xususiyat bilan tavsiflanadi?", answer:"Birinchi toifa: berish, taqvo, tasdiqlash. Ikkinchi toifa: baxillik, behojatlik, yolg'onga chiqarish — ikkalasi ham bir xil qolipda, teskari mazmunda."},
+    {type:'match', kicker:'MASHQ 3 · O\'RTA · Uslubni misol bilan bog\'lang', pairs:[{l:"Qatlama o'xshatish",r:"An-Nur 35-oyat"},{l:"Qarama-qarshi juftlik",r:"Al-Layl 5-10-oyat"},{l:"Ritorik savol",r:"Al-Mulk, Yosin"},{l:"Takror bilan ta'kid",r:"Ar-Rahmon, Ash-Shams"}]},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"نُّورٌ عَلَىٰ نُورٍ (nur ustiga nur) iborasi nima uchun kuchli deb hisoblanadi — uzun tasvirdan keyin nima uchun aynan shu qisqa jumla bilan tugaydi?", answer:"Uzoq, batafsil tasvirdan so'ng, eng qisqa va zich jumla bilan yakunlash — o'quvchining diqqatini eng muhim xulosaga (nur ko'payib boradi) qaratadi, uslubiy \"nafas\" beradi."},
+    {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"O'zingiz \"To'liq Qur'on\"dan yana bitta parallelizm (qarama-qarshi juftlik) misolini toping — masalan Al-Infitor 13-14-oyat (29-dars)ni eslang.", answer:"إِنَّ الْأَبْرَارَ لَفِي نَعِيمٍ ﴿١٣﴾ وَإِنَّ الْفُجَّارَ لَفِي جَحِيمٍ ﴿١٤﴾ — bir xil qolipda, ikki qarama-qarshi toifa."}
+  ],
+  vocab:{
+    core:[["نُورُ","nur"],["مَثَلُ","misol, o'xshatish"],["أَعْطَىٰ","berdi"],["اتَّقَىٰ","taqvo qildi"],["بَخِلَ","baxillik qildi"]],
+    recognition:[["مِشْكَاةٍ","tokcha"],["زُجَاجَةٍ","shisha"],["زَيْتُونَةٍ","zaytun daraxti"],["الْيُسْرَىٰ","yengillik"],["الْعُسْرَىٰ","qiyinchilik"]]
+  },
+  closing:"Endi Qur'on o'qiganingizda faqat ma'noni emas, uslubni ham \"eshitasiz\" — qofiya, takror, qarama-qarshilik, qatlama o'xshatish. Bu — chinakam \"tinglab zavqlanish\" darajasiga qadamdir."
+},
+
+// ============ UNIT 37 ============
+{
+  id:37, phase:4, title:"Mustaqil o'qish mashqi I: Al-Hujurot surasi", ar:"سورة الحجرات", surahApiNum:49,
+  intro:"Endi yordamchi tayanchlar asta-sekin olib tashlanadi. Bu darsda izohlar avvalgidan qisqaroq — ko'proq narsani o'zingiz, allaqachon bilgan naqshlaringiz yordamida topasiz. Al-Hujurot — kundalik muomala odobi haqidagi sura: g'iybat, masxara, taxmin haqida. Har bir musulmon uchun amaliy ahamiyati katta.",
+  ayahs:[],
+  wbw:[
+    {ref:"11-oyat — masxara va laqab qo'yish", ar:"يَا أَيُّهَا الَّذِينَ آمَنُوا لَا يَسْخَرْ قَوْمٌ مِّن قَوْمٍ عَسَىٰ أَن يَكُونُوا خَيْرًا مِّنْهُمْ وَلَا نِسَاءٌ مِّن نِّسَاءٍ عَسَىٰ أَن يَكُنَّ خَيْرًا مِّنْهُنَّ ۖ وَلَا تَلْمِزُوا أَنفُسَكُمْ وَلَا تَنَابَزُوا بِالْأَلْقَابِ", meaning:"Ey imon keltirganlar! Bir qavm boshqa qavmni masxara qilmasin — ehtimol ular o'zlaridan yaxshiroqdir. Ayollar ham boshqa ayollarni (masxara qilmasin) — ehtimol ular o'zlaridan yaxshiroqdir. O'zaro ayblanmanglar va bir-biringizga yomon laqab qo'ymanglar.",
+     notes:"&bull; <span class='w'>لَا يَسْخَرْ</span> — man qiluvchi buyruq <span class='review'>&#8635; 10-dars naqshi</span>, \"masxara qilmasin\"<br>&bull; <span class='w'>عَسَىٰ أَن يَكُونُوا خَيْرًا مِّنْهُمْ</span> — <span class='w'>خَيْرًا</span> <span class='review'>&#8635; 28-dars</span> qiyoslash so'zi qanday ishlatilganini o'zingiz aniqlang<br>&bull; <span class='w'>تَنَابَزُوا بِالْأَلْقَابِ</span> = yomon laqab qo'yish — bugun ham ijtimoiy tarmoqlarda keng tarqalgan illat, 1400 yil oldin taqiqlangan"},
+    {ref:"12-oyat — g'iybat", ar:"يَا أَيُّهَا الَّذِينَ آمَنُوا اجْتَنِبُوا كَثِيرًا مِّنَ الظَّنِّ إِنَّ بَعْضَ الظَّنِّ إِثْمٌ ۖ وَلَا تَجَسَّسُوا وَلَا يَغْتَب بَّعْضُكُم بَعْضًا ۚ أَيُحِبُّ أَحَدُكُمْ أَن يَأْكُلَ لَحْمَ أَخِيهِ مَيْتًا فَكَرِهْتُمُوهُ", meaning:"Ey imon keltirganlar! Gumonning ko'pidan saqlaning — ba'zi gumon gunohdir. Josuslik qilmanglar va bir-biringizni g'iybat qilmanglar. Sizlardan biringiz o'lgan akasining go'shtini yeishni yoqtiradimi? Buni yoqtirmaysizlar-ku!",
+     notes:"&bull; <span class='w'>أَيُحِبُّ أَحَدُكُمْ</span> — bu qanday jumla turi ekanini oldingi darslardan eslang (أَ- bilan boshlangan) <span class='review'>&#8635; ritorik savol, 21, 22-darslar</span><br>&bull; G'iybat — o'lgan aka-uka go'shtini yeishga qiyoslanadi — bu qanday uslubiy vosita ekanini 36-darsdan eslang<br>&bull; <span class='w'>فَكَرِهْتُمُوهُ</span> = \"buni yomon ko'rasizlar\" — savol-javob shaklida, o'quvchi o'zi xulosaga keladi"},
+    {ref:"13-oyat — insoniyat birligi", ar:"يَا أَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَاكُمْ شُعُوبًا وَقَبَائِلَ لِتَعَارَفُوا ۚ إِنَّ أَكْرَمَكُمْ عِندَ اللَّهِ أَتْقَاكُمْ", meaning:"Ey odamlar! Sizlarni bir erkak va ayoldan yaratdik va bir-biringizni tanishingiz uchun xalqlar va qabilalarga bo'ldik. Albatta Alloh huzurida eng qadrlingiz — eng taqvodoringizdir.",
+     notes:"&bull; <span class='w'>خَلَقْنَاكُم</span> <span class='review'>&#8635; خَلَقَ، 4, 21, 22-darslar</span> — endi tanish fe'l, bu safar \"سizlarni\" shaklida<br>&bull; <span class='w'>أَكْرَمَكُمْ ... أَتْقَاكُمْ</span> — ikkalasi ham qanday so'z shakli? (28-darsni eslang)<br>&bull; Bu oyat — irqchilik va millatchilikka qarshi Islomning eng aniq, eng mashhur dalili"}
+  ],
+  synth:"Bu uch oyatda kamida to'rtta oldin ko'rgan naqshni topdingizmi? لَا + buyruq (man qilish), أَ- bilan ritorik savol, خَيْر/أَكْرَم/أَتْقَى kabi qiyoslash so'zlari, va خَلَقَ fe'li. Al-Hujurot — yangi lug'atdan ko'ra, ESKI naqshlarni YANGI, amaliy kontekstda ko'rish darsi bo'ldi.",
+  tafakkur:"13-oyat — \"eng qadrlingiz eng taqvodoringiz\" — millat, boylik, mansab, hatto ilm emas, faqat taqvo — Alloh huzuridagi haqiqiy mezon. Bu oyatni har safar kimnidir tashqi ko'rinishi, kelib chiqishi yoki maqomi bilan baholashga moyil bo'lganingizda eslang.",
+  exercises:[
+    {type:'mcq', kicker:'MASHQ 1 · OSON', q:"12-oyatda g'iybat nimaga qiyoslanadi?", options:["Zaharga","O'lgan akaning go'shtini yeishga","Olovga"], correct:1, explain:"أَن يَأْكُلَ لَحْمَ أَخِيهِ مَيْتًا — o'lgan akaning go'shtini yeish, kuchli va jirkanch obraz orqali g'iybatning yomonligini ko'rsatadi."},
+    {type:'reveal', kicker:'MASHQ 2 · O\'RTA', prompt:"13-oyatda Alloh huzurida eng qadrli inson qanday belgilanadi?", answer:"إِنَّ أَكْرَمَكُمْ عِندَ اللَّهِ أَتْقَاكُمْ — eng taqvodor kishi, millat yoki boylik emas."},
+    {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"11-oyatda ikki marta \"ehtimol ular sizdan yaxshiroq\" (عَسَىٰ أَن يَكُونُوا/يَكُنَّ خَيْرًا) jumlasi qaytariladi — bir marta erkaklar, bir marta ayollar uchun. Bu takrorning maqsadi nima?", answer:"Masxara qilish faqat bitta jinsga xos illat emasligini, ikkalasiga ham teng taalluqli ogohlantirish ekanini ta'kidlash uchun."},
+    {type:'reveal', kicker:'MASHQ 4 · QIYIN', prompt:"Suraning boshini (1-5-oyatlar) \"To'liq Qur'on\"da o'qing — bu oyatlar qanday odobga chaqiradi?", answer:"O'zingizni sinang — Payg'ambar ﷺ oldida ovozni ko'tarmaslik, gapini bo'lmaslik kabi suhbat odobiga chaqiradi."}
+  ],
+  vocab:{
+    core:[["آمَنُوا","imon keltirdilar"],["خَيْرًا","yaxshiroq"],["أَخِيهِ","uning akasi"],["خَلَقْنَاكُم","sizlarni yaratdik"],["أَتْقَاكُمْ","eng taqvodoringiz"]],
+    recognition:[["يَسْخَرْ","masxara qiladi"],["الْأَلْقَابِ","laqablar"],["الظَّنِّ","gumon"],["تَجَسَّسُوا","josuslik qilasizlar"],["شُعُوبًا وَقَبَائِلَ","xalqlar va qabilalar"]]
+  },
+  closing:"Al-Hujurotni to'liq \"To'liq Qur'on\"da o'qing — bu sura kundalik muomalangizga bevosita tegishli 18 oyatdan iborat."
+},
+
+// ============ UNIT 38 ============
+{
+  id:38, phase:4, title:"Mustaqil o'qish mashqi II: Al-Hashr surasi (yakuni)", ar:"سورة الحشر", surahApiNum:59,
+  intro:"Ikkinchi mustaqil mashq — Al-Hashr surasining so'nggi uch oyati (22-24), Allohning go'zal ismlari to'plangan, kunlik zikrlarda keng o'qiladigan parcha. Bu safar izohlar yanada qisqaroq — asosiy ish sizga qoladi.",
+  ayahs:[],
+  wbw:[
+    {ref:"22-oyat", ar:"هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ ۖ عَالِمُ الْغَيْبِ وَالشَّهَادَةِ ۖ هُوَ الرَّحْمَٰنُ الرَّحِيمُ", meaning:"U — Alloh, Undan boshqa iloh yo'q. G'ayb va shohidlikni Biluvchi. U — Rahmon, Rahim.",
+     notes:"&bull; <span class='w'>لَا إِلَٰهَ إِلَّا هُوَ</span> — bu iborani qayerlarda ko'rgansiz? (kamida ikki darsni eslang)<br>&bull; <span class='w'>الْغَيْبِ</span> <span class='review'>&#8635; 32-dars</span> — tanish so'z &middot; <span class='w'>الشَّهَادَةِ</span> = shohidlik, ko'rinadigan olam — g'aybga qarama-qarshi yangi so'z"},
+    {ref:"23-oyat", ar:"هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلَامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ ۚ سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ", meaning:"U — Alloh, Undan boshqa iloh yo'q — Malik, Quddus, Salom, Mo'min, Muhaymin, Aziz, Jabbor, Mutakabbir. Alloh ularning shirkidan pokdir.",
+     notes:"&bull; Sakkizta ism ketma-ket, hech qanday bog'lovchisiz — tez, zich ritm hosil qiladi. Har birining ma'nosini lug'atdan yoki taniqli 99 ism ro'yxatidan tekshiring<br>&bull; <span class='w'>سُبْحَانَ اللَّهِ</span> <span class='review'>&#8635; 22-dars, Yosin 83-oyat</span> — tanish so'z, \"pokdir\""},
+    {ref:"24-oyat", ar:"هُوَ اللَّهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ ۖ لَهُ الْأَسْمَاءُ الْحُسْنَىٰ ۚ يُسَبِّحُ لَهُ مَا فِي السَّمَاوَاتِ وَالْأَرْضِ ۖ وَهُوَ الْعَزِيزُ الْحَكِيمُ", meaning:"U — Alloh, Xoliq, Bori (yo'qdan bor qiluvchi), Musavvir (shakl beruvchi). Eng go'zal ismlar Unikidir. Osmonlar va yerdagi hamma narsa Uni tasbeh aytadi. U — Aziz, Hakim.",
+     notes:"&bull; <span class='w'>الْأَسْمَاءُ الْحُسْنَىٰ</span> = \"eng go'zal ismlar\" — Allohning 99 ismi shu iboradan olingan<br>&bull; <span class='w'>يُسَبِّحُ لَهُ مَا فِي السَّمَاوَاتِ وَالْأَرْضِ</span> — bu jumla tuzilishini 22-darsdagi qaysi oyat bilan solishtirasiz?"}
+  ],
+  synth:"22-24-oyatlarda 15 dan ortiq Ilohiy ism ketma-ket keladi — bu, aslida, kursning boshidan buyon ko'rgan ismlarning (Rahmon, Rahim, Aziz, Alim, Hakim, Ghafur...) yig'indisi. Endi bu ismlarni ko'rganingizda tanish tuyuladi, chunki har biri allaqachon boshqa oyatlarda uchragan.",
+  tafakkur:"Bu uch oyatni har kuni o'qish (ayniqsa kunning boshida) katta fazilatga ega, deb rivoyat qilinadi — kim buni o'qisa, Alloh unga 70 ming farishtani kechgacha (yoki tonggacha) unga istig'for aytishga vakil qiladi, deyiladi. Shuncha ism bir joyga yig'ilishi — Allohni tanishning, Uni chaqirishning eng to'liq usullaridan biri.",
+  exercises:[
+    {type:'reveal', kicker:'MASHQ 1', prompt:"23-oyatda nechta Ilohiy ism ketma-ket keladi?", answer:"Sakkizta: Malik, Quddus, Salom, Mo'min, Muhaymin, Aziz, Jabbor, Mutakabbir."},
+    {type:'mcq', kicker:'MASHQ 2 · O\'RTA', q:"الْأَسْمَاءُ الْحُسْنَىٰ iborasi nimani anglatadi?", options:["Yashirin ismlar","Eng go'zal ismlar","Qadimiy ismlar"], correct:1, explain:"الْحُسْنَىٰ — \"eng go'zal\" (qiyoslash shakli, 28-darsdagi naqsh)."},
+    {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"يُسَبِّحُ لَهُ مَا فِي السَّمَاوَاتِ وَالْأَرْضِ jumlasini, 22-darsda ko'rgan Al-Mulk yoki Yosin oyatlaridan biri bilan solishtiring.", answer:"Yosin 83-oyat — فَسُبْحَانَ الَّذِي بِيَدِهِ مَلَكُوتُ كُلِّ شَيْءٍ — ikkalasi ham butun koinotning Allohni tasbeh aytishini bildiradi."},
+    {type:'reveal', kicker:'MASHQ 4', prompt:"22-24-oyatlarda uchragan ismlardan kamida beshtasini yopiq kitobdan sanang.", answer:"O'zingizni sinang — Rahmon, Rahim, Malik, Aziz, Xoliq kabi ismlardan tanlang."}
+  ],
+  vocab:{
+    core:[["الْغَيْبِ","g'ayb"],["الْمَلِكُ","Malik, Podshoh"],["الْخَالِقُ","Xoliq, Yaratuvchi"],["الْأَسْمَاءُ الْحُسْنَىٰ","eng go'zal ismlar"],["يُسَبِّحُ","tasbeh aytadi"]],
+    recognition:[["الشَّهَادَةِ","shohidlik"],["الْقُدُّوسُ","Quddus, Pok"],["الْجَبَّارُ","Jabbor"],["الْبَارِئُ","Bori"],["الْمُصَوِّرُ","Musavvir"]]
+  },
+  closing:"Al-Hashrni to'liq o'qish — ayniqsa 21-oyatdagi \"agar bu Qur'onni tog'ga tushirsak edi, uni Alloh qo'rquvidan bo'linib ketganini ko'rar eding\" tasvirini ham topasiz."
+},
+
+// ============ UNIT 39 ============
+{
+  id:39, phase:4, title:"O'zingiz tanlagan sura bilan chuqur ishlash", ar:"منهج الدراسة الذاتية",
+  intro:"Bu darsda yangi oyat yo'q — buning o'rniga, endi mustaqil ishlash uchun TO'LIQ METOD beriladi. 41 darsda o'rgangan barcha vositalaringiz (to'liq Qur'on o'quvchisi, Hifz vositasi, ildiz va so'z boyligi) bir joyga jamlanadi. Vazifangiz: o'zingiz yoqtirgan istalgan surani tanlang va quyidagi 6 qadamni bosib o'ting.",
+  ayahs:[],
+  blocks:[
+    {h:"1-qadam — Tinglab tanishing", p:["Tanlagan suranizni \"To'liq Qur'on\" bo'limida oching va Mishary Rashid al-Afosiy tilovatida, tarjimaga qaramasdan, kamida ikki marta tinglang. Maqsad — tovush va ohangga tanish bo'lish, xuddi 1-darsda Al-Fotiha bilan qilganingizdek."]},
+    {h:"2-qadam — Tanish so'zlarni belgilang", p:["Endi matnni o'qing va o'zingiz allaqachon bilgan so'zlarni (اللَّه، رَبّ، قَالَ، الَّذِينَ، خَلَقَ kabi 21-38-darslarda ko'rgan yuzlab so'z) toping. Ko'pchilik surada kutganingizdan ko'proq tanish so'z borligini sezasiz."]},
+    {h:"3-qadam — Uzun gaplarni \"kartalarga\" bo'ling", p:["31-darsda o'rgangan mahoratni ishlatib, uzun oyatlarni bosh g'oya + وَ bilan bog'langan bo'laklarga ajrating."]},
+    {h:"4-qadam — 3-5 ta yangi so'zni yozib oling", p:["Butun surani so'zma-so'z tarjima qilishga urinmang — bu charchatadi. Buning o'rniga, eng ko'p takrorlanadigan 3-5 ta YANGI so'zni tanlang va ularni shaxsiy lug'atingizga (daftar yoki eslatma ilovasi) yozing."]},
+    {h:"5-qadam — Bitta oyatni yodlang", p:["Hifz vositasidan foydalanib, surangizdan sizga eng ko'p ta'sir qilgan bitta oyatni tanlang va uni to'liq yodlang — takroriy o'qish texnikasi bilan."]},
+    {h:"6-qadam — Tafakkur yozing", p:["Oxirida, 2-3 jumla bilan: bu sura sizga nima haqida gapirdi, va bugungi hayotingizga qanday tegishli — yozib qo'ying. Bu qadam — butun kursning yakuniy maqsadi: Qur'onni shunchaki o'qish emas, u bilan SUHBATLASHISH."]}
+  ],
+  wbw:[],
+  synth:"Bu metod — kelajakda, kursdan tashqarida ham, HAR safar yangi sura o'qiganingizda ishlatadigan andozangiz bo'ladi: tinglash → tanish so'z → uzun gap kartalari → yangi so'z → yodlash → tafakkur. 6 qadam, lekin har safar tezroq bajariladi, chunki so'z boyligingiz kunlik o'sib boradi.",
+  tafakkur:"Bu darsning o'zi bir dalil: sizga endi 41 ta tayyor dars kerak emas, chunki O'ZINGIZ endi Qur'on bilan mustaqil ishlay olasiz. Bu — har bir muallimning eng katta maqsadi: o'quvchisini o'ziga muhtoj bo'lmaydigan darajaga yetkazish.",
+  exercises:[
+    {type:'reveal', kicker:'AMALIY VAZIFA', prompt:"Bitta sura tanlang (masalan, sevimli surangiz yoki hali o'qimagan sura) va yuqoridagi 6 qadamni bajaring. Tayyor bo'lgach, javobni ko'ring.", answer:"Bu — javobi yo'q, amaliy mashq. Muhimi — 6 qadamni to'liq bajarish, natijani emas."},
+    {type:'mcq', kicker:'TEKSHIRUV', q:"6 qadamdan qaysi biri \"charchatib yubormaslik\" uchun ataylab cheklangan?", options:["1-qadam (tinglash)","4-qadam (faqat 3-5 ta yangi so'z, hammasi emas)","6-qadam (tafakkur)"], correct:1, explain:"To'liq so'zma-so'z tarjima qilish o'rniga, faqat eng muhim 3-5 ta yangi so'zga e'tibor — bu uzoq muddatli, barqaror o'rganish uchun."}
+  ],
+  vocab:{core:[], recognition:[]},
+  closing:"Bu metodni hoziroq, bitta kichik surada sinab ko'ring. Keyingi darsda esa — sizni hali izohsiz, TAYYORGARLIKSIZ bir sinov kutmoqda."
+},
+
+// ============ UNIT 40 ============
+{
+  id:40, phase:4, title:"Yangi sura bilan tayyorgarliksiz sinov", ar:"اختبار",
+  intro:"Bu safar — hech qanday tarjima, hech qanday wbw izoh berilmaydi. Quyida Az-Zalzala surasi (8 oyat) to'liq keltirilgan. Vazifangiz: 21-39-darslarda o'rgangan naqshlar va so'zlar yordamida, o'zingiz ma'nosini chiqaring. Har bir oyatdan keyingi \"Mashq\" tugmasini bosib, o'z taxminingizni tekshiring.",
+  ayahs:["إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا","وَأَخْرَجَتِ الْأَرْضُ أَثْقَالَهَا","وَقَالَ الْإِنسَانُ مَا لَهَا","يَوْمَئِذٍ تُحَدِّثُ أَخْبَارَهَا","بِأَنَّ رَبَّكَ أَوْحَىٰ لَهَا","يَوْمَئِذٍ يَصْدُرُ النَّاسُ أَشْتَاتًا لِّيُرَوْا أَعْمَالَهُمْ","فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ","وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ"],
+  surahApiNum:99,
+  wbwIntro:"Yordam kerak bo'lsa: زُلْزِلَتِ so'zining o'zagi suraning nomi bilan bir xil (\"zilzila\" — zilzila, qattiq tebranish). إِذَا, قَالَ, الْإِنسَانُ, رَبَّكَ, النَّاسُ, خَيْرًا, شَرًّا — bularning barchasini oldingi darslarda ko'rgansiz.",
+  wbw:[],
+  synth:"Endi javoblarni tekshiring: 1) Yer qattiq tebranganda; 2) yer o'z og'irliklarini chiqarganda; 3) inson \"Bunga nima bo'ldi?\" deganda; 4) o'sha kun (yer) öz xabarlarini so'zlaydi; 5) chunki Robbing unga vahiy qilgan; 6) o'sha kun odamlar amallari ko'rsatilishi uchun turli guruh bo'lib chiqadilar; 7) kim zarracha yaxshilik qilsa — ko'radi; 8) kim zarracha yomonlik qilsa — ko'radi. Agar ma'noning katta qismini o'zingiz topa olgan bo'lsangiz — tabriklaymiz, bu aynan kursning maqsadi edi.",
+  tafakkur:"7-8-oyatlar — \"kim zarracha (ذَرَّة — eng kichik chang zarrasi) yaxshilik yoki yomonlik qilsa, ko'radi\" — Qur'ondagi eng aniq adolat va'dalaridan biri. Hech bir amal, qanchalik kichik bo'lmasin (bir tabassum, bir og'ir so'z), yo'qolib ketmaydi. Bu oyatni har safar \"bu kichik ish, ahamiyati yo'q\" deb o'ylaganingizda eslang.",
+  exercises:[
+    {type:'reveal', kicker:'1-OYAT', prompt:"إِذَا زُلْزِلَتِ الْأَرْضُ زِلْزَالَهَا — o'zingiz tarjima qiling.", answer:"Yer qattiq tebrangan (zilzilaga uchragan) vaqtda..."},
+    {type:'reveal', kicker:'3-OYAT', prompt:"وَقَالَ الْإِنسَانُ مَا لَهَا — bu yerda qanday tanish so'zlar bor, va gap nima haqida?", answer:"قَالَ (dedi) va الْإِنسَانُ (inson) tanish. Ma'nosi: \"Inson: 'Bunga (yerga) nima bo'ldi?' — deydi.\""},
+    {type:'reveal', kicker:'7-8-OYAT', prompt:"فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ ۝ وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ — bu ikki oyat orasida qanday uslubiy vosita bor (36-darsni eslang)?", answer:"Parallelizm/qarama-qarshi juftlik — bir xil qolip, faqat خَيْرًا (yaxshilik) va شَرًّا (yomonlik) almashtirilgan."},
+    {type:'mcq', kicker:'UMUMIY TEKSHIRUV', q:"Az-Zalzala surasining asosiy mavzusi nima?", options:["Namoz qoidalari","Qiyomat kuni va amallarning hisob-kitobi","Tarixiy qissa"], correct:1, explain:"Sura yer tebranishi bilan boshlanib, har bir kichik amalning ko'rsatilishi bilan yakunlanadi — qiyomat va adolat haqida."}
+  ],
+  vocab:{core:[], recognition:[]},
+  closing:"Agar bu sinovni asosan mustaqil bajargan bo'lsangiz — 0dan boshlagan yo'lingiz endi haqiqiy natija berayotganiga guvoh bo'ldingiz. Bitta dars qoldi — yakuniy bosqich."
+},
+
+// ============ UNIT 41 ============
+{
+  id:41, phase:4, title:"Yakuniy bosqich: yangi surani mustaqil o'qib tushunish", ar:"سورة النصر", milestone:true, milestoneTitle:"Tabriklaymiz — 2-kitob va butun kurs yakunlandi!",
+  surahApiNum:110,
+  intro:"1-darsda tajvid bilan boshladingiz. 41-darsda — An-Nasr surasi, atigi 3 oyat, deyarli barcha so'zlari sizga allaqachon tanish bo'lgan sura bilan yakunlaysiz. Bu tasodif emas: An-Nasr — Payg'ambar ﷺ vafotlaridan oldin nozil bo'lgan so'nggi to'liq suralardan biri, va rivoyatlarga ko'ra, u \"vazifa tugadi\" degan ishorani olib keladi. Xuddi shunday, bu — sizning \"0dan Qahramongacha\" safaringizning yakuniy oyati.",
+  ayahs:["إِذَا جَاءَ نَصْرُ اللَّهِ وَالْفَتْحُ","وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا","فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ ۚ إِنَّهُ كَانَ تَوَّابًا"],
+  wbwIntro:"Hech qanday tarjima berilmaydi. Faqat eslatma: إِذَا (19-dars), جَاءَ (22, 24-darslar), النَّاسَ (22-dars), دِينِ (2-dars, Al-Fotiha — يَوْمِ الدِّينِ), رَبِّكَ (hamma joyda), سَبِّحْ (22-dars, Yosin — سُبْحَانَ) — hammasi tanish ildizlar, faqat yangi shaklda.",
+  wbw:[],
+  synth:"Tarjima: \"Allohning nusrati va fath (g'alaba) kelganda, va odamlarning Alloh diniga to'da-to'da bo'lib kirayotganini ko'rganingda — Robbingni hamd bilan tasbeh ayt va Undan mag'firat so'ra. Albatta U tavba qabul qiluvchidir.\" Diqqat qiling: sura g'alaba XABARI bilan boshlanadi, lekin g'urur bilan emas, TASBIH va ISTIG'FOR (kechirim so'rash) bilan tugaydi — eng katta yutuqda ham kamtarlik saqlash saboqi.",
+  tafakkur:"Ba'zi sahobalar bu suraning ma'nosini tushunmagan edilar, lekin Ibn Abbos roziyallohu anhu buni \"Payg'ambar ﷺ vafotlarining xabari\" deb tushuntirgan — chunki vazifa nihoyasiga yetganda, ortidan tabiiy ravishda oxirat keladi. Siz ham hozir shunga o'xshash lahzadasiz: 41 darslik safar tugadi. Lekin bu — Qur'on bilan aloqangiz TUGAdi degani emas, aksincha — endi u chinakam BOSHLANADI. Shu sababli sura g'ururni emas, tasbih va istig'forni buyuradi: har bir yutuqdan keyin, kattaroq kamtarlik bilan davom eting.",
+  exercises:[
+    {type:'reveal', kicker:'YAKUNIY SINOV', prompt:"Uch oyatni o'zingiz, yordamsiz tarjima qilishga harakat qiling — keyin javobni ko'ring.", answer:"\"Allohning nusrati va fath kelganda, odamlarning Alloh diniga to'da-to'da kirayotganini ko'rganingda — Robbingni hamd bilan tasbeh ayt va Undan mag'firat so'ra, albatta U tavba qabul qiluvchidir.\""},
+    {type:'reveal', kicker:'YAKUNIY TAFAKKUR', prompt:"41 darsdan keyin, o'zingizga savol bering: qaysi bitta oyat sizga eng ko'p ta'sir qildi, va nima uchun?", answer:"Bu — shaxsiy javob. Lekin javobingiz bo'lgani — kursning muvaffaqiyatli o'tganining eng yaxshi belgisi."},
+    {type:'mcq', kicker:'YAKUNIY SAVOL', q:"An-Nasr surasi g'alabadan keyin nimaga chaqiradi?", options:["Bayram qilishga","Tasbih va istig'forga (kamtarlik)","Dam olishga"], correct:1, explain:"فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ — eng katta yutuqda ham Allohni ulug'lash va mag'firat so'rashga chaqiradi."}
+  ],
+  vocab:{core:[], recognition:[]},
+  closing:"Tabriklaymiz — \"0dan Qahramongacha\" 41 darslik safaringiz yakunlandi. Siz endi Al-Fotihaning har so'zini, Al-Mulkning ogohlantirishini, Yusufning sabrini, Al-Baqaraning uzun gaplarini, va Al-Kahfning to'rt qissasini — o'zingiz o'qiy oladigan darajadasiz. Lekin, An-Nasr bizga eslatganidek, bu OXIR emas: endi kundalik, tuzilmagan, ozod o'qish davri boshlanadi. \"Kitob\" tugaydi, lekin Qur'on bilan suhbatingiz — davom etaveradi. Har kuni bir necha oyat, har hafta bir sura — shu tarzda, so'z boyligingiz umr bo'yi o'sib boradi. Alloh bu safaringizni qabul qilsin, va uni doimiy sadaqai joriyaga aylantirsin — omin."
+},
+
+];
+UNITS.push(...BOOK2_UNITS);
 
 /* ================= STATE ================= */
 const LS_KEY = 'qa_progress_v1';
@@ -2272,12 +3131,12 @@ function renderUnit(m, id){
     html += `<div class="section-label"><span class="dot">B</span>Avval — butun surani ko'ring</div>
       <div class="surah-card">${u.ayahs.map((a,i)=>`<div class="ayah">${a} <span class="n">${arNum(i+1)}</span></div>`).join('')}</div>`;
     if(u.wbwIntro) html += `<p class="prose" style="font-size:.88rem;opacity:.75;">${u.wbwIntro}</p>`;
-    if(u.surahApiNum){
-      html += `<div class="chip-row">
-        <span class="chip" style="cursor:pointer;" onclick="go('quranSurah',{surahNum:${u.surahApiNum}})">&#127760; To'liq Qur'onda o'qish/tinglash</span>
-        <span class="chip" style="cursor:pointer;" onclick="fetchQuranList().then(()=>{const s=QURAN_LIST.find(x=>x.number===${u.surahApiNum}); openHifzRangePicker(${u.surahApiNum}, s?s.englishName:'', ${u.ayahs.length});})">&#129504; Bu surani yodlash</span>
-      </div>`;
-    }
+  }
+  if(u.surahApiNum){
+    html += `<div class="chip-row">
+      <span class="chip" style="cursor:pointer;" onclick="go('quranSurah',{surahNum:${u.surahApiNum}})">&#127760; To'liq Qur'onda o'qish/tinglash</span>
+      <span class="chip" style="cursor:pointer;" onclick="fetchQuranList().then(()=>{const s=QURAN_LIST.find(x=>x.number===${u.surahApiNum}); openHifzRangePicker(${u.surahApiNum}, s?s.englishName:'', s?s.numberOfAyahs:${u.ayahs.length||1});})">&#129504; Bu surani yodlash</span>
+    </div>`;
   }
   if(u.examples && u.examples.length){
     html += `<div class="section-label"><span class="dot">B</span>Yig'ilgan misollar</div>
@@ -2332,7 +3191,7 @@ function renderUnit(m, id){
   html += `<div class="section-label"><span class="dot">&#9998;</span>Mashqlar</div><div id="exwrap"></div>`;
 
   if(u.milestone){
-    html += `<div class="milestone"><div class="star">&#9733;</div><h3>Tabriklaymiz — 1-kitob yakunlandi</h3>
+    html += `<div class="milestone"><div class="star">&#9733;</div><h3>${u.milestoneTitle || "Tabriklaymiz — 1-kitob yakunlandi"}</h3>
     <p>${u.closing}</p></div>`;
   } else {
     html += `<div class="prose" style="margin-top:16px;"><p><b>${u.closing || ''}</b></p></div>`;
