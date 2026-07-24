@@ -667,6 +667,11 @@ main{flex:1; padding-bottom:24px;}
 @media (min-width:600px){
   .mushaf-line{ font-size:1.55rem; }
 }
+.mushaf-swipe-hint{
+  text-align:center; font-family:var(--font-ui); font-size:.72rem; opacity:.5;
+  margin:12px 0 0; touch-action:pan-y;
+}
+.mushaf-page{ touch-action:pan-y; user-select:none; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
@@ -2541,6 +2546,31 @@ function openMushafJumpSheet(){
   requestAnimationFrame(()=> ov.classList.add('open'));
 }
 
+// Swipe left-to-right (finger moves toward the right) opens the NEXT page,
+// swipe right-to-left opens the PREVIOUS page — matching Arabic's RTL
+// reading direction, where "forward" visually comes from the right.
+// If the gesture actually scrolled the page horizontally (a long line that
+// overflows on a narrow screen), it's treated as scrolling, not paging.
+function attachMushafSwipe(el, pageNum){
+  if(!el) return;
+  const THRESHOLD = 60;
+  let startX = null, startY = null, startScrollLeft = 0;
+  el.addEventListener('pointerdown', (e)=>{
+    startX = e.clientX; startY = e.clientY; startScrollLeft = el.scrollLeft;
+  });
+  el.addEventListener('pointerup', (e)=>{
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    const scrolled = el.scrollLeft !== startScrollLeft;
+    startX = null;
+    if(scrolled) return;
+    if(Math.abs(dx) < THRESHOLD || Math.abs(dx) < Math.abs(dy)) return;
+    if(dx > 0){ if(pageNum < MUSHAF_TOTAL_PAGES) go('mushaf',{mushafPageNum:pageNum+1}); }
+    else{ if(pageNum > 1) go('mushaf',{mushafPageNum:pageNum-1}); }
+  });
+}
+
 function renderMushaf(m){
   const pageNum = STATE.mushafPageNum || PROGRESS.lastMushafPage || 1;
   STATE.mushafPageNum = pageNum;
@@ -2565,12 +2595,14 @@ function renderMushaf(m){
       ${rows.map(renderMushafRow).join('')}
       <div class="mushaf-footer"><span>${surahNames}</span><span>${pageNum}</span></div>
     </div>
+    <p class="mushaf-swipe-hint">Sahifani suring — o'ngga suring: keyingi, chapga suring: oldingi</p>
     <div class="unit-nav">
       <button ${pageNum<=1?'disabled':''} onclick="go('mushaf',{mushafPageNum:${pageNum-1}})">&#8592; Oldingi</button>
       <button class="primary" ${pageNum>=MUSHAF_TOTAL_PAGES?'disabled':''} onclick="go('mushaf',{mushafPageNum:${pageNum+1}})">Keyingi &#8594;</button>
     </div>
   </div>`;
   m.innerHTML = html;
+  attachMushafSwipe(m.querySelector('.mushaf-page'), pageNum);
   if(!QURAN_LIST) fetchQuranList().then(()=>{ if(STATE.view==='mushaf') render(); });
 }
 
