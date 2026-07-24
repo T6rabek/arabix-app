@@ -3437,7 +3437,7 @@ function renderUnit(m, id){
   if(u.milestone){
     html += `<div class="milestone"><div class="star">&#9733;</div><h3>${u.milestoneTitle || "Tabriklaymiz — 1-kitob yakunlandi"}</h3>
     <p>${u.closing}</p>
-    <button class="sheet-btn" style="margin-top:14px;" onclick="downloadMilestoneCertificate(${u.id})">&#127942; Sertifikatni olish</button>
+    <button class="action-btn primary" style="margin-top:14px;" onclick="openCertificateNameSheet(${u.id})">&#127942; Sertifikatni olish</button>
     </div>`;
   } else {
     html += `<div class="prose" style="margin-top:16px;"><p><b>${u.closing || ''}</b></p></div>`;
@@ -3933,7 +3933,7 @@ function renderAlifboDone(m, lvl){
 const UZ_MONTHS = ["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
 function formatUzDate(d){ return `${d.getDate()}-${UZ_MONTHS[d.getMonth()]}, ${d.getFullYear()}`; }
 
-function wrapCanvasText(ctx, text, cx, y, maxWidth, lineHeight){
+function wrapLines(ctx, text, maxWidth){
   const words = text.split(' ');
   let line = '';
   const lines = [];
@@ -3943,8 +3943,11 @@ function wrapCanvasText(ctx, text, cx, y, maxWidth, lineHeight){
     else line = test;
   });
   if(line) lines.push(line);
-  const startY = y - (lines.length-1)*lineHeight/2;
+  return lines;
+}
+function drawCenteredLines(ctx, lines, cx, startY, lineHeight){
   lines.forEach((l,i)=> ctx.fillText(l, cx, startY + i*lineHeight));
+  return startY + (lines.length-1)*lineHeight;
 }
 
 function eightPointStarPath(ctx, cx, cy, rOuter, rInner){
@@ -3958,7 +3961,7 @@ function eightPointStarPath(ctx, cx, cy, rOuter, rInner){
   ctx.closePath();
 }
 
-function buildCertificateCanvas(title, subtitle, arabicLine){
+function buildCertificateCanvas(title, subtitle, arabicLine, recipientName){
   const W = 1200, H = 800;
   const canvas = document.createElement('canvas');
   canvas.width = W; canvas.height = H;
@@ -3978,36 +3981,69 @@ function buildCertificateCanvas(title, subtitle, arabicLine){
 
   ctx.textAlign = 'center';
   ctx.fillStyle = '#f3e8d2';
-  ctx.font = '700 26px Century Gothic, sans-serif';
-  ctx.fillText('A R A B I X', W/2, 148);
+  ctx.font = '700 24px Century Gothic, sans-serif';
+  ctx.fillText('A R A B I X', W/2, 122);
 
+  let y = 122;
   if(arabicLine){
+    y += 52;
     ctx.fillStyle = 'rgba(217,172,92,0.9)';
-    ctx.font = '400 34px "Naskh Quran", "Noto Naskh Arabic", serif';
-    ctx.fillText(arabicLine, W/2, 200);
+    ctx.font = '400 32px "Naskh Quran", "Noto Naskh Arabic", serif';
+    ctx.fillText(arabicLine, W/2, y);
   }
 
-  ctx.fillStyle = '#d9ac5c';
-  ctx.font = '700 54px Georgia, serif';
-  ctx.fillText('Tabriklaymiz!', W/2, 300);
+  if(recipientName){
+    y += 50;
+    ctx.fillStyle = 'rgba(236,230,214,0.55)';
+    ctx.font = '400 17px Century Gothic, sans-serif';
+    ctx.fillText("USHBU SERTIFIKAT TAQDIM ETILADI", W/2, y);
+    y += 50;
+    ctx.fillStyle = '#f3e8d2';
+    ctx.font = '700 44px Georgia, serif';
+    ctx.fillText(recipientName, W/2, y);
+  }
 
+  y += 75;
+  ctx.fillStyle = '#d9ac5c';
+  ctx.font = '700 50px Georgia, serif';
+  ctx.fillText('Tabriklaymiz!', W/2, y);
+
+  y += 65;
   ctx.fillStyle = '#ece6d6';
-  ctx.font = '400 28px Georgia, serif';
-  wrapCanvasText(ctx, title, W/2, 380, 880, 40);
+  ctx.font = '400 27px Georgia, serif';
+  const titleLines = wrapLines(ctx, title, 880);
+  y = drawCenteredLines(ctx, titleLines, W/2, y, 38) + 55;
 
   ctx.fillStyle = 'rgba(236,230,214,0.8)';
-  ctx.font = '400 22px Century Gothic, sans-serif';
-  wrapCanvasText(ctx, subtitle, W/2, 470, 780, 32);
+  ctx.font = '400 21px Century Gothic, sans-serif';
+  const subLines = wrapLines(ctx, subtitle, 780);
+  drawCenteredLines(ctx, subLines, W/2, y, 30);
 
   const dateStr = formatUzDate(new Date());
   ctx.fillStyle = 'rgba(236,230,214,0.6)';
-  ctx.font = '400 20px Century Gothic, sans-serif';
-  ctx.fillText(dateStr, W/2, H-90);
+  ctx.font = '400 19px Century Gothic, sans-serif';
+  ctx.fillText(dateStr, W/2, H-64);
 
   return canvas;
 }
 
-function downloadMilestoneCertificate(unitId){
+function openCertificateNameSheet(unitId){
+  let ov = document.getElementById('sheetOverlay');
+  if(!ov){ ov = document.createElement('div'); ov.id='sheetOverlay'; ov.className='sheet-overlay'; document.body.appendChild(ov); ov.onclick=(e)=>{ if(e.target===ov) closeInstallSheet(); }; }
+  ov.innerHTML = `<div class="sheet">
+    <div class="grabber"></div>
+    <h2>Sertifikat</h2>
+    <div class="sheet-sub">Kimning ismini yozamiz? (ixtiyoriy — bo'sh qoldirsangiz ham bo'ladi)</div>
+    <div class="sheet-option">
+      <input type="text" id="certNameInput" placeholder="Ism Familiya" style="width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--rule);background:var(--paper);font-family:var(--font-body);font-size:.95rem;margin-bottom:12px;box-sizing:border-box;">
+      <button class="sheet-btn" onclick="downloadMilestoneCertificate(${unitId}, document.getElementById('certNameInput').value.trim()); closeInstallSheet();">Yaratish</button>
+    </div>
+    <button class="sheet-close" onclick="closeInstallSheet()">Bekor qilish</button>
+  </div>`;
+  requestAnimationFrame(()=> ov.classList.add('open'));
+}
+
+function downloadMilestoneCertificate(unitId, recipientName){
   const isBook1 = unitId === 20;
   const title = isBook1
     ? "1-kitob — Poydevor va Naqshlar — muvaffaqiyatli yakunlandi"
@@ -4015,7 +4051,7 @@ function downloadMilestoneCertificate(unitId){
   const subtitle = isBook1
     ? "20 dars, o'nlab sura va oyat, minglab so'z — barchasi o'zlashtirildi"
     : "41 dars, 20dan ortiq sura, Al-Baqara va Al-Kahf chuqur o'rganildi";
-  const canvas = buildCertificateCanvas(title, subtitle, 'بارك الله فيك');
+  const canvas = buildCertificateCanvas(title, subtitle, 'بارك الله فيك', recipientName || '');
   const link = document.createElement('a');
   link.download = isBook1 ? 'arabix-1-kitob-sertifikat.png' : 'arabix-2-kitob-sertifikat.png';
   link.href = canvas.toDataURL('image/png');
