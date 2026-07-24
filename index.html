@@ -383,6 +383,17 @@ main{flex:1; padding-bottom:24px;}
 
 .empty-state{padding:40px 24px; text-align:center; opacity:.6; font-size:.9rem;}
 
+/* ---------- Streak strip ---------- */
+.streak-strip{
+  display:flex; align-items:center; gap:12px; margin:10px 16px 0;
+  padding:12px 14px; background:var(--surface); border:1px solid var(--rule);
+  border-radius:var(--radius);
+}
+.streak-flame{ font-size:1.6rem; opacity:.35; filter:grayscale(1); }
+.streak-flame.lit{ opacity:1; filter:none; }
+.streak-strip .txt{font-family:var(--font-ui); font-size:.78rem; line-height:1.4; display:flex; flex-direction:column;}
+.streak-strip .txt b{font-family:var(--font-display); font-size:1rem; color:var(--ink);}
+
 /* ---------- Install action row ---------- */
 .action-row{display:flex; gap:10px; margin:14px 20px 4px;}
 .action-btn{
@@ -1285,6 +1296,7 @@ function answerReviewCard(gotIt){
   if(gotIt) s.correct++;
   s.index++;
   s.flipped = false;
+  recordActivity();
   render();
 }
 
@@ -1357,8 +1369,24 @@ function stripBismillah(data){
   return data;
 }
 
+function surahCacheKey(num){ return 'qa_surah_v1_'+num; }
+function loadSurahFromDisk(num){
+  try{
+    const raw = localStorage.getItem(surahCacheKey(num));
+    return raw ? JSON.parse(raw) : null;
+  }catch(e){ return null; }
+}
+function saveSurahToDisk(num, data){
+  try{ localStorage.setItem(surahCacheKey(num), JSON.stringify(data)); }catch(e){ /* quota or unavailable — fine, just skip persisting */ }
+}
+function isSurahAvailableOffline(num){
+  return !!QURAN_CACHE[num] || !!loadSurahFromDisk(num);
+}
+
 async function fetchSurah(num){
   if(QURAN_CACHE[num]) return QURAN_CACHE[num];
+  const disk = loadSurahFromDisk(num);
+  if(disk){ QURAN_CACHE[num] = disk; return disk; }
   const [arRes, uzRes] = await Promise.all([
     fetch(`${QURAN_API}/surah/${num}/ar.alafasy`),
     fetch(`${QURAN_API}/surah/${num}/uz.sodik`).catch(()=>null)
@@ -1378,6 +1406,7 @@ async function fetchSurah(num){
   }catch(e){}
   stripBismillah(data);
   QURAN_CACHE[num] = data;
+  saveSurahToDisk(num, data);
   return data;
 }
 
@@ -1392,7 +1421,7 @@ function renderQuranListItems(){
       <span class="num">${s.number}</span>
       <span class="meta">
         <span class="t">${s.englishName} <span style="opacity:.5;font-weight:400;">&middot; ${s.englishNameTranslation}</span></span>
-        <span class="s">${s.name} &middot; ${s.numberOfAyahs} oyat</span>
+        <span class="s">${s.name} &middot; ${s.numberOfAyahs} oyat ${isSurahAvailableOffline(s.number) ? '&middot; <span style=\"color:var(--jade);\">&#10003; oflayn</span>' : ''}</span>
       </span>
       <span class="chev">&#8250;</span>
     </button>`).join('') || `<div class="empty-state">Sura topilmadi.</div>`;
@@ -1514,6 +1543,7 @@ function toggleBookmark(num, idx){
 function trackLastRead(num){
   PROGRESS.lastRead = {surahNum:num, ts:Date.now()};
   saveProgress(PROGRESS);
+  recordActivity();
 }
 
 /* ---- Audio settings: ayah range + repeat count ---- */
@@ -1919,6 +1949,7 @@ function markHifzStatus(num, idx, status){
   const entry = getHifzEntry(num, idx);
   entry.status = status;
   saveProgress(PROGRESS);
+  recordActivity();
   render();
 }
 function hifzNav(dir){
@@ -1927,6 +1958,99 @@ function hifzNav(dir){
   STATE.hifzIdx = next; STATE.hifzMode='view'; STATE.hifzHidden=[];
   render();
 }
+
+/* ================= DAILY REMINDER NOTIFICATIONS (native only) ================= */
+function notifPlugin(){
+  return (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.LocalNotifications) || null;
+}
+async function toggleDailyReminder(on){
+  const plugin = notifPlugin();
+  if(!plugin){ showToast("Bildirishnoma faqat ilova (APK) versiyasida ishlaydi."); return; }
+  if(on){
+    const perm = await plugin.requestPermissions();
+    if(perm.display !== 'granted'){ showToast("Ruxsat berilmadi."); return; }
+    const hour = parseInt((document.getElementById('reminderTime')||{}).value?.split(':')[0]) || 18;
+    const minute = parseInt((document.getElementById('reminderTime')||{}).value?.split(':')[1]) || 0;
+    await plugin.schedule({ notifications: [{
+      id: 1001,
+      title: "Arabix — vaqti keldi",
+      body: "Bugungi darsni yoki takrorlashni oching. Ketma-ketlikni uzmang!",
+      schedule: { on: { hour, minute }, repeats: true, allowWhileIdle: true },
+    }]});
+    PROGRESS.reminderOn = true; PROGRESS.reminderTime = `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
+  } else {
+    await plugin.cancel({ notifications: [{ id: 1001 }] });
+    PROGRESS.reminderOn = false;
+  }
+  saveProgress(PROGRESS);
+  render();
+}
+function renderNotificationSettings(){
+  const native = isNativeApp();
+  const on = !!PROGRESS.reminderOn;
+  const time = PROGRESS.reminderTime || '18:00';
+  return `<div class="card qoida" style="--c:var(--accent);">
+    <div class="card-title"><span class="ic">&#128276;</span>Kunlik eslatma</div>
+    <p>${native ? "Har kuni belgilangan vaqtda ilovani ochishga eslatma keladi." : "Bu funksiya faqat Arabix ilovasida (APK) ishlaydi — veb-versiyada mavjud emas."}</p>
+    ${native ? `
+      <div style="display:flex; align-items:center; gap:10px; margin-top:10px;">
+        <input type="time" id="reminderTime" value="${time}" style="padding:8px;border-radius:8px;border:1px solid var(--rule);background:var(--paper);">
+        <button class="action-btn ${on?'primary':''}" onclick="toggleDailyReminder(${!on})" style="flex:1;">${on ? "O'chirish" : "Yoqish"}</button>
+      </div>` : ''}
+  </div>`;
+}
+
+function renderStreakStrip(){
+  const streak = currentStreak();
+  const best = bestStreak();
+  const done = todayDone();
+  return `<div class="streak-strip">
+    <div class="streak-flame ${streak>0?'lit':''}">&#128293;</div>
+    <div class="txt">
+      <b>${streak} kun ketma-ket</b>
+      <span>${done ? "Bugun faollik ko'rsatdingiz &#10003;" : "Bugun hali faollik yo'q — bironta mashq bajaring"} ${best>streak?`&middot; rekord: ${best}`:''}</span>
+    </div>
+  </div>`;
+}
+
+/* ================= STREAKS & DAILY GOAL ================= */
+function todayKey(d){
+  d = d || new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function recordActivity(){
+  if(!PROGRESS.activityDates) PROGRESS.activityDates = {};
+  const key = todayKey();
+  if(!PROGRESS.activityDates[key]){
+    PROGRESS.activityDates[key] = true;
+    saveProgress(PROGRESS);
+  }
+}
+function currentStreak(){
+  if(!PROGRESS.activityDates) return 0;
+  let streak = 0;
+  let d = new Date();
+  const todayDone = !!PROGRESS.activityDates[todayKey()];
+  if(!todayDone) d.setDate(d.getDate()-1); // streak still "alive" until today ends
+  while(PROGRESS.activityDates[todayKey(d)]){
+    streak++;
+    d.setDate(d.getDate()-1);
+  }
+  return streak;
+}
+function bestStreak(){
+  if(!PROGRESS.activityDates) return 0;
+  const dates = Object.keys(PROGRESS.activityDates).sort();
+  let best=0, cur=0, prevTime=null;
+  for(const key of dates){
+    const t = new Date(key+'T00:00:00').getTime();
+    cur = (prevTime!=null && Math.round((t-prevTime)/86400000)===1) ? cur+1 : 1;
+    best = Math.max(best, cur);
+    prevTime = t;
+  }
+  return best;
+}
+function todayDone(){ return !!(PROGRESS.activityDates && PROGRESS.activityDates[todayKey()]); }
 
 /* ================= PLATFORM ================= */
 function isNativeApp(){ return !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()); }
@@ -1958,6 +2082,7 @@ function exKey(unitId, idx){ return unitId+'_'+idx; }
 function setExResult(unitId, idx, correct){
   PROGRESS.exercises[exKey(unitId,idx)] = correct;
   saveProgress(PROGRESS);
+  recordActivity();
 }
 
 function go(view, opts){
@@ -2070,6 +2195,7 @@ function renderHome(m){
     <div class="ring-label" style="left:34px;">${pct}%</div>
     <div class="txt"><b>${doneCount} / ${UNITS.length} dars</b>Taraqqiyotingizni ko'rish uchun bosing &rarr;</div>
   </div>
+  ${renderStreakStrip()}
   ${isNativeApp() ? '' : `<div class="action-row">
     <button class="action-btn primary" onclick="openInstallSheet()"><span class="ic">&#11015;</span>Ilovani o'rnatish</button>
   </div>`}`;
@@ -2102,13 +2228,20 @@ function renderHome(m){
 function renderProgress(m){
   const pct = pctDone();
   const doneCount = Object.keys(PROGRESS.done).filter(k=>PROGRESS.done[k]).length;
+  const hifz = hifzStats();
   let html = `
     <div class="folio">
-      <div class="progress-strip" style="position:relative; margin:0 0 18px;">
+      <div class="progress-strip" style="position:relative; margin:0 0 12px;">
         <div class="ring" style="--pct:${pct}"></div>
         <div class="ring-label" style="left:34px;">${pct}%</div>
         <div class="txt"><b>${doneCount} / ${UNITS.length} dars tugallandi</b>Har darsni oxirigacha o'qib, "Tugatdim" tugmasini bosing.</div>
-      </div>`;
+      </div>
+      <div style="margin:0 0 18px;">${renderStreakStrip()}</div>
+      <div class="chip-row" style="margin-bottom:18px;">
+        <span class="chip">&#129504; ${hifz.memorized} oyat yodlangan</span>
+        <span class="chip">&#9889; ${srsStats().mastered} so'z mustahkam</span>
+      </div>
+      ${renderNotificationSettings()}`;
   let lastPhase = -1;
   UNITS.forEach(u=>{
     if(u.phase!==lastPhase){ lastPhase=u.phase; html += `<div class="phase-label">${PHASES[u.phase].label} &middot; ${PHASES[u.phase].name}</div>`; }
