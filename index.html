@@ -562,6 +562,16 @@ main{flex:1; padding-bottom:24px;}
 .offline-dl-btn:active{background:var(--accent); color:#fff;}
 .offline-dl-note{font-family:var(--font-ui); font-size:.72rem; opacity:.65; margin:8px 0 0; line-height:1.4;}
 
+/* ---------- One-time welcome certificate overlay ---------- */
+.welcome-cert-overlay{
+  position:fixed; inset:0; background:rgba(10,14,20,.78); z-index:200;
+  display:flex; align-items:center; justify-content:center; padding:22px;
+  opacity:0; pointer-events:none; transition:opacity .25s;
+}
+.welcome-cert-overlay.open{opacity:1; pointer-events:auto;}
+.welcome-cert-card{max-width:480px; width:100%;}
+.welcome-cert-img{width:100%; border-radius:14px; box-shadow:var(--shadow); display:block;}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
@@ -4061,9 +4071,42 @@ function downloadMilestoneCertificate(unitId, recipientName){
   showToast("Sertifikat saqlandi!");
 }
 
+/* ================= ONE-TIME WELCOME CERTIFICATE =================
+   Shows a specific certificate full-screen the first time the app
+   is opened on a device, then never again (localStorage flag).
+   This is a one-off announcement, not a general feature — remove
+   this block (or the localStorage key check will just no-op after
+   everyone's seen it once) once it's served its purpose. */
+function maybeShowWelcomeCertificate(){
+  const KEY = 'qa_welcome_cert_shown_v1';
+  if(localStorage.getItem(KEY)) return;
+  const canvas = buildCertificateCanvas(
+    "Arabix — Qur'oniy Arabcha o'rganish sayohati",
+    "Nol darajadan Qur'onni o'zi o'qib tushunishgacha — bu yo'lga xush kelibsiz",
+    'بارك الله فيك',
+    'Gullola Karimova'
+  );
+  const dataUrl = canvas.toDataURL('image/png');
+  const ov = document.createElement('div');
+  ov.className = 'welcome-cert-overlay';
+  ov.innerHTML = `
+    <div class="welcome-cert-card">
+      <img src="${dataUrl}" alt="Sertifikat" class="welcome-cert-img">
+      <button class="action-btn primary" style="margin-top:16px;width:100%;" id="welcomeCertClose">Davom etish &rarr;</button>
+    </div>`;
+  document.body.appendChild(ov);
+  requestAnimationFrame(()=> ov.classList.add('open'));
+  document.getElementById('welcomeCertClose').onclick = ()=>{
+    ov.classList.remove('open');
+    setTimeout(()=> ov.remove(), 300);
+    localStorage.setItem(KEY, '1');
+  };
+}
+
 /* ================= INIT ================= */
 initTheme();
 setupIconLinks();
 render();
+maybeShowWelcomeCertificate();
 
 </script>
