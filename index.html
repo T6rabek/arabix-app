@@ -550,6 +550,18 @@ main{flex:1; padding-bottom:24px;}
 .alifbo-form-cell .ar{font-family:var(--font-ar); font-size:1.7rem; color:var(--accent-strong);}
 .alifbo-form-cell .label{font-family:var(--font-ui); font-size:.68rem; opacity:.7; text-align:center;}
 
+/* ---------- Offline download card ---------- */
+.offline-dl-card{margin:0 16px 14px; padding:12px 14px; background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);}
+.offline-dl-row{display:flex; align-items:center; justify-content:space-between; font-family:var(--font-ui); font-size:.82rem; font-weight:700; color:var(--ink);}
+.offline-progress-track{height:6px; background:var(--surface-2); border-radius:4px; margin-top:8px; overflow:hidden;}
+.offline-progress-bar{height:100%; background:var(--accent); border-radius:4px; transition:width .3s;}
+.offline-dl-btn{
+  width:100%; padding:11px; background:var(--accent-soft); border:1px solid var(--accent); border-radius:10px;
+  color:var(--accent-strong); font-family:var(--font-ui); font-size:.85rem; font-weight:700; cursor:pointer;
+}
+.offline-dl-btn:active{background:var(--accent); color:#fff;}
+.offline-dl-note{font-family:var(--font-ui); font-size:.72rem; opacity:.65; margin:8px 0 0; line-height:1.4;}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
@@ -2404,6 +2416,43 @@ function saveSurahToDisk(num, data){
 function isSurahAvailableOffline(num){
   return !!QURAN_CACHE[num] || !!loadSurahFromDisk(num);
 }
+// Disk-only check: what will actually survive an app restart (in-memory
+// cache doesn't count, since that's gone the moment the app is closed).
+function isSurahPersistedOffline(num){ return !!loadSurahFromDisk(num); }
+function offlineSurahCount(){
+  let n = 0;
+  for(let i=1;i<=114;i++){ if(isSurahPersistedOffline(i)) n++; }
+  return n;
+}
+
+async function downloadAllQuranOffline(){
+  if(STATE.offlineDownloading) return;
+  STATE.offlineDownloading = true;
+  STATE.offlineTotal = 114;
+  STATE.offlineDone = offlineSurahCount();
+  render();
+  const nums = [];
+  for(let i=1;i<=114;i++){ if(!isSurahPersistedOffline(i)) nums.push(i); }
+  let idx = 0;
+  const CONCURRENCY = 5;
+  async function worker(){
+    while(idx < nums.length){
+      const num = nums[idx++];
+      try{ await fetchSurah(num); }catch(e){ /* network hiccup — user can retry, whatever succeeded stays saved */ }
+      STATE.offlineDone = offlineSurahCount();
+      const bar = document.getElementById('offlineProgressBar');
+      const label = document.getElementById('offlineProgressLabel');
+      if(bar) bar.style.width = (STATE.offlineDone/STATE.offlineTotal*100)+'%';
+      if(label) label.textContent = `${STATE.offlineDone} / ${STATE.offlineTotal}`;
+    }
+  }
+  await Promise.all(Array.from({length:CONCURRENCY}, worker));
+  STATE.offlineDownloading = false;
+  const finalCount = offlineSurahCount();
+  if(finalCount >= 114) showToast("Butun Qur'on (matn va tarjima) offline saqlandi!");
+  else showToast(`${finalCount} / 114 sura saqlandi — telefon xotirasi yetarli bo'lmadi.`);
+  if(STATE.view==='quran') render();
+}
 
 async function fetchSurah(num){
   if(QURAN_CACHE[num]) return QURAN_CACHE[num];
@@ -2456,11 +2505,24 @@ function renderQuran(m){
       .catch(()=>{ m.innerHTML = `<div class="empty-state">Internetga ulanib bo'lmadi.<br><button class="reveal-btn" style="margin-top:10px;" onclick="render()">Qayta urinish</button></div>`; });
     return;
   }
+  const offCount = offlineSurahCount();
+  const offAll = offCount >= 114;
   m.innerHTML = `<div class="folio" style="padding-top:14px;">
     <div class="hero" style="margin:-14px -18px 14px; border-radius:0;">
       <span class="kicker">To'liq Qur'on &middot; 114 sura</span>
       <h1 style="font-size:1.4rem;">Qur'on o'qish</h1>
       <p>Har bir oyatni Mishary Rashid al-Afosiy tilovatida tinglang.</p>
+    </div>
+    <div class="offline-dl-card">
+      ${STATE.offlineDownloading ? `
+        <div class="offline-dl-row"><span>&#11015; Yuklanmoqda&hellip;</span><span id="offlineProgressLabel">${STATE.offlineDone} / ${STATE.offlineTotal}</span></div>
+        <div class="offline-progress-track"><div class="offline-progress-bar" id="offlineProgressBar" style="width:${(STATE.offlineDone/STATE.offlineTotal*100)}%;"></div></div>
+      ` : offAll ? `
+        <div class="offline-dl-row"><span>&#10003; Butun Qur'on matni offline saqlangan</span></div>
+      ` : `
+        <button class="offline-dl-btn" onclick="downloadAllQuranOffline()">&#11015; Butun Qur'onni offline yuklab olish <span style="opacity:.7;">(${offCount}/114)</span></button>
+        <p class="offline-dl-note">Matn va tarjima offlayn o'qiladi. Audio tinglash uchun internet kerak bo'lib qoladi.</p>
+      `}
     </div>
     <input type="text" placeholder="Sura nomi yoki raqami..." value="${STATE.quranSearch||''}"
       oninput="STATE.quranSearch=this.value; renderQuranListItems();"
@@ -3374,7 +3436,9 @@ function renderUnit(m, id){
 
   if(u.milestone){
     html += `<div class="milestone"><div class="star">&#9733;</div><h3>${u.milestoneTitle || "Tabriklaymiz — 1-kitob yakunlandi"}</h3>
-    <p>${u.closing}</p></div>`;
+    <p>${u.closing}</p>
+    <button class="sheet-btn" style="margin-top:14px;" onclick="downloadMilestoneCertificate(${u.id})">&#127942; Sertifikatni olish</button>
+    </div>`;
   } else {
     html += `<div class="prose" style="margin-top:16px;"><p><b>${u.closing || ''}</b></p></div>`;
   }
@@ -3863,6 +3927,102 @@ function renderAlifboDone(m, lvl){
     </div>
   </div>`;
   m.innerHTML = html;
+}
+
+/* ================= ACHIEVEMENT CERTIFICATE ================= */
+const UZ_MONTHS = ["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
+function formatUzDate(d){ return `${d.getDate()}-${UZ_MONTHS[d.getMonth()]}, ${d.getFullYear()}`; }
+
+function wrapCanvasText(ctx, text, cx, y, maxWidth, lineHeight){
+  const words = text.split(' ');
+  let line = '';
+  const lines = [];
+  words.forEach(w=>{
+    const test = line ? line+' '+w : w;
+    if(ctx.measureText(test).width > maxWidth && line){ lines.push(line); line = w; }
+    else line = test;
+  });
+  if(line) lines.push(line);
+  const startY = y - (lines.length-1)*lineHeight/2;
+  lines.forEach((l,i)=> ctx.fillText(l, cx, startY + i*lineHeight));
+}
+
+function eightPointStarPath(ctx, cx, cy, rOuter, rInner){
+  ctx.beginPath();
+  for(let i=0;i<16;i++){
+    const ang = Math.PI/8*i - Math.PI/2;
+    const r = i%2===0 ? rOuter : rInner;
+    const x = cx + r*Math.cos(ang), y = cy + r*Math.sin(ang);
+    if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.closePath();
+}
+
+function buildCertificateCanvas(title, subtitle, arabicLine){
+  const W = 1200, H = 800;
+  const canvas = document.createElement('canvas');
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+
+  const grad = ctx.createLinearGradient(0,0,W,H);
+  grad.addColorStop(0,'#141c38'); grad.addColorStop(0.55,'#24507a'); grad.addColorStop(1,'#183a4a');
+  ctx.fillStyle = grad; ctx.fillRect(0,0,W,H);
+
+  ctx.strokeStyle = '#d9ac5c'; ctx.lineWidth = 6;
+  ctx.strokeRect(38,38,W-76,H-76);
+  ctx.strokeStyle = 'rgba(217,172,92,0.5)'; ctx.lineWidth = 2;
+  ctx.strokeRect(56,56,W-112,H-112);
+
+  ctx.fillStyle = 'rgba(217,172,92,0.85)';
+  [[56,56],[W-56,56],[56,H-56],[W-56,H-56]].forEach(([x,y])=>{ eightPointStarPath(ctx, x, y, 15, 6); ctx.fill(); });
+
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#f3e8d2';
+  ctx.font = '700 26px Century Gothic, sans-serif';
+  ctx.fillText('A R A B I X', W/2, 148);
+
+  if(arabicLine){
+    ctx.fillStyle = 'rgba(217,172,92,0.9)';
+    ctx.font = '400 34px "Naskh Quran", "Noto Naskh Arabic", serif';
+    ctx.fillText(arabicLine, W/2, 200);
+  }
+
+  ctx.fillStyle = '#d9ac5c';
+  ctx.font = '700 54px Georgia, serif';
+  ctx.fillText('Tabriklaymiz!', W/2, 300);
+
+  ctx.fillStyle = '#ece6d6';
+  ctx.font = '400 28px Georgia, serif';
+  wrapCanvasText(ctx, title, W/2, 380, 880, 40);
+
+  ctx.fillStyle = 'rgba(236,230,214,0.8)';
+  ctx.font = '400 22px Century Gothic, sans-serif';
+  wrapCanvasText(ctx, subtitle, W/2, 470, 780, 32);
+
+  const dateStr = formatUzDate(new Date());
+  ctx.fillStyle = 'rgba(236,230,214,0.6)';
+  ctx.font = '400 20px Century Gothic, sans-serif';
+  ctx.fillText(dateStr, W/2, H-90);
+
+  return canvas;
+}
+
+function downloadMilestoneCertificate(unitId){
+  const isBook1 = unitId === 20;
+  const title = isBook1
+    ? "1-kitob — Poydevor va Naqshlar — muvaffaqiyatli yakunlandi"
+    : "2-kitob va butun kurs — 0dan Qahramongacha — muvaffaqiyatli yakunlandi";
+  const subtitle = isBook1
+    ? "20 dars, o'nlab sura va oyat, minglab so'z — barchasi o'zlashtirildi"
+    : "41 dars, 20dan ortiq sura, Al-Baqara va Al-Kahf chuqur o'rganildi";
+  const canvas = buildCertificateCanvas(title, subtitle, 'بارك الله فيك');
+  const link = document.createElement('a');
+  link.download = isBook1 ? 'arabix-1-kitob-sertifikat.png' : 'arabix-2-kitob-sertifikat.png';
+  link.href = canvas.toDataURL('image/png');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast("Sertifikat saqlandi!");
 }
 
 /* ================= INIT ================= */
