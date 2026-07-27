@@ -2283,6 +2283,240 @@ const ALIFBO_LEVELS = [
      {ar:"الرَّحْمَٰنِ", answer:"ar-rahmaani", detail:"ر shadda bilan, ح sukun bilan, م fatha + cho'ziq alif, ن + kasra = \"ar-rahmaani\"."},
      {ar:"الرَّحِيمِ", answer:"ar-rahiimi", detail:"Xuddi yuqoridagidek qolipda, ح + kasra + cho'ziq ي, م + kasra = \"ar-rahiimi\"."},
    ]},
+
+  /* ===== TAJVID QOIDALARI — chuqur darslar, mashqlar bilan ===== */
+  {id:"rule_sukun", kind:"rule", title:"Sukunni to'g'ri ulab o'qish", sub:"Aqraba so'zini aqoroba qilib yubormaslik", icon:"سْ",
+   intro:"Sizga tanish savol: nega ba'zan أَقْرَبَ so'zi \"aqoroba\" bo'lib eshitiladi, \"aqraba\" o'rniga? Javob — sukun (ْ) belgisini noto'g'ri talaffuz qilishda. Sukun degani: bu harfda hech qanday unli tovush yo'q, u alohida bo'g'in emas — o'zining tovushini darhol keyingi harfga ulab, bitta nafasda aytish kerak. Harflarni birma-bir o'rganganda, har bir harfga beixtiyor ozgina unli qo'shib talaffuz qilish odati paydo bo'ladi (\"qof\" o'rniga \"qo\"...). Bu odat so'z ichida qolib ketsa, أَقْرَبَ kabi so'zlar buzilib qoladi. Bu darsda shu odatni tuzatamiz.",
+   blocks:[
+     {h:"1. Sukun — 'to'xtagan' harf, alohida bo'g'in emas", p:[
+       "Harf ustidagi kichik doiracha (ْ) — sukun. Bu \"bu harfni unlisiz, faqat undosh tovush sifatida ayt\" degani. Og'iz shu harfning shaklini oladi, lekin ovoz cho'zilmaydi — darhol keyingi harfga o'tadi.",
+       "Solishtiring: <span class='w'>قَ</span> (qa — to'liq bo'g'in, unlisi bor) va <span class='w'>قْ</span> (q — faqat undosh, o'zi bo'g'in bo'la olmaydi, albatta keyingi harfga yopishadi)."
+     ]},
+     {h:"2. Eng ko'p uchraydigan xato", p:[
+       "أَقْرَبَ so'zini oling: أَ (a) + قْ (sukunli q) + رَ (ra) + بَ (ba). To'g'ri o'qilsa — \"aq-ra-ba\", uchta aniq bo'g'in. Xato — قْ harfiga o'zboshimchalik bilan qisqa unli qo'shib yuborish: natijada \"a-qo-ra-ba\", to'rtta bo'g'in bo'lib qoladi. Sabab odatda shu: harflarni yakka-yakka o'rgatishda har biriga tabiiy ravishda ozgina unli tovush ilashib qoladi, va bu odat butun so'zlarni o'qishga ko'chib qoladi.",
+       "Davosi: قْ harfini alohida aytmang. رَ harfiga to'g'ridan-to'g'ri \"sakrab o'ting\" — ikkalasini deyarli bitta harakatda bog'lang."
+     ]},
+     {h:"3. Amalda: tanish so'zlarni qayta tekshiring", p:[
+       "<span class='w'>نَسْتَعِينُ</span> (Fatiha, 5-oyat) <span class='review'>&#8635; 2-dars</span> — سْ harfida sukun bor, keyingi harf تَ ga ulanadi: \"nas-ta-'ii-nu\", \"na-sa-ta-'ii-nu\" emas.",
+       "<span class='w'>أَنْعَمْتَ</span> (Fatiha, 7-oyat) <span class='review'>&#8635; 2-dars</span> — ikkita sukun bor: نْ (عга ulanadi) va مْ (تga ulanadi): \"an-'am-ta\", \"ana-'ama-ta\" emas.",
+       "Diqqat: bu qoida so'z ICHIDAGI sukun uchun. Sukun so'z OXIRIDA kelib, undan keyin yangi so'z boshlansa (masalan نْ bilan tugab), butunlay boshqa, maxsus qoidalar ishga tushadi — buni keyingi darsda (Nun sokin qoidalari) chuqur ko'ramiz."
+     ]}
+   ],
+   talaffuz:"Mashq usuli: so'zni juda sekin, harf-harf ayting, lekin sukunli harfda TO'XTAMANG — og'zingizni keyingi harfning shakliga tayyorlab turing va darhol o'ting. Keyin tezlikni asta-sekin oshiring, sukun hech qachon o'z-o'zidan bo'g'in bo'lib qolmasin.",
+   tafakkur:"1-darsda o'qigan oyatni eslang: <span class='ar'>وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</span> — \"Qur'onni tartil bilan o'qi\" (Al-Muzzammil, 4). Tartil — shoshilmasdan, har bir harfni o'z joyiga qo'yib o'qish demakdir. Sukunni to'g'ri ulash — aynan shu tartilning eng kichik, lekin eng muhim g'ishtlaridan biri: bitta noto'g'ri qo'shilgan unli, butun so'zning vaznini o'zgartirib yuboradi.",
+   exercises:[
+     {type:'reveal', kicker:'TEKSHIRUV', prompt:"أَقْرَبَ so'zini uch bo'g'inga bo'ling va har bir bo'g'inni ayting: aq-ra-ba. Endi ق harfini alohida cho'zmasdan o'qib ko'ring.", answer:"أَ-قْ-رَ-بَ &rarr; \"aq\" + \"ra\" + \"ba\" — qْ hech qachon o'z ovoz bermaydi, darhol رَ ga o'tadi."},
+     {type:'mcq', kicker:'MASHQ 1 · OSON', q:"أَقْرَبَ so'zining to'g'ri o'qilishi qaysi?", options:["aq-ra-ba","a-qo-ra-ba","aq-qa-ra-ba"], correct:0, explain:"قْ — sukunli harf, o'z unlisi yo'q, darhol رَ ga ulanadi: aq-ra-ba."},
+     {type:'reveal', kicker:'MASHQ 2 · OSON', prompt:"نَسْتَعِينُ so'zida nechta sukun bor va qaysi harfda?", answer:"Bitta sukun — سْ harfida (na-s-ta-'ii-nu). تَ ga to'g'ridan-to'g'ri ulanadi."},
+     {type:'mcq', kicker:'MASHQ 3 · O\'RTA', q:"أَنْعَمْتَ so'zida nechta sukun bor?", options:["1 ta","2 ta — نْ va مْ","3 ta"], correct:1, explain:"أَنْعَمْتَ = أَ + نْ + عَ + مْ + تَ — نْ (ع ga ulanadi) va مْ (تga ulanadi), ikkalasi ham sukunli."},
+     {type:'reveal', kicker:'MASHQ 4 · O\'RTA', prompt:"هَلْ so'zini o'qing. لْ harfidan keyin hech narsa kelmasa (so'z shu yerda tugasa), uni qanday tugatish kerak?", answer:"لْ so'z oxirida sukun bilan tugaydi — \"hal\", \"halu\" yoki \"hali\" emas, undosh tovush bilan to'xtaydi."},
+     {type:'match', kicker:'MASHQ 5 · QIYIN · Moslang', pairs:[
+       {l:"أَقْرَبَ", r:"aq-ra-ba"}, {l:"نَسْتَعِينُ", r:"nas-ta-'iinu"}, {l:"أَنْعَمْتَ", r:"an-'am-ta"}, {l:"هَلْ", r:"hal"}
+     ]},
+     {type:'reveal', kicker:'MASHQ 6 · QIYIN', prompt:"Ovoz chiqarib o'qing: أَنْعَمْتَ عَلَيْهِمْ. Har ikkala sukunni (نْ, مْ) diqqat bilan ulashga harakat qiling, orada qo'shimcha unli qo'shmang.", answer:"an-'am-ta 'alayhim — sukunlar orasida hech qanday qo'shimcha unli tovush bo'lmasligi kerak."}
+   ],
+   closing:"Endi sukunni to'g'ri ulaysiz. Lekin bir savol qoladi: sukunli harf so'z OXIRIDA kelib, keyin boshqa so'z boshlansa-chi? Buning uchun maxsus, alohida qoidalar bor — keyingi ikki darsda ko'ramiz."
+  },
+
+  {id:"rule_shams_qamar", kind:"rule", title:"Oy va quyosh harflari", sub:"Wattini, waltiyni emas", icon:"ال",
+   intro:"اَل (\"al-\") — arab tilida \"the\" ma'nosidagi old qo'shimcha, deyarli har bir otga qo'shiladi. Lekin uning ل harfi har doim ham eshitilmaydi! Agar keyingi harf \"quyosh harfi\"dan bo'lsa, ل talaffuz qilinmaydi — o'rniga keyingi harf ikki baravar (shadda bilan) o'qiladi. وَالتِّينِ so'zini \"waltiyni\" emas, \"wattini\" deb o'qish — aynan shu qoida. Bu — Qur'onda eng ko'p uchraydigan, lekin ko'pincha e'tiborsiz qoldiriladigan qoidalardan biri.",
+   blocks:[
+     {h:"1. Eng ishonchli belgi: shadda", p:[
+       "Yozuvning o'zida ipuchi bor: agar ل dan keyingi harf ustida shadda (ّ) tursa — ل o'qilmaydi, harf ikki baravar aytiladi. Agar ل ustida sukun (ْ) tursa — ل oddiy o'qiladi.",
+       "Solishtiring: <span class='w'>الْقَمَرِ</span> — لْ ustida sukun, oddiy o'qiladi: \"al-qamari\". <span class='w'>الشَّمْسِ</span> — ش ustida shadda, ل o'qilmaydi: \"ash-shamsi\", \"al-shamsi\" emas."
+     ]},
+     {h:"2. Quyosh harflari (14 ta) — ل erib ketadi", p:[
+       "<span class='w' style='font-size:1.15em;'>ت ث د ذ ر ز س ش ص ض ط ظ ل ن</span> — shu 14 harfdan birortasi ال dan keyin kelsa, ل talaffuz qilinmaydi, harf ikki baravar (shadda bilan) o'qiladi.",
+       "Tanish misollar: <span class='w'>وَالتِّينِ</span> = \"wat-tiini\" (waltiyni emas) &middot; <span class='w'>النَّاسِ</span> <span class='review'>&#8635; 3-dars</span> = \"an-naasi\" &middot; <span class='w'>الرَّحْمَٰنِ</span> <span class='review'>&#8635; 1, 2-dars</span> = \"ar-rahmaani\" &middot; <span class='w'>الصِّرَاطَ</span> <span class='review'>&#8635; 2-dars</span> = \"as-siraata\" &middot; <span class='w'>الضَّالِّينَ</span> <span class='review'>&#8635; 2-dars</span> = \"ad-daalliina\"."
+     ]},
+     {h:"3. Oy harflari (14 ta) — ل oddiy eshitiladi", p:[
+       "<span class='w' style='font-size:1.15em;'>ا ب ج ح خ ع غ ف ق ك م ه و ي</span> — qolgan 14 harf. Bulardan birortasi ال dan keyin kelsa, ل oddiy, o'z holicha eshitiladi.",
+       "Tanish misollar: <span class='w'>الْحَمْدُ</span> <span class='review'>&#8635; 2-dars</span> = \"al-hamdu\" &middot; <span class='w'>الْعَالَمِينَ</span> <span class='review'>&#8635; 2-dars</span> = \"al-'aalamiina\" &middot; <span class='w'>الْمُسْتَقِيمَ</span> <span class='review'>&#8635; 2-dars</span> = \"al-mustaqiima\"."
+     ]}
+   ],
+   table:{title:"Tez qarash uchun", cols:["Tur","Harflar","ل qanday o'qiladi"], rows:[
+     ["Quyosh","ت ث د ذ ر ز س ش ص ض ط ظ ل ن","O'qilmaydi — keyingi harf 2 baravar"],
+     ["Oy","ا ب ج ح خ ع غ ف ق ك م ه و ي","Oddiy o'qiladi"]
+   ]},
+   talaffuz:"Yozuvga qarab tekshirish eng tez yo'l: ل dan keyingi harfda shadda bormi? Bo'lsa — ل \"jim\", harf ikki baravar. Yo'q bo'lsa — ل eshitiladi. Vaqt o'tishi bilan 14 ta quyosh harfini yod bilib olasiz va tekshirishga ehtiyoj qolmaydi.",
+   exercises:[
+     {type:'reveal', kicker:'TEKSHIRUV', prompt:"وَالتِّينِ so'zida ت harfi ustida qanday belgi bor va bu nimani anglatadi?", answer:"ت ustida shadda (ّ) bor — bu ل quyosh harfidan oldin \"erib ketgani\", ت ikki baravar o'qilishi kerakligini bildiradi: \"wat-tiini\"."},
+     {type:'mcq', kicker:'MASHQ 1 · OSON', q:"الشَّمْسِ so'zining to'g'ri o'qilishi:", options:["al-shamsi","ash-shamsi","a-lshamsi"], correct:1, explain:"ش — quyosh harfi, ل o'qilmaydi, ش ikki baravar: ash-shamsi."},
+     {type:'mcq', kicker:'MASHQ 2 · OSON', q:"الْقَمَرِ so'zida ل qanday o'qiladi?", options:["Oddiy eshitiladi — ق oy harfi","O'qilmaydi — ق quyosh harfi"], correct:0, explain:"ق — oy harfi, ل ustida sukun bor, oddiy eshitiladi: al-qamari."},
+     {type:'reveal', kicker:'MASHQ 3 · O\'RTA', prompt:"Quyidagi so'zlarni ikki guruhga ajrating: quyosh yoki oy? النَّاسِ، الْحَمْدُ، الرَّحْمَٰنِ، الْعَالَمِينَ، الصِّرَاطَ، الْمُسْتَقِيمَ", answer:"Quyosh (ل o'qilmaydi): النَّاسِ (ن)، الرَّحْمَٰنِ (ر)، الصِّرَاطَ (ص). Oy (ل eshitiladi): الْحَمْدُ (ح)، الْعَالَمِينَ (ع)، الْمُسْتَقِيمَ (م)."},
+     {type:'match', kicker:'MASHQ 4 · O\'RTA · Moslang', pairs:[
+       {l:"وَالتِّينِ", r:"wat-tiini (quyosh)"}, {l:"الْحَمْدُ", r:"al-hamdu (oy)"}, {l:"الضَّالِّينَ", r:"ad-daalliina (quyosh)"}, {l:"الْعَالَمِينَ", r:"al-'aalamiina (oy)"}
+     ]},
+     {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"وَلَا الضَّالِّينَ (Fatiha, 7-oyat) iborasini to'g'ri talaffuz bilan o'qing. الضَّالِّينَ so'zidagi ل qanday?", answer:"ض — quyosh harfi, ل o'qilmaydi: \"wa laa d-daalliina\" &rarr; tabiiy oqimda \"wa lad-daalliina\"."},
+     {type:'mcq', kicker:'MASHQ 6 · QIYIN', q:"Nechta quyosh va nechta oy harfi bor?", options:["14 ta va 14 ta","10 ta va 18 ta","20 ta va 8 ta"], correct:0, explain:"Arab alifbosida 28 harf bor — 14 tasi quyosh, 14 tasi oy harfi."}
+   ],
+   closing:"Endi ال so'z boshida qanday o'qilishini bilasiz. Xuddi shunga o'xshab, نْ va tanvin ham keyingi harfga qarab TO'RT xil yo'l bilan o'qiladi — bu keyingi darsning mavzusi."
+  },
+
+  {id:"rule_noon_sakin", kind:"rule", title:"Nun sokin va tanvin: to'rt yo'l", sub:"Izhor, Idg'om, Iqlob, Ixfo", icon:"نْ",
+   intro:"نْ (sukunli nun) yoki tanvin (ً ٍ ٌ) — bu ikkalasi bir xil tovush, faqat yozilishi farq qiladi. Ular so'zdan keyin qanday harf kelishiga qarab TO'RT xil yo'l bilan o'qiladi: ba'zan to'liq aniq, ba'zan boshqa harfga qo'shilib ketadi, ba'zan \"m\" tovushiga aylanadi, ba'zan esa yashirin, burun orqali o'tuvchi tovushga aylanadi. Bu — Qur'onda eng tez-tez ishlaydigan qoida, chunki نْ va tanvin deyarli har oyatda uchraydi.",
+   blocks:[
+     {h:"1. Izhor (aniq o'qish) — 6 ta tomoq harfi", p:[
+       "<span class='w' style='font-size:1.15em;'>ء ه ع ح غ خ</span> — نْ yoki tanvin shu harflardan birortasi bilan uchrasa, hech narsa o'zgarmaydi: har ikkalasi ham to'liq, aniq, bir-biridan ajratib eshitiladi.",
+       "Misol: <span class='w'>أَنْعَمْتَ</span> <span class='review'>&#8635; 2-dars</span> — نْ dan keyin ع (tomoq harfi), \"an-'amta\" deb aniq o'qiladi. Yana: <span class='w'>طَيْرًا أَبَابِيلَ</span> <span class='review'>&#8635; 8-dars</span> — tanvin (ً) dan keyin أ (hamza), \"tayran abaabiila\" — ikkalasi ham aniq eshitiladi."
+     ]},
+     {h:"2. Idg'om (qo'shib yuborish) — يرملون harflari", p:[
+       "<span class='w' style='font-size:1.15em;'>ي ر م ل و ن</span> — نْ/tanvin shu 6 harfdan biriga uchrasa, o'z tovushini yo'qotib, keyingi harfga TO'LIQ qo'shilib ketadi (harf ikki baravar bo'ladi). Bu faqat ikki so'z orasida yoki tanvindan keyin bo'ladi — bitta so'z ichida hech qachon emas.",
+       "Ikki xili bor: <b>ن م ي و</b> bilan — burundan \"ng\" ovozi (g'unna) bilan qo'shiladi: masalan <span class='w'>مَن يَشَاءُ</span> = \"may-yashaa'u\". <b>ل ر</b> bilan — g'unnasiz, oddiy qo'shiladi: masalan <span class='w'>لَمْ يَكُن لَّهُ</span> <span class='review'>&#8635; 5-dars</span> — نْ dan keyin ل, \"lam yakul-lahu\" (كُن+لَّهُ bir tovushga aylanadi)."
+     ]},
+     {h:"3. Iqlob (almashtirish) — faqat ب harfi", p:[
+       "Yagona harf: <span class='w' style='font-size:1.3em;'>ب</span>. نْ yoki tanvin ب dan oldin kelsa, u \"n\" emas, yengil \"m\" tovushiga aylanadi (g'unna bilan). Mushafda buni kichkina م belgisi ustida ko'rsatiladi.",
+       "Misol: <span class='w'>مِنْ بَعْدِ</span> = \"mim ba'di\", \"min ba'di\" emas."
+     ]},
+     {h:"4. Ixfo (yashirish) — qolgan 15 harf", p:[
+       "<span class='w' style='font-size:1.1em;'>ت ث ج د ذ ز س ش ص ض ط ظ ف ق ك</span> — qolgan 15 harf. نْ/tanvin bu harflardan birortasi bilan uchrasa, na to'liq aniq (izhor), na to'liq qo'shilib (idg'om) o'qiladi — o'rtacha, yengil burun tovushi (g'unna) bilan \"yashirinib\" o'qiladi.",
+       "Tanish misol: <span class='w'>مِنْ شَرِّ</span> <span class='review'>&#8635; 3-dars</span> — نْ dan keyin ش, \"min\" so'zining oxiri yengil burun tovushi bilan \"eriydi\": \"mi(n~)-sharri\". Yana: <span class='w'>مِّن سِجِّيلٍ</span> <span class='review'>&#8635; 8-dars</span> — نْ dan keyin س, xuddi shunday."
+     ]}
+   ],
+   table:{title:"Tez qarash uchun", cols:["Qoida","Harflar","Qanday o'qiladi"], rows:[
+     ["Izhor","ء ه ع ح غ خ","To'liq aniq, o'zgarishsiz"],
+     ["Idg'om","ي ر م ل و ن","Keyingi harfga to'liq qo'shiladi"],
+     ["Iqlob","ب (yagona)","\"m\" tovushiga aylanadi"],
+     ["Ixfo","Qolgan 15 harf","Yengil, burun orqali \"yashirin\" tovush"]
+   ]},
+   talaffuz:"Amaliy yo'l: avval نْ yoki tanvindan keyingi harfni toping, so'ng yuqoridagi jadvaldan qaysi guruhga tushishini aniqlang — keyin shu guruhning qoidasini qo'llang. Vaqt o'tib, bu avtomatik bo'lib qoladi.",
+   exercises:[
+     {type:'reveal', kicker:'TEKSHIRUV', prompt:"مِنْ شَرِّ iborasida نْ dan keyin qaysi harf keladi va bu qaysi qoidaga tushadi?", answer:"ش harfi — bu 15 ta ixfo harfidan biri. نْ yengil, burun orqali \"yashirin\" tovush bilan o'qiladi: mi(n~)-sharri."},
+     {type:'mcq', kicker:'MASHQ 1 · OSON', q:"مِنْ بَعْدِ so'zi qanday o'qiladi?", options:["min ba'di","mim ba'di","mib ba'di"], correct:1, explain:"ب — iqlob harfi (yagona). نْ \"m\" tovushiga aylanadi: mim ba'di."},
+     {type:'mcq', kicker:'MASHQ 2 · OSON', q:"أَنْعَمْتَ so'zida نْ qanday o'qiladi?", options:["Aniq, o'zgarishsiz (izhor)","Keyingi harfga qo'shilib (idg'om)","Yashirin (ixfo)"], correct:0, explain:"ع — 6 ta tomoq (izhor) harfidan biri. نْ to'liq aniq eshitiladi."},
+     {type:'reveal', kicker:'MASHQ 3 · O\'RTA', prompt:"لَمْ يَكُن لَّهُ iborasida نْ dan keyin ل keladi. Bu qaysi qoida, va so'z qanday o'qiladi?", answer:"Idg'om (g'unnasiz, chunki ل — ن م و ي emas). نْ butunlay ل ga qo'shiladi: \"lam yakul-lahu\"."},
+     {type:'match', kicker:'MASHQ 4 · QIYIN · Moslang', pairs:[
+       {l:"أَنْعَمْتَ", r:"Izhor — ع"}, {l:"لَمْ يَكُن لَّهُ", r:"Idg'om — ل"}, {l:"مِنْ بَعْدِ", r:"Iqlob — ب"}, {l:"مِنْ شَرِّ", r:"Ixfo — ش"}
+     ]},
+     {type:'mcq', kicker:'MASHQ 5 · QIYIN', q:"Idg'om qoidasi qachon ISHLAMAYDI?", options:["Ikki so'z orasida","Tanvindan keyin","Bitta so'zning o'zi ichida"], correct:2, explain:"Idg'om faqat so'zlar orasida yoki tanvindan keyin bo'ladi — bitta so'z ichida نْ hech qachon idg'om qilinmaydi."},
+     {type:'reveal', kicker:'MASHQ 6 · QIYIN', prompt:"طَيْرًا أَبَابِيلَ (Al-Fil, 3-oyat) iborasini o'qing. Tanvindan keyin qaysi harf keladi va nega u idg'om yoki ixfo emas?", answer:"أ (hamza) — bu 6 ta izhor (tomoq) harfidan biri, shuning uchun tanvin to'liq aniq eshitiladi: \"tayran abaabiila\"."}
+   ],
+   closing:"Nun sokin va tanvin — 4 yo'l. Mim sokin (مْ) uchun ham xuddi shunga o'xshash, lekin sodda, 3 yo'ldan iborat tizim bor — keyingi darsda."
+  },
+
+  {id:"rule_meem_sakin", kind:"rule", title:"Mim sokin: uch yo'l", sub:"Izhori shafaviy, Idg'omi shafaviy, Ixfoi shafaviy", icon:"مْ",
+   intro:"مْ (sukunli mim) ham, نْ kabi, keyingi harfga qarab boshqacha o'qiladi — lekin bu safar faqat 2 ta \"tetiklovchi\" harf bor (ب va م), qolgan hamma narsa bitta guruhga tushadi. Bu qoida \"shafaviy\" (lab) deb ataladi, chunki م harfi lablar bilan chiqadi.",
+   blocks:[
+     {h:"1. Idg'omi shafaviy — مْ dan keyin م", p:[
+       "Ikki م bir-biriga qo'shilib, bitta uzun, g'unnali (burun tovushli) م bo'lib o'qiladi.",
+       "Misol: <span class='w'>لَهُم مَّا</span> — مْ dan keyin م, ikkalasi qo'shilib \"lahum-maa\" bo'ladi, cho'zilgan g'unna bilan."
+     ]},
+     {h:"2. Ixfoi shafaviy — مْ dan keyin ب", p:[
+       "Lablar to'liq yopilmaydi, yengil g'unna bilan \"yashirin\" o'qiladi.",
+       "Tanish misol: <span class='w'>تَرْمِيهِم بِحِجَارَةٍ</span> <span class='review'>&#8635; 8-dars</span> — مْ dan keyin ب, \"tarmiihim-bihijaaratin\" — م bilan ب orasida yengil g'unna sezilishi kerak."
+     ]},
+     {h:"3. Izhori shafaviy — مْ dan keyin qolgan 26 harf", p:[
+       "ب va م dan boshqa har qanday harf kelsa, مْ oddiy, aniq, lablar to'liq yopilib-ochilib o'qiladi — hech qanday o'zgarish yo'q.",
+       "Tanish misol: <span class='w'>لَمْ يَلِدْ</span> <span class='review'>&#8635; 5-dars</span> — مْ dan keyin ي, oddiy aniq o'qiladi: \"lam yalid\". Diqqat: bu yerdagi ي, Nun sokin darsidagi \"idg'om\" qoidasiga o'xshab ketmasin — mim sokin tizimida ي oddiy izhor harfi, chunki faqat ب va م maxsus."
+     ]}
+   ],
+   talaffuz:"Eng ko'p adashtiriladigan narsa — mim sokin qoidalarini nun sokin qoidalari bilan aralashtirib yuborish. Ularni alohida tizim deb yodda tuting: mim sokin faqat ب va م ga qarab ishlaydi, boshqa hech narsaga emas.",
+   exercises:[
+     {type:'reveal', kicker:'TEKSHIRUV', prompt:"تَرْمِيهِم بِحِجَارَةٍ iborasida مْ dan keyin qaysi harf keladi va bu qaysi qoida?", answer:"ب harfi — ixfoi shafaviy. Lablar yengil g'unna bilan yaqinlashadi, to'liq yopilmaydi."},
+     {type:'mcq', kicker:'MASHQ 1 · OSON', q:"لَمْ يَلِدْ so'zida مْ qanday o'qiladi?", options:["Oddiy, aniq (izhor)","م ga qo'shilib (idg'om)","Yashirin (ixfo)"], correct:0, explain:"ي — ب yoki م emas, shuning uchun izhori shafaviy: مْ oddiy, aniq eshitiladi."},
+     {type:'mcq', kicker:'MASHQ 2 · O\'RTA', q:"لَهُم مَّا so'zida ikkita م nima bo'ladi?", options:["Ikkalasi alohida eshitiladi","Qo'shilib, bitta uzun م bo'ladi","Birinchisi tushib qoladi"], correct:1, explain:"Idg'omi shafaviy — ikki م qo'shilib, g'unna bilan cho'zilgan bitta م bo'ladi."},
+     {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"Mim sokin necha ta qoidadan iborat, va ular Nun sokindan nima bilan farq qiladi?", answer:"3 ta (izhori, idg'omi, ixfoi shafaviy) — Nun sokinda 4 ta. Mim sokin faqat ب va م harflariga qarab ishlaydi, Nun sokin esa 26 harfning barchasiga qarab 4 guruhga bo'linadi."},
+     {type:'match', kicker:'MASHQ 4 · QIYIN · Moslang', pairs:[
+       {l:"تَرْمِيهِم بِحِجَارَةٍ", r:"Ixfoi shafaviy — ب"}, {l:"لَهُم مَّا", r:"Idg'omi shafaviy — م"}, {l:"لَمْ يَلِدْ", r:"Izhori shafaviy — ي"}
+     ]}
+   ],
+   closing:"Endi ikki sukunli harfning (نْ va مْ) barcha yo'llarini bilasiz. Keyingi darsda 1-darsda ko'rgan qalqalaga qaytamiz — bu safar chuqurroq, ikki darajasi bilan."
+  },
+
+  {id:"rule_qalqala_deep", kind:"rule", title:"Qalqala: kichik va katta", sub:"Sug'ro va kubro darajalari", icon:"دْ",
+   intro:"1-darsda beshta \"sakrovchi\" harfni tanigan edingiz: ق ط ب ج د <span class='review'>&#8635; 1-dars</span>. Bu harflar tovush yo'lini to'liq to'sib, keyin birdan ochadi — shuning uchun sukun bilan kelganda ovoz \"o'lib qolmasligi\" uchun kichik bir bosim-sakrash kerak. Lekin bu sakrash har doim bir xil kuchda emas — qayerda kichikroq, qayerda kattaroq bo'lishini bu darsda aniqlaymiz.",
+   blocks:[
+     {h:"1. Qalqala Sug'ro (kichik) — so'z ichida, to'xtamasdan", p:[
+       "Qalqala harfi so'z O'RTASIDA sukun bilan kelsa va o'qish davom etsa (to'xtash yo'q), sakrash YENGIL bo'ladi.",
+       "Tanish misol: <span class='w'>أَقْرَبَ</span> <span class='review'>&#8635; oldingi dars</span> — قْ so'z o'rtasida, o'qish davom etadi: sukunni ulab, ustiga yengil qalqala qo'shing. Yana: <span class='w'>يَجْعَلُونَ</span> — جْ so'z o'rtasida, yengil sakrash."
+     ]},
+     {h:"2. Qalqala Kubro (katta) — to'xtaganda", p:[
+       "Qalqala harfi so'z OXIRIDA bo'lib, siz shu yerda TO'XTASANGIZ (vaqf) — sakrash KUCHLIROQ bo'ladi. Sabab: to'xtaganda so'zning oxirgi harakati (fatha/kasra/damma yoki tanvin) tushib qoladi, harf haqiqiy, \"yalang'och\" sukunga aylanadi — shuning uchun uni tovushsiz qoldirmaslik uchun sakrash aniqroq bo'lishi kerak.",
+       "Tanish misol: <span class='w'>أَحَدٌ</span> <span class='review'>&#8635; 1, 5-dars</span> — oxirida to'xtasangiz, tanvin tushib, د \"toza\" sukunga aylanadi: kuchliroq sakrash bilan ayting. Yana: <span class='w'>إِذَا حَسَدَ</span> <span class='review'>&#8635; 1-dars</span> — surа oxirida حَسَدَ ga to'xtaganda, د da kubro qalqala."
+     ]}
+   ],
+   talaffuz:"Farqni his qilish uchun: أَقْرَبَ so'zini gap ichida (to'xtamasdan) o'qing — قْ yengil. Endi أَحَدٌ so'zini oxirigacha o'qib, shu yerda to'xtang — د ni sal kuchliroq \"sakratib\" chiqaring. Ikkalasini ketma-ket solishtirib mashq qiling.",
+   exercises:[
+     {type:'reveal', kicker:'TEKSHIRUV', prompt:"أَقْرَبَ va أَحَدٌ (oxiriga to'xtalganda) so'zlaridagi qalqalani solishtiring — qaysi biri kuchliroq?", answer:"أَحَدٌ (to'xtalganda) kuchliroq — bu qalqala kubro, chunki to'xtashda tanvin tushib, د toza sukunga aylanadi. أَقْرَبَ dagi قْ esa yengil, chunki o'qish davom etadi (sug'ro)."},
+     {type:'mcq', kicker:'MASHQ 1 · OSON', q:"Qalqala harflari nechta va qaysilar?", options:["5 ta — ق ط ب ج د","4 ta — ق ط ب ج","6 ta — ق ط ب ج د ك"], correct:0, explain:"5 ta: ق ط ب ج د."},
+     {type:'mcq', kicker:'MASHQ 2 · O\'RTA', q:"Qalqala kubro qachon bo'ladi?", options:["So'z o'rtasida, o'qish davom etganda","So'z oxirida to'xtaganda","Har doim bir xil kuchda"], correct:1, explain:"Kubro — to'xtashda, harf \"toza\" sukunga aylanganda, sakrash kuchliroq bo'ladi."},
+     {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"وَلَا الضَّالِّينَ (Fatiha oxiri) so'ziga to'xtaganda qalqala bormi? Nega?", answer:"Yo'q — الضَّالِّينَ so'zi ن bilan tugaydi, bu qalqala harfi emas. Qalqala faqat ق ط ب ج د harflarida bo'ladi."},
+     {type:'match', kicker:'MASHQ 4 · QIYIN · Moslang', pairs:[
+       {l:"أَقْرَبَ (davom etsa)", r:"Sug'ro — yengil"}, {l:"أَحَدٌ (to'xtalsa)", r:"Kubro — kuchli"}, {l:"إِذَا حَسَدَ (to'xtalsa)", r:"Kubro — kuchli"}
+     ]}
+   ],
+   closing:"Qalqala — sukunli harflarning maxsus \"bo'yashi\". Endi butunlay boshqa o'qga o'tamiz: uzunlik. Keyingi darsda — madd turlari, ya'ni qaysi harfni qancha cho'zish kerakligi."
+  },
+
+  {id:"rule_madd_types", kind:"rule", title:"Madd turlari: qancha cho'zish kerak", sub:"Tabiiy, Muttasil, Munfasil, Lozim", icon:"آ",
+   intro:"1-darsda cho'zish (madd) tushunchasini tanigan edingiz <span class='review'>&#8635; 1-dars</span>: ا و ي harflari ba'zan cho'ziladi. Lekin barcha cho'zish bir xil uzunlikda emas — ba'zisi qisqagina (taxminan 1 soniya), ba'zisi ancha uzoqroq (2-3 soniya) cho'ziladi. Uzunlik, madd harfidan keyin QANDAY harf kelishiga bog'liq. Bu darsda to'rtta asosiy turini ko'ramiz.",
+   blocks:[
+     {h:"1. Madd Tabiiy (oddiy) — 2 harakat", p:[
+       "Bu — eng oddiy holat: madd harfidan (ا و ي) keyin na hamza (ء), na sukun kelmaydi. Cho'zish taxminan 2 harakat (bir qo'lni bir marta ochib-yopish vaqti) <span class='review'>&#8635; 1-dars</span>.",
+       "Misol: <span class='w'>إِيَّاكَ</span> <span class='review'>&#8635; 2-dars</span> — ا harfidan keyin ك keladi, oddiy 2 harakatlik cho'zish."
+     ]},
+     {h:"2. Madd Vojib Muttasil — 4-5 harakat", p:[
+       "Madd harfidan keyin BITTA SO'Z ICHIDA hamza (ء) kelsa — cho'zish MAJBURIY uzunroq bo'ladi: 4-5 harakat.",
+       "Misol: <span class='w'>جَاءَ</span> — ا dan keyin ء, xuddi shu so'z ichida. Oddiy 2 harakat yetarli emas, 4-5 harakatga cho'zib o'qiladi."
+     ]},
+     {h:"3. Madd Jоiz Munfasil — 2, 4 yoki 5 harakat", p:[
+       "Madd harfi bir so'zning OXIRIDA bo'lib, keyingi so'z hamza (ء) bilan boshlansa — cho'zish IXTIYORIY: 2, 4 yoki 5 harakat (odatda 4-5 tanlanadi, lekin 2 ham to'g'ri).",
+       "Tanish misol: <span class='w'>إِنَّا أَعْطَيْنَاكَ</span> <span class='review'>&#8635; 6-dars</span> — إِنَّا so'zi ا bilan tugaydi, أَعْطَيْنَاكَ so'zi ء bilan boshlanadi — ikki so'z orasida (ajralgan) cho'zish."
+     ]},
+     {h:"4. Madd Lozim — 6 harakat, eng uzuni", p:[
+       "Madd harfidan keyin, BITTA SO'Z ICHIDA, DOIMIY shadda (yoki sukun) kelsa — bu eng uzun cho'zish: 6 harakat, majburiy.",
+       "Tanish misol: <span class='w'>الضَّالِّينَ</span> <span class='review'>&#8635; 2-dars</span> — Fatihaning oxirgi so'zi! ا dan keyin darhol shaddali ل keladi — shuning uchun bu so'zni boshqalaridan sezilarli uzunroq cho'zib o'qish kerak."
+     ]}
+   ],
+   table:{title:"Tez qarash uchun", cols:["Tur","Shart","Uzunlik"], rows:[
+     ["Tabiiy","Hech narsa kelmaydi","2 harakat"],
+     ["Vojib Muttasil","Hamza, SHU so'z ichida","4–5 harakat"],
+     ["Jоiz Munfasil","Hamza, KEYINGI so'zda","2, 4 yoki 5 harakat"],
+     ["Lozim","Doimiy shadda/sukun, shu so'zda","6 harakat"]
+   ]},
+   talaffuz:"Bonus: agar oyat OXIRIDA to'xtasangiz va so'z ي yoki و bilan tugab, undan oldingi harf harakatli bo'lsa (masalan نَسْتَعِينُ ga to'xtaganda), oxirgi harakat tushib, vaqtinchalik yana bir cho'zish turi (madd 'Аrid lis-sukun) paydo bo'ladi — 2, 4 yoki 6 harakat, o'zingiz tanlaysiz, lekin bir oyat davomida bir xil tanlovga sodiq qoling.",
+   exercises:[
+     {type:'reveal', kicker:'TEKSHIRUV', prompt:"جَاءَ va إِيَّاكَ so'zlarini solishtiring — qaysi biri uzunroq cho'ziladi va nega?", answer:"جَاءَ uzunroq (vojib muttasil — ا dan keyin ء shu so'z ichida, 4-5 harakat). إِيَّاكَ oddiy (tabiiy — ا dan keyin oddiy harf, 2 harakat)."},
+     {type:'mcq', kicker:'MASHQ 1 · OSON', q:"Madd tabiiy necha harakat cho'ziladi?", options:["2 harakat","4-5 harakat","6 harakat"], correct:0, explain:"Madd tabiiy — eng qisqa, 2 harakat, taxminan 1 soniya."},
+     {type:'mcq', kicker:'MASHQ 2 · O\'RTA', q:"الضَّالِّينَ so'zida qanday madd bor?", options:["Tabiiy — 2 harakat","Lozim — 6 harakat, eng uzuni","Munfasil — 2-5 harakat"], correct:1, explain:"ا dan keyin darhol doimiy shaddali ل keladi — bu Madd Lozim, 6 harakat."},
+     {type:'reveal', kicker:'MASHQ 3 · O\'RTA', prompt:"إِنَّا أَعْطَيْنَاكَ iborasida madd qayerda va qaysi turi?", answer:"إِنَّا so'zi oxiridagi ا, keyingi so'z أَعْطَيْنَاكَ hamza bilan boshlanadi — Madd Jоiz Munfasil (ikki so'z orasida), 2-5 harakat."},
+     {type:'match', kicker:'MASHQ 4 · QIYIN · Moslang', pairs:[
+       {l:"إِيَّاكَ", r:"Tabiiy — 2 harakat"}, {l:"جَاءَ", r:"Vojib Muttasil — 4-5"}, {l:"إِنَّا أَعْطَيْنَاكَ", r:"Jоiz Munfasil — 2-5"}, {l:"الضَّالِّينَ", r:"Lozim — 6 harakat"}
+     ]},
+     {type:'reveal', kicker:'MASHQ 5 · QIYIN', prompt:"نَسْتَعِينُ so'ziga (Fatiha, 5-oyat oxiri) to'xtasangiz, ي harfidan keyin nima bo'ladi va nega bu alohida holat?", answer:"To'xtaganda oxirgi damma (ُ) tushib qoladi, ي madd harfi vaqtinchalik sukunli harfdan oldin qoladi — bu Madd 'Аrid lis-sukun, 2, 4 yoki 6 harakat, tanlov erkin."}
+   ],
+   closing:"Endi qancha cho'zishni bilasiz. Oxirgi darsimizda — qachon va qayerda TO'XTASH mumkinligini, Mushafdagi vaqf belgilarini ko'ramiz."
+  },
+
+  {id:"rule_waqf", kind:"rule", title:"Vaqf: qayerda to'xtash mumkin", sub:"Mushafdagi to'xtash belgilari", icon:"قف",
+   intro:"Qur'on bitta nafasda o'qish uchun yozilmagan — albatta oyat ichida ham to'xtash kerak bo'ladi. Lekin har qanday joyda to'xtayverish ma'noni buzishi mumkin. Shuning uchun Mushafda oyat matni ichiga kichkina belgi-harflar qo'yilgan — ular qayerda to'xtash yaxshi, qayerda shart, qayerda umuman mumkin emasligini ko'rsatadi.",
+   blocks:[
+     {h:"1. Asosiy belgilar", p:[
+       "Bu belgilarni bilish — matnni to'g'ri \"bo'laklarga\" ajratib o'qishga yordam beradi, xuddi tinish belgilari kabi."
+     ]},
+     {h:"2. Nafas yetmasa-chi?", p:[
+       "Agar belgisiz joyda, nafas yetmagani uchun to'xtashga majbur bo'lsangiz — bu gunoh emas, lekin qoidasi bor: davom etganda to'xtagan so'zingizdan emas, ma'noli bo'lakning boshidan qaytadan boshlang.",
+       "Masalan Fatihaning 2-oyatida <span class='w'>الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</span> <span class='review'>&#8635; 2-dars</span> o'rtasida (masalan لِلَّهِ dan keyin) to'xtash shart bo'lib qolsa, davom etganda رَبِّ الْعَالَمِينَ dan emas, yaxshisi butun iborani (الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ) qaytadan boshlang — ma'no uzilib qolmasin."
+     ]}
+   ],
+   table:{title:"Ko'p uchraydigan vaqf belgilari", cols:["Belgi","Nomi","Ma'nosi"], rows:[
+     ["م","Vaqf lozim","Majburiy to'xtash"],
+     ["لا","La yaqif","To'xtash mumkin emas — davom eting"],
+     ["ج","Vaqf jоiz","To'xtash ham, davom etish ham mumkin"],
+     ["صلى","Vasl avlo","Davom etish afzalroq"],
+     ["قلى","Vaqf avlo","To'xtash afzalroq"],
+     ["∴ ... ∴","Mu'anaqa","Ikkita nuqtadan FAQAT bittasida to'xtang, ikkalasida emas"]
+   ]},
+   talaffuz:"Birinchi marta yangi sura o'qiganda, belgilarga qarab sekin-sekin o'qing — vaqt o'tib, qaysi joylarda tabiiy \"nafas olish nuqtalari\" borligini his qila boshlaysiz, hatto belgiga qaramasdan ham.",
+   exercises:[
+     {type:'reveal', kicker:'TEKSHIRUV', prompt:"م belgisi va لا belgisi orasidagi farqni tushuntiring.", answer:"م — vaqf lozim, majburiy to'xtash. لا — la yaqif, bu yerda to'xtash mumkin emas, albatta davom etish kerak."},
+     {type:'mcq', kicker:'MASHQ 1 · OSON', q:"لا belgisi nimani anglatadi?", options:["Majburiy to'xtash","To'xtash mumkin emas","Ikkalasi ham mumkin"], correct:1, explain:"لا (la yaqif) — bu yerda to'xtamang, ma'no uziladi."},
+     {type:'mcq', kicker:'MASHQ 2 · O\'RTA', q:"ج belgisi nimani anglatadi?", options:["Majburiy to'xtash","To'xtash mumkin emas","To'xtash ham, davom etish ham mumkin"], correct:2, explain:"ج (vaqf jоiz) — ikkalasi ham to'g'ri, tanlov sizda."},
+     {type:'reveal', kicker:'MASHQ 3 · QIYIN', prompt:"Agar nafasingiz yetmay, belgisiz joyda to'xtashga majbur bo'lsangiz, davom etganda qanday qilish kerak?", answer:"Oldingi so'zdan emas, ma'noli bo'lakning boshidan (masalan butun ibora yoki jumladan) qaytadan boshlang — ma'no uzilib, buzilib qolmasin."},
+     {type:'mcq', kicker:'MASHQ 4 · QIYIN', q:"∴ ... ∴ (mu'anaqa) belgisi nimani anglatadi?", options:["Ikkala nuqtada ham to'xtang","Ikkitadan faqat bittasida to'xtang","Hech qaysi birida to'xtamang"], correct:1, explain:"Mu'anaqa — ikki nuqta juft holda keladi, ulardan faqat BITTASIDA to'xtash kerak, ikkalasida emas."}
+   ],
+   closing:"Tabriklaymiz — endi harflarni o'qishdan tortib, ularni to'g'ri ulash, quyosh/oy harflari, nun va mim sokin, qalqala, madd va vaqfgacha butun \"to'g'ri o'qish\" yo'lini bosib o'tdingiz. Endi navbat — bu bilimni har bir yangi surada amalda mustahkamlashda."
+  },
 ];
 
 function loadAlifboProgress(){
@@ -3937,23 +4171,49 @@ function renderReference(m){
 }
 
 /* ================= APP ICON (canvas-generated, for Add to Home Screen) ================= */
+/* Trefoil mark: three teal-to-gold gradient petals rotated 120deg around a
+   shared point, with a dark ink core — matches the desktop/Android icon set. */
 function generateAppIcon(size){
   const c = document.createElement('canvas');
   c.width = size; c.height = size;
   const ctx = c.getContext('2d');
   const r = size*0.22;
-  ctx.fillStyle = '#173a5c';
+  ctx.fillStyle = '#0b1e22';
   roundRect(ctx, 0, 0, size, size, r); ctx.fill();
-  const grad = ctx.createLinearGradient(0,0,size,size);
-  grad.addColorStop(0, '#2a5d8f'); grad.addColorStop(1, '#173a5c');
-  ctx.fillStyle = grad;
-  roundRect(ctx, 0, 0, size, size, r); ctx.fill();
-  ctx.strokeStyle = '#c9962f'; ctx.lineWidth = size*0.02;
-  roundRect(ctx, size*0.04, size*0.04, size*0.92, size*0.92, r*0.85); ctx.stroke();
-  ctx.fillStyle = '#d9ac5c';
-  ctx.font = `${size*0.52}px "Naskh Quran", serif`;
-  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.fillText('ع', size*0.5, size*0.58);
+
+  const margin = size*0.08;
+  const s = (size - margin*2)/100;
+  const ox = margin, oy = margin;
+  const toX = x => ox + x*s, toY = y => oy + y*s;
+
+  const grad = ctx.createLinearGradient(toX(10), toY(0), toX(90), toY(100));
+  grad.addColorStop(0, '#4FE0C2');
+  grad.addColorStop(0.55, '#2FA98F');
+  grad.addColorStop(1, '#E7B255');
+
+  const petals = [[0,1], [120,0.92], [240,0.86]];
+  petals.forEach(([angle, opacity])=>{
+    ctx.save();
+    ctx.translate(toX(50), toY(52));
+    ctx.rotate(angle*Math.PI/180);
+    ctx.translate(-toX(50), -toY(52));
+    ctx.beginPath();
+    ctx.moveTo(toX(50), toY(52));
+    ctx.quadraticCurveTo(toX(31), toY(30), toX(50), toY(4));
+    ctx.quadraticCurveTo(toX(69), toY(30), toX(50), toY(52));
+    ctx.closePath();
+    ctx.globalAlpha = opacity;
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.restore();
+  });
+
+  ctx.globalAlpha = 1;
+  ctx.fillStyle = '#0B1E22';
+  ctx.beginPath();
+  ctx.arc(toX(50), toY(52), 6.5*s, 0, Math.PI*2);
+  ctx.fill();
+
   return c.toDataURL('image/png');
 }
 function roundRect(ctx,x,y,w,h,r){
@@ -4072,20 +4332,32 @@ function alifboForms(item){
 
 function renderAlifboHome(m){
   const prog = loadAlifboProgress();
-  const totalStars = Object.values(prog.stars).reduce((a,b)=>a+b,0);
-  const maxStars = ALIFBO_LEVELS.length*3;
+  const starLevels = ALIFBO_LEVELS.filter(l=>l.kind!=='rule');
+  const totalStars = starLevels.reduce((a,l)=>a+(prog.stars[l.id]||0),0);
+  const maxStars = starLevels.length*3;
   let html = `<div class="folio">
     <div class="unit-hero" style="text-align:center;">
       <span class="badge">Nol darajadan</span>
       <h1>Harflarni o'qish</h1>
       <span class="ar" style="display:block;">القراءة العربية</span>
-      <p style="margin-top:8px;">Arab harflarini tanish, ularni ulash, va bitta Qur'on oyatini o'zingiz o'qishgacha — 14 ta qisqa, o'yinsimon bosqich. Har biri 2-3 daqiqa.</p>
+      <p style="margin-top:8px;">Arab harflarini tanish, ularni ulash, va bitta Qur'on oyatini o'zingiz o'qishgacha — ${starLevels.length} ta qisqa, o'yinsimon bosqich (har biri 2-3 daqiqa). Shundan keyin — eng ko'p uchraydigan xatolarni tuzatuvchi ${ALIFBO_LEVELS.length-starLevels.length} ta chuqur tajvid qoidasi, misollar va mashqlar bilan.</p>
     </div>
     <div style="text-align:center; margin:16px 0 24px;">
       <span class="chip">&#9733; ${totalStars} / ${maxStars} yulduz</span>
     </div>
     <div class="alifbo-path">
       ${ALIFBO_LEVELS.map(lvl=>{
+        if(lvl.kind === 'rule'){
+          const done = isDone(lvl.id);
+          return `<button class="alifbo-node ${done?'done':''}" onclick="go('alifboLevel',{alifboLevelId:'${lvl.id}'})">
+            <span class="alifbo-node-ic">${lvl.icon}</span>
+            <span class="alifbo-node-body">
+              <span class="alifbo-node-title">${lvl.title}</span>
+              <span class="alifbo-node-sub">${lvl.sub}</span>
+            </span>
+            <span class="alifbo-node-stars">${done ? '&#10003;' : '&#9675;'}</span>
+          </button>`;
+        }
         const st = prog.stars[lvl.id]||0;
         const stars = '&#9733;'.repeat(st) + '&#9734;'.repeat(3-st);
         return `<button class="alifbo-node ${st>0?'done':''}" onclick="go('alifboLevel',{alifboLevelId:'${lvl.id}'})">
@@ -4105,9 +4377,68 @@ function renderAlifboHome(m){
 function renderAlifboLevel(m){
   const lvl = ALIFBO_LEVELS.find(l=>l.id===STATE.alifboLevelId);
   if(!lvl){ go('alifbo'); return; }
+  if(lvl.kind === 'rule') return renderAlifboRuleLevel(m, lvl);
   if(STATE.alifboPhase === 'quiz') return renderAlifboQuizScreen(m, lvl);
   if(STATE.alifboPhase === 'done') return renderAlifboDone(m, lvl);
   return renderAlifboCards(m, lvl);
+}
+
+/* Deep-dive tajweed rule lessons (kind:'rule') — same intro/blocks/table/
+   exercises schema as UNITS, rendered as a single scrollable lesson rather
+   than the letter-drill flashcard+quiz flow used by the other alifbo kinds. */
+function renderAlifboRuleLevel(m, lvl){
+  const idx = ALIFBO_LEVELS.findIndex(l=>l.id===lvl.id);
+  let html = `<div class="folio">
+    <div class="unit-hero">
+      <span class="badge">Tajvid qoidasi</span>
+      <h1>${lvl.title}</h1>
+      <span class="ar" style="display:block;">${lvl.sub||''}</span>
+    </div>
+    <div class="section-label"><span class="dot">A</span>Kirish</div>
+    <div class="prose"><p>${lvl.intro}</p></div>`;
+
+  if(lvl.blocks){
+    lvl.blocks.forEach(b=>{
+      html += `<div class="card qoida"><div class="card-title"><span class="ic">Q</span>${b.h}</div>${b.p.map(p=>`<p>${p}</p>`).join('')}</div>`;
+    });
+  }
+
+  if(lvl.table){
+    const hasAr = s => /[؀-ۿ]/.test(String(s));
+    html += `<div class="section-label"><span class="dot">&#9636;</span>${lvl.table.title}</div>
+    <div class="table-wrap"><table class="ref-table"><tr>${lvl.table.cols.map(c=>`<th>${c}</th>`).join('')}</tr>
+    ${lvl.table.rows.map(r=>`<tr>${r.map((c)=>`<td class="${hasAr(c)?'ar':''}">${c}</td>`).join('')}</tr>`).join('')}
+    </table></div>`;
+  }
+
+  if(lvl.tafakkur){
+    html += `<div class="card tafakkur"><div class="card-title"><span class="ic">T</span>Tafakkur</div><p>${lvl.tafakkur}</p></div>`;
+  }
+  if(lvl.talaffuz){
+    html += `<div class="card talaffuz"><div class="card-title"><span class="ic">&#9835;</span>Talaffuz</div><p>${lvl.talaffuz}</p></div>`;
+  }
+
+  html += `<div class="section-label"><span class="dot">&#9998;</span>Mashqlar</div><div id="exwrap"></div>`;
+
+  html += `<div class="prose" style="margin-top:16px;"><p><b>${lvl.closing || ''}</b></p></div>`;
+
+  html += `<label style="display:flex;align-items:center;gap:10px;margin-top:20px;padding:14px;background:var(--surface);border:1px solid var(--rule);border-radius:12px;cursor:pointer;">
+      <input type="checkbox" id="donecheck" style="width:20px;height:20px;accent-color:var(--jade);" ${isDone(lvl.id)?'checked':''} onchange="markDone('${lvl.id}', this.checked); go('alifboLevel',{alifboLevelId:'${lvl.id}'});">
+      <span style="font-family:var(--font-ui);font-weight:700;font-size:.88rem;">Bu darsni tugatdim</span>
+    </label>`;
+
+  const prev = ALIFBO_LEVELS[idx-1];
+  const next = ALIFBO_LEVELS[idx+1];
+  html += `<div class="unit-nav">
+    <button ${prev?'':'disabled'} onclick="${prev?`go('alifboLevel',{alifboLevelId:'${prev.id}'})`:''}">&#8592; Oldingi</button>
+    <button class="primary" ${next?'':'disabled'} onclick="${next?`go('alifboLevel',{alifboLevelId:'${next.id}'})`:''}">Keyingi &#8594;</button>
+  </div>`;
+
+  html += `</div>`;
+  m.innerHTML = html;
+
+  const exwrap = document.getElementById('exwrap');
+  lvl.exercises.forEach((ex,i)=> exwrap.appendChild(buildExercise(ex, lvl.id, i)));
 }
 
 function renderAlifboCards(m, lvl){
