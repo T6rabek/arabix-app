@@ -590,6 +590,20 @@ main{flex:1; padding-bottom:24px;}
 .alifbo-form-cell .ar{font-family:var(--font-ar); font-size:1.7rem; color:var(--accent-strong);}
 .alifbo-form-cell .label{font-family:var(--font-ui); font-size:.68rem; opacity:.7; text-align:center;}
 
+.reading-grid{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:10px;
+}
+.reading-cell{
+  background:var(--surface); border:1px solid var(--rule); border-radius:10px;
+  padding:12px 6px; display:flex; flex-direction:column; align-items:center; gap:5px; min-height:56px; justify-content:center;
+}
+.reading-cell .ar{font-family:var(--font-ar); direction:rtl; font-size:1.5rem; color:var(--accent-strong);}
+.reading-cell .tr{font-family:var(--font-ui); font-size:.68rem; opacity:.65;}
+@media (min-width:600px){
+  .reading-grid{ grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); }
+  .reading-cell .ar{font-size:1.7rem;}
+}
+
 /* ---------- Offline download card ---------- */
 .offline-dl-card{margin:0 16px 14px; padding:12px 14px; background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);}
 .offline-dl-row{display:flex; align-items:center; justify-content:space-between; font-family:var(--font-ui); font-size:.82rem; font-weight:700; color:var(--ink);}
@@ -2229,54 +2243,78 @@ const ALIFBO_LEVELS = [
      {ar:"ب", answer:"Ba", detail:"\"b\" tovushi. Ikki lab bir-biriga yumilib, keyin ochiladi — o'zbekcha \"bosh\" so'zidagi \"b\" kabi.", connects:true},
      {ar:"ت", answer:"Ta", detail:"Yupqa \"t\" tovushi. Til uchi yuqori old tishlar tubiga tegib chiqadi.", connects:true},
      {ar:"ث", answer:"Sa (th)", detail:"Ingliz tilidagi \"think\" so'zidagi \"th\" kabi — til uchi tishlar orasidan chiqadi. O'zbekchada yo'q tovush.", connects:true},
-   ]},
-  {id:"p2", kind:"letters", title:"2-guruh: ج ح خ د", sub:"Tomoq va til harflari", icon:"ج",
+   ],
+   reading:[{ar:'بَثَ',tr:'basa'},{ar:'تَبَ',tr:'taba'},{ar:'ثَثَ',tr:'sasa'},{ar:'ثَا',tr:'saa'},{ar:'تَثَ',tr:'tasa'},{ar:'بَا',tr:'baa'},{ar:'ثَبَ',tr:'saba'},{ar:'بَبَ',tr:'baba'},{ar:'تَتَ',tr:'tata'},{ar:'ثَتَ',tr:'sata'},{ar:'تَا',tr:'taa'},{ar:'بَتَ',tr:'bata'},{ar:'ثَبَبَ',tr:'sababa'},{ar:'بَثَبَ',tr:'basaba'},{ar:'بَثَتَ',tr:'basata'},{ar:'ثَتَثَ',tr:'satasa'},{ar:'ثَثَبَ',tr:'sasaba'},{ar:'تَتَبَ',tr:'tataba'},{ar:'بَتَثَ',tr:'batasa'},{ar:'ثَبَتَ',tr:'sabata'},{ar:'بَتَتَ',tr:'batata'},{ar:'ثَتَبَ',tr:'sataba'},{ar:'ثَبَثَ',tr:'sabasa'},{ar:'بَبَتَ',tr:'babata'},{ar:'بَبَبَ',tr:'bababa'},{ar:'بَثَثَ',tr:'basasa'},{ar:'تَبَثَ',tr:'tabasa'},{ar:'تَثَبَ',tr:'tasaba'},{ar:'بَبَثَ',tr:'babasa'},{ar:'ثَثَتَ',tr:'sasata'},{ar:'ثَتَتَ',tr:'satata'},{ar:'تَثَثَ',tr:'tasasa'},{ar:'تَتَثَ',tr:'tatasa'},{ar:'بَتَبَ',tr:'bataba'},{ar:'ثَثَثَ',tr:'sasasa'},{ar:'تَثَتَ',tr:'tasata'},{ar:'تَبَتَ',tr:'tabata'},{ar:'تَتَتَ',tr:'tatata'},{ar:'تَبَبَ',tr:'tababa'},{ar:'تَثَا',tr:'tasaa'},{ar:'ثَثَا',tr:'sasaa'},{ar:'تَبَا',tr:'tabaa'},{ar:'بَبَا',tr:'babaa'},{ar:'بَتَا',tr:'bataa'},{ar:'ثَبَا',tr:'sabaa'},{ar:'بَثَا',tr:'basaa'},{ar:'تَتَا',tr:'tataa'},{ar:'ثَتَا',tr:'sataa'},{ar:'بَتَبَثَ',tr:'batabasa'},{ar:'ثَبَتَتَ',tr:'sabatata'},{ar:'تَثَبَبَ',tr:'tasababa'},{ar:'ثَثَثَتَ',tr:'sasasata'},{ar:'تَتَبَثَ',tr:'tatabasa'},{ar:'بَثَبَتَ',tr:'basabata'},{ar:'ثَتَبَتَ',tr:'satabata'}],
+   readingNote:"Bu so'zlar lug'aviy ma'noli emas — harflarni bir-biriga ulab o'qishni mashq qilish uchun tuzilgan bo'g'inlar (barchasi fatha bilan, chunki boshqa harakatlarni hali o'rganmadingiz).",
+  },
+    {id:"p2", kind:"letters", title:"2-guruh: ج ح خ د", sub:"Tomoq va til harflari", icon:"ج",
    items:[
      {ar:"ج", answer:"Jim", detail:"\"j\" tovushi (\"jurnal\" so'zidagi kabi). Tilning o'rtasi tanglayga tegadi.", connects:true},
      {ar:"ح", answer:"Ha (qattiq)", detail:"Kuchli, ishqalanuvchi \"h\" — tomoqning o'rtasidan chiqadi. ه (yumshoq ha)dan farqlang.", connects:true},
      {ar:"خ", answer:"Xo", detail:"Qattiq \"x\" — tomoqning tubidan chiqadi, \"xat\" so'zidagi \"x\"dan kuchliroq.", connects:true},
      {ar:"د", answer:"Dal", detail:"\"d\" tovushi. Til uchi yuqori tishlar tubiga tegadi. Keyingi harfga ULANMAYDI.", connects:false},
-   ]},
-  {id:"p3", kind:"letters", title:"3-guruh: ذ ر ز س", sub:"Tishlar va hushtak tovushlar", icon:"ر",
+   ],
+   reading:[{ar:'جَحَ',tr:'jaha'},{ar:'حَتَ',tr:'hata'},{ar:'بَحَ',tr:'baha'},{ar:'بَخَ',tr:'baxa'},{ar:'دَجَ',tr:'daja'},{ar:'حَجَ',tr:'haja'},{ar:'تَتَ',tr:'tata'},{ar:'تَخَ',tr:'taxa'},{ar:'ثَحَ',tr:'saha'},{ar:'خَخَ',tr:'xaxa'},{ar:'خَثَ',tr:'xasa'},{ar:'تَجَ',tr:'taja'},{ar:'حَدَ',tr:'hada'},{ar:'خَبَ',tr:'xaba'},{ar:'بَثَ',tr:'basa'},{ar:'جَتَ',tr:'jata'},{ar:'دَدَ',tr:'dada'},{ar:'دَا',tr:'daa'},{ar:'دَثَ',tr:'dasa'},{ar:'تَا',tr:'taa'},{ar:'ثَجَ',tr:'saja'},{ar:'تَدَ',tr:'tada'},{ar:'خَا',tr:'xaa'},{ar:'دَبَ',tr:'daba'},{ar:'ثَدَ',tr:'sada'},{ar:'خَجَ',tr:'xaja'},{ar:'جَجَ',tr:'jaja'},{ar:'بَا',tr:'baa'},{ar:'ثَا',tr:'saa'},{ar:'جَثَ',tr:'jasa'},{ar:'دَخَ',tr:'daxa'},{ar:'بَبَ',tr:'baba'},{ar:'تَبَ',tr:'taba'},{ar:'حَخَ',tr:'haxa'},{ar:'تَثَ',tr:'tasa'},{ar:'جَا',tr:'jaa'},{ar:'ثَبَ',tr:'saba'},{ar:'بَجَ',tr:'baja'},{ar:'دَحَ',tr:'daha'},{ar:'حَبَ',tr:'haba'},{ar:'جَخَ',tr:'jaxa'},{ar:'حَا',tr:'haa'},{ar:'خَحَ',tr:'xaha'},{ar:'جَدَ',tr:'jada'},{ar:'ثَتَ',tr:'sata'},{ar:'ثَخَ',tr:'saxa'},{ar:'حَثَ',tr:'hasa'},{ar:'خَتَ',tr:'xata'},{ar:'دَتَ',tr:'data'},{ar:'تَحَ',tr:'taha'},{ar:'ثَثَ',tr:'sasa'},{ar:'حَحَ',tr:'haha'},{ar:'خَدَ',tr:'xada'},{ar:'بَتَ',tr:'bata'},{ar:'بَدَ',tr:'bada'}],
+   readingNote:"Bu so'zlar lug'aviy ma'noli emas — harflarni bir-biriga ulab o'qishni mashq qilish uchun tuzilgan bo'g'inlar (barchasi fatha bilan, chunki boshqa harakatlarni hali o'rganmadingiz).",
+  },
+    {id:"p3", kind:"letters", title:"3-guruh: ذ ر ز س", sub:"Tishlar va hushtak tovushlar", icon:"ر",
    items:[
      {ar:"ذ", answer:"Zal", detail:"Ingliz tilidagi \"this\" so'zidagi \"th\" (ovozli) kabi — til uchi tishlar orasidan, ovoz bilan.", connects:false},
      {ar:"ر", answer:"Ro", detail:"\"r\" tovushi — til uchi tanglayga yaqinlashib biroz titraydi.", connects:false},
      {ar:"ز", answer:"Zay", detail:"\"z\" tovushi — tishlar orasidan chiqadigan ovozli hushtak.", connects:false},
      {ar:"س", answer:"Sin", detail:"\"s\" tovushi — tishlar orasidan chiqadigan jarangsiz hushtak.", connects:true},
-   ]},
-  {id:"p4", kind:"letters", title:"4-guruh: ش ص ض ط", sub:"Qalin (qattiq) tovushlar boshlanadi", icon:"ص",
+   ],
+   reading:[{ar:'حَرَ',tr:'hara'},{ar:'بَسَ',tr:'basa'},{ar:'سَذَ',tr:'saza'},{ar:'تَحَ',tr:'taha'},{ar:'جَثَ',tr:'jasa'},{ar:'ثَرَ',tr:'sara'},{ar:'سَخَ',tr:'saxa'},{ar:'زَزَ',tr:'zaza'},{ar:'بَذَ',tr:'baza'},{ar:'ذَحَ',tr:'zaha'},{ar:'خَذَ',tr:'xaza'},{ar:'جَرَ',tr:'jara'},{ar:'خَرَ',tr:'xara'},{ar:'جَزَ',tr:'jaza'},{ar:'خَزَ',tr:'xaza'},{ar:'رَتَ',tr:'rata'},{ar:'حَجَ',tr:'haja'},{ar:'حَذَ',tr:'haza'},{ar:'زَذَ',tr:'zaza'},{ar:'حَدَ',tr:'hada'},{ar:'تَذَ',tr:'taza'},{ar:'تَدَ',tr:'tada'},{ar:'جَحَ',tr:'jaha'},{ar:'ذَزَ',tr:'zaza'},{ar:'رَحَ',tr:'raha'},{ar:'رَرَ',tr:'rara'},{ar:'جَخَ',tr:'jaxa'},{ar:'بَبَ',tr:'baba'},{ar:'جَبَ',tr:'jaba'},{ar:'ذَرَ',tr:'zara'},{ar:'دَحَ',tr:'daha'},{ar:'تَجَ',tr:'taja'},{ar:'ثَحَ',tr:'saha'},{ar:'سَسَ',tr:'sasa'},{ar:'دَرَ',tr:'dara'},{ar:'جَدَ',tr:'jada'},{ar:'دَدَ',tr:'dada'},{ar:'خَسَ',tr:'xasa'},{ar:'دَزَ',tr:'daza'},{ar:'سَرَ',tr:'sara'},{ar:'حَبَ',tr:'haba'},{ar:'تَزَ',tr:'taza'},{ar:'دَسَ',tr:'dasa'},{ar:'حَزَ',tr:'haza'},{ar:'دَتَ',tr:'data'},{ar:'سَبَ',tr:'saba'},{ar:'رَخَ',tr:'raxa'},{ar:'خَحَ',tr:'xaha'},{ar:'جَتَ',tr:'jata'},{ar:'جَذَ',tr:'jaza'},{ar:'زَدَ',tr:'zada'},{ar:'ثَبَ',tr:'saba'},{ar:'تَسَ',tr:'tasa'},{ar:'سَثَ',tr:'sasa'},{ar:'سَدَ',tr:'sada'}],
+   readingNote:"Bu so'zlar lug'aviy ma'noli emas — harflarni bir-biriga ulab o'qishni mashq qilish uchun tuzilgan bo'g'inlar (barchasi fatha bilan, chunki boshqa harakatlarni hali o'rganmadingiz).",
+  },
+    {id:"p4", kind:"letters", title:"4-guruh: ش ص ض ط", sub:"Qalin (qattiq) tovushlar boshlanadi", icon:"ص",
    items:[
      {ar:"ش", answer:"Shin", detail:"\"sh\" tovushi — til tanglayga yaqinlashadi.", connects:true},
      {ar:"ص", answer:"Sod", detail:"Qalin, chuqur \"s\" — tilning orqasi ko'tarilib, og'iz kengroq ochiladi. سِين dan farqlang.", connects:true},
      {ar:"ض", answer:"Dod", detail:"Qalin, chuqur \"d\" — Arabchaga xos noyob tovush, tilning yon tomoni yuqori tishlarga tegadi.", connects:true},
      {ar:"ط", answer:"To", detail:"Qalin, chuqur \"t\" — til uchi tishlarga tegadi, tomoq biroz siqiladi. تَاء dan farqlang.", connects:true},
-   ]},
-  {id:"p5", kind:"letters", title:"5-guruh: ظ ع غ ف", sub:"Eng o'ziga xos Arabcha tovushlar", icon:"ع",
+   ],
+   reading:[{ar:'شَضَ',tr:'shada'},{ar:'دَتَ',tr:'data'},{ar:'دَخَ',tr:'daxa'},{ar:'ذَجَ',tr:'zaja'},{ar:'شَرَ',tr:'shara'},{ar:'رَطَ',tr:'rata'},{ar:'جَذَ',tr:'jaza'},{ar:'خَجَ',tr:'xaja'},{ar:'طَزَ',tr:'taza'},{ar:'حَجَ',tr:'haja'},{ar:'حَصَ',tr:'hasa'},{ar:'صَثَ',tr:'sasa'},{ar:'صَزَ',tr:'saza'},{ar:'رَحَ',tr:'raha'},{ar:'زَسَ',tr:'zasa'},{ar:'ذَتَ',tr:'zata'},{ar:'حَذَ',tr:'haza'},{ar:'زَدَ',tr:'zada'},{ar:'خَحَ',tr:'xaha'},{ar:'طَخَ',tr:'taxa'},{ar:'ذَشَ',tr:'zasha'},{ar:'بَزَ',tr:'baza'},{ar:'حَخَ',tr:'haxa'},{ar:'شَدَ',tr:'shada'},{ar:'جَزَ',tr:'jaza'},{ar:'بَرَ',tr:'bara'},{ar:'صَذَ',tr:'saza'},{ar:'ثَتَ',tr:'sata'},{ar:'صَسَ',tr:'sasa'},{ar:'طَشَ',tr:'tasha'},{ar:'تَخَ',tr:'taxa'},{ar:'بَشَ',tr:'basha'},{ar:'دَجَ',tr:'daja'},{ar:'شَسَ',tr:'shasa'},{ar:'صَجَ',tr:'saja'},{ar:'ثَصَ',tr:'sasa'},{ar:'ذَحَ',tr:'zaha'},{ar:'خَصَ',tr:'xasa'},{ar:'صَدَ',tr:'sada'},{ar:'طَبَ',tr:'taba'},{ar:'رَثَ',tr:'rasa'},{ar:'ثَحَ',tr:'saha'},{ar:'خَطَ',tr:'xata'},{ar:'بَضَ',tr:'bada'},{ar:'ضَسَ',tr:'dasa'},{ar:'حَطَ',tr:'hata'},{ar:'شَشَ',tr:'shasha'},{ar:'جَرَ',tr:'jara'},{ar:'تَتَ',tr:'tata'},{ar:'حَتَ',tr:'hata'},{ar:'تَبَ',tr:'taba'},{ar:'جَجَ',tr:'jaja'},{ar:'تَصَ',tr:'tasa'},{ar:'صَخَ',tr:'saxa'},{ar:'شَذَ',tr:'shaza'}],
+   readingNote:"Bu so'zlar lug'aviy ma'noli emas — harflarni bir-biriga ulab o'qishni mashq qilish uchun tuzilgan bo'g'inlar (barchasi fatha bilan, chunki boshqa harakatlarni hali o'rganmadingiz).",
+  },
+    {id:"p5", kind:"letters", title:"5-guruh: ظ ع غ ف", sub:"Eng o'ziga xos Arabcha tovushlar", icon:"ع",
    items:[
      {ar:"ظ", answer:"Zo", detail:"Qalin, chuqur \"z/th\" — til uchi tishlar orasida, tomoq siqiladi.", connects:true},
      {ar:"ع", answer:"Ayn", detail:"O'zbekchada yo'q maxsus tovush — tomoqning o'rtasi siqilib chiqadi. Ko'zguga qarab, tomog'ingizni engil siqib mashq qiling.", connects:true},
      {ar:"غ", answer:"G'ayn", detail:"\"g'\" tovushi (\"g'oz\" so'zidagi kabi) — tomoqning tubidan, yumshoq.", connects:true},
      {ar:"ف", answer:"Fa", detail:"\"f\" tovushi — pastki lab yuqori tishlarga tegadi.", connects:true},
-   ]},
-  {id:"p6", kind:"letters", title:"6-guruh: ق ك ل م", sub:"Ikki xil \"q/k\" va lab-til harflari", icon:"ق",
+   ],
+   reading:[{ar:'سَزَ',tr:'saza'},{ar:'صَشَ',tr:'sasha'},{ar:'خَفَ',tr:'xafa'},{ar:'خَغَ',tr:'xag\'a'},{ar:'سَثَ',tr:'sasa'},{ar:'تَخَ',tr:'taxa'},{ar:'زَضَ',tr:'zada'},{ar:'خَسَ',tr:'xasa'},{ar:'خَبَ',tr:'xaba'},{ar:'ذَصَ',tr:'zasa'},{ar:'ثَغَ',tr:'sag\'a'},{ar:'جَغَ',tr:'jag\'a'},{ar:'خَعَ',tr:'xa\'a'},{ar:'جَخَ',tr:'jaxa'},{ar:'حَرَ',tr:'hara'},{ar:'جَبَ',tr:'jaba'},{ar:'ثَفَ',tr:'safa'},{ar:'صَسَ',tr:'sasa'},{ar:'ثَذَ',tr:'saza'},{ar:'فَطَ',tr:'fata'},{ar:'صَثَ',tr:'sasa'},{ar:'شَطَ',tr:'shata'},{ar:'ظَذَ',tr:'zaza'},{ar:'سَسَ',tr:'sasa'},{ar:'زَجَ',tr:'zaja'},{ar:'غَعَ',tr:'g\'a\'a'},{ar:'طَخَ',tr:'taxa'},{ar:'ثَثَ',tr:'sasa'},{ar:'رَعَ',tr:'ra\'a'},{ar:'ذَخَ',tr:'zaxa'},{ar:'ثَخَ',tr:'saxa'},{ar:'ضَحَ',tr:'daha'},{ar:'شَثَ',tr:'shasa'},{ar:'دَرَ',tr:'dara'},{ar:'حَغَ',tr:'hag\'a'},{ar:'فَظَ',tr:'faza'},{ar:'غَغَ',tr:'g\'ag\'a'},{ar:'ضَزَ',tr:'daza'},{ar:'عَحَ',tr:'\'aha'},{ar:'عَظَ',tr:'\'aza'},{ar:'طَجَ',tr:'taja'},{ar:'رَشَ',tr:'rasha'},{ar:'عَزَ',tr:'\'aza'},{ar:'ظَفَ',tr:'zafa'},{ar:'ضَضَ',tr:'dada'},{ar:'ضَخَ',tr:'daxa'},{ar:'غَذَ',tr:'g\'aza'},{ar:'فَجَ',tr:'faja'},{ar:'سَبَ',tr:'saba'},{ar:'فَغَ',tr:'fag\'a'},{ar:'ثَجَ',tr:'saja'},{ar:'خَظَ',tr:'xaza'},{ar:'رَذَ',tr:'raza'},{ar:'زَثَ',tr:'zasa'},{ar:'ثَزَ',tr:'saza'}],
+   readingNote:"Bu so'zlar lug'aviy ma'noli emas — harflarni bir-biriga ulab o'qishni mashq qilish uchun tuzilgan bo'g'inlar (barchasi fatha bilan, chunki boshqa harakatlarni hali o'rganmadingiz).",
+  },
+    {id:"p6", kind:"letters", title:"6-guruh: ق ك ل م", sub:"Ikki xil \"q/k\" va lab-til harflari", icon:"ق",
    items:[
      {ar:"ق", answer:"Qof", detail:"Chuqur, qalin \"q\" — tomoqning eng tubidan chiqadi. كَاف dan chuqurroq.", connects:true},
      {ar:"ك", answer:"Kof", detail:"Yupqa \"k\" — tilning orqasi tanglayga tegadi. قَاف dan yupqaroq.", connects:true},
      {ar:"ل", answer:"Lam", detail:"\"l\" tovushi — til uchi yuqori tishlar tubiga tegadi.", connects:true},
      {ar:"م", answer:"Mim", detail:"\"m\" tovushi — ikki lab bilan, burun orqali chiqadi.", connects:true},
-   ]},
-  {id:"p7", kind:"letters", title:"7-guruh: ن ه و ي", sub:"Oxirgi to'rttalik", icon:"ن",
+   ],
+   reading:[{ar:'طَزَ',tr:'taza'},{ar:'صَشَ',tr:'sasha'},{ar:'طَعَ',tr:'ta\'a'},{ar:'خَرَ',tr:'xara'},{ar:'رَحَ',tr:'raha'},{ar:'ذَفَ',tr:'zafa'},{ar:'شَلَ',tr:'shala'},{ar:'كَضَ',tr:'kada'},{ar:'بَغَ',tr:'bag\'a'},{ar:'طَذَ',tr:'taza'},{ar:'غَثَ',tr:'g\'asa'},{ar:'فَسَ',tr:'fasa'},{ar:'ظَرَ',tr:'zara'},{ar:'شَتَ',tr:'shata'},{ar:'ذَحَ',tr:'zaha'},{ar:'عَرَ',tr:'\'ara'},{ar:'ذَكَ',tr:'zaka'},{ar:'كَلَ',tr:'kala'},{ar:'رَلَ',tr:'rala'},{ar:'ظَكَ',tr:'zaka'},{ar:'ظَظَ',tr:'zaza'},{ar:'قَظَ',tr:'qaza'},{ar:'خَقَ',tr:'xaqa'},{ar:'كَثَ',tr:'kasa'},{ar:'شَضَ',tr:'shada'},{ar:'خَذَ',tr:'xaza'},{ar:'ثَجَ',tr:'saja'},{ar:'طَظَ',tr:'taza'},{ar:'سَمَ',tr:'sama'},{ar:'قَزَ',tr:'qaza'},{ar:'ذَلَ',tr:'zala'},{ar:'مَصَ',tr:'masa'},{ar:'شَحَ',tr:'shaha'},{ar:'زَصَ',tr:'zasa'},{ar:'عَفَ',tr:'\'afa'},{ar:'تَثَ',tr:'tasa'},{ar:'فَمَ',tr:'fama'},{ar:'غَذَ',tr:'g\'aza'},{ar:'رَشَ',tr:'rasha'},{ar:'ثَمَ',tr:'sama'},{ar:'شَمَ',tr:'shama'},{ar:'شَصَ',tr:'shasa'},{ar:'كَصَ',tr:'kasa'},{ar:'حَظَ',tr:'haza'},{ar:'صَصَ',tr:'sasa'},{ar:'ضَضَ',tr:'dada'},{ar:'دَمَ',tr:'dama'},{ar:'حَثَ',tr:'hasa'},{ar:'قَصَ',tr:'qasa'},{ar:'خَشَ',tr:'xasha'},{ar:'مَرَ',tr:'mara'},{ar:'شَخَ',tr:'shaxa'},{ar:'ظَسَ',tr:'zasa'},{ar:'سَفَ',tr:'safa'},{ar:'خَتَ',tr:'xata'}],
+   readingNote:"Bu so'zlar lug'aviy ma'noli emas — harflarni bir-biriga ulab o'qishni mashq qilish uchun tuzilgan bo'g'inlar (barchasi fatha bilan, chunki boshqa harakatlarni hali o'rganmadingiz).",
+  },
+    {id:"p7", kind:"letters", title:"7-guruh: ن ه و ي", sub:"Oxirgi to'rttalik", icon:"ن",
    items:[
      {ar:"ن", answer:"Nun", detail:"\"n\" tovushi — til uchi bilan, burun orqali chiqadi.", connects:true},
      {ar:"ه", answer:"Ha (yumshoq)", detail:"Yumshoq, nafas kabi \"h\" — tomoqning eng tubidan, engil chiqadi. ح (qattiq ha)dan farqlang.", connects:true},
      {ar:"و", answer:"Waw", detail:"\"w\" yoki cho'ziq \"u\" tovushi — lablar yumaloqlanadi. Keyingi harfga ulanmaydi.", connects:false},
      {ar:"ي", answer:"Ya", detail:"\"y\" yoki cho'ziq \"i\" tovushi — til o'rtasi tanglayga yaqinlashadi.", connects:true},
-   ]},
-  {id:"p8", kind:"letters", title:"8-guruh: ء — bonus harf", sub:"Hamza", icon:"ء",
+   ],
+   reading:[{ar:'ظَخَ',tr:'zaxa'},{ar:'ذَقَ',tr:'zaqa'},{ar:'جَدَ',tr:'jada'},{ar:'زَيَ',tr:'zaya'},{ar:'بَذَ',tr:'baza'},{ar:'وَحَ',tr:'vaha'},{ar:'زَدَ',tr:'zada'},{ar:'طَخَ',tr:'taxa'},{ar:'يَغَ',tr:'yag\'a'},{ar:'تَسَ',tr:'tasa'},{ar:'دَذَ',tr:'daza'},{ar:'ضَصَ',tr:'dasa'},{ar:'بَعَ',tr:'ba\'a'},{ar:'دَحَ',tr:'daha'},{ar:'تَظَ',tr:'taza'},{ar:'ثَضَ',tr:'sada'},{ar:'دَصَ',tr:'dasa'},{ar:'غَصَ',tr:'g\'asa'},{ar:'ظَيَ',tr:'zaya'},{ar:'فَثَ',tr:'fasa'},{ar:'بَشَ',tr:'basha'},{ar:'مَظَ',tr:'maza'},{ar:'زَرَ',tr:'zara'},{ar:'ضَيَ',tr:'daya'},{ar:'ذَجَ',tr:'zaja'},{ar:'زَفَ',tr:'zafa'},{ar:'ثَجَ',tr:'saja'},{ar:'خَوَ',tr:'xava'},{ar:'غَجَ',tr:'g\'aja'},{ar:'غَيَ',tr:'g\'aya'},{ar:'شَسَ',tr:'shasa'},{ar:'ضَخَ',tr:'daxa'},{ar:'وَغَ',tr:'vag\'a'},{ar:'ذَدَ',tr:'zada'},{ar:'غَزَ',tr:'g\'aza'},{ar:'بَطَ',tr:'bata'},{ar:'مَثَ',tr:'masa'},{ar:'فَعَ',tr:'fa\'a'},{ar:'عَرَ',tr:'\'ara'},{ar:'مَغَ',tr:'mag\'a'},{ar:'حَرَ',tr:'hara'},{ar:'شَصَ',tr:'shasa'},{ar:'رَصَ',tr:'rasa'},{ar:'نَهَ',tr:'naha'},{ar:'حَبَ',tr:'haba'},{ar:'لَبَ',tr:'laba'},{ar:'ضَذَ',tr:'daza'},{ar:'وَلَ',tr:'vala'},{ar:'ذَعَ',tr:'za\'a'},{ar:'تَعَ',tr:'ta\'a'},{ar:'فَشَ',tr:'fasha'},{ar:'رَضَ',tr:'rada'},{ar:'خَزَ',tr:'xaza'},{ar:'يَسَ',tr:'yasa'},{ar:'ذَلَ',tr:'zala'}],
+   readingNote:"Bu so'zlar lug'aviy ma'noli emas — harflarni bir-biriga ulab o'qishni mashq qilish uchun tuzilgan bo'g'inlar (barchasi fatha bilan, chunki boshqa harakatlarni hali o'rganmadingiz).",
+  },
+    {id:"p8", kind:"letters", title:"8-guruh: ء — bonus harf", sub:"Hamza", icon:"ء",
    items:[
      {ar:"ء", answer:"Hamza", detail:"Tovush birdan to'xtaydigan yoki boshlanadigan nuqta — tomoqning tubida. O'zbekchada mustaqil harf sifatida yo'q, lekin ko'plab so'zlarda his qilinadi. Ko'pincha أ، إ، ؤ، ئ shaklida alif/waw/ya ustida \"minib\" yoziladi.", connects:false},
-   ]},
-  {id:"harakat", kind:"harakat", title:"Harakatlar: qisqa unlilar", sub:"Fatha, kasra, damma", icon:"َ",
+   ],
+   reading:[{ar:'يَنَ',tr:'yana'},{ar:'هَفَ',tr:'hafa'},{ar:'ذَجَ',tr:'zaja'},{ar:'دَوَ',tr:'dava'},{ar:'قَءَ',tr:'qa\'a'},{ar:'غَغَ',tr:'g\'ag\'a'},{ar:'يَثَ',tr:'yasa'},{ar:'ءَدَ',tr:'\'ada'},{ar:'ءَخَ',tr:'\'axa'},{ar:'عَحَ',tr:'\'aha'},{ar:'هَزَ',tr:'haza'},{ar:'زَثَ',tr:'zasa'},{ar:'يَسَ',tr:'yasa'},{ar:'عَذَ',tr:'\'aza'},{ar:'رَجَ',tr:'raja'},{ar:'جَصَ',tr:'jasa'},{ar:'ضَهَ',tr:'daha'},{ar:'ثَجَ',tr:'saja'},{ar:'رَلَ',tr:'rala'},{ar:'طَرَ',tr:'tara'},{ar:'مَوَ',tr:'mava'},{ar:'شَثَ',tr:'shasa'},{ar:'رَضَ',tr:'rada'},{ar:'ءَيَ',tr:'\'aya'},{ar:'تَذَ',tr:'taza'},{ar:'دَمَ',tr:'dama'},{ar:'عَوَ',tr:'\'ava'},{ar:'ظَحَ',tr:'zaha'},{ar:'زَهَ',tr:'zaha'},{ar:'تَنَ',tr:'tana'},{ar:'خَتَ',tr:'xata'},{ar:'ضَرَ',tr:'dara'},{ar:'حَجَ',tr:'haja'},{ar:'رَشَ',tr:'rasha'},{ar:'ذَهَ',tr:'zaha'},{ar:'خَوَ',tr:'xava'},{ar:'حَظَ',tr:'haza'},{ar:'بَذَ',tr:'baza'},{ar:'كَظَ',tr:'kaza'},{ar:'سَجَ',tr:'saja'},{ar:'فَشَ',tr:'fasha'},{ar:'زَنَ',tr:'zana'},{ar:'سَعَ',tr:'sa\'a'},{ar:'ثَمَ',tr:'sama'},{ar:'جَكَ',tr:'jaka'},{ar:'هَغَ',tr:'hag\'a'},{ar:'بَرَ',tr:'bara'},{ar:'بَوَ',tr:'bava'},{ar:'شَطَ',tr:'shata'},{ar:'طَسَ',tr:'tasa'},{ar:'وَعَ',tr:'va\'a'},{ar:'قَبَ',tr:'qaba'},{ar:'شَخَ',tr:'shaxa'},{ar:'مَبَ',tr:'maba'},{ar:'خَرَ',tr:'xara'}],
+   readingNote:"Bu so'zlar lug'aviy ma'noli emas — harflarni bir-biriga ulab o'qishni mashq qilish uchun tuzilgan bo'g'inlar (barchasi fatha bilan, chunki boshqa harakatlarni hali o'rganmadingiz).",
+  },
+    {id:"harakat", kind:"harakat", title:"Harakatlar: qisqa unlilar", sub:"Fatha, kasra, damma", icon:"َ",
    items:[
      {ar:"بَ", answer:"ba", detail:"Fatha (َ) — harf ustiga qo'yiladigan qiya chiziqcha, qisqa \"a\" tovushini qo'shadi."},
      {ar:"بِ", answer:"bi", detail:"Kasra (ِ) — harf OSTIGA qo'yiladigan chiziqcha, qisqa \"i\" tovushini qo'shadi."},
@@ -4524,9 +4562,35 @@ function renderAlifboLevel(m){
   const lvl = ALIFBO_LEVELS.find(l=>l.id===STATE.alifboLevelId);
   if(!lvl){ go('alifbo'); return; }
   if(lvl.kind === 'rule') return renderAlifboRuleLevel(m, lvl);
+  if(STATE.alifboPhase === 'reading') return renderAlifboReading(m, lvl);
   if(STATE.alifboPhase === 'quiz') return renderAlifboQuizScreen(m, lvl);
   if(STATE.alifboPhase === 'done') return renderAlifboDone(m, lvl);
   return renderAlifboCards(m, lvl);
+}
+
+/* Syllable-blending reading drills shown after the flashcards, before the
+   quiz, for kind:'letters' groups that have a `reading` list. Cumulative on
+   every letter learned so far — always plain fatha, since kasra/damma/sukun
+   aren't taught until later lessons. Transliteration is hidden by default
+   so the learner reads the Arabic first; toggle reveals it to self-check. */
+function renderAlifboReading(m, lvl){
+  if(STATE.alifboShowTr === undefined) STATE.alifboShowTr = false;
+  const showTr = STATE.alifboShowTr;
+  let html = `<div class="folio">
+    <div class="section-label"><span class="dot">${icon('book-open',14)}</span>O'qish mashqi</div>
+    <p class="prose" style="font-size:.88rem;opacity:.8;">${lvl.readingNote || ''}</p>
+    <div class="wp-toolbar" style="margin:14px 0;">
+      <button class="action-btn ${showTr?'primary':''}" onclick="STATE.alifboShowTr=${!showTr}; render();">${showTr ? icon('eye-off',14)+' Transliteratsiyani berkitish' : icon('eye',14)+" Transliteratsiyani ko'rsatish"}</button>
+    </div>
+    <div class="reading-grid">
+      ${lvl.reading.map(w=>`<div class="reading-cell"><span class="ar">${w.ar}</span>${showTr?`<span class="tr">${w.tr}</span>`:''}</div>`).join('')}
+    </div>
+    <div class="unit-nav" style="margin-top:18px;">
+      <button onclick="STATE.alifboPhase='cards'; render();">&#8592; Kartochkalarga qaytish</button>
+      <button class="primary" onclick="startAlifboQuiz()">Testga o'tish ${icon('zap',14)}</button>
+    </div>
+  </div>`;
+  m.innerHTML = html;
 }
 
 /* Deep-dive tajweed rule lessons (kind:'rule') — same intro/blocks/table/
@@ -4605,7 +4669,9 @@ function renderAlifboCards(m, lvl){
       <button ${idx<=0?'disabled':''} onclick="STATE.alifboCardIdx=${idx-1}; render();">&#8592; Oldingi</button>
       ${idx < lvl.items.length-1
         ? `<button class="primary" onclick="STATE.alifboCardIdx=${idx+1}; render();">Keyingi &#8594;</button>`
-        : `<button class="primary" onclick="startAlifboQuiz()">Testga o'tish ${icon('zap',14)}</button>`}
+        : lvl.reading && lvl.reading.length
+          ? `<button class="primary" onclick="STATE.alifboPhase='reading'; render();">O'qish mashqi ${icon('book-open',14)}</button>`
+          : `<button class="primary" onclick="startAlifboQuiz()">Testga o'tish ${icon('zap',14)}</button>`}
     </div>
   </div>`;
   m.innerHTML = html;
