@@ -16,9 +16,9 @@
 
 :root{
   --ink:#1b2430;
-  --paper:#f6f1e3;
-  --surface:#fffdf6;
-  --surface-2:#efe8d4;
+  --paper:#ffffff;
+  --surface:#ffffff;
+  --surface-2:#f0f0f0;
   --accent:#5c1c0a;
   --accent-soft:#f1ded4;
   --accent-strong:#3a1206;
@@ -28,7 +28,7 @@
   --rubric-soft:#f6e5df;
   --jade:#2f6b50;
   --jade-soft:#e6f0ea;
-  --rule:#ddccc0;
+  --rule:#e0e0e0;
   --shadow: 0 6px 20px -8px rgba(27,36,48,0.25);
   --radius: 14px;
   --font-display:'Bookman Display', 'Georgia', serif;
@@ -66,10 +66,10 @@
   --shadow: 0 6px 24px -8px rgba(0,0,0,0.6); color-scheme: dark;
 }
 :root[data-theme="light"]{
-  --ink:#1b2430; --paper:#f6f1e3; --surface:#fffdf6; --surface-2:#efe8d4;
+  --ink:#1b2430; --paper:#ffffff; --surface:#ffffff; --surface-2:#f0f0f0;
   --accent:#5c1c0a; --accent-soft:#f1ded4; --accent-strong:#3a1206;
   --gold:#9c7128; --gold-soft:#f3e8d2; --rubric:#a13a1c; --rubric-soft:#f6e5df;
-  --jade:#2f6b50; --jade-soft:#e6f0ea; --rule:#ddccc0;
+  --jade:#2f6b50; --jade-soft:#e6f0ea; --rule:#e0e0e0;
   --shadow: 0 6px 20px -8px rgba(27,36,48,0.25); color-scheme: light;
 }
 
@@ -4237,7 +4237,7 @@ function setupIconLinks(){
     fav.href = icon192;
     const manifest = {
       name: "Arabix — Qur'oniy Arabcha", short_name: "Arabix",
-      start_url: ".", display: "standalone", background_color: "#f6f1e3", theme_color: "#5c1c0a",
+      start_url: ".", display: "standalone", background_color: "#ffffff", theme_color: "#5c1c0a",
       icons: [{src: icon192, sizes:"192x192", type:"image/png"}]
     };
     let man = document.querySelector('link[rel="manifest"]');
