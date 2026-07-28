@@ -504,6 +504,32 @@ main{flex:1; padding-bottom:24px;}
 }
 .hz-word.hz-hidden::selection{ background: transparent; }
 
+/* ---------- Hifz: printable handwriting-practice sheet ---------- */
+.wp-toolbar{ display:flex; gap:10px; justify-content:center; margin:4px 0 16px; }
+.write-sheet-page{
+  min-height:78vh; padding:28px 18px; margin-bottom:18px;
+  border-bottom:1px dashed var(--rule); display:flex; flex-direction:column;
+}
+.write-sheet-page:last-child{ border-bottom:none; }
+.wp-ref{ font-family:var(--font-ui); font-size:.78rem; opacity:.55; text-align:center; margin-bottom:14px; }
+.wp-ayah-text{
+  font-family:var(--font-ar); font-size:1.7rem; line-height:2.1; text-align:center;
+  direction:rtl; color:var(--ink); margin-bottom:26px;
+}
+.wp-lines{ flex:1; display:flex; flex-direction:column; justify-content:flex-start; gap:34px; }
+.wp-line{ border-bottom:1px solid var(--rule); height:0; }
+
+@media print{
+  #topbar, #tabbar, #sidebar, .no-print{ display:none !important; }
+  body, .folio, .write-sheet-page{ background:#fff !important; }
+  .write-sheet-page{
+    min-height:auto; page-break-after:always; border-bottom:none;
+    padding:8mm 4mm; margin-bottom:0;
+  }
+  .write-sheet-page:last-child{ page-break-after:auto; }
+  .wp-line{ border-bottom-color:#999; }
+}
+
 /* ---------- Alifbo: interactive letter-reading track ---------- */
 .alifbo-entry-card{
   display:flex; align-items:center; gap:12px; width:calc(100% - 40px); margin:0 20px 14px;
@@ -3357,7 +3383,7 @@ function renderHifz(m){
     <div class="hero" style="margin:-14px -18px 14px; border-radius:0;">
       <span class="kicker">Yodlash &middot; Hifz</span>
       <h1 style="font-size:1.4rem;">Yodlash markazi</h1>
-      <p>Ko'rish, yashirish, yozish va sinov &mdash; to'rt usul birga, har bir oyat uchun.</p>
+      <p>Ko'rish, yashirish, yozish, qo'lda yozish varag'i va sinov &mdash; besh usul birga, har bir oyat uchun.</p>
     </div>
     <div class="progress-strip" style="position:relative; margin-bottom:16px;">
       <div class="ring" style="--pct:${stats.total?Math.round(stats.memorized/stats.total*100):0}"></div>
@@ -3455,15 +3481,23 @@ function renderHifzSession(m){
   const mode = STATE.hifzMode || 'view';
 
   let html = `<div class="folio" style="padding-top:14px; padding-bottom:20px;">
-    <div class="ex-kicker">${cached.englishName} &middot; oyat ${posInRange}/${total} (${ayah.numberInSurah}-oyat)</div>
-    <div class="chip-row" style="margin:10px 0;">
-      ${['view','hide','write','test'].map(mm=>{
-        const labels = {view:'&#128065; Ko\'rish', hide:'&#128065;&#8205;&#128215; Yashirish', write:'&#9999;&#65039; Yozish', test:'&#127919; Sinov'};
+    <div class="ex-kicker no-print">${cached.englishName} &middot; oyat ${posInRange}/${total} (${ayah.numberInSurah}-oyat)</div>
+    <div class="chip-row no-print" style="margin:10px 0;">
+      ${['view','hide','write','sheet','test'].map(mm=>{
+        const labels = {view:'&#128065; Ko\'rish', hide:'&#128065;&#8205;&#128215; Yashirish', write:'&#9999;&#65039; Yozish', sheet:'&#128196; Yozish varag\'i', test:'&#127919; Sinov'};
         return `<span class="chip" style="cursor:pointer;${mode===mm?'background:var(--accent);color:#fff;':''}" onclick="STATE.hifzMode='${mm}'; STATE.hifzHidden=[]; render();">${labels[mm]}</span>`;
       }).join('')}
-    </div>
+    </div>`;
 
-    <div class="surah-card" style="min-height:140px; display:flex; flex-direction:column; justify-content:center; padding:20px 16px;">`;
+  if(mode === 'sheet'){
+    html += renderHifzWriteSheet(cached, num);
+    html += `</div>`;
+    m.innerHTML = html;
+    entry.reps++; entry.lastPracticed = Date.now(); saveProgress(PROGRESS);
+    return;
+  }
+
+  html += `<div class="surah-card" style="min-height:140px; display:flex; flex-direction:column; justify-content:center; padding:20px 16px;">`;
 
   if(mode === 'view'){
     html += `<div class="ayah" style="margin:0; text-align:center;">${ayah.text}</div>
@@ -3509,6 +3543,31 @@ function renderHifzSession(m){
 
   m.innerHTML = html;
   entry.reps++; entry.lastPracticed = Date.now(); saveProgress(PROGRESS);
+}
+
+/* Plain, printable handwriting-practice sheet — one full page per ayah in
+   the current hifz range, with a toggle to show/hide the Arabic text (for
+   copying vs. blind recall) and ruled blank lines to write on. */
+function renderHifzWriteSheet(cached, num){
+  if(STATE.hifzSheetShowText === undefined) STATE.hifzSheetShowText = true;
+  const showText = STATE.hifzSheetShowText;
+  const lines = Array.from({length:9}, ()=>`<div class="wp-line"></div>`).join('');
+  let html = `<div class="wp-toolbar no-print">
+    <button class="action-btn" onclick="STATE.hifzSheetShowText=${!showText}; render();">${showText ? '&#128065;&#8205;&#128215; Matnni berkitish' : '&#128065; Matnni ko\'rsatish'}</button>
+    <button class="action-btn primary" onclick="window.print()">&#128438; Chop etish</button>
+  </div>
+  <div class="write-sheet">`;
+  for(let idx=STATE.hifzFrom; idx<=STATE.hifzTo; idx++){
+    const a = cached.ayahs[idx];
+    if(!a) continue;
+    html += `<div class="write-sheet-page">
+      <div class="wp-ref">${cached.englishName} &middot; ${a.numberInSurah}-oyat</div>
+      <div class="wp-ayah-text" style="${showText?'':'visibility:hidden;'}">${a.text}</div>
+      <div class="wp-lines">${lines}</div>
+    </div>`;
+  }
+  html += `</div>`;
+  return html;
 }
 
 function toggleWordHide(i){
@@ -3694,6 +3753,21 @@ function go(view, opts){
   render();
 }
 
+/* Single source of truth for "go up one level" — used by the in-app back
+   button AND the native hardware/gesture back button (see the Capacitor
+   backButton listener below), so both behave the same way instead of the
+   hardware button falling through to a full reload. Returns false when
+   already at the root (home), so the caller can decide to exit the app. */
+function goBack(){
+  if(STATE.view === 'review' && REVIEW_SESSION){ REVIEW_SESSION = null; go('review'); return true; }
+  if(STATE.view === 'quranSurah'){ go('quran'); return true; }
+  if(STATE.view === 'hifzSession'){ go('hifz'); return true; }
+  if(STATE.view === 'alifboLevel'){ go('alifbo'); return true; }
+  if(STATE.view === 'home'){ return false; }
+  go('home');
+  return true;
+}
+
 /* ================= RENDER: SHELL ================= */
 function render(){
   renderTopbar();
@@ -3766,12 +3840,8 @@ function renderTopbar(){
   if(STATE.view === 'hifzSession'){ title = "Yodlash"; }
   if(STATE.view === 'alifbo'){ title = "Harflarni o'qish"; }
   if(STATE.view === 'alifboLevel'){ const lvl = ALIFBO_LEVELS.find(l=>l.id===STATE.alifboLevelId); title = lvl ? lvl.title : "Harflar"; }
-  const backToQuranList = STATE.view === 'quranSurah';
-  const backToHifzHome = STATE.view === 'hifzSession';
-  const backToAlifboHome = STATE.view === 'alifboLevel';
-  const backAction = (STATE.view === 'review' && REVIEW_SESSION) ? "REVIEW_SESSION=null; go('review')" : (backToQuranList ? "go('quran')" : backToHifzHome ? "go('hifz')" : backToAlifboHome ? "go('alifbo')" : "go('home')");
   bar.innerHTML = `
-    <button class="back-btn" onclick="${backAction}" aria-label="Orqaga">&#8592;</button>
+    <button class="back-btn" onclick="goBack()" aria-label="Orqaga">&#8592;</button>
     <h1>${title}</h1>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Mavzu">${icon}</button>
     ${menuBtn}
@@ -4734,9 +4804,26 @@ function maybeShowWelcomeCertificate(){
   };
 }
 
+/* ================= NATIVE HARDWARE BACK BUTTON (Android app) =================
+   In a normal browser this is a no-op (window.Capacitor doesn't exist there).
+   Inside the Capacitor Android wrapper, without this listener the hardware/
+   gesture back button falls through to the WebView's default handling — which
+   has no browser history to step through (this is a pure JS-state SPA, no
+   pushState), so it was reloading the page back to the home screen instead of
+   going back one screen like the in-app back button does. */
+function setupHardwareBackButton(){
+  const CapApp = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App;
+  if(!CapApp) return;
+  CapApp.addListener('backButton', ()=>{
+    const moved = goBack();
+    if(!moved) CapApp.exitApp();
+  });
+}
+
 /* ================= INIT ================= */
 initTheme();
 setupIconLinks();
+setupHardwareBackButton();
 render();
 maybeShowWelcomeCertificate();
 
