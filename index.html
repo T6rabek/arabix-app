@@ -611,6 +611,50 @@ main{flex:1; padding-bottom:24px;}
   .reading-cell .ar{font-size:1.7rem;}
 }
 
+/* ---------- Grammatika: word-building blocks, flashcard style ---------- */
+.grammar-deck{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; }
+.grammar-card{
+  background:var(--surface); border:1px solid var(--rule); border-radius:12px;
+  padding:14px 12px; cursor:pointer; user-select:none; transition:border-color .15s;
+}
+.grammar-card:active{background:var(--surface-2);}
+.grammar-card.flipped{border-color:var(--accent);}
+.gc-top{display:flex; align-items:baseline; gap:8px;}
+.gc-top .ar{font-family:var(--font-ar); direction:rtl; font-size:1.4rem; color:var(--accent-strong);}
+.gc-top .tr{font-family:var(--font-ui); font-size:.72rem; opacity:.55;}
+.gc-detail{opacity:0; max-height:0; overflow:hidden; transition:opacity .15s;}
+.grammar-card.flipped .gc-detail{opacity:1; max-height:80px; margin-top:8px;}
+.gc-detail .mean{font-family:var(--font-ui); font-size:.82rem; font-weight:700; color:var(--ink); margin-bottom:5px;}
+.gc-detail .ex{display:flex; flex-direction:column; gap:1px;}
+.gc-detail .ex .ar{font-family:var(--font-ar); direction:rtl; font-size:1.05rem; color:var(--ink);}
+.gc-detail .ex .exuz{font-family:var(--font-ui); font-size:.7rem; opacity:.6;}
+
+.decompose-list{display:flex; flex-direction:column; gap:12px;}
+.decompose-card{
+  background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);
+  padding:16px; box-shadow:var(--shadow);
+}
+.dc-word{display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer; padding:8px;}
+.dc-word .ar{font-family:var(--font-ar); direction:rtl; font-size:2rem; color:var(--accent-strong);}
+.dc-word .dc-hint{font-family:var(--font-ui); font-size:.72rem; opacity:.5; display:flex; align-items:center; gap:5px;}
+.decompose-card.revealed .dc-word .dc-hint{display:none;}
+.dc-parts{
+  display:none; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px;
+  padding-top:14px; border-top:1px dashed var(--rule);
+}
+.decompose-card.revealed .dc-parts{display:flex;}
+.dc-part{
+  display:flex; flex-direction:column; align-items:center; gap:3px; min-width:70px;
+  background:var(--accent-soft); border-radius:10px; padding:8px 10px;
+}
+.dc-part .ar{font-family:var(--font-ar); direction:rtl; font-size:1.15rem; color:var(--accent-strong);}
+.dc-part .role{font-family:var(--font-ui); font-size:.6rem; font-weight:700; letter-spacing:.04em; color:var(--accent); text-transform:uppercase;}
+.dc-part .mean{font-family:var(--font-ui); font-size:.7rem; opacity:.8;}
+.dc-full{
+  width:100%; text-align:center; font-family:var(--font-ui); font-size:.85rem; font-weight:700;
+  color:var(--ink); margin-top:10px; font-style:italic;
+}
+
 /* ---------- Offline download card ---------- */
 .offline-dl-card{margin:0 16px 14px; padding:12px 14px; background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);}
 .offline-dl-row{display:flex; align-items:center; justify-content:space-between; font-family:var(--font-ui); font-size:.82rem; font-weight:700; color:var(--ink);}
@@ -2606,6 +2650,94 @@ const ALIFBO_LEVELS = [
   },
 ];
 
+/* ==========================================================
+   GRAMMAR_UNITS — "Grammatika" section: the building-block
+   pieces of Arabic words (prefixes/suffixes/particles) taught
+   directly, like vocabulary — no Quranic-sentence examples,
+   just the piece + its meaning + one generic illustration word,
+   so a learner can recognize and mentally peel these off any
+   word to find its root. Ends with worked decomposition drills.
+   ========================================================== */
+const GRAMMAR_UNITS = [
+  {id:"g1", kind:"deck", title:"Egalik qo'shimchalari", sub:"-im, -ing, -i, -imiz... so'zga yopishadi",
+   intro:"Arabchada \"mening\", \"sening\", \"uning\" kabi so'zlar alohida yozilmaydi — ular egalik qilingan so'zning OXIRIGA kichkina qo'shimcha bo'lib yopishadi. O'zbekchada ham xuddi shunday: \"kitob-im\", \"kitob-ing\", \"kitob-i\". Farqi shu — arabcha qo'shimchalar ko'pincha bitta-ikkita harfdan iborat va tanish bo'lib qolgach, istalgan so'zda darhol tanib olasiz.",
+   items:[
+     {ar:"ـِي", tr:"-i", uz:"mening / meni", example:"كِتَابِي", exampleUz:"mening kitobim"},
+     {ar:"ـَكَ", tr:"-ka", uz:"sening (erkakka) / seni", example:"كِتَابُكَ", exampleUz:"sening kitobing"},
+     {ar:"ـِك", tr:"-ki", uz:"sening (ayolga) / seni", example:"كِتَابُكِ", exampleUz:"sening kitobing"},
+     {ar:"ـَهُ", tr:"-hu", uz:"uning (erkak/narsa) / uni", example:"كِتَابُهُ", exampleUz:"uning kitobi"},
+     {ar:"ـَهَا", tr:"-ha", uz:"uning (ayol/narsa) / uni", example:"كِتَابُهَا", exampleUz:"uning kitobi"},
+     {ar:"ـَنَا", tr:"-na", uz:"bizning / bizni", example:"كِتَابُنَا", exampleUz:"bizning kitobimiz"},
+     {ar:"ـَكُمْ", tr:"-kum", uz:"sizning (ko'plik) / sizni", example:"كِتَابُكُمْ", exampleUz:"sizning kitobingiz"},
+     {ar:"ـَهُمْ", tr:"-hum", uz:"ularning / ularni", example:"كِتَابُهُمْ", exampleUz:"ularning kitobi"},
+   ]},
+  {id:"g2", kind:"deck", title:"O'tgan zamon fe'l oxirlari", sub:"kim qildi? — fe'lning OXIRIGA yopishadi",
+   intro:"\"U qildi\", \"men qildim\", \"biz qildik\" — bularning barchasi arabchada BITTA fe'l ildiziga turli oxirgi qo'shimchalar qo'shish orqali hosil bo'ladi. Misol uchun كَتَبَ (kataba) = \"yozdi\" ildizidan foydalanamiz — oxiriga nima qo'shilishiga qarab, KIM yozganini bilib olasiz.",
+   items:[
+     {ar:"ـْتُ", tr:"-tu", uz:"men ...dim", example:"كَتَبْتُ", exampleUz:"men yozdim"},
+     {ar:"ـْتَ", tr:"-ta", uz:"sen ...ding (erkak)", example:"كَتَبْتَ", exampleUz:"sen yozding"},
+     {ar:"ـْتِ", tr:"-ti", uz:"sen ...ding (ayol)", example:"كَتَبْتِ", exampleUz:"sen yozding"},
+     {ar:"( — )", tr:"-a", uz:"u ...di (erkak) — qo'shimchasiz", example:"كَتَبَ", exampleUz:"u yozdi"},
+     {ar:"ـَتْ", tr:"-at", uz:"u ...di (ayol)", example:"كَتَبَتْ", exampleUz:"u (ayol) yozdi"},
+     {ar:"ـْنَا", tr:"-na", uz:"biz ...dik", example:"كَتَبْنَا", exampleUz:"biz yozdik"},
+     {ar:"ـْتُمْ", tr:"-tum", uz:"siz ...dingiz (ko'plik)", example:"كَتَبْتُمْ", exampleUz:"siz yozdingiz"},
+     {ar:"ـُوا", tr:"-u", uz:"ular ...dilar", example:"كَتَبُوا", exampleUz:"ular yozdilar"},
+   ]},
+  {id:"g3", kind:"deck", title:"Hozirgi/kelasi zamon fe'l boshlari", sub:"kim qilyapti? — fe'lning BOSHIGA yopishadi",
+   intro:"O'tgan zamondan farqli — hozirgi/kelasi zamonda \"kim qilyapti\" ma'nosi fe'lning OXIRIGA emas, BOSHIGA qo'shiladi. Bu atigi TO'RTTA harf, va ularni bilib olsangiz, minglab fe'lni \"kim qilyapti\" deb darhol o'qiy olasiz. Misol: يَكْتُبُ (yaktubu, ildiz: -ktub-, \"yozmoq\") dan foydalanamiz.",
+   items:[
+     {ar:"أَ", tr:"a-", uz:"men ...yapman", example:"أَكْتُبُ", exampleUz:"men yozyapman"},
+     {ar:"نَ", tr:"na-", uz:"biz ...yapmiz", example:"نَكْتُبُ", exampleUz:"biz yozyapmiz"},
+     {ar:"تَ", tr:"ta-", uz:"sen ...yapsan / u (ayol) ...yapti", example:"تَكْتُبُ", exampleUz:"sen yozyapsan"},
+     {ar:"يَ", tr:"ya-", uz:"u (erkak) ...yapti", example:"يَكْتُبُ", exampleUz:"u yozyapti"},
+   ]},
+  {id:"g4", kind:"deck", title:"Old qo'shimchalar (zarrachalar)", sub:"bitta harf, so'zning oldiga yopishadi",
+   intro:"Bu yettita kichkina harf — har biri bitta bog'lovchi yoki ko'makchi so'z ma'nosini beradi, lekin ALOHIDA yozilmaydi, keyingi so'zga to'g'ridan-to'g'ri yopishadi. Shuning uchun uzun so'z ko'rganingizda, avval shu harflardan birortasi so'z boshida turibdimi — deb tekshiring.",
+   items:[
+     {ar:"وَ", tr:"va-", uz:"va", example:"وَكِتَابٌ", exampleUz:"va kitob"},
+     {ar:"فَ", tr:"fa-", uz:"-da, shunda, keyin", example:"فَكَتَبَ", exampleUz:"shunda u yozdi"},
+     {ar:"بِ", tr:"bi-", uz:"bilan, orqali", example:"بِقَلَمٍ", exampleUz:"qalam bilan"},
+     {ar:"لِ", tr:"li-", uz:"uchun, -ga", example:"لِلْوَلَدِ", exampleUz:"bola uchun"},
+     {ar:"كَ", tr:"ka-", uz:"-dek, kabi", example:"كَالْأَسَدِ", exampleUz:"sher kabi"},
+     {ar:"سَ", tr:"sa-", uz:"-adi (kelasi zamon belgisi)", example:"سَيَكْتُبُ", exampleUz:"u yozadi (keyinroq)"},
+     {ar:"اَل", tr:"al-", uz:"\"bu/shu\" — aniqlik belgisi", example:"الْكِتَابُ", exampleUz:"(shu) kitob"},
+   ]},
+  {id:"g5", kind:"decompose", title:"So'zlarni yechish", sub:"uzun so'zni bo'laklarga ajratish mashqi",
+   intro:"Endi eng muhim ko'nikma: uzun, tanish bo'lmagan so'zni ko'rganingizda, uni bo'laklarga \"yechib\" o'qish. Har bir misolda avval butun so'zni ko'rasiz, so'ng uni bosib — qaysi bo'lak nima ekanini ko'rasiz. Maqsad: \"bu so'z qo'rqinchli uzun\" emas, \"bu — ildiz + 2-3 ta tanish qo'shimcha\" deb qarashni o'rganish.",
+   items:[
+     {word:"أَعْطَيْنَاكَ", parts:[
+        {frag:"أَعْطَى", role:"ILDIZ", mean:"berdi"},
+        {frag:"نَا", role:"EGA", mean:"biz"},
+        {frag:"كَ", role:"TO'LDIRUVCHI", mean:"senga"}
+      ], full:"biz senga berdik"},
+     {word:"كِتَابُهُمْ", parts:[
+        {frag:"كِتَاب", role:"ILDIZ", mean:"kitob"},
+        {frag:"هُمْ", role:"EGALIK", mean:"ularning"}
+      ], full:"ularning kitobi"},
+     {word:"سَنَكْتُبُهَا", parts:[
+        {frag:"سَ", role:"ZAMON", mean:"kelasi zamon"},
+        {frag:"نَ", role:"EGA", mean:"biz"},
+        {frag:"كْتُبُ", role:"ILDIZ", mean:"yozmoq"},
+        {frag:"هَا", role:"TO'LDIRUVCHI", mean:"uni"}
+      ], full:"biz uni yozamiz"},
+     {word:"وَبِكِتَابِكُمْ", parts:[
+        {frag:"وَ", role:"BOG'LOVCHI", mean:"va"},
+        {frag:"بِ", role:"KO'MAKCHI", mean:"bilan"},
+        {frag:"كِتَاب", role:"ILDIZ", mean:"kitob"},
+        {frag:"كُمْ", role:"EGALIK", mean:"sizning"}
+      ], full:"va sizning kitobingiz bilan"},
+     {word:"أَنْعَمْتَ", parts:[
+        {frag:"أَنْعَمْ", role:"ILDIZ", mean:"in'om qildi"},
+        {frag:"تَ", role:"EGA", mean:"sen"}
+      ], full:"sen in'om qilding"},
+     {word:"يُعَلِّمُونَنَا", parts:[
+        {frag:"يُعَلِّمُ", role:"ILDIZ", mean:"o'rgatyapti"},
+        {frag:"ونَ", role:"EGA", mean:"ular"},
+        {frag:"نَا", role:"TO'LDIRUVCHI", mean:"bizga"}
+      ], full:"ular bizga o'rgatishyapti"},
+   ]},
+];
+
 function loadAlifboProgress(){
   try{ return JSON.parse(localStorage.getItem('qa_alifbo_v1')) || {stars:{}}; }
   catch(e){ return {stars:{}}; }
@@ -3876,6 +4008,7 @@ function go(view, opts){
     STATE.alifboLevelId = opts.alifboLevelId;
     if(enteringFresh){ STATE.alifboPhase = 'cards'; STATE.alifboCardIdx = 0; }
   }
+  if(opts && opts.grammarUnitId !== undefined) STATE.grammarUnitId = opts.grammarUnitId;
   window.scrollTo(0,0);
   render();
 }
@@ -3940,6 +4073,7 @@ const NAV_ITEMS = [
   {id:'quran', ic:icon('globe'), label:"To'liq Qur'on", sub:"114 sura, tinglash"},
   {id:'mushaf', ic:icon('book'), label:'Mushaf', sub:"604 sahifa, 15 qatorli"},
   {id:'hifz', ic:icon('activity'), label:'Yodlash', sub:'Hifz mashqlari'},
+  {id:'grammatika', ic:icon('layers'), label:'Grammatika', sub:"So'z qurilishi, qo'shimchalar"},
   {id:'review', ic:icon('zap'), label:'Takrorlash', sub:"So'z takrorlash navbati"},
   {id:'progress', ic:icon('bar-chart'), label:'Taraqqiyot', sub:'Progress va statistika'},
   {id:'reference', ic:icon('list'), label:"Qo'llanma", sub:"Ildizlar, so'zlik, tezkor"},
@@ -3968,6 +4102,8 @@ function renderTopbar(){
   if(STATE.view === 'hifzSession'){ title = "Yodlash"; }
   if(STATE.view === 'alifbo'){ title = "Harflarni o'qish"; }
   if(STATE.view === 'alifboLevel'){ const lvl = ALIFBO_LEVELS.find(l=>l.id===STATE.alifboLevelId); title = lvl ? lvl.title : "Harflar"; }
+  if(STATE.view === 'grammatika'){ title = "Grammatika"; }
+  if(STATE.view === 'grammarUnit'){ const gu = GRAMMAR_UNITS.find(g=>g.id===STATE.grammarUnitId); title = gu ? gu.title : "Grammatika"; }
   bar.innerHTML = `
     <button class="back-btn" onclick="goBack()" aria-label="Orqaga">&#8592;</button>
     <h1>${title}</h1>
@@ -4015,6 +4151,8 @@ function renderMain(){
   if(STATE.view === 'hifzSession') return renderHifzSession(m);
   if(STATE.view === 'alifbo') return renderAlifboHome(m);
   if(STATE.view === 'alifboLevel') return renderAlifboLevel(m);
+  if(STATE.view === 'grammatika') return renderGrammarHome(m);
+  if(STATE.view === 'grammarUnit') return renderGrammarUnit(m);
 }
 
 /* ================= HOME ================= */
@@ -4526,6 +4664,88 @@ function alifboForms(item){
     return [["Yolg'iz / boshida", item.ar], ["Oxirida (oldingisiga ulanadi)", 'ـ'+item.ar]];
   }
   return [["Yolg'iz", item.ar], ["Boshida", item.ar+'ـ'], ["O'rtada", 'ـ'+item.ar+'ـ'], ["Oxirida", 'ـ'+item.ar]];
+}
+
+/* ================= GRAMMATIKA (word-building blocks, taught like vocabulary) ================= */
+function renderGrammarHome(m){
+  let html = `<div class="folio">
+    <div class="unit-hero" style="text-align:center;">
+      <span class="badge">Grammatika</span>
+      <h1>So'z qurilishi</h1>
+      <p style="margin-top:8px;">Arabcha so'zlarga yopishadigan kichkina qo'shimchalar — kim qildi, kimga, kimning. Qur'on oyatlarisiz, faqat qoidaning o'zi — lug'at kabi o'rganing.</p>
+    </div>
+    <div class="alifbo-path">
+      ${GRAMMAR_UNITS.map(u=>{
+        const done = isDone('gram_'+u.id);
+        return `<button class="alifbo-node ${done?'done':''}" onclick="go('grammarUnit',{grammarUnitId:'${u.id}'})">
+          <span class="alifbo-node-ic">${icon(u.kind==='decompose'?'layers':'book-open',20)}</span>
+          <span class="alifbo-node-body">
+            <span class="alifbo-node-title">${u.title}</span>
+            <span class="alifbo-node-sub">${u.sub}</span>
+          </span>
+          <span class="alifbo-node-stars">${done?icon('eye',16):icon('eye-off',16)}</span>
+        </button>`;
+      }).join('')}
+    </div>
+  </div>`;
+  m.innerHTML = html;
+}
+
+function renderGrammarUnit(m){
+  const u = GRAMMAR_UNITS.find(g=>g.id===STATE.grammarUnitId);
+  if(!u){ go('grammatika'); return; }
+  const idx = GRAMMAR_UNITS.findIndex(g=>g.id===u.id);
+  let html = `<div class="folio">
+    <div class="unit-hero">
+      <span class="badge">Grammatika</span>
+      <h1>${u.title}</h1>
+      <span class="ar" style="display:block;">${u.sub||''}</span>
+    </div>
+    <div class="prose"><p>${u.intro}</p></div>`;
+
+  if(u.kind === 'deck'){
+    html += `<div class="grammar-deck">
+      ${u.items.map(it=>`<div class="grammar-card" onclick="this.classList.toggle('flipped')">
+        <div class="gc-top"><span class="ar">${it.ar}</span><span class="tr">${it.tr}</span></div>
+        <div class="gc-detail">
+          <div class="mean">${it.uz}</div>
+          <div class="ex"><span class="ar">${it.example}</span><span class="exuz">${it.exampleUz}</span></div>
+        </div>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  if(u.kind === 'decompose'){
+    html += `<div class="decompose-list">
+      ${u.items.map((it,i)=>`<div class="decompose-card" id="dc-${i}">
+        <div class="dc-word" onclick="revealDecompose(${i})"><span class="ar">${it.word}</span><span class="dc-hint">${icon('eye',14)} bosib ko'ring</span></div>
+        <div class="dc-parts" id="dc-parts-${i}">
+          ${it.parts.map(p=>`<div class="dc-part"><span class="ar">${p.frag}</span><span class="role">${p.role}</span><span class="mean">${p.mean}</span></div>`).join('')}
+          <div class="dc-full">&ldquo;${it.full}&rdquo;</div>
+        </div>
+      </div>`).join('')}
+    </div>`;
+  }
+
+  html += `<label style="display:flex;align-items:center;gap:10px;margin-top:20px;padding:14px;background:var(--surface);border:1px solid var(--rule);border-radius:12px;cursor:pointer;">
+      <input type="checkbox" style="width:20px;height:20px;accent-color:var(--jade);" ${isDone('gram_'+u.id)?'checked':''} onchange="markDone('gram_${u.id}', this.checked); go('grammarUnit',{grammarUnitId:'${u.id}'});">
+      <span style="font-family:var(--font-ui);font-weight:700;font-size:.88rem;">Bu bo'limni tugatdim</span>
+    </label>`;
+
+  const prev = GRAMMAR_UNITS[idx-1];
+  const next = GRAMMAR_UNITS[idx+1];
+  html += `<div class="unit-nav">
+    <button ${prev?'':'disabled'} onclick="${prev?`go('grammarUnit',{grammarUnitId:'${prev.id}'})`:''}">&#8592; Oldingi</button>
+    <button class="primary" onclick="${next?`go('grammarUnit',{grammarUnitId:'${next.id}'})`:`go('grammatika')`}">${next?"Keyingi &#8594;":"Yakunlash"}</button>
+  </div>`;
+
+  html += `</div>`;
+  m.innerHTML = html;
+}
+
+function revealDecompose(i){
+  const card = document.getElementById('dc-'+i);
+  if(card) card.classList.add('revealed');
 }
 
 function renderAlifboHome(m){
