@@ -655,6 +655,50 @@ main{flex:1; padding-bottom:24px;}
   color:var(--ink); margin-top:10px; font-style:italic;
 }
 
+/* ---------- Madina-style course: games ---------- */
+.madina-game-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px;}
+.madina-game-btn{
+  background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);
+  padding:16px 10px; display:flex; flex-direction:column; align-items:center; gap:6px;
+  cursor:pointer; color:var(--accent); text-align:center;
+}
+.madina-game-btn:active{background:var(--surface-2);}
+.madina-game-btn:disabled{opacity:.4; cursor:not-allowed;}
+.madina-game-btn .mg-label{font-family:var(--font-ui); font-weight:700; font-size:.85rem; color:var(--ink);}
+.madina-game-btn .mg-desc{font-family:var(--font-ui); font-size:.68rem; opacity:.6; color:var(--ink);}
+
+.memory-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
+.memory-cell{
+  aspect-ratio:1; background:var(--accent); color:transparent; border:none; border-radius:10px;
+  font-family:var(--font-ui); font-size:1.3rem; font-weight:700; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; padding:4px; text-align:center;
+  transition:background .15s;
+}
+.memory-cell.open{background:var(--surface); color:var(--ink); border:1px solid var(--accent); font-size:.72rem;}
+.memory-cell.open.ar{font-family:var(--font-ar); direction:rtl; font-size:1.15rem; color:var(--accent-strong);}
+.memory-cell.matched{background:var(--jade-soft); color:var(--jade); border:1px solid var(--jade);}
+
+.scramble-answer{
+  display:flex; gap:6px; justify-content:center; flex-wrap:wrap; min-height:52px;
+  align-items:center; padding:10px; background:var(--surface); border:1px dashed var(--rule);
+  border-radius:12px; margin:14px 0;
+}
+.scramble-placeholder{font-family:var(--font-ui); font-size:.78rem; opacity:.45;}
+.scramble-pool{display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-bottom:10px;}
+.scramble-tile{
+  width:44px; height:44px; border-radius:10px; border:1px solid var(--rule); background:var(--surface);
+  font-family:var(--font-ar); font-size:1.35rem; color:var(--accent-strong); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.scramble-tile.placed{background:var(--accent-soft); border-color:var(--accent); cursor:default;}
+.scramble-tile.used{opacity:.25; cursor:not-allowed;}
+
+.speed-bar{
+  display:flex; justify-content:space-between; font-family:var(--font-ui); font-weight:700;
+  font-size:.95rem; color:var(--accent); background:var(--accent-soft); border-radius:10px;
+  padding:8px 14px; margin-bottom:12px;
+}
+
 /* ---------- Offline download card ---------- */
 .offline-dl-card{margin:0 16px 14px; padding:12px 14px; background:var(--surface); border:1px solid var(--rule); border-radius:var(--radius);}
 .offline-dl-row{display:flex; align-items:center; justify-content:space-between; font-family:var(--font-ui); font-size:.82rem; font-weight:700; color:var(--ink);}
@@ -2738,6 +2782,119 @@ const GRAMMAR_UNITS = [
    ]},
 ];
 
+/* ==========================================================
+   MADINA_UNITS — "Boshlang'ich grammatika kursi" section.
+   Original content covering the same well-known first-three-lesson
+   topic sequence taught in standard beginner Arabic courses (nominal
+   sentences with هذا, gender/idafa with هذه, demonstratives/colors/
+   prepositions with ذلك) — written from scratch with our own
+   vocabulary, example sentences and exercises, not excerpted from
+   any specific textbook. Deliberately deeper than a normal first
+   lesson: fuller grammar notes, more vocabulary, more examples.
+   ========================================================== */
+const MADINA_UNITS = [
+  {id:"md1", title:"1-dars: Bu nima? Bu kim?", sub:"هذا, هل, ما, من — birinchi 20 so'z",
+   intro:"Arab tilida \"bu — kitob\" deyish uchun \"bo'lmoq\" fe'li kerak emas — ikkita so'zni yonma-yon qo'yish kifoya: هَذَا كِتَابٌ (bu — kitob). Bu darsda eng asosiy qurilish bloki — هَذَا (\"bu\", erkak jinsli/yaqin narsalar uchun) — bilan tanishasiz, va birinchi 20 ta soddaso'zni o'rganasiz.",
+   grammar:[
+     {h:"1. Ismli gap (bo'lmoq fe'lisiz)", p:[
+       "Arabchada hozirgi zamonda \"bo'lmoq\" (is/are) fe'li YOZILMAYDI. <span class='w'>هَذَا بَيْتٌ</span> so'zma-so'z \"bu uy\" — lekin ma'nosi \"bu — uy(dir)\" (\"this is a house\"). Ikkita so'z ketma-ket kelsa, orasida \"—\" (bo'lmoq) borligini tushunib olamiz.",
+       "<span class='w'>هَذَا</span> (haaza) — \"bu\", faqat ERKAK jinsli yoki jinssiz-yaqin narsa/kishi uchun ishlatiladi. Ayol jinsli \"bu\" (هَذِهِ) keyingi darsda o'rganiladi."
+     ]},
+     {h:"2. Aniq va noaniq: -ٌ va الْ", p:[
+       "So'z oxiridagi kichik \" ٌ \" belgisi (ikkilangan damma, \"tanvin\") — \"bir, qandaydir\" ma'nosini beradi, xuddi inglizcha \"a/an\" kabi: <span class='w'>كِتَابٌ</span> = \"bir kitob\".",
+       "Agar so'z boshiga <span class='w'>الْ</span> qo'shilsa (va tanvin tushib qoladi) — \"aynan shu, ma'lum\" ma'nosini beradi, inglizcha \"the\" kabi: <span class='w'>الْكِتَابُ</span> = \"(o'sha) kitob\". <span class='review'>&#8635; Oy va quyosh harflari darsida bu qoidani chuqur ko'rgansiz</span>."
+     ]},
+     {h:"3. Savol so'zlari: هَلْ، مَا، مَنْ", p:[
+       "<span class='w'>هَلْ</span> — gap boshiga qo'yilib, \"...mi?\" savolini yasaydi: <span class='w'>هَلْ هَذَا بَيْتٌ؟</span> = \"Bu uymi?\" Javob: <span class='w'>نَعَمْ</span> (ha) yoki <span class='w'>لَا</span> (yo'q).",
+       "<span class='w'>مَا هَذَا؟</span> = \"Bu nima?\" — NARSALAR haqida so'raladi. <span class='w'>مَنْ هَذَا؟</span> = \"Bu kim?\" — ODAMLAR haqida so'raladi. Farqni eslab qoling: مَا — narsa, مَنْ — kishi."
+     ]}
+   ],
+   examples:[
+     {ar:"هَذَا بَيْتٌ.", uz:"Bu — uy."},
+     {ar:"هَلْ هَذَا بَيْتٌ؟ نَعَمْ، هَذَا بَيْتٌ.", uz:"Bu uymi? Ha, bu — uy."},
+     {ar:"مَا هَذَا؟ هَذَا قَلَمٌ.", uz:"Bu nima? Bu — qalam."},
+     {ar:"مَنْ هَذَا؟ هَذَا رَجُلٌ.", uz:"Bu kim? Bu — erkak."},
+     {ar:"هَذَا الْبَيْتُ كَبِيرٌ.", uz:"Bu (aynan shu) uy — katta."}
+   ],
+   vocab:[
+     {ar:"بَيْتٌ", tr:"baytun", uz:"uy"}, {ar:"مَسْجِدٌ", tr:"masjidun", uz:"masjid"},
+     {ar:"بَابٌ", tr:"boobun", uz:"eshik"}, {ar:"كِتَابٌ", tr:"kitobun", uz:"kitob"},
+     {ar:"قَلَمٌ", tr:"qalamun", uz:"qalam"}, {ar:"مِفْتَاحٌ", tr:"miftohun", uz:"kalit"},
+     {ar:"رَجُلٌ", tr:"rajulun", uz:"erkak"}, {ar:"وَلَدٌ", tr:"valadun", uz:"bola (o'g'il)"},
+     {ar:"كُرْسِيٌّ", tr:"kursiyyun", uz:"stul"}, {ar:"حِصَانٌ", tr:"hisonun", uz:"ot"},
+     {ar:"جَمَلٌ", tr:"jamalun", uz:"tuya"}, {ar:"طَبِيبٌ", tr:"tabiibun", uz:"shifokor"},
+     {ar:"مُدَرِّسٌ", tr:"mudarrisun", uz:"o'qituvchi"}, {ar:"مَكْتَبٌ", tr:"maktabun", uz:"stol/ofis"},
+     {ar:"مِصْبَاحٌ", tr:"misbohun", uz:"chiroq"}, {ar:"حَائِطٌ", tr:"ho'itun", uz:"devor"},
+     {ar:"سَرِيرٌ", tr:"sariirun", uz:"karavot"}, {ar:"قَمِيصٌ", tr:"qamiisun", uz:"ko'ylak"},
+     {ar:"كَلْبٌ", tr:"kalbun", uz:"it"}, {ar:"قِطٌّ", tr:"qittun", uz:"mushuk"},
+   ]},
+  {id:"md2", title:"2-dars: Bu — kim/nima (ayol jinsi) va egalik", sub:"هذه, jins, izofa (egalik qurilishi)",
+   intro:"Bu darsda ikkita katta mavzu bor: birinchi — ayol jinsli \"bu\" (هَذِهِ) va so'zlarning jinsini qanday tanish; ikkinchi — \"X ning Y-si\" ma'nosini beruvchi IZOFA qurilishi, arab tilidagi eng ko'p ishlatiladigan naqshlardan biri.",
+   grammar:[
+     {h:"1. هَذِهِ — ayol jinsi uchun \"bu\"", p:[
+       "<span class='w'>هَذِهِ</span> (haazihi) — \"bu\", AYOL jinsli narsa/kishi uchun: <span class='w'>هَذِهِ بِنْتٌ</span> = \"Bu — qiz\".",
+       "Jinsni qanday bilamiz? Ko'pchilik ayol jinsli so'zlar oxirida <span class='w'>ة</span> (ta marbuta) harfi bo'ladi, o'qishda \"-a/-atun\" tovushini beradi: <span class='w'>مَدْرَسَةٌ</span> (madrasa, maktab). Lekin har doim ham shunday emas — ba'zi so'zlar ة siz ham ayol jinsli (masalan شَمْسٌ — quyosh)."
+     ]},
+     {h:"2. Izofa — \"X ning Y-si\"", p:[
+       "Ikkita ot yonma-yon qo'yilsa, BIRINCHISI tanvinsiz-الsiz, IKKINCHISI esa الْ bilan (yoki egalik olmoshi bilan) kelsa — \"birinchisi ikkinchisiga tegishli\" ma'nosi hosil bo'ladi, \"ning\" so'zi hech qachon yozilmaydi: <span class='w'>بَابُ الْبَيْتِ</span> = \"uyning eshigi\".",
+       "Diqqat: izofada BIRINCHI so'zga الْ QO'SHILMAYDI — u \"yalang'och\" holda qoladi, faqat IKKINCHI so'z aniq (الْ bilan yoki ism) bo'ladi. <span class='w'>مِفْتَاحُ الْبَابِ</span> = \"eshikning kaliti\"."
+     ]},
+     {h:"3. Amalda: ikkalasini birlashtirish", p:[
+       "<span class='w'>هَذِهِ مَدْرَسَةُ الْوَلَدِ</span> = \"Bu — bolaning maktabi\". Bu yerda هَذِهِ (chunki مَدْرَسَة ayol jinsi), keyin izofa (مَدْرَسَةُ + الْوَلَدِ) ishlatilmoqda — ikkala qoida bitta gapda!"
+     ]}
+   ],
+   examples:[
+     {ar:"هَذِهِ بِنْتٌ.", uz:"Bu — qiz."},
+     {ar:"هَذِهِ مَدْرَسَةٌ كَبِيرَةٌ.", uz:"Bu — katta maktab."},
+     {ar:"بَابُ الْبَيْتِ كَبِيرٌ.", uz:"Uyning eshigi — katta."},
+     {ar:"هَذِهِ حَقِيبَةُ الْبِنْتِ.", uz:"Bu — qizning sumkasi."},
+     {ar:"مَا هَذِهِ؟ هَذِهِ شَجَرَةٌ.", uz:"Bu nima? Bu — daraxt."}
+   ],
+   vocab:[
+     {ar:"بِنْتٌ", tr:"bintun", uz:"qiz"}, {ar:"مَدْرَسَةٌ", tr:"madrasatun", uz:"maktab"},
+     {ar:"شَجَرَةٌ", tr:"shajaratun", uz:"daraxt"}, {ar:"جَرِيدَةٌ", tr:"jariidatun", uz:"gazeta"},
+     {ar:"سَاعَةٌ", tr:"soo'atun", uz:"soat"}, {ar:"حَقِيبَةٌ", tr:"haqiibatun", uz:"sumka"},
+     {ar:"نَافِذَةٌ", tr:"noofizatun", uz:"deraza"}, {ar:"غُرْفَةٌ", tr:"g'urfatun", uz:"xona"},
+     {ar:"مِرْآةٌ", tr:"mir'aatun", uz:"oyna"}, {ar:"سَيَّارَةٌ", tr:"sayyoratun", uz:"mashina"},
+     {ar:"قَرْيَةٌ", tr:"qaryatun", uz:"qishloq"}, {ar:"مَدِينَةٌ", tr:"madiinatun", uz:"shahar"},
+     {ar:"وَرَقَةٌ", tr:"varaqatun", uz:"qog'oz"}, {ar:"زَهْرَةٌ", tr:"zahratun", uz:"gul"},
+     {ar:"مِنْضَدَةٌ", tr:"mindadatun", uz:"stol"}, {ar:"شَمْسٌ", tr:"shamsun", uz:"quyosh"},
+   ]},
+  {id:"md3", title:"3-dars: Anavi... qayerda? Ranglar", sub:"ذلك/تلك, أين, في/على, sifatlar",
+   intro:"هَذَا/هَذِهِ — YAQINDAGI narsa uchun (\"bu\"). Endi UZOQDAGI narsa uchun \"anavi/o'sha\" so'zini, \"qayerda?\" savolini, va birinchi sifatlarni (ranglar, katta-kichik) o'rganamiz.",
+   grammar:[
+     {h:"1. ذَلِكَ va تِلْكَ — \"anavi, o'sha\"", p:[
+       "<span class='w'>ذَلِكَ</span> (zaalika) — uzoqdagi ERKAK jinsli narsa: \"anavi/o'sha\". <span class='w'>تِلْكَ</span> (tilka) — uzoqdagi AYOL jinsli narsa.",
+       "Naqsh xuddi هَذَا/هَذِهِ bilan bir xil: <span class='w'>ذَلِكَ بَيْتٌ</span> = \"Anavi — uy\", <span class='w'>تِلْكَ سَيَّارَةٌ</span> = \"Anavi — mashina\"."
+     ]},
+     {h:"2. أَيْنَ — \"qayerda?\"", p:[
+       "<span class='w'>أَيْنَ الْبَيْتُ؟</span> = \"Uy qayerda?\" Javobda ko'makchi so'zlar kerak bo'ladi: <span class='w'>فِي</span> (-da, ichida) va <span class='w'>عَلَى</span> (ustida).",
+       "<span class='w'>الْبَيْتُ فِي الْمَدِينَةِ</span> = \"Uy — shaharda\". <span class='w'>الْكِتَابُ عَلَى الْمَكْتَبِ</span> = \"Kitob — stol ustida\"."
+     ]},
+     {h:"3. Sifatlar — otdan KEYIN, jinsga mos", p:[
+       "Arabchada sifat otdan OLDIN emas, KEYIN keladi, va otning jinsiga mos bo'lishi kerak: <span class='w'>بَيْتٌ كَبِيرٌ</span> (katta uy — erkak jinsi mos), <span class='w'>سَيَّارَةٌ كَبِيرَةٌ</span> (katta mashina — ة qo'shiladi, ayol jinsiga moslashish uchun).",
+       "Ranglar ham sifat: <span class='w'>بَيْتٌ أَحْمَرُ</span> (qizil uy). Diqqat: ayol jinsli rangning shakli boshqacharoq bo'ladi (masalan أَحْمَرُ → حَمْرَاءُ), bu keyingi darslarda chuqurroq o'rganiladi."
+     ]}
+   ],
+   examples:[
+     {ar:"ذَلِكَ بَيْتٌ كَبِيرٌ.", uz:"Anavi — katta uy."},
+     {ar:"تِلْكَ سَيَّارَةٌ صَغِيرَةٌ.", uz:"Anavi — kichik mashina."},
+     {ar:"أَيْنَ الْقَلَمُ؟ الْقَلَمُ عَلَى الْمَكْتَبِ.", uz:"Qalam qayerda? Qalam — stol ustida."},
+     {ar:"الْمَدْرَسَةُ فِي الْمَدِينَةِ.", uz:"Maktab — shaharda."},
+     {ar:"هَذَا كِتَابٌ جَدِيدٌ، وَذَلِكَ كِتَابٌ قَدِيمٌ.", uz:"Bu — yangi kitob, anavi — eski kitob."}
+   ],
+   vocab:[
+     {ar:"أَحْمَرُ", tr:"ahmaru", uz:"qizil"}, {ar:"أَزْرَقُ", tr:"azraqu", uz:"ko'k"},
+     {ar:"أَخْضَرُ", tr:"axdaru", uz:"yashil"}, {ar:"أَبْيَضُ", tr:"abyadu", uz:"oq"},
+     {ar:"أَسْوَدُ", tr:"asvadu", uz:"qora"}, {ar:"كَبِيرٌ", tr:"kabiirun", uz:"katta"},
+     {ar:"صَغِيرٌ", tr:"sag'iirun", uz:"kichik"}, {ar:"جَدِيدٌ", tr:"jadiidun", uz:"yangi"},
+     {ar:"قَدِيمٌ", tr:"qadiimun", uz:"eski"}, {ar:"جَمِيلٌ", tr:"jamiilun", uz:"chiroyli"},
+     {ar:"طَوِيلٌ", tr:"taviilun", uz:"uzun/baland"}, {ar:"قَصِيرٌ", tr:"qasiirun", uz:"qisqa/past"},
+     {ar:"فِي", tr:"fii", uz:"-da, ichida"}, {ar:"عَلَى", tr:"alaa", uz:"ustida"},
+     {ar:"أَيْنَ", tr:"ayna", uz:"qayerda"},
+   ]},
+];
+
 function loadAlifboProgress(){
   try{ return JSON.parse(localStorage.getItem('qa_alifbo_v1')) || {stars:{}}; }
   catch(e){ return {stars:{}}; }
@@ -2773,6 +2930,10 @@ const ICONS = {
   'sun':'<circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2" x2="12" y2="4.5"/><line x1="12" y1="19.5" x2="12" y2="22"/><line x1="4.2" y1="4.2" x2="6" y2="6"/><line x1="18" y1="18" x2="19.8" y2="19.8"/><line x1="2" y1="12" x2="4.5" y2="12"/><line x1="19.5" y1="12" x2="22" y2="12"/><line x1="4.2" y1="19.8" x2="6" y2="18"/><line x1="18" y1="6" x2="19.8" y2="4.2"/>',
   'moon':'<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/>',
   'palette':'<path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-.9 2-1.8 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.2 0-.9.8-1.7 1.8-1.7H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8Z"/><circle cx="7.5" cy="10.5" r="1.1"/><circle cx="11.5" cy="7.2" r="1.1"/><circle cx="15.8" cy="9" r="1.1"/>',
+  'shuffle':'<polyline points="16,3 21,3 21,8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21,16 21,21 16,21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/>',
+  'clock':'<circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 15.5,14"/>',
+  'grid-2':'<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/>',
+  'puzzle':'<path d="M7 3h4v2.5a1.5 1.5 0 0 0 3 0V3h4a1 1 0 0 1 1 1v4h-2.5a1.5 1.5 0 0 0 0 3H19v4a1 1 0 0 1-1 1h-4v-2.5a1.5 1.5 0 0 0-3 0V16H7a1 1 0 0 1-1-1v-4h2.5a1.5 1.5 0 0 0 0-3H6V4a1 1 0 0 1 1-1Z"/>',
 };
 const ICON_FILLED = new Set(['flame']);
 function icon(name, size){
@@ -4009,6 +4170,7 @@ function go(view, opts){
     if(enteringFresh){ STATE.alifboPhase = 'cards'; STATE.alifboCardIdx = 0; }
   }
   if(opts && opts.grammarUnitId !== undefined) STATE.grammarUnitId = opts.grammarUnitId;
+  if(opts && opts.madinaUnitId !== undefined) STATE.madinaUnitId = opts.madinaUnitId;
   window.scrollTo(0,0);
   render();
 }
@@ -4074,6 +4236,7 @@ const NAV_ITEMS = [
   {id:'mushaf', ic:icon('book'), label:'Mushaf', sub:"604 sahifa, 15 qatorli"},
   {id:'hifz', ic:icon('activity'), label:'Yodlash', sub:'Hifz mashqlari'},
   {id:'grammatika', ic:icon('layers'), label:'Grammatika', sub:"So'z qurilishi, qo'shimchalar"},
+  {id:'madina', ic:icon('award'), label:"Boshlang'ich kurs", sub:"1-3 darslar, so'z o'yinlari"},
   {id:'review', ic:icon('zap'), label:'Takrorlash', sub:"So'z takrorlash navbati"},
   {id:'progress', ic:icon('bar-chart'), label:'Taraqqiyot', sub:'Progress va statistika'},
   {id:'reference', ic:icon('list'), label:"Qo'llanma", sub:"Ildizlar, so'zlik, tezkor"},
@@ -4104,6 +4267,9 @@ function renderTopbar(){
   if(STATE.view === 'alifboLevel'){ const lvl = ALIFBO_LEVELS.find(l=>l.id===STATE.alifboLevelId); title = lvl ? lvl.title : "Harflar"; }
   if(STATE.view === 'grammatika'){ title = "Grammatika"; }
   if(STATE.view === 'grammarUnit'){ const gu = GRAMMAR_UNITS.find(g=>g.id===STATE.grammarUnitId); title = gu ? gu.title : "Grammatika"; }
+  if(STATE.view === 'madina'){ title = "Boshlang'ich kurs"; }
+  if(STATE.view === 'madinaUnit'){ const mu = MADINA_UNITS.find(g=>g.id===STATE.madinaUnitId); title = mu ? mu.title : "Boshlang'ich kurs"; }
+  if(STATE.view === 'madinaGame'){ title = "O'yin"; }
   bar.innerHTML = `
     <button class="back-btn" onclick="goBack()" aria-label="Orqaga">&#8592;</button>
     <h1>${title}</h1>
@@ -4153,6 +4319,9 @@ function renderMain(){
   if(STATE.view === 'alifboLevel') return renderAlifboLevel(m);
   if(STATE.view === 'grammatika') return renderGrammarHome(m);
   if(STATE.view === 'grammarUnit') return renderGrammarUnit(m);
+  if(STATE.view === 'madina') return renderMadinaHome(m);
+  if(STATE.view === 'madinaUnit') return renderMadinaUnit(m);
+  if(STATE.view === 'madinaGame') return renderMadinaGame(m);
 }
 
 /* ================= HOME ================= */
@@ -4746,6 +4915,387 @@ function renderGrammarUnit(m){
 function revealDecompose(i){
   const card = document.getElementById('dc-'+i);
   if(card) card.classList.add('revealed');
+}
+
+/* ================= MADINA-STYLE BEGINNER COURSE (own content + games) ================= */
+const MADINA_GAME_TYPES = [
+  {id:'flashcards', label:'Kartochkalar', ic:'book-open', desc:"Bosib ochib ko'ring"},
+  {id:'quiz', label:'Test', ic:'target', desc:"4 variantdan tanlang"},
+  {id:'match', label:'Juftlik topish', ic:'grid-2', desc:"Xotira o'yini"},
+  {id:'scramble', label:"Harflarni tuzish", ic:'puzzle', desc:"So'zni yig'ing"},
+  {id:'speed', label:'Tezkor tur', ic:'clock', desc:"Vaqtga qarshi"},
+];
+
+function madinaSelectedUnits(){
+  if(!STATE.madinaSelectedUnits) STATE.madinaSelectedUnits = MADINA_UNITS.map(u=>u.id);
+  return STATE.madinaSelectedUnits;
+}
+function buildMadinaPool(){
+  const ids = madinaSelectedUnits();
+  const pool = [];
+  const seen = new Set();
+  MADINA_UNITS.filter(u=>ids.includes(u.id)).forEach(u=>{
+    u.vocab.forEach(v=>{ if(!seen.has(v.ar)){ seen.add(v.ar); pool.push(v); } });
+  });
+  return pool;
+}
+
+function renderMadinaHome(m){
+  const ids = madinaSelectedUnits();
+  const pool = buildMadinaPool();
+  let html = `<div class="folio">
+    <div class="unit-hero" style="text-align:center;">
+      <span class="badge">Boshlang'ich kurs</span>
+      <h1>1&ndash;3-darslar</h1>
+      <p style="margin-top:8px;">Mashhur boshlang'ich arab tili darsliklarining birinchi uch darsida o'rgatiladigan mavzular — o'zimizning so'zlar va misollarimiz bilan, kitobdagidan ham chuqurroq. Har bir dars uchun 5 xil o'yin bor.</p>
+    </div>
+    <div class="section-label"><span class="dot">${icon('book-open',14)}</span>Darslar</div>
+    <div class="unit-list">
+      ${MADINA_UNITS.map(u=>`<button class="unit-row" onclick="go('madinaUnit',{madinaUnitId:'${u.id}'})">
+        <span class="num">${u.id.slice(2)}</span>
+        <span class="meta"><span class="t">${u.title}</span><span class="s">${u.sub}</span></span>
+        <span class="chev">&#8250;</span>
+      </button>`).join('')}
+    </div>
+    <div class="section-label"><span class="dot">${icon('sliders',14)}</span>Mavzularni tanlang</div>
+    <p class="prose" style="font-size:.85rem;opacity:.75;">O'yin uchun qaysi darslarning so'zlari birlashtirilsinmi? Bir nechtasini tanlashingiz mumkin.</p>
+    <div class="chip-row" style="margin:8px 0 4px;">
+      ${MADINA_UNITS.map(u=>{
+        const on = ids.includes(u.id);
+        return `<span class="chip" style="cursor:pointer;${on?'background:var(--accent);color:#fff;':''}" onclick="toggleMadinaUnit('${u.id}')">${on?icon('eye',12):icon('eye-off',12)} ${u.title.split(':')[0]}</span>`;
+      }).join('')}
+    </div>
+    <p class="small" style="opacity:.6;">${pool.length} ta so'z tanlandi.</p>
+    <div class="section-label"><span class="dot">${icon('zap',14)}</span>O'yinlar</div>
+    <div class="madina-game-grid">
+      ${MADINA_GAME_TYPES.map(g=>`<button class="madina-game-btn" ${pool.length<4?'disabled':''} onclick="startMadinaGame('${g.id}')">
+        <span class="mg-ic">${icon(g.ic,22)}</span>
+        <span class="mg-label">${g.label}</span>
+        <span class="mg-desc">${g.desc}</span>
+      </button>`).join('')}
+    </div>
+  </div>`;
+  m.innerHTML = html;
+}
+
+function toggleMadinaUnit(id){
+  const ids = madinaSelectedUnits();
+  const i = ids.indexOf(id);
+  if(i>-1){ if(ids.length>1) ids.splice(i,1); } else { ids.push(id); }
+  render();
+}
+
+function renderMadinaUnit(m){
+  const u = MADINA_UNITS.find(x=>x.id===STATE.madinaUnitId);
+  if(!u){ go('madina'); return; }
+  const idx = MADINA_UNITS.findIndex(x=>x.id===u.id);
+  let html = `<div class="folio">
+    <div class="unit-hero">
+      <span class="badge">Boshlang'ich kurs</span>
+      <h1>${u.title}</h1>
+      <span class="ar" style="display:block;">${u.sub}</span>
+    </div>
+    <div class="section-label"><span class="dot">A</span>Kirish</div>
+    <div class="prose"><p>${u.intro}</p></div>`;
+
+  u.grammar.forEach(b=>{
+    html += `<div class="card qoida"><div class="card-title"><span class="ic">Q</span>${b.h}</div>${b.p.map(p=>`<p>${p}</p>`).join('')}</div>`;
+  });
+
+  html += `<div class="section-label"><span class="dot">B</span>Misollar</div>
+    <div class="surah-card">${u.examples.map(e=>`<div class="ayah" style="font-size:1.15rem;">${e.ar}<div style="font-family:var(--font-ui);font-size:.78rem;opacity:.65;margin-top:4px;">${e.uz}</div></div>`).join('')}</div>`;
+
+  html += `<div class="section-label"><span class="dot">S</span>So'zlar &middot; bos, ma'nosini ko'r</div><div class="vocab-grid">
+    ${u.vocab.map((v,i)=>vocabCard([v.ar, v.uz], 'core', u.id+'_'+i)).join('')}
+  </div>`;
+
+  html += `<button class="action-btn primary" style="width:100%;margin-top:16px;" onclick="STATE.madinaSelectedUnits=['${u.id}']; go('madina');">${icon('zap',14)} Shu darsning so'zlari bilan o'ynash</button>`;
+
+  const prev = MADINA_UNITS[idx-1];
+  const next = MADINA_UNITS[idx+1];
+  html += `<div class="unit-nav">
+    <button ${prev?'':'disabled'} onclick="${prev?`go('madinaUnit',{madinaUnitId:'${prev.id}'})`:''}">&#8592; Oldingi</button>
+    <button class="primary" onclick="${next?`go('madinaUnit',{madinaUnitId:'${next.id}'})`:`go('madina')`}">${next?"Keyingi &#8594;":"Darslarga qaytish"}</button>
+  </div>`;
+
+  html += `</div>`;
+  m.innerHTML = html;
+}
+
+function startMadinaGame(type){
+  STATE.madinaGameType = type;
+  STATE.madinaGameData = null;
+  go('madinaGame');
+}
+
+function renderMadinaGame(m){
+  const pool = buildMadinaPool();
+  const type = STATE.madinaGameType;
+  if(type === 'flashcards') return renderMadinaFlashcards(m, pool);
+  if(type === 'quiz') return renderMadinaQuiz(m, pool);
+  if(type === 'match') return renderMadinaMatch(m, pool);
+  if(type === 'scramble') return renderMadinaScramble(m, pool);
+  if(type === 'speed') return renderMadinaSpeed(m, pool);
+  go('madina');
+}
+
+function madinaGameHeader(title){
+  return `<div class="chip-row no-print" style="margin-bottom:10px;">
+    <span class="chip" style="cursor:pointer;" onclick="go('madina')">${icon('book-open',12)} O'yinlarga qaytish</span>
+  </div>
+  <div class="section-label" style="margin-top:0;"><span class="dot">${icon('zap',14)}</span>${title}</div>`;
+}
+
+/* ---- Game 1: Flashcards (tap to flip through the whole pool) ---- */
+function renderMadinaFlashcards(m, pool){
+  if(!STATE.madinaGameData) STATE.madinaGameData = {idx:0};
+  const gd = STATE.madinaGameData;
+  const item = pool[gd.idx];
+  let html = `<div class="folio">
+    ${madinaGameHeader('Kartochkalar')}
+    <div class="alifbo-progress-dots">${pool.map((_,i)=>`<span class="dot ${i===gd.idx?'active':i<gd.idx?'past':''}"></span>`).join('')}</div>
+    <div class="alifbo-flashcard" onclick="this.classList.toggle('flipped')" style="cursor:pointer;">
+      <div class="alifbo-big-ar" style="font-size:3.2rem;">${item.ar}</div>
+      <div class="alifbo-answer">${item.tr}</div>
+      <p class="prose" style="text-align:center;font-weight:700;">${item.uz}</p>
+    </div>
+    <div class="unit-nav">
+      <button ${gd.idx<=0?'disabled':''} onclick="STATE.madinaGameData.idx=${gd.idx-1}; render();">&#8592; Oldingi</button>
+      ${gd.idx < pool.length-1
+        ? `<button class="primary" onclick="STATE.madinaGameData.idx=${gd.idx+1}; render();">Keyingi &#8594;</button>`
+        : `<button class="primary" onclick="go('madina')">Tugatish ${icon('zap',14)}</button>`}
+    </div>
+  </div>`;
+  m.innerHTML = html;
+}
+
+/* ---- Game 2: MCQ Quiz ---- */
+function madinaBuildQuiz(pool){
+  const shuffled = pool.slice().sort(()=>Math.random()-0.5).slice(0, Math.min(15, pool.length));
+  const qs = shuffled.map(it=>{
+    let distractors = pool.filter(x=>x.uz!==it.uz).sort(()=>Math.random()-0.5).slice(0,3).map(x=>x.uz);
+    const options = [it.uz, ...distractors].sort(()=>Math.random()-0.5);
+    return {ar:it.ar, tr:it.tr, answer:it.uz, options, correctIndex:options.indexOf(it.uz)};
+  });
+  return {qs, idx:0, score:0};
+}
+function renderMadinaQuiz(m, pool){
+  if(!STATE.madinaGameData) STATE.madinaGameData = madinaBuildQuiz(pool);
+  const gd = STATE.madinaGameData;
+  if(gd.idx >= gd.qs.length){
+    m.innerHTML = `<div class="folio" style="text-align:center;">
+      ${madinaGameHeader('Test')}
+      <div class="milestone"><div class="star">${icon('target',36)}</div><h3>Tugadi!</h3>
+      <p>${gd.score} / ${gd.qs.length} to'g'ri javob.</p></div>
+      <div class="unit-nav"><button onclick="startMadinaGame('quiz')">${icon('repeat',14)} Qayta boshlash</button>
+      <button class="primary" onclick="go('madina')">Tayyor</button></div></div>`;
+    return;
+  }
+  const q = gd.qs[gd.idx];
+  let html = `<div class="folio">
+    ${madinaGameHeader(`Test &middot; ${gd.idx+1}/${gd.qs.length}`)}
+    <div class="alifbo-flashcard"><div class="alifbo-big-ar" style="font-size:2.6rem;">${q.ar}</div><div class="alifbo-answer">${q.tr}</div></div>
+    <div class="ex-options" id="mqOpts">
+      ${q.options.map((opt,i)=>`<button class="ex-opt" onclick="answerMadinaQuiz(${i})">${opt}</button>`).join('')}
+    </div>
+    <div class="ex-feedback-slot" id="mqFeedback"></div>
+  </div>`;
+  m.innerHTML = html;
+}
+function answerMadinaQuiz(i){
+  const gd = STATE.madinaGameData;
+  const q = gd.qs[gd.idx];
+  const opts = document.querySelectorAll('#mqOpts .ex-opt');
+  if(opts[0] && opts[0].classList.contains('disabled')) return;
+  const correct = i === q.correctIndex;
+  if(correct) gd.score++;
+  opts.forEach((o,idx)=>{ o.classList.add('disabled'); if(idx===q.correctIndex) o.classList.add('correct'); else if(idx===i) o.classList.add('wrong'); });
+  document.getElementById('mqFeedback').innerHTML = `<div class="ex-feedback ${correct?'ok':'no'}">${correct?"&#10003; To'g'ri!":"&#10007; To'g'ri javob: "+q.answer}</div>`;
+  setTimeout(()=>{ gd.idx++; render(); }, 1000);
+}
+
+/* ---- Game 3: Memory match (concentration) ---- */
+function madinaBuildMatch(pool){
+  const n = Math.min(8, pool.length);
+  const chosen = pool.slice().sort(()=>Math.random()-0.5).slice(0, n);
+  let cells = [];
+  chosen.forEach((it,i)=>{
+    cells.push({key:i, side:'ar', text:it.ar});
+    cells.push({key:i, side:'uz', text:it.uz});
+  });
+  cells = cells.sort(()=>Math.random()-0.5).map((c,i)=>({...c, id:i, matched:false}));
+  return {cells, openIds:[], matchedCount:0, total:n, moves:0};
+}
+function renderMadinaMatch(m, pool){
+  if(!STATE.madinaGameData) STATE.madinaGameData = madinaBuildMatch(pool);
+  const gd = STATE.madinaGameData;
+  if(gd.matchedCount === gd.total){
+    m.innerHTML = `<div class="folio" style="text-align:center;">
+      ${madinaGameHeader('Juftlik topish')}
+      <div class="milestone"><div class="star">${icon('grid-2',36)}</div><h3>Barchasi topildi!</h3>
+      <p>${gd.moves} marta urindingiz.</p></div>
+      <div class="unit-nav"><button onclick="startMadinaGame('match')">${icon('repeat',14)} Qayta boshlash</button>
+      <button class="primary" onclick="go('madina')">Tayyor</button></div></div>`;
+    return;
+  }
+  let html = `<div class="folio">
+    ${madinaGameHeader('Juftlik topish')}
+    <p class="small" style="text-align:center;opacity:.65;">Arabcha so'z va ma'nosini toping. Urinishlar: ${gd.moves}</p>
+    <div class="memory-grid">
+      ${gd.cells.map(c=>{
+        const open = gd.openIds.includes(c.id) || c.matched;
+        return `<button class="memory-cell ${open?'open':''} ${c.matched?'matched':''} ${c.side==='ar'?'ar':''}" onclick="flipMadinaMemory(${c.id})">${open?c.text:'?'}</button>`;
+      }).join('')}
+    </div>
+  </div>`;
+  m.innerHTML = html;
+}
+function flipMadinaMemory(id){
+  const gd = STATE.madinaGameData;
+  if(gd.openIds.length>=2) return;
+  const cell = gd.cells.find(c=>c.id===id);
+  if(!cell || cell.matched || gd.openIds.includes(id)) return;
+  gd.openIds.push(id);
+  render();
+  if(gd.openIds.length===2){
+    gd.moves++;
+    const [a,b] = gd.openIds.map(x=>gd.cells.find(c=>c.id===x));
+    if(a.key===b.key && a.side!==b.side){
+      a.matched = true; b.matched = true;
+      gd.matchedCount++;
+      gd.openIds = [];
+      recordActivity();
+      render();
+    } else {
+      setTimeout(()=>{ gd.openIds = []; render(); }, 700);
+    }
+  }
+}
+
+/* ---- Game 4: Letter/word scramble ---- */
+function madinaBuildScramble(pool){
+  const items = pool.slice().sort(()=>Math.random()-0.5).slice(0, Math.min(10, pool.length));
+  return {items, idx:0, score:0, picked:[], pieces:null};
+}
+function madinaScramblePieces(word){
+  const letters = Array.from(word.replace(/\s+/g,''));
+  const arr = letters.map((ch,i)=>({ch, id:i}));
+  let shuffled = arr.slice().sort(()=>Math.random()-0.5);
+  if(shuffled.map(x=>x.ch).join('') === arr.map(x=>x.ch).join('') && shuffled.length>1){
+    [shuffled[0], shuffled[1]] = [shuffled[1], shuffled[0]];
+  }
+  return {target: arr, shuffled};
+}
+function renderMadinaScramble(m, pool){
+  if(!STATE.madinaGameData) STATE.madinaGameData = madinaBuildScramble(pool);
+  const gd = STATE.madinaGameData;
+  if(gd.idx >= gd.items.length){
+    m.innerHTML = `<div class="folio" style="text-align:center;">
+      ${madinaGameHeader('Harflarni tuzish')}
+      <div class="milestone"><div class="star">${icon('puzzle',36)}</div><h3>Tugadi!</h3>
+      <p>${gd.score} / ${gd.items.length} to'g'ri.</p></div>
+      <div class="unit-nav"><button onclick="startMadinaGame('scramble')">${icon('repeat',14)} Qayta boshlash</button>
+      <button class="primary" onclick="go('madina')">Tayyor</button></div></div>`;
+    return;
+  }
+  if(!gd.pieces) gd.pieces = madinaScramblePieces(gd.items[gd.idx].ar);
+  const item = gd.items[gd.idx];
+  const usedIds = gd.picked.map(p=>p.id);
+  let html = `<div class="folio">
+    ${madinaGameHeader(`Harflarni tuzish &middot; ${gd.idx+1}/${gd.items.length}`)}
+    <p class="prose" style="text-align:center;font-weight:700;font-size:1.1rem;">${item.uz}</p>
+    <div class="scramble-answer" dir="rtl">
+      ${gd.picked.length ? gd.picked.map(p=>`<span class="scramble-tile placed">${p.ch}</span>`).join('') : `<span class="scramble-placeholder">harflarni pastdan bosing</span>`}
+    </div>
+    <div class="scramble-pool" dir="rtl">
+      ${gd.pieces.shuffled.map(p=>`<button class="scramble-tile ${usedIds.includes(p.id)?'used':''}" ${usedIds.includes(p.id)?'disabled':''} onclick="pickMadinaScramble(${p.id})">${p.ch}</button>`).join('')}
+    </div>
+    <div class="unit-nav">
+      <button onclick="undoMadinaScramble()">${icon('repeat',14)} Bekor qilish</button>
+      <button class="primary" onclick="checkMadinaScramble()">Tekshirish</button>
+    </div>
+    <div class="ex-feedback-slot" id="scrFeedback"></div>
+  </div>`;
+  m.innerHTML = html;
+}
+function pickMadinaScramble(id){
+  const gd = STATE.madinaGameData;
+  const piece = gd.pieces.shuffled.find(p=>p.id===id);
+  if(!piece || gd.picked.some(p=>p.id===id)) return;
+  gd.picked.push(piece);
+  render();
+}
+function undoMadinaScramble(){
+  const gd = STATE.madinaGameData;
+  gd.picked.pop();
+  render();
+}
+function checkMadinaScramble(){
+  const gd = STATE.madinaGameData;
+  const item = gd.items[gd.idx];
+  const attempt = gd.picked.map(p=>p.ch).join('');
+  const target = item.ar.replace(/\s+/g,'');
+  const correct = attempt === target;
+  if(correct) gd.score++;
+  const fb = document.getElementById('scrFeedback');
+  fb.innerHTML = `<div class="ex-feedback ${correct?'ok':'no'}">${correct?"&#10003; To'g'ri!":"&#10007; To'g'ri javob: "}<span class="ar">${correct?'':item.ar}</span></div>`;
+  setTimeout(()=>{ gd.idx++; gd.picked=[]; gd.pieces=null; render(); }, 1300);
+}
+
+/* ---- Game 5: Speed round (timed MCQ) ---- */
+function madinaBuildSpeed(pool){
+  return {pool, score:0, wrong:0, timeLeft:45, current:null, timerId:null};
+}
+function madinaNextSpeedQ(){
+  const gd = STATE.madinaGameData;
+  const pool = gd.pool;
+  const it = pool[Math.floor(Math.random()*pool.length)];
+  let distractors = pool.filter(x=>x.uz!==it.uz).sort(()=>Math.random()-0.5).slice(0,3).map(x=>x.uz);
+  const options = [it.uz, ...distractors].sort(()=>Math.random()-0.5);
+  gd.current = {ar:it.ar, tr:it.tr, answer:it.uz, options, correctIndex:options.indexOf(it.uz)};
+}
+function renderMadinaSpeed(m, pool){
+  const isNew = !STATE.madinaGameData;
+  if(isNew) STATE.madinaGameData = madinaBuildSpeed(pool);
+  const gd = STATE.madinaGameData;
+  if(gd.timeLeft <= 0){
+    if(gd.timerId){ clearInterval(gd.timerId); gd.timerId=null; }
+    m.innerHTML = `<div class="folio" style="text-align:center;">
+      ${madinaGameHeader('Tezkor tur')}
+      <div class="milestone"><div class="star">${icon('clock',36)}</div><h3>Vaqt tugadi!</h3>
+      <p>${gd.score} to'g'ri, ${gd.wrong} xato.</p></div>
+      <div class="unit-nav"><button onclick="startMadinaGame('speed')">${icon('repeat',14)} Qayta boshlash</button>
+      <button class="primary" onclick="go('madina')">Tayyor</button></div></div>`;
+    return;
+  }
+  if(!gd.current) madinaNextSpeedQ();
+  let html = `<div class="folio">
+    ${madinaGameHeader('Tezkor tur')}
+    <div class="speed-bar"><span>${icon('clock',16)} ${gd.timeLeft}s</span><span>${icon('target',16)} ${gd.score}</span></div>
+    <div class="alifbo-flashcard"><div class="alifbo-big-ar" style="font-size:2.6rem;">${gd.current.ar}</div><div class="alifbo-answer">${gd.current.tr}</div></div>
+    <div class="ex-options" id="spOpts">
+      ${gd.current.options.map((opt,i)=>`<button class="ex-opt" onclick="answerMadinaSpeed(${i})">${opt}</button>`).join('')}
+    </div>
+  </div>`;
+  m.innerHTML = html;
+  if(isNew || !gd.timerId){
+    gd.timerId = setInterval(()=>{
+      gd.timeLeft--;
+      if(STATE.view!=='madinaGame' || STATE.madinaGameType!=='speed'){ clearInterval(gd.timerId); gd.timerId=null; return; }
+      if(gd.timeLeft<=0){ clearInterval(gd.timerId); gd.timerId=null; render(); return; }
+      const bar = document.querySelector('.speed-bar');
+      if(bar) bar.innerHTML = `<span>${icon('clock',16)} ${gd.timeLeft}s</span><span>${icon('target',16)} ${gd.score}</span>`;
+    }, 1000);
+  }
+}
+function answerMadinaSpeed(i){
+  const gd = STATE.madinaGameData;
+  const opts = document.querySelectorAll('#spOpts .ex-opt');
+  if(opts[0] && opts[0].classList.contains('disabled')) return;
+  const correct = i === gd.current.correctIndex;
+  if(correct) gd.score++; else gd.wrong++;
+  opts.forEach((o,idx)=>{ o.classList.add('disabled'); if(idx===gd.current.correctIndex) o.classList.add('correct'); else if(idx===i) o.classList.add('wrong'); });
+  setTimeout(()=>{ gd.current=null; render(); }, 450);
 }
 
 function renderAlifboHome(m){
